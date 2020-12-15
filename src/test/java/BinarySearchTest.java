@@ -31,6 +31,13 @@ public class BinarySearchTest {
         assertEquals(3, i);
     }
 
+    @Test
+    public void MultiElemWithEmptyStringArraySearch() {
+        String[] arr = {"a", "b", "", "c", "", "", "", "d", "", "e"};
+        int i = findString(arr, "c", 0, arr.length - 1);
+        assertEquals(3, i);
+    }
+
     private int findString(String[] sortedStrs, String s, int i, int j) {
         if (sortedStrs.length == 0) {
             return -1;
@@ -39,6 +46,16 @@ public class BinarySearchTest {
             int mid = (i + j) / 2;
             if (sortedStrs[mid].equals(s)) {
                 return mid;
+            } else if (sortedStrs[mid].equals("")) {
+                int k = mid;
+                for (; k < sortedStrs.length && sortedStrs[k].equals(""); k++) ;
+                if (sortedStrs[k].equals(s)) {
+                    return k;
+                } else if (s.compareTo(sortedStrs[k]) < 0) {
+                    j = mid - 1;
+                } else {
+                    i = k + 1;
+                }
             } else if (s.compareTo(sortedStrs[mid]) < 0) {
                 j = mid - 1;
             } else {
