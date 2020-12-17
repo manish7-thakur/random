@@ -1,3 +1,6 @@
+/**
+ * Find a string in a sorted array of strings where individual string could be separated by any number of empty("") strings.
+ */
 public class BinarySearch {
     static int binarySearch(String[] strs, String s, int i, int j) {
         if (strs.length == 0) {

@@ -30,11 +30,4 @@ public class BinarySearchTest {
         int i = BinarySearch.binarySearch(arr, "d", 0, arr.length - 1);
         assertEquals(3, i);
     }
-
-    @Test
-    public void MultiElemWithEmptyStringArraySearch() {
-        String[] arr = {"a", "b", "", "", "c", "", "", "", "d", "", "e"};
-        int i = BinarySearch.binarySearch(arr, "c", 0, arr.length - 1);
-        assertEquals(4, i);
-    }
 }
