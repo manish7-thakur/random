@@ -29,5 +29,12 @@ public class RotateArrayTest {
         RotateArray.reverse(arr, 0, 3);
         Assert.assertArrayEquals("three elem array comparison failed", new int[]{4, 3, 2, 1}, arr);
     }
+
+    @Test
+    public void RotateOneElemsArrayByOne() {
+        int[] arr = new int[]{1};
+        RotateArray.rotate(arr, 1);
+        Assert.assertArrayEquals("three elem array comparison failed", new int[]{1}, arr);
+    }
     
 }
