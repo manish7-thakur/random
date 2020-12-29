@@ -31,4 +31,29 @@ public class DigitSplitterTest {
         int[] arr = DigitSplitter.split(100);
         Assert.assertArrayEquals(new int[]{1, 0, 0}, arr);
     }
+
+    @Test
+    public void isColorful3Digits() {
+        boolean res = DigitSplitter.isColorful(234);
+        Assert.assertTrue(res);
+
+    }
+
+    @Test
+    public void isColorful3DigitsFalse() {
+        boolean res = DigitSplitter.isColorful(236);
+        Assert.assertFalse(res);
+    }
+
+    @Test
+    public void isColorful4DigitsFalse() {
+        boolean res = DigitSplitter.isColorful(2634);
+        Assert.assertFalse(res);
+    }
+
+    @Test
+    public void isColorful4DigitsTrue() {
+        boolean res = DigitSplitter.isColorful(5342);
+        Assert.assertTrue(res);
+    }
 }
