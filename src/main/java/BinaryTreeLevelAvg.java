@@ -1,16 +1,16 @@
 import java.util.*;
 
 class BinaryTreeLevelAvg {
-    public static List<Integer> calcAvgs(TreeNode node) {
-        List<Integer> list = new ArrayList<>();
+    public static List<Double> calcAvgs(TreeNode node) {
+        List<Double> list = new ArrayList<>();
         LinkedList<TreeNode> queue = new LinkedList<>();
         queue.add(node);
         calc(queue, list);
         return list;
     }
 
-    private static void calc(LinkedList<TreeNode> queue, List<Integer> list) {
-        int sum = 0;
+    private static void calc(LinkedList<TreeNode> queue, List<Double> list) {
+        double sum = 0;
         int count = 0;
         while (!queue.isEmpty()) {
             sum = 0;
