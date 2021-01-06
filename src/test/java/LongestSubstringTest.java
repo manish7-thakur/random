@@ -22,4 +22,11 @@ public class LongestSubstringTest {
         String expected = "cbad";
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void Substring8CharsMultiRepeating() {
+        String actual = LongestSubstring.nonRepeatingSubstring("bbaadbba");
+        String expected = "adb";
+        Assert.assertEquals(expected, actual);
+    }
 }
