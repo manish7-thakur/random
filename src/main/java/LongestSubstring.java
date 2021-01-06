@@ -11,7 +11,7 @@ public class LongestSubstring {
             char c = str.charAt(r);
             int idx = idxMap.getOrDefault(c, -1);
             if (idx == -1) {
-                int currStr = str.substring(l, r + 1);
+                String currStr = str.substring(l, r + 1);
                 if (currStr.length() > res.length()) {
                     res = currStr;
                 }
