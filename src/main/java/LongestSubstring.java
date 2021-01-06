@@ -3,7 +3,7 @@ import java.util.Map;
 
 public class LongestSubstring {
     public static String nonRepeatingSubstring(String str) {
-        Map<Character, Integer> idxMap = new HashMap<>();
+        Map<Character, Integer> idxMap = new HashMap<>(str.length());
         String res = "";
         int l = 0;
         for (int r = 0; r < str.length(); r++) {
