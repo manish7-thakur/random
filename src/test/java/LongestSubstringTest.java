@@ -3,6 +3,13 @@ import org.junit.Test;
 
 public class LongestSubstringTest {
     @Test
+    public void SubstringEmptyString() {
+        String actual = LongestSubstring.nonRepeatingSubstring("");
+        String expected = "";
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void Substring3CharsNonRepeating() {
         String actual = LongestSubstring.nonRepeatingSubstring("abc");
         String expected = "abc";
