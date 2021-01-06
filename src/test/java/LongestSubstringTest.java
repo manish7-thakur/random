@@ -15,4 +15,11 @@ public class LongestSubstringTest {
         String expected = "abc";
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void Substring6CharsRepeating() {
+        String actual = LongestSubstring.nonRepeatingSubstring("abcbad");
+        String expected = "cbad";
+        Assert.assertEquals(expected, actual);
+    }
 }
