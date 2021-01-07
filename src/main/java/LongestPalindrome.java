@@ -10,11 +10,12 @@ public class LongestPalindrome {
         int[][] mem = new int[sLen][sLen];
         Map<Character, ArrayList<Integer>> idxMap = new HashMap<>(sLen);
         String res = "" + s.charAt(0);
+        int resLen = 1;
         for (int i = 0; i < sLen; i++) {
             char c = s.charAt(i);
             ArrayList<Integer> idxList = idxMap.getOrDefault(c, new ArrayList<>());
             int idxListSize = idxList.size();
-            if (idxList.size() > 0) {
+            if (idxListSize > 0) {
                 for (int j = 0; j < idxListSize; j++) {
                     int l = idxList.get(j);
                     int r = i;
@@ -32,8 +33,9 @@ public class LongestPalindrome {
                     } else {
                         mem[l][r] = 2;
                     }
-                    if (mem[l][r] == 1 && r - l + 1 > res.length()) {
+                    if (mem[l][r] == 1 && r - l + 1 > resLen) {
                         res = s.substring(l, r + 1);
+                        resLen = res.length();
                     }
                 }
             }
