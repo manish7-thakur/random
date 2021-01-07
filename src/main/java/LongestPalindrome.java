@@ -11,23 +11,18 @@ public class LongestPalindrome {
         for (int i = 0; i < sLen; i++) {
             char c = s.charAt(i);
             ArrayList<Integer> idxList = idxMap.getOrDefault(c, new ArrayList<>());
-            idxList.add(i);
-            idxMap.put(c, idxList);
-        }
-        for (Map.Entry<Character, ArrayList<Integer>> entry : idxMap.entrySet()) {
-            ArrayList<Integer> idxList = entry.getValue();
             int idxListSize = idxList.size();
-            if (idxListSize > 1) {
-                for (int i = 0; i < idxListSize; i++) {
-                    for (int j = i + 1; j < idxListSize; j++) {
-                        int l = idxList.get(i);
-                        int r = idxList.get(j);
-                        if (isPalindrome(s, l, r) && r - l + 1 > res.length()) {
-                            res = s.substring(l, r + 1);
-                        }
+            if (idxList.size() > 0) {
+                for (int j = 0; j < idxListSize; j++) {
+                    int l = idxList.get(j);
+                    int r = i;
+                    if (isPalindrome(s, l, r) && r - l + 1 > res.length()) {
+                        res = s.substring(l, r + 1);
                     }
                 }
             }
+            idxList.add(i);
+            idxMap.put(c, idxList);
         }
         return res;
     }
