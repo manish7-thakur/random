@@ -28,21 +28,21 @@ public class LongestPalindromeTest {
 
     @Test
     public void longestPalindromeNonRepeatingChars() {
-        String actual = LongestPalindrome.longestPlaindrome("abcd");
+        String actual = LongestPalindrome.longestPalindrome("abcd");
         String expected = "a";
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void longestPalindromeRepeatingCharsLen4() {
-        String actual = LongestPalindrome.longestPlaindrome("abbd");
+        String actual = LongestPalindrome.longestPalindrome("abbd");
         String expected = "bb";
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void longestPalindromeRepeatingCharsLen5() {
-        String actual = LongestPalindrome.longestPlaindrome("abcbd");
+        String actual = LongestPalindrome.longestPalindrome("abcbd");
         String expected = "bcb";
         Assert.assertEquals(expected, actual);
     }
@@ -50,14 +50,14 @@ public class LongestPalindromeTest {
 
     @Test
     public void longestPalindromeRepeatingCharsLenEntireString() {
-        String actual = LongestPalindrome.longestPlaindrome("abcba");
+        String actual = LongestPalindrome.longestPalindrome("abcba");
         String expected = "abcba";
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void longestPalindromeRepeatingCharsLenAll() {
-        String actual = LongestPalindrome.longestPlaindrome("bbbbbbb");
+        String actual = LongestPalindrome.longestPalindrome("bbbbbbb");
         String expected = "bbbbbbb";
         Assert.assertEquals(expected, actual);
     }

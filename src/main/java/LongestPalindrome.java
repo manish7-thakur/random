@@ -1,11 +1,14 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LongestPalindrome {
 
-    public static String longestPlaindrome(String s) {
-        Map<Character, ArrayList<Integer>> idxMap = new HashMap<>();
+    public static String longestPalindrome(String s) {
+        int sLen = s.length();
+        Map<Character, ArrayList<Integer>> idxMap = new HashMap<>(sLen);
         String res = "" + s.charAt(0);
-        for (int i = 0; i < s.length(); i++) {
+        for (int i = 0; i < sLen; i++) {
             char c = s.charAt(i);
             ArrayList<Integer> idxList = idxMap.getOrDefault(c, new ArrayList<>());
             idxList.add(i);
