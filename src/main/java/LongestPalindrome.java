@@ -1,11 +1,13 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Arrays;
 
 public class LongestPalindrome {
 
     public static String longestPalindrome(String s) {
         int sLen = s.length();
+        int[][] mem = new int[sLen][sLen];
         Map<Character, ArrayList<Integer>> idxMap = new HashMap<>(sLen);
         String res = "" + s.charAt(0);
         for (int i = 0; i < sLen; i++) {
@@ -16,7 +18,21 @@ public class LongestPalindrome {
                 for (int j = 0; j < idxListSize; j++) {
                     int l = idxList.get(j);
                     int r = i;
-                    if (isPalindrome(s, l, r) && r - l + 1 > res.length()) {
+                    int isPalin = mem[l+1][r-1];
+                    if(isPalin == 0) {
+                        if(isPalindrome(s, l+1, r-1)) {
+                            mem[l+1][r-1] = 1;
+                            mem[l][r] = 1;
+                        } else {
+                            mem[l+1][r-1] = 2;
+                            mem[l][r] = 2;
+                        }
+                    } else if(isPalin == 1) {
+                        mem[l][r] = 1;
+                    } else {
+                        mem[l][r] = 2;
+                    }
+                    if (mem[l][r] == 1 && r - l + 1 > res.length()) {
                         res = s.substring(l, r + 1);
                     }
                 }
