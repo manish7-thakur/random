@@ -1,4 +1,34 @@
+import java.util.*;
+
 public class LongestPalindrome {
+	
+	public static String longestPlaindrome(String s) {
+		Map<Character, ArrayList<Integer>> idxMap = new HashMap<>(); 
+		String res = "" + s.charAt(0);
+		for(int i = 0; i < s.length(); i++) {
+			char c = s.charAt(i);
+			ArrayList<Integer> idxList = idxMap.getOrDefault(c, new ArrayList<Integer>());
+			idxList.add(i);
+			idxMap.put(c, idxList);
+		}
+		for(Map.Entry<Character, ArrayList<Integer>> entry : idxMap.entrySet()) {
+			ArrayList<Integer> idxList = entry.getValue();
+			System.out.println(idxList);
+			if(idxList.size() > 1) {
+				for(int i = 0; i < idxList.size(); i++) {
+					for(int j = i+1; j < idxList.size(); j++) {
+						int l = idxList.get(i);
+						int r = idxList.get(j);
+ 						if(isPalindrome(s, l, r) && r - l + 1 > res.length()) {
+							res = s.substring(l, r +1);
+						}
+					}
+				}
+			}
+		}
+		return res;
+	}
+
 	public static boolean isPalindrome(String s, int i, int j) {
 		while(i < j) {
 			if(s.charAt(i) != s.charAt(j)) {
