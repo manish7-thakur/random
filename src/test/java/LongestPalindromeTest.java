@@ -54,4 +54,11 @@ public class LongestPalindromeTest {
 	String expected = "abcba";
 	Assert.assertEquals(expected, actual);
 	}
+
+	@Test
+	public void longestPalindromeRepeatingCharsLenAll() {
+	String actual = LongestPalindrome.longestPlaindrome("bbbbbbb");
+	String expected = "bbbbbbb";
+	Assert.assertEquals(expected, actual);
+	}
 }

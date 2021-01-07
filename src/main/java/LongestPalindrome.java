@@ -13,10 +13,10 @@ public class LongestPalindrome {
 		}
 		for(Map.Entry<Character, ArrayList<Integer>> entry : idxMap.entrySet()) {
 			ArrayList<Integer> idxList = entry.getValue();
-			System.out.println(idxList);
-			if(idxList.size() > 1) {
-				for(int i = 0; i < idxList.size(); i++) {
-					for(int j = i+1; j < idxList.size(); j++) {
+			int idxListSize = idxList.size();
+			if(idxListSize > 1) {
+				for(int i = 0; i < idxListSize; i++) {
+					for(int j = i+1; j < idxListSize; j++) {
 						int l = idxList.get(i);
 						int r = idxList.get(j);
  						if(isPalindrome(s, l, r) && r - l + 1 > res.length()) {
