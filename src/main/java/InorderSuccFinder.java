@@ -21,10 +21,9 @@ public class InorderSuccFinder {
     }
 
     public static int findSucc(TreeNode node) {
-        TreeNode succ = node;
-        while (succ.left != null) {
-            succ = succ.left;
+        while (node.left != null) {
+            node = node.left;
         }
-        return succ.value;
+        return node.value;
     }
 }
