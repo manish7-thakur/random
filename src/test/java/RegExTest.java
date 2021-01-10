@@ -39,7 +39,7 @@ public class RegExTest {
 
 	@Test
 	public void matchStringFourCharWildCard() {
-		boolean actual = RegEx.matches("bcdy","b.*y", 2, 2);
+		boolean actual = RegEx.matches("bcdy","b.*y", 3, 3);
 		Assert.assertTrue(actual);
 	}
 }
