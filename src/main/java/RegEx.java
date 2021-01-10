@@ -8,8 +8,7 @@ public class RegEx {
         }
         if (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.') {
             return matches(s, p, i - 1, j - 1);
-        }
-        if (p.charAt(j) == '*') {
+        } else if (p.charAt(j) == '*') {
             if (s.charAt(i) == p.charAt(j - 1) || p.charAt(j - 1) == '.') {
                 return matches(s, p, i - 1, j) || matches(s, p, i, j - 2);
             } else {
