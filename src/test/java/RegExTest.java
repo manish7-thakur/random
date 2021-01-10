@@ -42,4 +42,12 @@ public class RegExTest {
 		boolean actual = RegEx.matches("bcdy","b.*y", 3, 3);
 		Assert.assertTrue(actual);
 	}
+
+	@Test
+	public void matchStringFiveCharWildCard() {
+		boolean actual = RegEx.matches("bcdy","a*b.*y", 3, 5);
+		Assert.assertTrue(actual);
+		boolean actual = RegEx.matches("ablmy","a*b.*y", 4, 5);
+		Assert.assertTrue(actual);
+	}
 }
