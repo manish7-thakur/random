@@ -5,23 +5,24 @@ public class BinaryTreeTurner {
         ArrayList<TreeNode> nodes = new ArrayList<>();
         nodes.add(root);
         collectNodes(nodes);
-        for (int i = nodes.size() - 1; i >= 0; i -= 2) {
-            TreeNode node = nodes.get(i);
-            if (i - 1 >= 0) {
-                TreeNode left = nodes.get(i - 1);
+        int i = nodes.size() - 1;
+        TreeNode newRoot = nodes.get(i);
+        while (!nodes.isEmpty()) {
+            TreeNode node = nodes.remove(i);
+            if (!nodes.isEmpty()) {
+                TreeNode left = nodes.remove(--i);
                 node.left = left;
                 left.left = null;
                 left.right = null;
             }
-            if (i - 2 >= 0) {
-                TreeNode right = nodes.get(i - 2);
+            if (!nodes.isEmpty()) {
+                TreeNode right = nodes.get(--i);
                 right.right = null;
                 right.left = null;
                 node.right = right;
             }
-
         }
-        return nodes.get(nodes.size() - 1);
+        return newRoot;
     }
 
     public static void collectNodes(ArrayList<TreeNode> nodes) {
