@@ -38,8 +38,8 @@ public class RegExTest {
 	}
 
 	@Test
-	public void matchStringTripleCharWildCardOnlyDot() {
-		boolean actual = RegEx.matches("bcy","b.y", 2, 2);
+	public void matchStringFourCharWildCard() {
+		boolean actual = RegEx.matches("bcdy","b.*y", 2, 2);
 		Assert.assertTrue(actual);
 	}
 }
