@@ -3,6 +3,18 @@ public class InorderSuccFinder {
         TreeNode parent = new TreeNode(-1, null, null);
         return findNow(root, value, parent);
     }
+    public static boolean  isValidBST(TreeNode root) {
+        return validate(root, null, null);
+    }
+    static boolean  validate(TreeNode root, Integer max, Integer min) {
+        if(root == null) {
+            return true;
+        }
+        if((max != null && root.value >= max ) || (min != null && root.value <= min)) {
+            return false;
+        }
+        return validate(root.left, root.value, min) && validate(root.right, max, root.value);
+    }
 
     public static int findNow(TreeNode root, int value, TreeNode parent) {
         if (root == null) {
