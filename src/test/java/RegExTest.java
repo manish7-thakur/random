@@ -36,4 +36,10 @@ public class RegExTest {
 		boolean actual = RegEx.matches("bcy","b.y", 2, 2);
 		Assert.assertTrue(actual);
 	}
+
+	@Test
+	public void matchStringTripleCharWildCardOnlyDot() {
+		boolean actual = RegEx.matches("bcy","b.y", 2, 2);
+		Assert.assertTrue(actual);
+	}
 }
