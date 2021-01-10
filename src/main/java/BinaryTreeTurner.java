@@ -11,9 +11,9 @@ public class BinaryTreeTurner {
             TreeNode node = nodes.remove(i);
             if (!nodes.isEmpty()) {
                 TreeNode left = nodes.remove(--i);
-                node.left = left;
                 left.left = null;
                 left.right = null;
+                node.left = left;
             }
             if (!nodes.isEmpty()) {
                 TreeNode right = nodes.get(--i);
