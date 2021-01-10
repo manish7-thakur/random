@@ -18,3 +18,14 @@ public class RegEx {
         return false;
     }
 }
+
+/*
+overlapping sub-problems, use DP.
+
+						(s,p,5,5)
+					/      			\*
+			(s,p,4,4)				(s,p,4,5) 						|| (s,p,5,3)
+			/		\				/	   \*						/			\*
+		(s,p,3,3)	(s,p,3,4)  (s,p,3,4)   (s,p,3,5)||(s,p,4,3) 	(s,p,4,2)   (s,p,4,3)||(s,p,5,1)
+
+*/
