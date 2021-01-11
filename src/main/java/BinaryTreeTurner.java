@@ -6,22 +6,23 @@ public class BinaryTreeTurner {
         nodes.add(root);
         collectNodes(nodes);
         int i = nodes.size() - 1;
-        TreeNode newRoot = nodes.get(i);
-        while (!nodes.isEmpty()) {
-            TreeNode node = nodes.remove(i);
-            if (!nodes.isEmpty()) {
-                TreeNode left = nodes.remove(--i);
+        while(i > 0) {
+            TreeNode node = nodes.get(i);
+            if (i > 0) {
+                TreeNode left = nodes.get(--i);
                 left.left = null;
                 left.right = null;
                 node.left = left;
             }
-            if (!nodes.isEmpty()) {
+            if (i > 0) {
                 TreeNode right = nodes.get(--i);
                 right.right = null;
                 right.left = null;
                 node.right = right;
             }
         }
+        TreeNode newRoot = nodes.get(nodes.size() - 1);
+        nodes.clear();
         return newRoot;
     }
 
