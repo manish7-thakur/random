@@ -9,6 +9,12 @@ public class ArrayMergerTest {
     }
 
     @Test
+    public void SingleElemArraysZeros() {
+        int[] res = ArrayMerger.merge(new int[]{0}, new int[]{0}, new int[]{1});
+        Assert.assertArrayEquals(new int[]{0, 1, 0}, res);
+    }
+
+    @Test
     public void DuplicateSingleElemArrays() {
         int[] res = ArrayMerger.merge(new int[]{1}, new int[]{1}, new int[]{3});
         Assert.assertArrayEquals(new int[]{1, 3, 0}, res);
