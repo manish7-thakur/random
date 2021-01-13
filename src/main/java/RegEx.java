@@ -21,6 +21,10 @@ public class RegEx {
             } else {
                 return matches(s, p, i, j - 2);
             }
+        } else if(p.charAt(j) == '+') {
+            if(s.charAt(i) == p.charAt(j - 1)) {
+                return matches(s, p, i - 1, j - 2) || matches(s, p, i - 1, j);
+            }
         }
         return false;
     }

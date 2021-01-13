@@ -73,4 +73,47 @@ public class RegExTest {
         boolean actual = RegEx.matches("a", "ay?", 0, 2);
         Assert.assertTrue(actual);
     }
+
+    @Test
+    public void matchStringCharFourCharPatternZeroOrOneOcc() {
+        boolean actual = RegEx.matches("a", "ay?", 0, 2);
+        Assert.assertTrue(actual);
+    }
+
+    @Test
+    public void matchStringSingleCharOneOrMoreOcc() {
+        boolean actual = RegEx.matches("", "b+", -1, 1);
+        Assert.assertFalse(actual);
+    }
+
+    @Test
+    public void matchStringDoubleCharOneOrMoreOcc() {
+        boolean actual = RegEx.matches("b", "b+", 0, 1);
+        Assert.assertTrue(actual);
+    }
+
+    @Test
+    public void matchStringDoubleCharPatternOneOrMoreOcc() {
+        boolean actual = RegEx.matches("bb", "b+", 1, 1);
+        Assert.assertTrue(actual);
+    }
+
+    @Test
+    public void matchStringTripleCharPatternOneOrMoreOcc() {
+        boolean actual = RegEx.matches("bbb", "b+", 2, 1);
+        Assert.assertTrue(actual);
+    }
+
+    @Test
+    public void matchStringFourCharPatternOneOrMoreOcc() {
+        boolean actual = RegEx.matches("bb", "bb+", 1, 2);
+        Assert.assertTrue(actual);
+    }
+
+    @Test
+    public void matchStringOneCharPatternOneOrMoreOcc() {
+        boolean actual = RegEx.matches("b", "bb+", 0, 2);
+        Assert.assertFalse(actual);
+    }
+
 }
