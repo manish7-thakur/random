@@ -55,4 +55,22 @@ public class RegExTest {
         actual = RegEx.matches("ab", "a*b.*y", 1, 5);
         Assert.assertFalse(actual);
     }
+
+    @Test
+    public void matchStringSingleCharZeroOrOneOcc() {
+        boolean actual = RegEx.matches("", "y?", -1, 1);
+        Assert.assertTrue(actual);
+    }
+
+    @Test
+    public void matchStringDoubleCharZeroOrOneOcc() {
+        boolean actual = RegEx.matches("y", "y?", 0, 1);
+        Assert.assertTrue(actual);
+    }
+
+    @Test
+    public void matchStringCharTriplePatternZeroOrOneOcc() {
+        boolean actual = RegEx.matches("a", "ay?", 0, 2);
+        Assert.assertTrue(actual);
+    }
 }
