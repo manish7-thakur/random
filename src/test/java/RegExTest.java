@@ -96,24 +96,13 @@ public class RegExTest {
     public void matchStringDoubleCharPatternOneOrMoreOcc() {
         boolean actual = RegEx.matches("bb", "b+", 1, 1);
         Assert.assertTrue(actual);
-    }
-
-    @Test
-    public void matchStringTripleCharPatternOneOrMoreOcc() {
-        boolean actual = RegEx.matches("bbb", "b+", 2, 1);
+        actual = RegEx.matches("bb", "bb+", 1, 2);
+        actual = RegEx.matches("bbb", "b+", 2, 1);
         Assert.assertTrue(actual);
-    }
-
-    @Test
-    public void matchStringFourCharPatternOneOrMoreOcc() {
-        boolean actual = RegEx.matches("bb", "bb+", 1, 2);
         Assert.assertTrue(actual);
-    }
-
-    @Test
-    public void matchStringOneCharPatternOneOrMoreOcc() {
-        boolean actual = RegEx.matches("b", "bb+", 0, 2);
+        actual = RegEx.matches("b", "bb+", 0, 2);
+        Assert.assertFalse(actual);
+        actual = RegEx.matches("ab", "ab+", 0, 2);
         Assert.assertFalse(actual);
     }
-
 }
