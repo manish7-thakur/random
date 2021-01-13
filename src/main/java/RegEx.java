@@ -1,7 +1,7 @@
 public class RegEx {
     public static boolean matches(String s, String p, int i, int j) {
-        if ((i == -1 && j == -1) || (i == -1 && j == 1 && p.charAt(j) == '*') 
-            || (i == -1 && j == 1 && p.charAt(j) == '?')) {
+        if ((i == -1 && j == -1) || (i == -1 && j == 1 && p.charAt(j) == '*')
+                || (i == -1 && j == 1 && p.charAt(j) == '?')) {
             return true;
         }
         if (i == -1 || j == -1) {
@@ -15,14 +15,14 @@ public class RegEx {
             } else {
                 return matches(s, p, i, j - 2);
             }
-        } else if(p.charAt(j) == '?') {
-            if(s.charAt(i) == p.charAt(j - 1)) {
+        } else if (p.charAt(j) == '?') {
+            if (s.charAt(i) == p.charAt(j - 1)) {
                 return matches(s, p, i - 1, j - 2);
             } else {
                 return matches(s, p, i, j - 2);
             }
-        } else if(p.charAt(j) == '+') {
-            if(s.charAt(i) == p.charAt(j - 1)) {
+        } else if (p.charAt(j) == '+') {
+            if (s.charAt(i) == p.charAt(j - 1)) {
                 return matches(s, p, i - 1, j - 2) || matches(s, p, i - 1, j);
             }
         }

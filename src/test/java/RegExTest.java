@@ -97,12 +97,14 @@ public class RegExTest {
         boolean actual = RegEx.matches("bb", "b+", 1, 1);
         Assert.assertTrue(actual);
         actual = RegEx.matches("bb", "bb+", 1, 2);
-        actual = RegEx.matches("bbb", "b+", 2, 1);
         Assert.assertTrue(actual);
+        actual = RegEx.matches("bbb", "b+", 2, 1);
         Assert.assertTrue(actual);
         actual = RegEx.matches("b", "bb+", 0, 2);
         Assert.assertFalse(actual);
         actual = RegEx.matches("ab", "ab+", 0, 2);
+        Assert.assertFalse(actual);
+        actual = RegEx.matches("a", "ab+", 0, 2);
         Assert.assertFalse(actual);
     }
 }
