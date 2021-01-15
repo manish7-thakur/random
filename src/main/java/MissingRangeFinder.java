@@ -4,7 +4,11 @@ public class MissingRangeFinder {
     public static ArrayList<String> find(int[] ranges, int l, int h) {
         ArrayList<String> res = new ArrayList<>();
         if (ranges.length == 0) {
-            res.add(l + "->" + h);
+            if (l == h) {
+                res.add(l + "");
+            } else {
+                res.add(l + "->" + h);
+            }
             return res;
         }
         int i = 0;

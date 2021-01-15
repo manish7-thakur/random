@@ -4,6 +4,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class MissingRangeFinderTest {
+
     @Test
     public void emptyRanges() {
         int l = -1;
@@ -11,6 +12,16 @@ public class MissingRangeFinderTest {
         ArrayList<String> actual = MissingRangeFinder.find(new int[]{}, l, h);
         ArrayList<String> expected = new ArrayList<>();
         expected.add(l + "->" + h);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void emptyRangesLowAndHighSame() {
+        int l = 1;
+        int h = 1;
+        ArrayList<String> actual = MissingRangeFinder.find(new int[]{}, l, h);
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add(l + "");
         Assert.assertEquals(expected, actual);
     }
 
