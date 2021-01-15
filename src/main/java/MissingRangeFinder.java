@@ -16,18 +16,18 @@ public class MissingRangeFinder {
             if (l < ranges[i]) {
                 int curr = ranges[i] - 1;
                 if (l == curr) {
-                    res.add("" + l);
+                    res.add(l + "");
                 } else {
-                    res.add("" + l + "->" + curr);
+                    res.add(l + "->" + curr);
                 }
             }
             l = ranges[i] + 1;
             i++;
         }
         if (l < h) {
-            res.add("" + l + "->" + h);
+            res.add(l + "->" + h);
         } else if (l == h) {
-            res.add("" + l);
+            res.add(l + "");
         }
         return res;
     }
