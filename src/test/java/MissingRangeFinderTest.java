@@ -79,4 +79,17 @@ public class MissingRangeFinderTest {
         expected.add(7 + "->" + 8);
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void fourRanges() {
+        int l = 0;
+        int h = 99;
+        ArrayList<String> actual = MissingRangeFinder.find(new int[]{0, 1, 3, 50, 75}, l, h);
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add(2 + "");
+        expected.add(4 + "->" + 49);
+        expected.add(51 + "->" + 74);
+        expected.add(76 + "->" + 99);
+        Assert.assertEquals(expected, actual);
+    }
 }
