@@ -81,7 +81,7 @@ public class MissingRangeFinderTest {
     }
 
     @Test
-    public void fourRanges() {
+    public void fiveRanges() {
         int l = 0;
         int h = 99;
         ArrayList<String> actual = MissingRangeFinder.find(new int[]{0, 1, 3, 50, 75}, l, h);
