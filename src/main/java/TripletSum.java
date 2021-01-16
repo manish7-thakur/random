@@ -28,7 +28,7 @@ public class TripletSum {
             for (int j = i + 1; j < arr.length; j++) {
                 int sum = arr[i] + arr[j];
                 if (sum < n) {
-                    sMap.put(new Pair(i,j), sum);
+                    sMap.put(new Pair(i, j), sum);
                 }
             }
         }

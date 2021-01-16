@@ -1,4 +1,5 @@
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class TripletSumTest {
     @Test
@@ -15,9 +16,16 @@ public class TripletSumTest {
         Assert.assertEquals(expected, actual);
     }
 
-   @Test
+    @Test
     public void ArrayWithFourElemTest() {
         int actual = TripletSum.countTriplets(new int[]{-1, 5, 4, 1}, 6);
+        int expected = 2;
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void ArrayWithFourElemTestWithZero() {
+        int actual = TripletSum.countTriplets(new int[]{-2, 0, 1, 3}, 2);
         int expected = 2;
         Assert.assertEquals(expected, actual);
     }
