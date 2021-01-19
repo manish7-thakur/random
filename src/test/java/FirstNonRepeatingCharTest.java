@@ -25,15 +25,15 @@ public class FirstNonRepeatingCharTest {
 
     @Test
     public void threeCharString() {
-        int actual = FirstNonRepeatingChar.findFirst("aac");
+        int actual = FirstNonRepeatingChar.findFirst("aat");
         int expected = 2;
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void fourCharString() {
-        int actual = FirstNonRepeatingChar.findFirst("abac");
-        int expected = 1;
+        int actual = FirstNonRepeatingChar.findFirst("tbbc");
+        int expected = 0;
         Assert.assertEquals(expected, actual);
     }
 
@@ -46,7 +46,21 @@ public class FirstNonRepeatingCharTest {
 
     @Test
     public void fiveCharStringNonRepeating() {
-        int actual = FirstNonRepeatingChar.findFirst("babca");
+        int actual = FirstNonRepeatingChar.findFirst("batca");
+        int expected = 0;
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void fiveCharStringNonRepeating2() {
+        int actual = FirstNonRepeatingChar.findFirst("leetc");
+        int expected = 0;
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void sevenCharStringRepeating() {
+        int actual = FirstNonRepeatingChar.findFirst("abctcba");
         int expected = 3;
         Assert.assertEquals(expected, actual);
     }

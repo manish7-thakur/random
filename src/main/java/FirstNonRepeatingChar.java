@@ -1,21 +1,25 @@
-import java.util.*;
-
 public class FirstNonRepeatingChar {
     public static int findFirst(String s) {
+        int strLen = s.length();
         int[] occMap = new int[26];
-        Map<Character, Integer> idxMap = new HashMap(s.length());
-        for (int i = 0; i < s.length(); i++) {
-            occMap[s.charAt(i) - 'a']++;
-            if (!idxMap.containsKey(s.charAt(i))) {
-                idxMap.put(s.charAt(i), i);
+        for (int i = 0, j = strLen - 1; i <= j; i++, j--) {
+            if (i != j) {
+                char c = s.charAt(i);
+                occMap[c - 'a']++;
+                c = s.charAt(j);
+                occMap[c - 'a']++;
+            } else {
+                char c = s.charAt(i);
+                occMap[c - 'a']++;
             }
         }
-        int i = 0;
-        for (; i < occMap.length && occMap[i] != 1; i++) ;
-        if (i >= occMap.length) {
-            return -1;
-        } else {
-            return idxMap.get((char) ('a' + i));
+
+        for (int k = 0; k < strLen; k++) {
+            char c = s.charAt(k);
+            if (occMap[c - 'a'] == 1) {
+                return k;
+            }
         }
+        return -1;
     }
 }
