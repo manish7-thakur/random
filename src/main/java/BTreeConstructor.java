@@ -30,3 +30,9 @@ public class BTreeConstructor {
         return k;
     }
 }
+
+/*
+we solve both parts after division so the recurrance relation would be:
+T(n) = 2T(n/2) + n => nlogn
+Better than nlog(height) for BST
+*/
