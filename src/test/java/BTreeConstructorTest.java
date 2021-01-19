@@ -73,4 +73,21 @@ public class BTreeConstructorTest {
 		Assert.assertEquals(15, root.right.right.right.value);
 		Assert.assertEquals(11, root.right.left.left.value);
 	}
+
+	@Test
+	public void tenNodes() {
+		TreeNode root = BTreeConstructor.fromPreorder(new int[] {10,6,5,4,7,8,13, 12,11, 14, 15});
+		Assert.assertEquals(10, root.value);
+		Assert.assertEquals(13, root.right.value);
+		Assert.assertEquals(14, root.right.right.value);
+		Assert.assertEquals(12, root.right.left.value);
+		Assert.assertEquals(15, root.right.right.right.value);
+		Assert.assertEquals(11, root.right.left.left.value);
+		Assert.assertEquals(6, root.left.value);
+		Assert.assertEquals(5, root.left.left.value);
+		Assert.assertEquals(7, root.left.right.value);
+		Assert.assertEquals(4, root.left.left.left.value);
+		Assert.assertEquals(8, root.left.right.right.value);
+	}
+
 }
