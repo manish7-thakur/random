@@ -30,10 +30,10 @@ public class InorderSuccFinderTest {
 
     @Test
     public void InorderSucc8Nodes() {
-        TreeNode root = new TreeNode(9, new TreeNode(8, new TreeNode(6,
-                null, new TreeNode(10, null, null)), null),
-                null);
-        boolean actual = InorderSuccFinder.isValidBST(root);
+        TreeNode root = new TreeNode(8, new TreeNode(6, new TreeNode(5,
+                new TreeNode(3, null, new TreeNode(4, null, null)), null), null),
+                new TreeNode(12, new TreeNode(9, null, null), null));
+        int actual = InorderSuccFinder.find(root, 4);
         int expected = 5;
         Assert.assertEquals(expected, actual);
     }
