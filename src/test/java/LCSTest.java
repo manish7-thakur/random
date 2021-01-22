@@ -108,4 +108,12 @@ public class LCSTest {
 		Assert.assertEquals(expected, actual);
 	}
 
+	@Test
+	public void lcsFifteenCharStringsTwoMatch() {
+		String actual = LCS.find("373j0}}{DW|2:ds[s0AB",
+		 "B7sakjaP#2nh2BA", 19, 14);
+		String expected = "7j2A";
+		Assert.assertEquals(expected, actual);
+	}
+
 }
