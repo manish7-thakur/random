@@ -101,4 +101,11 @@ public class LCSTest {
 		Assert.assertEquals(expected, actual);
 	}
 
+	@Test
+	public void lcsSevenFiveCharStringsTwoMatch() {
+		String actual = LCS.find("ABCBDAB", "BDCABA", 6, 5);
+		String expected = "BCBA";
+		Assert.assertEquals(expected, actual);
+	}
+
 }
