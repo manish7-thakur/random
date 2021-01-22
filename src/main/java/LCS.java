@@ -1,5 +1,5 @@
 public class LCS {
-	public String find(String s1, String s2, int i, int j) {
+	public static String find(String s1, String s2, int i, int j) {
 		char[][] path = new char[i+1][j+1];
 		findNow(s1, s2, i, j, path);
 		StringBuilder b = new StringBuilder();
@@ -7,7 +7,7 @@ public class LCS {
 	}
 
 	static int findNow(String s1, String s2, int i, int j, char[][] path) {
-		if(i == 0 || j == 0) {
+		if(i < 0 || j < 0) {
 			return 0;
 		}
 		if(s1.charAt(i) == s2.charAt(j)) {
