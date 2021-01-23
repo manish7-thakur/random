@@ -111,6 +111,13 @@ public class LCSTest {
     }
 
     @Test
+    public void lcsSevenEightCharStringsSixMatch() {
+        String actual = LCS.find("10010101", "010110110", 7, 8);
+        String expected = "100110";
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void lcsFifteenCharStringsTwoMatch() {
         String actual = LCS.find("373j0}}{DW|2:ds[s0AB",
                 "B7sakjaP#2nh2BA", 19, 14);
