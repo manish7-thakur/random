@@ -43,9 +43,16 @@ public class EditDistanceTest {
 	}
 
 	@Test
-	public void doubleCharreversedString() {
+	public void doubleCharReversedString() {
 		int actual = EditDistance.find("ab", "ba", 1, 1);
 		int expected = 1; //twiddle
+		Assert.assertEquals(expected, actual);
+	}
+
+	@Test
+	public void doubleCharSTripleCharT() {
+		int actual = EditDistance.find("ab", "bac", 1, 2);
+		int expected = 2; //insert + twiddle
 		Assert.assertEquals(expected, actual);
 	}
 }
