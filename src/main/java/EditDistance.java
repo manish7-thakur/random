@@ -14,7 +14,7 @@ public class EditDistance {
                 return 1 + find(s1, s2, i - 2, j - 2);
             }
             //Min (replace, insert->delete, delete -> insert)
-            return Math.min(Math.min(1 + find(s1, s2, i - 1, j - 1), 1 + find(s1, s2, i - 1, j)), 1 + find(s1, s2, i, j - 1));
+            return 1 +  Math.min(Math.min(find(s1, s2, i - 1, j - 1), find(s1, s2, i - 1, j)), find(s1, s2, i, j - 1));
         }
         return 1 + find(s1, s2, i - 1, j - 1); // Copy
     }
