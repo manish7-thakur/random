@@ -33,12 +33,10 @@ public class LCS {
         }
         if (path[i][j] == 'm') {
             b.append(s.charAt(i));
-            buildSeq(path, b, i - 1, j - 1, s);
+            return buildSeq(path, b, i - 1, j - 1, s);
         } else if (path[i][j] == 'b') {
-            buildSeq(path, b, i, j - 1, s);
-        } else {
-            buildSeq(path, b, i - 1, j, s);
+            return buildSeq(path, b, i, j - 1, s);
         }
-        return b.toString();
+        return buildSeq(path, b, i - 1, j, s);
     }
 }
