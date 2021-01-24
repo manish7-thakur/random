@@ -3,6 +3,7 @@ import org.junit.Test;
 
 /**
  * cost reference T.H cormen chapter 15, Excercise: 15-5
+ * consider input string in reverse order
  * copy(c) -> -1
  * replace(r) -> 1
  * insert(i) -> 2
