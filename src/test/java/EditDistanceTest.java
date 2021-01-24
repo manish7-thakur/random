@@ -174,7 +174,7 @@ public class EditDistanceTest {
     @Test
     public void opsFiveCharSTwoCharT() {
         String actual = EditDistance.find("cdeab", "ba", 4, 1);
-        String expected = "icdddd";
+        String expected = "icdddd"; // insert a, copy b and delete a,e,d,c
         Assert.assertEquals(expected, actual);
     }
 
