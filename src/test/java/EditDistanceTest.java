@@ -14,78 +14,167 @@ import org.junit.Test;
 public class EditDistanceTest {
     @Test
     public void singleCharStringEmptySource() {
-        int actual = EditDistance.findNow("", "n", -1, 0);
+        char[][] path = new char[0][1];
+        int actual = EditDistance.findNow("", "n", -1, 0, path);
         int expected = 2;//insert
         Assert.assertEquals(expected, actual);
     }
 
     @Test
+    public void opsSingleCharStringEmptySource() {
+        String actual = EditDistance.find("", "n", -1, 0);
+        String expected = "i";//insert
+        Assert.assertEquals(expected, actual);
+    }
+
+
+    @Test
     public void singleCharStringTargetEmpty() {
-        int actual = EditDistance.findNow("a", "", 0, -1);
+        char[][] path = new char[1][0];
+        int actual = EditDistance.findNow("a", "", 0, -1, path);
         int expected = 2;//delete
         Assert.assertEquals(expected, actual);
     }
 
     @Test
+    public void opsSingleCharStringTargetEmpty() {
+        String actual = EditDistance.find("a", "", 0, -1);
+        String expected = "d";//delete
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void singleCharIdenticalString() {
-        int actual = EditDistance.findNow("a", "a", 0, 0);
+        char[][] path = new char[1][1];
+        int actual = EditDistance.findNow("a", "a", 0, 0, path);
         int expected = -1; //copy
         Assert.assertEquals(expected, actual);
     }
 
     @Test
+    public void opsSingleCharIdenticalString() {
+        String actual = EditDistance.find("a", "a", 0, 0);
+        String expected = "c"; //copy
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void singleCharNonIdenticalString() {
-        int actual = EditDistance.findNow("a", "b", 0, 0);
+        char[][] path = new char[1][1];
+        int actual = EditDistance.findNow("a", "b", 0, 0, path);
         int expected = 1; //Min(replace, delete + insert)
         Assert.assertEquals(expected, actual);
     }
 
     @Test
+    public void opsSingleCharNonIdenticalString() {
+        String actual = EditDistance.find("a", "b", 0, 0);
+        String expected = "r"; //Min(replace, delete + insert)
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void doubleCharNonIdenticalString() {
-        int actual = EditDistance.findNow("ab", "bc", 1, 1);
+        char[][] path = new char[2][2];
+        int actual = EditDistance.findNow("ab", "bc", 1, 1, path);
         int expected = 2; //Min(replace + replace, insert + copy + delete)
         Assert.assertEquals(expected, actual);
     }
 
     @Test
+    public void opsDoubleCharNonIdenticalString() {
+        String actual = EditDistance.find("ab", "bc", 1, 1);
+        String expected = "rr"; //Min(replace + replace, insert + copy + delete)
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void doubleCharReversedString() {
-        int actual = EditDistance.findNow("ab", "ba", 1, 1);
+        char[][] path = new char[2][2];
+        int actual = EditDistance.findNow("ab", "ba", 1, 1, path);
         int expected = 2;
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void opsDoubleCharReversedString() {
+        String actual = EditDistance.find("ab", "ba", 1, 1);
+        String expected = "rr";
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void doubleCharSTripleCharT() {
-        int actual = EditDistance.findNow("ab", "bac", 1, 2);
+        char[][] path = new char[2][3];
+        int actual = EditDistance.findNow("ab", "bac", 1, 2, path);
         int expected = 2;
         Assert.assertEquals(expected, actual);
     }
 
     @Test
+    public void opsDoubleCharSTripleCharT() {
+        String actual = EditDistance.find("ab", "bac", 1, 2);
+        String expected = "rci";
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void tripleCharSTripleCharT() {
-        int actual = EditDistance.findNow("abc", "bac", 2, 2);
+        char[][] path = new char[3][3];
+        int actual = EditDistance.findNow("abc", "bac", 2, 2, path);
         int expected = 1; //copy + twiddle
         Assert.assertEquals(expected, actual);
     }
 
     @Test
+    public void opsTripleCharSTripleCharT() {
+        String actual = EditDistance.find("abc", "bac", 2, 2);
+        String expected = "crr"; //copy + twiddle
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void fourCharSTripleCharT() {
-        int actual = EditDistance.findNow("abcd", "bac", 3, 2);
+        char[][] path = new char[4][3];
+        int actual = EditDistance.findNow("abcd", "bac", 3, 2, path);
         int expected = 3;
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void opsFourCharSTripleCharT() {
+        String actual = EditDistance.find("abcd", "bac", 3, 2);
+        String expected = "rrcd";
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void fiveCharSFiveCharT() {
-        int actual = EditDistance.findNow("abcde", "bacef", 4, 4);
+        char[][] path = new char[5][5];
+        int actual = EditDistance.findNow("abcde", "bacef", 4, 4, path);
         int expected = 3;
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void fiveCharStwoCharT() {
-        int actual = EditDistance.findNow("cdeab", "ba", 4, 1);
+    public void opsFiveCharSFiveCharT() {
+        String actual = EditDistance.find("abcde", "bacef", 4, 4);
+        String expected = "rrcrr";
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void fiveCharSTwoCharT() {
+        char[][] path = new char[5][2];
+        int actual = EditDistance.findNow("cdeab", "ba", 4, 1, path);
         int expected = 6;
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void opsFiveCharSTwoCharT() {
+        String actual = EditDistance.find("cdeab", "ba", 4, 1);
+        String expected = "icdddd";
         Assert.assertEquals(expected, actual);
     }
 
@@ -94,7 +183,7 @@ public class EditDistanceTest {
         char[][] path = new char[][]{{'i'}};
         StringBuilder b = new StringBuilder();
         String actual = EditDistance.getOps(path, 0, 0, b);
-        String expected = "ik";
+        String expected = "id";
         Assert.assertEquals(expected, actual);
     }
 
@@ -117,7 +206,7 @@ public class EditDistanceTest {
                 {'k', 'd'}};
         StringBuilder b = new StringBuilder();
         String actual = EditDistance.getOps(path, 1, 1, b);
-        String expected = "dc";
+        String expected = "dci";
         Assert.assertEquals(expected, actual);
     }
 
@@ -151,7 +240,7 @@ public class EditDistanceTest {
                 {'i', 'i'}};
         StringBuilder b = new StringBuilder();
         String actual = EditDistance.getOps(path, 1, 1, b);
-        String expected = "iik";
+        String expected = "iidd";
         Assert.assertEquals(expected, actual);
     }
 }
