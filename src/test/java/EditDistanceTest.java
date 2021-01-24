@@ -1,5 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
+import java.util.*;
 
 /**
  * cost
@@ -85,6 +86,72 @@ public class EditDistanceTest {
     public void fiveCharStwoCharT() {
         int actual = EditDistance.find("cdeab", "ba", 4, 1);
         int expected = 2; // twiddle + kill
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void opsInsert() {
+        char[][] path = new char[][]{{'i'}};
+        StringBuilder b = new StringBuilder();
+        String actual = EditDistance.getOps(path, 0, 0, b);
+        String expected = "ik";
+        Assert.assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void opsDoubleCopy() {
+        char[][] path = new char[][]{
+            {'c', 'd'},
+            {'k', 'c'}};
+        StringBuilder b = new StringBuilder();
+        String actual = EditDistance.getOps(path, 1, 1, b);
+        String expected = "cc";
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void opsDeleteCopy() {
+        char[][] path = new char[][]{
+            {'r', 'c'},
+            {'k', 'd'}};
+        StringBuilder b = new StringBuilder();
+        String actual = EditDistance.getOps(path, 1, 1, b);
+        String expected = "dc";
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void opsReplaceCopy() {
+        char[][] path = new char[][]{
+            {'c', 'c'},
+            {'k', 'r'}};
+        StringBuilder b = new StringBuilder();
+        String actual = EditDistance.getOps(path, 1, 1, b);
+        String expected = "rc";
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void opsTwiddleCopy() {
+        char[][] path = new char[][]{
+            {'c', 'c', 'd'},
+            {'k', 'r', 'i'},
+            {'k', 'i', 't'}};
+        StringBuilder b = new StringBuilder();
+        String actual = EditDistance.getOps(path, 2, 2, b);
+        String expected = "tc";
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void opsDoubleInsertKill() {
+        char[][] path = new char[][]{
+            {'c', 'c'},
+            {'i', 'i'}};
+        StringBuilder b = new StringBuilder();
+        String actual = EditDistance.getOps(path, 1, 1, b);
+        String expected = "iik";
         Assert.assertEquals(expected, actual);
     }
 }
