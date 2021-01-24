@@ -28,8 +28,8 @@ public class EditDistance {
             copy = -1 + findNow(s1, s2, i - 1, j - 1, path);
         }
         int replace = 1 + findNow(s1, s2, i - 1, j - 1, path);
-        int insert = 2 + findNow(s1, s2, i - 1, j, path);
-        int delete = 2 + findNow(s1, s2, i, j - 1, path);
+        int insert = 2 + findNow(s1, s2, i, j - 1, path);
+        int delete = 2 + findNow(s1, s2, i - 1, j, path);
         int min = findMin(twiddle, replace, insert, delete, copy);
         if (min == replace) {
             path[i][j] = 'r';

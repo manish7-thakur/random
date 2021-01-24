@@ -2,7 +2,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * cost
+ * cost reference T.H cormen chapter 15, Excercise: 15-5
  * copy(c) -> -1
  * replace(r) -> 1
  * insert(i) -> 2
@@ -174,7 +174,7 @@ public class EditDistanceTest {
     @Test
     public void opsFiveCharSTwoCharT() {
         String actual = EditDistance.find("cdeab", "ba", 4, 1);
-        String expected = "icdddd"; // insert a, copy b and delete a,e,d,c
+        String expected = "dcrdd";
         Assert.assertEquals(expected, actual);
     }
 
