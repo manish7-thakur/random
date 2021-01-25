@@ -16,10 +16,10 @@ public class LinkedListUtil {
         }
         Node first = head;
         Node second = head.next;
-        while(true) {
-            if(second == null) {
-                return false;
-            }
+        while(second != null) {
+            // if(second == null) {
+            //     return false;
+            // }
             if(first == second) {
                 return true;
             }
@@ -30,5 +30,6 @@ public class LinkedListUtil {
             second = second.next.next;
             }
         }
+        return false;
     }
 }
