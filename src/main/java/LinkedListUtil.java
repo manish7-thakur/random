@@ -9,4 +9,26 @@ public class LinkedListUtil {
         }
         return b;
     }
+
+    public static boolean containsCycle(Node head) {
+        if(head == null) {
+            return false;
+        }
+        Node first = head;
+        Node second = head.next;
+        while(true) {
+            if(second == null) {
+                return false;
+            }
+            if(first == second) {
+                return true;
+            }
+            first = first.next;
+            if(second.next == null) {
+                return false;
+            } else {
+            second = second.next.next;
+            }
+        }
+    }
 }

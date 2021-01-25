@@ -31,4 +31,49 @@ public class LinkedListUtilTest {
         Assert.assertEquals(6, res.next.data);
         Assert.assertEquals(5, res.next.next.data);
     }
+
+    @Test
+    public void checkCycleEmptyList() {
+        Node head = null;
+        boolean actual = LinkedListUtil.containsCycle(head);
+        Assert.assertFalse(actual);
+    }
+
+    @Test
+    public void checkCycleSingleNodeList() {
+        Node head = new Node(2, null);
+        boolean actual = LinkedListUtil.containsCycle(head);
+        Assert.assertFalse(actual);
+    }
+
+    @Test
+    public void checkCycleDoubleNodeList() {
+        Node head = new Node(2, new Node(3, null));
+        boolean actual = LinkedListUtil.containsCycle(head);
+        Assert.assertFalse(actual);
+    }
+
+    @Test
+    public void checkCycleTripleNodeList() {
+        Node head = new Node(2, new Node(3, new Node(4, null)));
+        boolean actual = LinkedListUtil.containsCycle(head);
+        Assert.assertFalse(actual);
+    }
+
+    @Test
+    public void checkCycleFourNodeList() {
+        Node head = new Node(2, new Node(3, new Node(4, new Node(5, null))));
+        boolean actual = LinkedListUtil.containsCycle(head);
+        Assert.assertFalse(actual);
+    }
+
+    @Test
+    public void checkCycleFourNodeListWithCycle() {
+        Node five = new Node(5, null);
+        Node three = new Node(3, new Node(4, five));
+        five.next = three;
+        Node head = new Node(2, five);
+        boolean actual = LinkedListUtil.containsCycle(head);
+        Assert.assertTrue(actual);
+    }
 }
