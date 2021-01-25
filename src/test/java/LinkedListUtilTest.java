@@ -72,7 +72,7 @@ public class LinkedListUtilTest {
         Node five = new Node(5, null);
         Node three = new Node(3, new Node(4, five));
         five.next = three;
-        Node head = new Node(2, five);
+        Node head = new Node(2, three);
         boolean actual = LinkedListUtil.containsCycle(head);
         Assert.assertTrue(actual);
     }
