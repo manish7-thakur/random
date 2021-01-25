@@ -42,4 +42,14 @@ public class ArrayArrangerTest {
 		Assert.assertArrayEquals(expected, actual);
 	}
 
+	@Test
+	public void arrangeSixElems() {
+		int[] actual = ArrayArranger.arrange(new int[]{1, 2, 3, 4, 5, 6});
+		int[] expected = new int[]{1, 3, 2, 5, 4, 6};
+		Assert.assertArrayEquals(expected, actual);
+		actual = ArrayArranger.arrange(new int[]{6, 5, 4, 3, 2, 1});
+		expected = new int[]{5, 6, 3, 4, 1, 2};
+		Assert.assertArrayEquals(expected, actual);
+	}
+
 }

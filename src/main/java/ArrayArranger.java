@@ -1,6 +1,7 @@
 
 /**
 * Arrange elements in such a way that in any pair of 3 the middle element greater than both left & right
+* 7,5,3,6,2,4 -> 5<=7>=3<=6>=2<=4
 */
 public class ArrayArranger {
 	public static int[] arrange(int[] arr) {
