@@ -68,6 +68,15 @@ public class LinkedListUtilTest {
     }
 
     @Test
+    public void checkCycleDoubleNodeListWithCycle() {
+        Node three = new Node(3, null);
+        Node head = new Node(2, three);
+        three.next = head;
+        boolean actual = LinkedListUtil.containsCycle(head);
+        Assert.assertTrue(actual);
+    }
+
+    @Test
     public void checkCycleFourNodeListWithCycle() {
         Node five = new Node(5, null);
         Node three = new Node(3, new Node(4, five));
