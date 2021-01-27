@@ -81,5 +81,9 @@ public class LongestPalindromicSubsequenceTest {
         int actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
         int expected = 5;
         Assert.assertEquals(expected, actual);
+         s = "waeiborhpthyoybeiwa";
+       	actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
+       	expected = 11; //aibohphobia
+        Assert.assertEquals(expected, actual);
     }
 }
