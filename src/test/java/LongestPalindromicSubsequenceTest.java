@@ -48,10 +48,6 @@ public class LongestPalindromicSubsequenceTest {
         int actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
         int expected = 2;
         Assert.assertEquals(expected, actual);
-        s = "abac";
-        actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
-        expected = 3;
-        Assert.assertEquals(expected, actual);
         s = "aab";
         actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
         expected = 2;
@@ -72,22 +68,18 @@ public class LongestPalindromicSubsequenceTest {
         String actual = LongestPalindromicSubsequence.findSeq(s, s.length() - 1);
         String expected = "aa";
         Assert.assertEquals(expected, actual);
-        // s = "abac";
-        // actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
-        // expected = 3;
-        // Assert.assertEquals(expected, actual);
-        // s = "aab";
-        // actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
-        // expected = 2;
-        // Assert.assertEquals(expected, actual);
-        // s = "aba";
-        // actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
-        // expected = 3;
-        // Assert.assertEquals(expected, actual);
-        // s = "abc";
-        // actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
-        // expected = 1;
-        // Assert.assertEquals(expected, actual);
+        s = "aab";
+        actual = LongestPalindromicSubsequence.findSeq(s, s.length() - 1);
+        expected = "aa";
+        Assert.assertEquals(expected, actual);
+        s = "aba";
+        actual = LongestPalindromicSubsequence.findSeq(s, s.length() - 1);
+        expected = "aba";
+        Assert.assertEquals(expected, actual);
+        s = "abc";
+        actual = LongestPalindromicSubsequence.findSeq(s, s.length() - 1);
+        expected = "c";
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -99,6 +91,10 @@ public class LongestPalindromicSubsequenceTest {
         s = "abcd";
         actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
         expected = 1;
+        Assert.assertEquals(expected, actual);
+        s = "abac";
+        actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
+        expected = 3;
         Assert.assertEquals(expected, actual);
     }
 
