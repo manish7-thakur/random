@@ -4,8 +4,16 @@ public class LongestPalindromicSubsequence {
         return findNow(s, 0, i, path);
     }
 
+    public static String findSeq(String s, int i) {
+        char[][] path = new char[i+1][i+1];
+        findNow(s, 0, i, path);
+        StringBuilder b = new StringBuilder();
+        return buildNow(path, 0, i, s, b);
+    }
+
     static int findNow(String s, int i, int j, char[][] path) {
         if (i == j) {
+            path[i][j] = 'm';
             return 1;
         }
         if (i > j) {

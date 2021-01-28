@@ -10,11 +10,23 @@ public class LongestPalindromicSubsequenceTest {
         Assert.assertEquals(expected, actual);
     }
 
+   @Test
+    public void findSeqSingleCharString() {
+        String s = "a";
+        String actual = LongestPalindromicSubsequence.findSeq(s, s.length() - 1);
+        String expected = "a";
+        Assert.assertEquals(expected, actual);
+    }
+
     @Test
     public void doubleCharStringPalindrome() {
         String s = "aa";
         int actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
         int expected = 2;
+        Assert.assertEquals(expected, actual);
+        s = "ab";
+        actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
+        expected = 1;
         Assert.assertEquals(expected, actual);
     }
 
