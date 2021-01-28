@@ -144,7 +144,7 @@ public class LongestPalindromicSubsequenceTest {
         int actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
         int expected = 5;
         Assert.assertEquals(expected, actual);
-        s = "waeiborhpthyoybeiwa";
+        s = "waeiborhphyoybeiwa";
         actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
         expected = 11; //aibohphobia
         Assert.assertEquals(expected, actual);
@@ -157,10 +157,10 @@ public class LongestPalindromicSubsequenceTest {
         String expected = "carac";
         Assert.assertEquals(expected, actual);
 
-       s = "waeiborhphyoybeiwa";
-       actual = LongestPalindromicSubsequence.findSeq(s, s.length() - 1);
-       expected = "aibohphobia";
-       Assert.assertEquals(expected, actual);
+        s = "waeiborhphyoybeiwa";
+        actual = LongestPalindromicSubsequence.findSeq(s, s.length() - 1);
+        expected = "aibohphobia";
+        Assert.assertEquals(expected, actual);
     }
 
     @Test

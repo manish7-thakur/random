@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class LongestPalindromicSubsequence {
     public static int find(String s, int i) {
         char[][] path = new char[i + 1][i + 1];
@@ -26,7 +24,7 @@ public class LongestPalindromicSubsequence {
         }
         int v1 = findNow(s, i, j - 1, path);
         int v2 = findNow(s, i + 1, j, path);
-        if(v1 > v2) {
+        if (v1 > v2) {
             path[i][j] = 'l';
             return v1;
         } else {
@@ -46,7 +44,7 @@ public class LongestPalindromicSubsequence {
             rev.append(b).append(b.reverse());
             return rev.toString();
         }
-        if(i==j) {
+        if (i == j) {
             StringBuilder rev = new StringBuilder();
             rev.append(b).append(s.charAt(j)).append(b.reverse());
             return rev.toString();
