@@ -86,4 +86,29 @@ public class LongestPalindromicSubsequenceTest {
         expected = 11; //aibohphobia
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void readSubsequenceOneCrossOne() {
+        char[][] path = new char[][]{{'m'}};
+        String actual = LongestPalindromicSubsequence.buildSubSequence(path, 0, 0, "a");
+        String expected = "a";
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void readSubsequenceTwoCrossTwo() {
+        char[][] path = new char[][]{
+            {'m', 'l'},
+            {'m', 'l'}};
+        String actual = LongestPalindromicSubsequence.buildSubSequence(path, 0, 1, "ba");
+        String expected = "b";
+        Assert.assertEquals(expected, actual);
+
+        path = new char[][]{
+            {'m', 'd'},
+            {'m', 'm'}};
+         actual = LongestPalindromicSubsequence.buildSubSequence(path, 0, 1, "ba");
+         expected = "a";
+        Assert.assertEquals(expected, actual);
+    }
 }
