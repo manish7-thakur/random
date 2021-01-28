@@ -21,6 +21,7 @@ public class LongestPalindromicSubsequence {
         }
         if (s.charAt(i) == s.charAt(j)) {
             path[i][j] = 'm';
+            path[j][i] = 'm';
             return 2 + findNow(s, i + 1, j - 1, path);
         }
         int v1  = findNow(s, i, j - 1, path);
@@ -39,7 +40,7 @@ public class LongestPalindromicSubsequence {
         return buildNow(path, i, j, s, b);
     }
     static String buildNow(char[][] path, int i, int j, String s, StringBuilder b){
-        if(i > j) {
+        if(i > s.length() -1 || j < 0) {
             return b.toString();
         }
         if(path[i][j] == 'm') {

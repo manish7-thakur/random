@@ -31,10 +31,14 @@ public class LongestPalindromicSubsequenceTest {
     }
 
     @Test
-    public void doubleCharStringNonpalindrome() {
-        String s = "ab";
-        int actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
-        int expected = 1;
+    public void findSeqDoubleCharString() {
+        String s = "aa";
+        String actual = LongestPalindromicSubsequence.findSeq(s, s.length() - 1);
+        String expected = "aa";
+        Assert.assertEquals(expected, actual);
+        s = "ab";
+        actual = LongestPalindromicSubsequence.findSeq(s, s.length() - 1);
+        expected = "b";
         Assert.assertEquals(expected, actual);
     }
 
