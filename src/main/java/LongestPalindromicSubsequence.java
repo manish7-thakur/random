@@ -40,14 +40,10 @@ public class LongestPalindromicSubsequence {
 
     static String buildNow(char[][] path, int i, int j, String s, StringBuilder b) {
         if (i > s.length() - 1 || j < 0) {
-            StringBuilder rev = new StringBuilder();
-            rev.append(b).append(b.reverse());
-            return rev.toString();
+            return new StringBuilder().append(b).append(b.reverse()).toString();
         }
         if (i == j) {
-            StringBuilder rev = new StringBuilder();
-            rev.append(b).append(s.charAt(j)).append(b.reverse());
-            return rev.toString();
+            return new StringBuilder().append(b).append(s.charAt(j)).append(b.reverse()).toString();
         }
         if (path[i][j] == 'm') {
             b.append(s.charAt(j));
