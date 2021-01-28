@@ -99,12 +99,27 @@ public class LongestPalindromicSubsequenceTest {
     }
 
     @Test
+    public void findSeqFourCharString() {
+        String s = "bcac";
+        String actual = LongestPalindromicSubsequence.findSeq(s, s.length() - 1);
+        String expected = "cac";
+        Assert.assertEquals(expected, actual);
+        s = "abcd";
+        actual = LongestPalindromicSubsequence.findSeq(s, s.length() - 1);
+        expected = "d";
+        Assert.assertEquals(expected, actual);
+        s = "abac";
+        actual = LongestPalindromicSubsequence.findSeq(s, s.length() - 1);
+        expected = "aba";
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void fiveCharString() {
         String s = "abcda";
         int actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
         int expected = 3;
         Assert.assertEquals(expected, actual);
-
         s = "abcba";
         actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
         expected = 5;
