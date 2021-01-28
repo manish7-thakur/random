@@ -10,7 +10,7 @@ public class LongestPalindromicSubsequenceTest {
         Assert.assertEquals(expected, actual);
     }
 
-   @Test
+    @Test
     public void findSeqSingleCharString() {
         String s = "a";
         String actual = LongestPalindromicSubsequence.findSeq(s, s.length() - 1);
@@ -127,6 +127,18 @@ public class LongestPalindromicSubsequenceTest {
     }
 
     @Test
+    public void findSeqFiveCharString() {
+        String s = "abcda";
+        String actual = LongestPalindromicSubsequence.findSeq(s, s.length() - 1);
+        String expected = "ada";
+        Assert.assertEquals(expected, actual);
+        s = "abcba";
+        actual = LongestPalindromicSubsequence.findSeq(s, s.length() - 1);
+        expected = "abcba";
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void multiCharString() {
         String s = "character";
         int actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
@@ -136,6 +148,19 @@ public class LongestPalindromicSubsequenceTest {
         actual = LongestPalindromicSubsequence.find(s, s.length() - 1);
         expected = 11; //aibohphobia
         Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findSeqMultiCharString() {
+        String s = "character";
+        String actual = LongestPalindromicSubsequence.findSeq(s, s.length() - 1);
+        String expected = "carac";
+        Assert.assertEquals(expected, actual);
+
+       s = "waeiborhphyoybeiwa";
+       actual = LongestPalindromicSubsequence.findSeq(s, s.length() - 1);
+       expected = "aibohphobia";
+       Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -149,17 +174,17 @@ public class LongestPalindromicSubsequenceTest {
     @Test
     public void readSubsequenceTwoCrossTwo() {
         char[][] path = new char[][]{
-            {'m', 'l'},
-            {'m', 'l'}};
+                {'m', 'l'},
+                {'m', 'l'}};
         String actual = LongestPalindromicSubsequence.buildSubSequence(path, 0, 1, "ba");
         String expected = "b";
         Assert.assertEquals(expected, actual);
 
         path = new char[][]{
-            {'m', 'd'},
-            {'m', 'm'}};
-         actual = LongestPalindromicSubsequence.buildSubSequence(path, 0, 1, "ba");
-         expected = "a";
+                {'m', 'd'},
+                {'m', 'm'}};
+        actual = LongestPalindromicSubsequence.buildSubSequence(path, 0, 1, "ba");
+        expected = "a";
         Assert.assertEquals(expected, actual);
     }
 }
