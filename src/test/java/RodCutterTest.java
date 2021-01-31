@@ -1,6 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
-import java.util.*;
+
+import java.util.ArrayList;
 
 public class RodCutterTest {
     @Test
@@ -79,10 +80,10 @@ public class RodCutterTest {
         Assert.assertEquals(expected, actual);
     }
 
-        @Test
+    @Test
     public void sevenLengthRod() {
         int actual = RodCutter.maxProfit(new int[]{0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30}, 7);
-        int expected = 18; 
+        int expected = 18;
         Assert.assertEquals(expected, actual);
     }
 
