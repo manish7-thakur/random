@@ -79,6 +79,23 @@ public class RodCutterTest {
         Assert.assertEquals(expected, actual);
     }
 
+        @Test
+    public void sevenLengthRod() {
+        int actual = RodCutter.maxProfit(new int[]{0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30}, 7);
+        int expected = 18; 
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void sevenLengthRodSoln() {
+        ArrayList actual = RodCutter.maxProfitSoln(new int[]{0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30}, 7);
+        ArrayList expected = new ArrayList();
+        expected.add(2);
+        expected.add(2);
+        expected.add(3); // also 1,6
+        Assert.assertEquals(expected, actual);
+    }
+
     @Test
     public void tenLengthRod() {
         int actual = RodCutter.maxProfit(new int[]{0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30}, 10);
