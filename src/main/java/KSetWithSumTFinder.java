@@ -1,31 +1,15 @@
-import java.util.Arrays;
-
 public class KSetWithSumTFinder {
-    public static boolean isPresent(double[] set, double t, int k) {
-        if (set.length == 0) {
+    public static boolean isPresentRec(double[] set, double t, int k) {
+        return isPresent(set, t, k, set.length - 1);
+    }
+
+    static boolean isPresent(double[] set, double t, int k, int i) {
+        if (i < 0) {
             return false;
         }
-        Arrays.sort(set);
-        double sum = 0;
-        int i = 0;
-        for (; i < k - 1; i++) {
-            if (sum + set[i] < t) {
-                sum += set[i];
-            } else {
-                return false;
-            }
+        if (set[i] == t && k == 1) {
+            return true;
         }
-        while (i < set.length) {
-            if (Arrays.binarySearch(set, i, set.length, t - sum) >= 0) {
-                return true;
-            }
-            sum -= set[i - k + 1];
-            sum += set[i];
-            if (sum >= t) {
-                return false;
-            }
-            i++;
-        }
-        return false;
+        return isPresent(set, t - set[i], k - 1, i - 1) || isPresent(set, t, k, i - 1);
     }
 }
