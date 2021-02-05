@@ -10,6 +10,9 @@ public class KSetWithSumTFinder {
         if (set[i] == t && k == 1) {
             return true;
         }
+        if (set[i] > t) {
+            return isPresent(set, t, k, i - 1);
+        }
         return isPresent(set, t - set[i], k - 1, i - 1) || isPresent(set, t, k, i - 1);
     }
 }
