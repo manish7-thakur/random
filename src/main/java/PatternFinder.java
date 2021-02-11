@@ -11,7 +11,7 @@ public class PatternFinder {
 				if(k >= pat.length()) {
 					return i;
 				}
-				i = k;
+				i += k-1;
 			}
 		}
 		return -1;
