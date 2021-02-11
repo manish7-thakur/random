@@ -36,6 +36,9 @@ public class PatternFinderTest {
 		actual = PatternFinder.find("abc", "ac");
 		expected = -1;
 		Assert.assertEquals(expected, actual);
+		actual = PatternFinder.find("aac", "ac");
+		expected = 1;
+		Assert.assertEquals(expected, actual);
 	}
 
 		@Test
@@ -51,6 +54,12 @@ public class PatternFinderTest {
 		Assert.assertEquals(expected, actual);
 		actual = PatternFinder.find("adbc", "db");
 		expected = 1;
+		Assert.assertEquals(expected, actual);
+		actual = PatternFinder.find("adabc", "db");
+		expected = -1;
+		Assert.assertEquals(expected, actual);
+		actual = PatternFinder.find("dddbc", "db");
+		expected = 2;
 		Assert.assertEquals(expected, actual);
 	}
 }
