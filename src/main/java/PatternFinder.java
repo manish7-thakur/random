@@ -7,7 +7,7 @@ public class PatternFinder {
         for (int i = 0; i < text.length() - pat.length() + 1; i++) {
             if (patFirstChar == text.charAt(i)) {
                 int k;
-                for (k = 0; k < pat.length() && pat.charAt(k) == text.charAt(i + k); k++) ;
+                for (k = 1; k < pat.length() && pat.charAt(k) == text.charAt(i + k); k++) ;
                 if (k >= pat.length()) {
                     return i;
                 }
