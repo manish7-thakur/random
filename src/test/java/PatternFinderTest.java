@@ -68,4 +68,18 @@ public class PatternFinderTest {
 		expected = 2;
 		Assert.assertEquals(expected, actual);
 	}
+
+	@Test
+	public void findPatternFiveCharText() {
+		int actual = PatternFinder.find("ababe", "abe");
+		int expected = 2;
+		Assert.assertEquals(expected, actual);
+	}
+
+	@Test
+	public void findPatternMultiCharText() {
+		int actual = PatternFinder.find("abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392abd@htr(kyus%#392j", "abd@htr(kyus%#392j");
+		int expected = 340;
+		Assert.assertEquals(expected, actual);
+	}
 }
