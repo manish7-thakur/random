@@ -19,24 +19,22 @@ public class PatternFinder {
 
     static int findWithGap(String text, String pat) {
         char patFirstChar = pat.charAt(0);
-        for(int i =0; i< text.length();i++) {
-            if(patFirstChar == text.charAt(i)) {
-                int k=1;
-                int j = i+1;
-                while(k < pat.length() && j < text.length()) {
-                    if(pat.charAt(k) == text.charAt(j)) {
+        for (int i = 0; i < text.length(); i++) {
+            if (patFirstChar == text.charAt(i)) {
+                int k = 1;
+                int j = i + 1;
+                while ((k < pat.length() && j < text.length()) && (pat.charAt(k) == '*' || pat.charAt(k) == text.charAt(j))) {
+                    if (pat.charAt(k) == text.charAt(j)) {
                         k++;
                         j++;
-                    } else if(pat.charAt(k) == '*' && pat.charAt(k+1) == text.charAt(j)) {
-                        k+=2;
-                        j++;
-                    } else if(pat.charAt(k) == '*' && pat.charAt(k+1) != text.charAt(j)) {
+                    } else if (pat.charAt(k) == '*' && pat.charAt(k + 1) == text.charAt(j)) {
+                        k += 2;
                         j++;
                     } else {
-                        break;
+                        j++;
                     }
                 }
-                if(k >= pat.length()) {
+                if (k >= pat.length()) {
                     return i;
                 }
             }

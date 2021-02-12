@@ -1,4 +1,5 @@
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class PatternFinderTest {
     @Test
@@ -127,7 +128,7 @@ public class PatternFinderTest {
         Assert.assertEquals(expected, actual);
     }
 
-   @Test
+    @Test
     public void findPatternWithGapFiveCharText() {
         int actual = PatternFinder.findWithGap("aburg", "a*u*g");
         int expected = 0;
