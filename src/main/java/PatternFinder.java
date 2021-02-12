@@ -17,19 +17,30 @@ public class PatternFinder {
         return -1;
     }
 
-    static boolean findWithGap(String text, String pat, int i, int j) {
-        if(j == -1) {
-            return true;
+    static int findWithGap(String text, String pat) {
+        char patFirstChar = pat.charAt(0);
+        for(int i =0; i< text.length() - pat.length() + 1;i++) {
+            if(patFirstChar == text.charAt(i)) {
+                int k=0;
+                int j = i;
+                while(k < pat.length()) {
+                    if(pat.charAt(k) == text.charAt(j)) {
+                        k++;
+                        j++;
+                    } else if(pat.charAt(k) == '*' && pat.charAt(k+1) == text.charAt(j)) {
+                        k+=2;
+                        j++;
+                    } else if(pat.charAt(k) == '*' && pat.charAt(k+1) != text.charAt(j)) {
+                        j++;
+                    } else {
+                        break;
+                    }
+                }
+                if(k >= pat.length()) {
+                    return i;
+                }
+            }
         }
-        if(i == -1) {
-          return pat.charAt(j) == '*';
-        }
-        if(pat.charAt(j) == text.charAt(i)) {
-            return findWithGap(text, pat, i -1, j-1);
-        }
-        if(pat.charAt(j) == '*') {
-            return findWithGap(text, pat, i-1, j-1) || findWithGap(text, pat, i-1,j);
-        }
-        return false;
+        return -1;
     }
 }

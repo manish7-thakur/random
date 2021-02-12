@@ -87,23 +87,39 @@ public class PatternFinderTest {
     }
 
     @Test
-    public void findPatternWithGapEmptyText() {
-        boolean actual = PatternFinder.findWithGap("", "*", -1, 0);
-        Assert.assertTrue(actual);
-        actual = PatternFinder.findWithGap("", "", -1, -1);
-        Assert.assertTrue(actual);
+    public void findPatternWithGapThreeCharText() {
+        int actual = PatternFinder.findWithGap("abc", "a*b");
+        int expected = 0;
+        Assert.assertEquals(expected, actual);
+        actual = PatternFinder.findWithGap("abc", "a*c");
+        expected = 0;
+        Assert.assertEquals(expected, actual);
+        actual = PatternFinder.findWithGap("abc", "bc");
+        expected = 1;
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void findPatternWithGapSingleCharText() {
-        boolean actual = PatternFinder.findWithGap("a", "a", 0, 0);
-        Assert.assertTrue(actual);
-        actual = PatternFinder.findWithGap("a", "*", 0, 0);
-        Assert.assertTrue(actual);
-        actual = PatternFinder.findWithGap("a", "a*", 0, 1);
-        Assert.assertTrue(actual);
-        actual = PatternFinder.findWithGap("a", "*a", 0, 1);
-        Assert.assertTrue(actual);
+    public void findPatternWithGapFourCharText() {
+        int actual = PatternFinder.findWithGap("abft", "a*t");
+        int expected = 0;
+        Assert.assertEquals(expected, actual);
+        actual = PatternFinder.findWithGap("abhs", "b*h");
+        expected = 1;
+        Assert.assertEquals(expected, actual);
+        actual = PatternFinder.findWithGap("afgt", "f*t");
+        expected = 1;
+        Assert.assertEquals(expected, actual);
+        actual = PatternFinder.findWithGap("afff", "f*f");
+        expected = 1;
+        Assert.assertEquals(expected, actual);
+    }
+
+   @Test
+    public void findPatternWithGapFiveCharText() {
+        int actual = PatternFinder.findWithGap("aburg", "a*u*g");
+        int expected = 0;
+        Assert.assertEquals(expected, actual);
     }
 
 
