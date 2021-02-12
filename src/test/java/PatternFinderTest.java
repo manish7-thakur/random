@@ -142,4 +142,11 @@ public class PatternFinderTest {
         expected = -1;
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void findPatternWithGapMultiCharText() {
+        int actual = PatternFinder.findWithGap("cabccbacbacab", "ab*ba*c");
+        int expected = 1;
+        Assert.assertEquals(expected, actual);
+    }
 }
