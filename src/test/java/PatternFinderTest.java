@@ -85,4 +85,26 @@ public class PatternFinderTest {
         int expected = 340;
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void findPatternWithGapEmptyText() {
+        boolean actual = PatternFinder.findWithGap("", "*", -1, 0);
+        Assert.assertTrue(actual);
+        actual = PatternFinder.findWithGap("", "", -1, -1);
+        Assert.assertTrue(actual);
+    }
+
+    @Test
+    public void findPatternWithGapSingleCharText() {
+        boolean actual = PatternFinder.findWithGap("a", "a", 0, 0);
+        Assert.assertTrue(actual);
+        actual = PatternFinder.findWithGap("a", "*", 0, 0);
+        Assert.assertTrue(actual);
+        actual = PatternFinder.findWithGap("a", "a*", 0, 1);
+        Assert.assertTrue(actual);
+        actual = PatternFinder.findWithGap("a", "*a", 0, 1);
+        Assert.assertTrue(actual);
+    }
+
+
 }

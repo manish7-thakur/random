@@ -16,4 +16,20 @@ public class PatternFinder {
         }
         return -1;
     }
+
+    static boolean findWithGap(String text, String pat, int i, int j) {
+        if(j == -1) {
+            return true;
+        }
+        if(i == -1) {
+          return pat.charAt(j) == '*';
+        }
+        if(pat.charAt(j) == text.charAt(i)) {
+            return findWithGap(text, pat, i -1, j-1);
+        }
+        if(pat.charAt(j) == '*') {
+            return findWithGap(text, pat, i-1, j-1) || findWithGap(text, pat, i-1,j);
+        }
+        return false;
+    }
 }
