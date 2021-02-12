@@ -21,8 +21,8 @@ public class PatternFinder {
         char patFirstChar = pat.charAt(0);
         for(int i =0; i< text.length();i++) {
             if(patFirstChar == text.charAt(i)) {
-                int k=0;
-                int j = i;
+                int k=1;
+                int j = i+1;
                 while(k < pat.length() && j < text.length()) {
                     if(pat.charAt(k) == text.charAt(j)) {
                         k++;
