@@ -113,6 +113,9 @@ public class PatternFinderTest {
         actual = PatternFinder.findWithGap("afff", "f*f");
         expected = 1;
         Assert.assertEquals(expected, actual);
+        actual = PatternFinder.findWithGap("afff", "f*c");
+        expected = -1;
+        Assert.assertEquals(expected, actual);
     }
 
    @Test
