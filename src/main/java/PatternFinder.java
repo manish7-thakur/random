@@ -19,11 +19,11 @@ public class PatternFinder {
 
     static int findWithGap(String text, String pat) {
         char patFirstChar = pat.charAt(0);
-        for(int i =0; i< text.length() - pat.length() + 1;i++) {
+        for(int i =0; i< text.length();i++) {
             if(patFirstChar == text.charAt(i)) {
                 int k=0;
                 int j = i;
-                while(k < pat.length()) {
+                while(k < pat.length() && j < text.length()) {
                     if(pat.charAt(k) == text.charAt(j)) {
                         k++;
                         j++;
