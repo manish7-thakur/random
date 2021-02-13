@@ -89,65 +89,71 @@ public class PatternFinderTest {
 
     @Test
     public void findPatternWithGapThreeCharText() {
-        int actual = PatternFinder.findWithGap("abc", "a*b");
+        int actual = PatternFinder.findWithGap("abc", "a:b");
         int expected = 0;
         Assert.assertEquals(expected, actual);
-        actual = PatternFinder.findWithGap("abc", "a*c");
+        actual = PatternFinder.findWithGap("abc", "a:c");
         expected = 0;
         Assert.assertEquals(expected, actual);
         actual = PatternFinder.findWithGap("abc", "bc");
         expected = 1;
         Assert.assertEquals(expected, actual);
-        actual = PatternFinder.findWithGap("abc", "b*c");
+        actual = PatternFinder.findWithGap("abc", "b:c");
         expected = 1;
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void findPatternWithGapFourCharText() {
-        int actual = PatternFinder.findWithGap("abft", "a*t");
+        int actual = PatternFinder.findWithGap("abft", "a:t");
         int expected = 0;
         Assert.assertEquals(expected, actual);
-        actual = PatternFinder.findWithGap("abhs", "b*h");
+        actual = PatternFinder.findWithGap("abhs", "b:h");
         expected = 1;
         Assert.assertEquals(expected, actual);
-        actual = PatternFinder.findWithGap("afgt", "f*t");
+        actual = PatternFinder.findWithGap("afgt", "f:t");
         expected = 1;
         Assert.assertEquals(expected, actual);
-        actual = PatternFinder.findWithGap("afff", "f*f");
+        actual = PatternFinder.findWithGap("afff", "f:f");
         expected = 1;
         Assert.assertEquals(expected, actual);
-        actual = PatternFinder.findWithGap("afff", "f*c");
+        actual = PatternFinder.findWithGap("afff", "f:c");
         expected = -1;
         Assert.assertEquals(expected, actual);
-        actual = PatternFinder.findWithGap("afdc", "d*c");
+        actual = PatternFinder.findWithGap("afdc", "d:c");
         expected = 2;
         Assert.assertEquals(expected, actual);
-        actual = PatternFinder.findWithGap("afdc", "d*cc");
+        actual = PatternFinder.findWithGap("afdc", "d:cc");
         expected = -1;
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void findPatternWithGapFiveCharText() {
-        int actual = PatternFinder.findWithGap("aburg", "a*u*g");
+        int actual = PatternFinder.findWithGap("aburg", "a:u:g");
         int expected = 0;
         Assert.assertEquals(expected, actual);
-        actual = PatternFinder.findWithGap("uaurg", "a*u*g");
+        actual = PatternFinder.findWithGap("uaurg", "a:u:g");
         expected = 1;
         Assert.assertEquals(expected, actual);
-        actual = PatternFinder.findWithGap("uaurg", "a*ug");
+        actual = PatternFinder.findWithGap("uaurg", "a:ug");
         expected = -1;
         Assert.assertEquals(expected, actual);
-        actual = PatternFinder.findWithGap("7owjx", "7*ix");
+        actual = PatternFinder.findWithGap("7owjx", "7:ix");
         expected = -1;
+        Assert.assertEquals(expected, actual);
+        actual = PatternFinder.findWithGap("7oiix", "7:ix");
+        expected = 0;
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void findPatternWithGapMultiCharText() {
-        int actual = PatternFinder.findWithGap("cabccbacbacab", "ab*ba*c");
+        int actual = PatternFinder.findWithGap("cabccbacbacab", "ab:ba:c");
         int expected = 1;
+        Assert.assertEquals(expected, actual);
+        actual = PatternFinder.findWithGap("cabccbcbacab", "ab:ba:c");
+        expected = 1;
         Assert.assertEquals(expected, actual);
     }
 }
