@@ -29,6 +29,15 @@ public class GCDCalculator {
         return euclidCalc(b, a % b);
     }
 
+    static int euclidCalcIter(int a, int b) {
+        while (b > 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
     static Triplets euclidCoefficients(int a, int b) {
         if (b == 0) {
             return new Triplets(a, 1, 0);

@@ -10,12 +10,21 @@ public class GCDCalculatorTest {
         actual = GCDCalculator.euclidCalc(0, 23);
         expected = 23;
         Assert.assertEquals(expected, actual);
+        actual = GCDCalculator.euclidCalcIter(28, 0);
+        expected = 28;
+        Assert.assertEquals(expected, actual);
+        actual = GCDCalculator.euclidCalcIter(0, 23);
+        expected = 23;
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void gcdWithNonZero() {
         int actual = GCDCalculator.euclidCalc(24, 30);
         int expected = 6;
+        Assert.assertEquals(expected, actual);
+        actual = GCDCalculator.euclidCalcIter(24, 30);
+        expected = 6;
         Assert.assertEquals(expected, actual);
     }
 
