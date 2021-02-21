@@ -7,7 +7,7 @@ public class FeaturedProductFinderTest {
 		List<String> items = Arrays.asList(new String[]{"redshirt", "yellowshirt"});
 		String actual = FeaturedProductFinder.featuredProduct(items);
 		String expected = "yellowshirt";
-		Assert.assertEquals(actual, expected);
+		Assert.assertEquals(expected, actual);
 	}
 
 	@Test
@@ -15,17 +15,17 @@ public class FeaturedProductFinderTest {
 		List<String> items = Arrays.asList(new String[]{"redshirt", "yellowshirt", "zerPants"});
 		String actual = FeaturedProductFinder.featuredProduct(items);
 		String expected = "zerPants";
-		Assert.assertEquals(actual, expected);
+		Assert.assertEquals(expected, actual);
 
 		items = Arrays.asList(new String[]{"yellowshirt", "yellowshirt", "zerPants"});
 		actual = FeaturedProductFinder.featuredProduct(items);
 		expected = "yellowshirt";
-		Assert.assertEquals(actual, expected);
+		Assert.assertEquals(expected, actual);
 
 		items = Arrays.asList(new String[]{"yellowshirt", "yellowshirt", "yellowshirt"});
 		actual = FeaturedProductFinder.featuredProduct(items);
 		expected = "yellowshirt";
-		Assert.assertEquals(actual, expected);
+		Assert.assertEquals(expected, actual);
 	}
 
 	@Test
@@ -33,16 +33,25 @@ public class FeaturedProductFinderTest {
 		List<String> items = Arrays.asList(new String[]{"redshirt", "yellowshirt", "whippedjeans", "orangesuit"});
 		String actual = FeaturedProductFinder.featuredProduct(items);
 		String expected = "yellowshirt";
-		Assert.assertEquals(actual, expected);
+		Assert.assertEquals(expected, actual);
 
 		items = Arrays.asList(new String[]{"yellowshirt", "yellowshirt", "whippedjeans", "whippedjeans"});
 		actual = FeaturedProductFinder.featuredProduct(items);
 		expected = "yellowshirt";
-		Assert.assertEquals(actual, expected);
+		Assert.assertEquals(expected, actual);
 
 		items = Arrays.asList(new String[]{"whippedjeans", "yellowshirt", "whippedjeans", "whippedjeans"});
 		actual = FeaturedProductFinder.featuredProduct(items);
 		expected = "whippedjeans";
-		Assert.assertEquals(actual, expected);
+		Assert.assertEquals(expected, actual);
+	}
+
+	@Test
+	public void multiItems() {
+		List<String> items = Arrays.asList(new String[]{"redshirt", "yellowshirt", "pyjamas", "whippedjeans", "orangesuit",
+			"whippedjeans", "blackjeans", "whippedjeans", "pyjamas", "yellowshirt", "redshirt", "pyjamas"});
+		String actual = FeaturedProductFinder.featuredProduct(items);
+		String expected = "whippedjeans";
+		Assert.assertEquals(expected, actual);
 	}
 }
