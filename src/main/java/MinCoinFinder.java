@@ -1,7 +1,7 @@
-import java.util.*;
+import java.util.Arrays;
 
 public class MinCoinFinder {
-	    public static int CoinDeterminerRec(int num, int count) {
+    public static int CoinDeterminerRec(int num, int count) {
         if (num <= 0) {
             return count;
         }
