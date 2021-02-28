@@ -12,44 +12,28 @@ public class MinCoinFinder {
         if (num <= 0) {
             return count;
         }
+        if (mem[num] != 0) {
+            return mem[num];
+        }
+
         int coin11C = Integer.MAX_VALUE;
         int coin9C = Integer.MAX_VALUE;
         int coin7C = Integer.MAX_VALUE;
         int coin5C = Integer.MAX_VALUE;
         int coin1C = Integer.MAX_VALUE;
         if (num >= 11) {
-            if (mem[num] == 0) {
-                coin11C = CoinDeterminerRec(num - 11, count + 1, mem);
-            } else {
-                coin11C = mem[num];
-            }
+            coin11C = CoinDeterminerRec(num - 11, count + 1, mem);
         }
         if (num >= 9) {
-            if (mem[num] == 0) {
-                coin9C = CoinDeterminerRec(num - 9, count + 1, mem);
-            } else {
-                coin9C = mem[num];
-            }
+            coin9C = CoinDeterminerRec(num - 9, count + 1, mem);
         }
         if (num >= 7) {
-            if (mem[num] == 0) {
-                coin7C = CoinDeterminerRec(num - 7, count + 1, mem);
-            } else {
-                coin7C = mem[num];
-            }
+            coin7C = CoinDeterminerRec(num - 7, count + 1, mem);
         }
         if (num >= 5) {
-            if (mem[num] == 0) {
-                coin5C = CoinDeterminerRec(num - 5, count + 1, mem);
-            } else {
-                coin5C = mem[num];
-            }
+            coin5C = CoinDeterminerRec(num - 5, count + 1, mem);
         }
-        if (mem[num] == 0) {
-            coin1C = CoinDeterminerRec(num - 1, count + 1, mem);
-        } else {
-            coin1C = mem[num];
-        }
+        coin1C = CoinDeterminerRec(num - 1, count + 1, mem);
         mem[num] = min(coin11C, coin9C, coin7C, coin5C, coin1C);
         return mem[num];
     }
