@@ -4,13 +4,13 @@ public class MinCoinFinder {
 
     public static int minCoinFinder(int num) {
         int[] mem = new int[num + 1];
-        int res = CoinDeterminerRec(num, 0, mem);
+        int res = CoinDeterminerRec(num, mem);
         return res;
     }
 
-    static int CoinDeterminerRec(int num, int count, int[] mem) {
+    static int CoinDeterminerRec(int num, int[] mem) {
         if (num <= 0) {
-            return count;
+            return 0;
         }
         if (mem[num] != 0) {
             return mem[num];
@@ -22,18 +22,18 @@ public class MinCoinFinder {
         int coin5C = Integer.MAX_VALUE;
         int coin1C = Integer.MAX_VALUE;
         if (num >= 11) {
-            coin11C = CoinDeterminerRec(num - 11, count + 1, mem);
+            coin11C = 1 + CoinDeterminerRec(num - 11, mem);
         }
         if (num >= 9) {
-            coin9C = CoinDeterminerRec(num - 9, count + 1, mem);
+            coin9C = 1 + CoinDeterminerRec(num - 9, mem);
         }
         if (num >= 7) {
-            coin7C = CoinDeterminerRec(num - 7, count + 1, mem);
+            coin7C = 1 + CoinDeterminerRec(num - 7, mem);
         }
         if (num >= 5) {
-            coin5C = CoinDeterminerRec(num - 5, count + 1, mem);
+            coin5C = 1 + CoinDeterminerRec(num - 5, mem);
         }
-        coin1C = CoinDeterminerRec(num - 1, count + 1, mem);
+        coin1C = 1 + CoinDeterminerRec(num - 1, mem);
         mem[num] = min(coin11C, coin9C, coin7C, coin5C, coin1C);
         return mem[num];
     }
