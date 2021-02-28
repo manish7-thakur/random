@@ -8,6 +8,10 @@ public class MinCoinFinderTest {
         int expected = 1;
         Assert.assertEquals(expected, actual);
 
+        actual = MinCoinFinder.minCoinFinder(2);
+        expected = 2;
+        Assert.assertEquals(expected, actual);
+
         actual = MinCoinFinder.minCoinFinder(5);
         expected = 1;
         Assert.assertEquals(expected, actual);
@@ -34,6 +38,10 @@ public class MinCoinFinderTest {
 
         actual = MinCoinFinder.minCoinFinder(55);
         expected = 5;
+        Assert.assertEquals(expected, actual);
+
+        actual = MinCoinFinder.minCoinFinder(65);
+        expected = 7;
         Assert.assertEquals(expected, actual);
     }
 }
