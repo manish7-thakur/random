@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+/**
+Longest monotonic increasing subsequence
+*/
 public class LIMS {
     public static ArrayList<Integer> find(int[] seq) {
         ArrayList<Integer> res = new ArrayList();
