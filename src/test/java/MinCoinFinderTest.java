@@ -71,6 +71,7 @@ public class MinCoinFinderTest {
         actual = MinCoinFinder.minCoinFinder(65);
         expected = 7;
         Assert.assertEquals(expected, actual);
+        
         actualCoins = MinCoinFinder.minCoinFinderVal(65);
         expectedCoins = Map.of(11, 5, 9,1,1,1);
         Assert.assertEquals(expectedCoins, actualCoins);
