@@ -1,4 +1,20 @@
 public class InsertAndMergeHybridSorter {
+
+    static void sort(int[] arr) {
+        sortNow(arr, 0, arr.length);
+    }
+
+    static void sortNow(int[] arr, int l, int h) {
+        if (h - l < 10) {
+            InsertionSort.sortRec(arr, l, h - 1);
+            return;
+        }
+        int m = (h + l) / 2;
+        sortNow(arr, l, m);
+        sortNow(arr, m, h);
+        merge(arr, l, m, h);
+    }
+
     static void merge(int[] arr, int l, int m, int n) {
         int[] merged = new int[n - l];
         int i = l;
