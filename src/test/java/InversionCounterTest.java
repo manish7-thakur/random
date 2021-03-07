@@ -46,6 +46,10 @@ public class InversionCounterTest {
         expected = 4;
         Assert.assertEquals(expected, actual);
 
+        actual = InversionCounter.mergeCount(new int[]{3, 4, 1, 2}, 1, 1, 2);
+        expected = 1;
+        Assert.assertEquals(expected, actual);
+
     }
 
     @Test
@@ -64,6 +68,10 @@ public class InversionCounterTest {
         Assert.assertEquals(expected, actual);
 
         actual = InversionCounter.mergeCount(new int[]{3, 1, 2, 4, 5}, 0, 0, 4);
+        expected = 2;
+        Assert.assertEquals(expected, actual);
+
+        actual = InversionCounter.mergeCount(new int[]{3, 1, 4, 5, 2}, 2, 3, 4);
         expected = 2;
         Assert.assertEquals(expected, actual);
     }
@@ -88,6 +96,26 @@ public class InversionCounterTest {
 
         actual = InversionCounter.count(new int[]{3, 2, 4, 1});
         expected = 4;
+        Assert.assertEquals(expected, actual);
+
+        actual = InversionCounter.count(new int[]{2, 3, 4, 1});
+        expected = 3;
+        Assert.assertEquals(expected, actual);
+
+        actual = InversionCounter.count(new int[]{4, 3, 2, 1});
+        expected = 6;
+        Assert.assertEquals(expected, actual);
+
+        actual = InversionCounter.count(new int[]{4, 3, 5, 2, 1});
+        expected = 8;
+        Assert.assertEquals(expected, actual);
+
+        actual = InversionCounter.count(new int[]{1, 2, 3, 4, 5});
+        expected = 0;
+        Assert.assertEquals(expected, actual);
+
+        actual = InversionCounter.count(new int[]{5, 4, 3, 2, 1});
+        expected = 10;
         Assert.assertEquals(expected, actual);
     }
 }
