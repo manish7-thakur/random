@@ -50,5 +50,17 @@ public class InversionCounterTest {
         int expected = 3;
         Assert.assertEquals(expected, actual);
 
+        actual = InversionCounter.mergeCount(new int[]{3, 4, 5, 1, 2}, 0, 2, 4);
+        expected = 6;
+        Assert.assertEquals(expected, actual);
+
+
+        actual = InversionCounter.mergeCount(new int[]{3, 4, 1, 2, 5}, 0, 1, 4);
+        expected = 4;
+        Assert.assertEquals(expected, actual);
+
+        actual = InversionCounter.mergeCount(new int[]{3, 1, 2, 4, 5}, 0, 0, 4);
+        expected = 2;
+        Assert.assertEquals(expected, actual);
     }
 }

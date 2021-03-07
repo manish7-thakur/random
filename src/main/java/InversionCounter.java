@@ -1,6 +1,7 @@
 public class InversionCounter {
     static int mergeCount(int[] arr, int l, int m, int h) {
         int invCount = 0;
+        int leftSize = m - l;
         int[] merged = new int[h - l + 1];
         int i = l, j = m + 1, k = 0;
         while (i <= m && j <= h) {
@@ -9,7 +10,7 @@ public class InversionCounter {
                 i++;
             } else {
                 merged[k] = arr[j];
-                invCount += m - l + 1 - i;
+                invCount += leftSize + 1 - i;
                 j++;
             }
             k++;
