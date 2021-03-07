@@ -27,7 +27,12 @@ public class InversionCounter {
                 iIterMirror++;
             } else {
                 merged[k] = arr[j];
-                invCount += leftSize - iIterMirror;
+                invCount += leftSize - iIterMirror;// leftSize denotes the no. of elements in the left subarray.
+                //Every time an element of right subarray is taken, it means it is less than all the elements in the
+                //left subarray starting at iIterMirror, and those elements contributes to inversions. That's why
+                //every time an element from left subarray is taken, iIterMirror is incremented to reduce the effective
+                //size of the array elements which contributes to inversions. Remember the arrays being merged are sorted
+                //in this method.
                 j++;
             }
             k++;
