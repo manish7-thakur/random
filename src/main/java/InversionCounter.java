@@ -18,20 +18,19 @@ public class InversionCounter {
         int invCount = 0;
         int leftSize = m - l + 1;
         int[] merged = new int[h - l + 1];
-        int iIterMirror = 0; // same as i but starting at 0 to keep track of i incrementation
         int i = l, j = m + 1, k = 0;
         while (i <= m && j <= h) {
             if (arr[i] <= arr[j]) {
                 merged[k] = arr[i];
                 i++;
-                iIterMirror++;
+                leftSize--;
             } else {
                 merged[k] = arr[j];
-                invCount += leftSize - iIterMirror;// leftSize denotes the no. of elements in the left subarray.
-                //Every time an element of right subarray is taken, it means it is less than all the elements in the
-                //left subarray starting at iIterMirror, and those elements contributes to inversions. That's why
-                //every time an element from left subarray is taken, iIterMirror is incremented to reduce the effective
-                //size of the array elements which contributes to inversions. Remember the arrays being merged are sorted
+                invCount += leftSize;// leftSize denotes the current effective no. of elements in the left subarray.
+                //Every time an element of right subarray is taken, it means it is less than all the current 
+                //elements in the left subarray and all those elements contributes to inversions.
+                //Every time an element from left subarray is taken, the effective
+                //size of the array contributes to inversions. Remember the arrays being merged are sorted
                 //in this method.
                 j++;
             }
