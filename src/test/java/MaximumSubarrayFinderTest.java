@@ -30,5 +30,13 @@ public class MaximumSubarrayFinderTest {
 		actual = MaximumSubarrayFinder.findMaxCrossOverSum(new int[]{6, -2, 3}, 0,1,2);
 		expected = 7;
 		Assert.assertEquals(expected, actual);
+
+		actual = MaximumSubarrayFinder.findMaxCrossOverSum(new int[]{1,3, 6, -2, 3}, 0,2,4);
+		expected = 11;
+		Assert.assertEquals(expected, actual);
+
+		actual = MaximumSubarrayFinder.findMaxCrossOverSum(new int[]{1,3, -6, -2, 3}, 0,2,4);
+		expected = 1;
+		Assert.assertEquals(expected, actual);
 	}
 }
