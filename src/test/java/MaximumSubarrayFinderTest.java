@@ -39,4 +39,12 @@ public class MaximumSubarrayFinderTest {
 		expected = 1;
 		Assert.assertEquals(expected, actual);
 	}
+
+	@Test
+	public void maxSubarraySum() {
+		int actual = MaximumSubarrayFinder.maxSubarraySum(new int[]{4});
+		int expected = 5;
+		Assert.assertEquals(expected, actual);
+
+	}
 }
