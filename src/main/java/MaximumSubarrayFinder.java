@@ -1,5 +1,27 @@
 public class MaximumSubarrayFinder {
 
+    static class SubArrayResult {
+        int sum;
+        int i;
+        int j;
+
+        public SubArrayResult(int sum, int i, int j) {
+            this.sum = sum;
+            this.i = i;
+            this.j = j;
+        }
+        @Override
+        public boolean equals(Object other) {
+            SubArrayResult res = (SubArrayResult) other;
+            return this.sum == res.sum && this.i == res.i && this.j == res.j;
+        }
+        @Override
+        public String toString() {
+            return "["+this.sum+"-"+this.i+"-"+this.j+"]";
+        }
+
+    }
+
     static int maxSubarraySum(int[] arr) {
         if (arr.length == 1) {
             return arr[0];
@@ -53,5 +75,28 @@ public class MaximumSubarrayFinder {
             }
         }
         return resSum;
+    }
+
+    static SubArrayResult maxSubarraySumLinear(int[] arr) {
+        int low = -1;
+        int high = -1;
+        int resSum = 0;
+        int currSum = 0;
+        int currLow = -1;
+        for(int i = 0; i < arr.length; i++) {
+            currSum += arr[i];
+            if(currSum > 0 && currLow == -1) {
+                currLow = i;
+            } 
+            if(currSum > resSum) {
+                low = currLow;
+                high = i;
+                resSum = currSum;
+            } else if(currSum < 0) {
+                currSum = 0;
+                currLow = -1;
+            }
+        }
+        return new SubArrayResult(resSum, low, high);
     }
 }
