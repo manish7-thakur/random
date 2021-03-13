@@ -37,4 +37,21 @@ public class MaximumSubarrayFinder {
         }
         return Math.max(Math.max(left_sum, right_sum), left_sum + right_sum);
     }
+
+    static int maxSubarraySumBruteForce(int[] arr) {
+        int resSum = 0;
+        for(int i =0; i< arr.length; i++) {
+            int currSum = arr[i];
+            if(currSum > resSum) {
+                resSum = currSum;
+            }
+            for(int j = i+1; j< arr.length; j++) {
+                currSum += arr[j];
+                if(currSum > resSum) {
+                    resSum = currSum;
+                }
+            }
+        }
+        return resSum;
+    }
 }

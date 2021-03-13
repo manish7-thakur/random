@@ -75,4 +75,39 @@ public class MaximumSubarrayFinderTest {
         expected = 43;
         Assert.assertEquals(expected, actual);
     }
+
+        @Test
+    public void maxSubarraySumBruteForce() {
+        int actual = MaximumSubarrayFinder.maxSubarraySumBruteForce(new int[]{4});
+        int expected = 4;
+        Assert.assertEquals(expected, actual);
+
+        actual = MaximumSubarrayFinder.maxSubarraySumBruteForce(new int[]{4, 5});
+        expected = 9;
+        Assert.assertEquals(expected, actual);
+
+        actual = MaximumSubarrayFinder.maxSubarraySumBruteForce(new int[]{4, -2, 5});
+        expected = 7;
+        Assert.assertEquals(expected, actual);
+
+        actual = MaximumSubarrayFinder.maxSubarraySumBruteForce(new int[]{-1, -2, 2});
+        expected = 2;
+        Assert.assertEquals(expected, actual);
+
+        actual = MaximumSubarrayFinder.maxSubarraySumBruteForce(new int[]{3, -2, 2, 5});
+        expected = 8;
+        Assert.assertEquals(expected, actual);
+
+        actual = MaximumSubarrayFinder.maxSubarraySumBruteForce(new int[]{3, -2, 2, -5});
+        expected = 3;
+        Assert.assertEquals(expected, actual);
+
+        actual = MaximumSubarrayFinder.maxSubarraySumBruteForce(new int[]{3, -2, 1, 2, -5});
+        expected = 4;
+        Assert.assertEquals(expected, actual);
+
+        actual = MaximumSubarrayFinder.maxSubarraySumBruteForce(new int[]{13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7});
+        expected = 43;
+        Assert.assertEquals(expected, actual);
+    }
 }
