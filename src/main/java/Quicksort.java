@@ -2,8 +2,13 @@ public class Quicksort {
     static void sort(int[] arr, int l, int h) {
         while (l < h) {
             int p = partition(arr, l, h);
-            sort(arr, l, p - 1);
-            l = p + 1;
+            if (p < Math.floor((l + h) / 2)) {
+                sort(arr, l, p - 1);
+                l = p + 1;
+            } else {
+                sort(arr, p + 1, h);
+                h = p - 1;
+            }
         }
     }
 

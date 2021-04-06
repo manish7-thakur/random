@@ -3,7 +3,7 @@ import org.junit.Test;
 
 public class QuickSortTest {
     @Test
-    public void partitonArray() {
+    public void partitionArray() {
         int actual = Quicksort.partition(new int[]{1}, 0, 0);
         int expected = 0;
         Assert.assertEquals(expected, actual);
@@ -72,6 +72,11 @@ public class QuickSortTest {
         Assert.assertArrayEquals(expected, actual);
 
         actual = new int[]{438, 74, 93, 33, 841, 64, 3, 4, 294, 272, 674};
+        Quicksort.sort(actual, 0, 10);
+        expected = new int[]{3, 4, 33, 64, 74, 93, 272, 294, 438, 674, 841};
+        Assert.assertArrayEquals(expected, actual);
+
+        actual = new int[]{841, 674, 438, 294, 272, 93, 74, 64, 33, 4, 3};
         Quicksort.sort(actual, 0, 10);
         expected = new int[]{3, 4, 33, 64, 74, 93, 272, 294, 438, 674, 841};
         Assert.assertArrayEquals(expected, actual);
