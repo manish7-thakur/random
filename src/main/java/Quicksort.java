@@ -11,7 +11,7 @@ public class Quicksort {
     static int partition(int[] arr, int l, int h) {
         int pivot = arr[l];
         int pos = 0;
-        for (int i = 1; i < arr.length; i++) {
+        for (int i = 1; i <= h; i++) {
             if (arr[i] <= pivot) {
                 pos++;
                 int temp = arr[pos];
