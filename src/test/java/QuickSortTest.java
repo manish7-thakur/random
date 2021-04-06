@@ -30,8 +30,24 @@ public class QuickSortTest {
 
 	@Test
 	public void sortArray() {
-		int[] actual = Quicksort.sort(new int[]{1}, 0, 0);
+		int[] actual = new int[]{1};
+		Quicksort.sort(actual, 0, 0);
 		int[] expected = new int[]{1};
+		Assert.assertArrayEquals(expected, actual);
+
+		actual = new int[]{2, 1};
+		Quicksort.sort(actual, 0, 1);
+		expected = new int[]{1, 2};
+		Assert.assertArrayEquals(expected, actual);
+
+		actual = new int[]{2, 1, 3};
+		Quicksort.sort(actual, 0, 2);
+		expected = new int[]{1, 2, 3};
+		Assert.assertArrayEquals(expected, actual);
+
+		actual = new int[]{4, 2, 1, 3};
+		Quicksort.sort(actual, 0, 3);
+		expected = new int[]{1, 2, 3, 4};
 		Assert.assertArrayEquals(expected, actual);
 	}
 }

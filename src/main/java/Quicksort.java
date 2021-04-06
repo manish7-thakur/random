@@ -1,5 +1,11 @@
 public class Quicksort {
-	static void sort(int[] arr) {
+	static void sort(int[] arr, int l, int h) {
+		if(l >= h) {
+			return;
+		}
+		int p = partition(arr);
+		sort(arr, l, p - 1);
+		sort(arr, p + 1, h);
 	}
 
 	static int partition(int[] arr) {
