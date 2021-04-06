@@ -27,4 +27,11 @@ public class QuickSortTest {
 		expected = 2;
 		Assert.assertEquals(expected, actual);
 	}
+
+	@Test
+	public void sortArray() {
+		int[] actual = Quicksort.sort(new int[]{1}, 0, 0);
+		int[] expected = new int[]{1};
+		Assert.assertArrayEquals(expected, actual);
+	}
 }
