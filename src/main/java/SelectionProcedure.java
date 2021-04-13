@@ -4,17 +4,20 @@ public class SelectionProcedure {
     }
 
     static int find(int[] arr, int l, int h, int k) {
-        if (l > h) {
-            return -1;
+        // if (l > h) {
+        //     return -1;
+        // }
+        while(l <= h) {
+            int n = partition(arr, l, h);
+            if (n == k) {
+                return arr[k];
+            } else if (n < k) {
+                l = n+1;
+            } else {
+                h = n-1;
+            }
         }
-        int n = partition(arr, l, h);
-        if (n == k) {
-            return arr[k];
-        } else if (n < k) {
-            return find(arr, n + 1, h, k);
-        } else {
-            return find(arr, l, n - 1, k);
-        }
+        return -1;
     }
 
     static int partition(int[] arr, int l, int h) {
