@@ -1,4 +1,3 @@
-/*
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -87,4 +86,4 @@ public class MinCoinFinderTest {
         expectedCoins = Map.of(11, 8, 9, 1, 1, 1);
         Assert.assertEquals(expectedCoins, actualCoins);
     }
-}*/
+}
