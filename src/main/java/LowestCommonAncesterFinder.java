@@ -6,17 +6,17 @@ public class LowestCommonAncesterFinder {
         if (findAncestors(curr, ancestersA, a)) return -1;
         ArrayList<Integer> ancestersB = new ArrayList<>();
         if (findAncestors(curr, ancestersB, b)) return -1;
-        int i = ancestersA.size() - 1;
-        int j = ancestersB.size() - 1;
-        while (i >= 0 && j >= 0 && ancestersA.get(i) != ancestersB.get(j)) {
-            i--;
-            j--;
+        return findCommonAncestor(ancestersA, ancestersB);
+    }
+
+    private static int findCommonAncestor(ArrayList<Integer> ancestersA, ArrayList<Integer> ancestersB) {
+        int i;
+        for (i = 0; i < ancestersA.size() && i < ancestersB.size(); i++) {
+            if (ancestersA.get(i) != ancestersB.get(i)) {
+                return ancestersA.get(i - 1);
+            }
         }
-        if (i >= 0) {
-            return ancestersA.get(i);
-        } else {
-            return ancestersB.get(j);
-        }
+        return ancestersA.get(i - 1);
     }
 
     private static boolean findAncestors(TreeNode traverser, ArrayList<Integer> ancesters, int value) {
@@ -31,6 +31,7 @@ public class LowestCommonAncesterFinder {
         if (traverser == null) {
             return true;
         }
+        ancesters.add(traverser.value);
         return false;
     }
 
@@ -39,10 +40,10 @@ public class LowestCommonAncesterFinder {
         if (traverser == null) {
             return false;
         }
+        ancesters.add(traverser.value);
         if (traverser.value == value) {
             return true;
         }
-        ancesters.add(traverser.value);
         if (findBTAncestors(traverser.left, ancesters, value) || findBTAncestors(traverser.right, ancesters, value))
             return true;
         ancesters.remove(ancesters.size() - 1);
@@ -54,16 +55,6 @@ public class LowestCommonAncesterFinder {
         if (!findBTAncestors(curr, ancestersA, a)) return -1;
         ArrayList<Integer> ancestersB = new ArrayList<>();
         if (!findBTAncestors(curr, ancestersB, b)) return -1;
-        int i = ancestersA.size() - 1;
-        int j = ancestersB.size() - 1;
-        while (i >= 0 && j >= 0 && ancestersA.get(i) != ancestersB.get(j)) {
-            i--;
-            j--;
-        }
-        if (i >= 0) {
-            return ancestersA.get(i);
-        } else {
-            return ancestersB.get(j);
-        }
+        return findCommonAncestor(ancestersA, ancestersB);
     }
 }

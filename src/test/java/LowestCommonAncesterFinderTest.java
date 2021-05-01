@@ -39,6 +39,12 @@ public class LowestCommonAncesterFinderTest {
         actual = LowestCommonAncesterFinder.forBST(root, 3, 7);
         expected = 4;
         Assert.assertEquals(expected, actual);
+
+        root = new TreeNode(3, new TreeNode(2, null, null),
+                new TreeNode(4, null, new TreeNode(6, null, new TreeNode(7, null, null))));
+        actual = LowestCommonAncesterFinder.forBST(root, 2, 7);
+        expected = 3;
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -78,5 +84,12 @@ public class LowestCommonAncesterFinderTest {
         actual = LowestCommonAncesterFinder.forBinaryTree(root, 7, 5);
         expected = 1;
         Assert.assertEquals(expected, actual);
+
+        root = new TreeNode(1, new TreeNode(3, null, null),
+                new TreeNode(2, null, new TreeNode(4, null, new TreeNode(7, null, null))));
+        actual = LowestCommonAncesterFinder.forBinaryTree(root, 3, 7);
+        expected = 1;
+        Assert.assertEquals(expected, actual);
+
     }
 }
