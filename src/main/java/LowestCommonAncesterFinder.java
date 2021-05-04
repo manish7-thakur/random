@@ -57,4 +57,47 @@ public class LowestCommonAncesterFinder {
         if (!findBTAncestors(curr, ancestersB, b)) return -1;
         return findCommonAncestor(ancestersA, ancestersB);
     }
+
+    static TreeNode findAncestorRec(TreeNode curr, int key1, int key2, BoolPair pair) {
+        if (curr == null) {
+            return null;
+        }
+        if (curr.value == key1) {
+            pair.b1 = true;
+            return curr;
+        }
+        if (curr.value == key2) {
+            pair.b2 = true;
+            return curr;
+        }
+        TreeNode leftSubtree = findAncestorRec(curr.left, key1, key2, pair);
+        TreeNode rightSubtree = findAncestorRec(curr.right, key1, key2, pair);
+        if (leftSubtree != null && rightSubtree != null) {
+            return curr;
+        }
+        return leftSubtree == null ? rightSubtree : leftSubtree;
+    }
+
+    static class BoolPair {
+        boolean b1 = false, b2 = false;
+    }
+
+    static boolean find(TreeNode curr, int key) {
+        if (curr == null) {
+            return false;
+        }
+        return curr.value == key || find(curr.left, key) || find(curr.right, key);
+    }
+
+    static int forBinaryTreeRecursion(TreeNode curr, int key1, int key2) {
+        BoolPair pair = new BoolPair();
+        TreeNode ancestor = findAncestorRec(curr, key1, key2, pair);
+        //because we return the first found node, so we need 
+        //to check the other one if it is present or not
+        if (pair.b1 && pair.b2 || pair.b1 && find(ancestor, key2) || pair.b2 && find(ancestor, key1)) {
+            return ancestor.value;
+        } else {
+            return -1;
+        }
+    }
 }
