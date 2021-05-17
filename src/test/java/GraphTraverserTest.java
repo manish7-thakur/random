@@ -103,8 +103,12 @@ public class GraphTraverserTest {
 
     @Test
     public void courseSchedule() {
-        List<Character> actual = GraphTraverser.findOrder(2, new char[][]{{'1', '0'}});
-        List<Character> expected = List.of('0', '1');
+    	List<Character> actual = GraphTraverser.findOrder(1, new char[][]{});
+        List<Character> expected = Collections.emptyList();
+        Assert.assertEquals(actual, expected);
+
+        actual = GraphTraverser.findOrder(2, new char[][]{{'1', '0'}});
+        expected = List.of('0', '1');
         Assert.assertEquals(actual, expected);
 
         actual = GraphTraverser.findOrder(4, new char[][]{{'1', '0'}, {'2', '0'}, {'3', '1'}, {'3', '2'}});
