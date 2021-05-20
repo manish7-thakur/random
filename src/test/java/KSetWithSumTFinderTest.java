@@ -47,4 +47,31 @@ public class KSetWithSumTFinderTest {
         actual = KSetWithSumTFinder.isPresentRec(new double[]{2.0, 3.0, 1.0, 5.0}, 9.0, 3);
         Assert.assertTrue(actual);
     }
+
+    @Test
+    public void countKSetElemsWithSumT() {
+        int actual = KSetWithSumTFinder.countWithSumLessOrEqualRec(new double[]{3.0, 2.0, 1.0, 5.0}, 3.0, 3);
+        int expected = 0;
+        Assert.assertEquals(expected, actual);
+
+        actual = KSetWithSumTFinder.countWithSumLessOrEqualRec(new double[]{3.0, 2.0, 1.0, 5.0}, 6.0, 3);
+        expected = 1;
+        Assert.assertEquals(expected, actual);
+
+        actual = KSetWithSumTFinder.countWithSumLessOrEqualRec(new double[]{3.0, 2.0, 1.0, 3.0}, 6.0, 3);
+        expected = 2;
+        Assert.assertEquals(expected, actual);
+
+        actual = KSetWithSumTFinder.countWithSumLessOrEqualRec(new double[]{3.0, 2.0, 1.0, 3.0, 5.0, 4.0, 6.0}, 11.0, 4);
+        expected = 5;
+        Assert.assertEquals(expected, actual);
+
+        actual = KSetWithSumTFinder.countWithSumLessOrEqualRec(new double[]{3.0, 2.0, 1.0, 3.0, 5.0, 4.0, 6.0, 7.0}, 12.0, 5);
+        expected = 0;
+        Assert.assertEquals(expected, actual);
+
+        actual = KSetWithSumTFinder.countWithSumLessOrEqualRec(new double[]{3.0, 2.0, 1.0, 3.0, 5.0, 4.0, 6.0, 7.0}, 12.0, 3);
+        expected = 33;
+        Assert.assertEquals(expected, actual);
+    }
 }
