@@ -7,7 +7,6 @@ public class LevelOrderTraverser {
         List<Integer> res = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
-            for (int i = 0; i < queue.size(); i++) {
                 TreeNode curr = queue.poll();
                 res.add(curr.value);
                 if (curr.left != null) {
@@ -16,7 +15,6 @@ public class LevelOrderTraverser {
                 if (curr.right != null) {
                     queue.add(curr.right);
                 }
-            }
         }
         return res;
     }
