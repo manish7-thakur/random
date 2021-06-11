@@ -8,11 +8,15 @@ import static org.junit.Assert.assertEquals;
 public class BinaryTreeLevelAvgTest {
     @Test
     public void singleLevelAvgTest() {
-        TreeNode node = new TreeNode(5, null, null);
-        List<Double> actual = BinaryTreeLevelAvg.calcAvgs(node);
-        List<Double> expected = new ArrayList<Double>();
-        expected.add(5.0);
-        assertEquals(expected, actual);
+//        TreeNode node = new TreeNode(5, null, null);
+//        List<Double> actual = BinaryTreeLevelAvg.calcAvgs(node);
+//        List<Double> expected = new ArrayList<Double>();
+//        expected.add(5.0);
+//        assertEquals(expected, actual);
+      System.out.println(BinaryTreeLevelAvg.longestValidParentheses("(()()("));
+      System.out.println(BinaryTreeLevelAvg.longestValidParentheses("()()"));
+      System.out.println(BinaryTreeLevelAvg.longestValidParentheses(")(())"));
+      System.out.println(BinaryTreeLevelAvg.longestValidParentheses(")(()((()))))"));
     }
 
     @Test
