@@ -11,8 +11,9 @@ public class LongestMatchingParenthesisFinder {
 				stack.pop();
 				if(stack.isEmpty()) {
 					stack.push(i);
+				} else {
+					res = Math.max(res, i - stack.peek());
 				}
-				res = Math.max(res, i - stack.peek());
 			}
 		}
 		return res;
