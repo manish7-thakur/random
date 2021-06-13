@@ -9,9 +9,9 @@ public class KListMerger {
 				return o1.data - o2.data;
 			}
 		});
-		for(int i=0;i < lists.length; i++) {
-			if(lists[i] != null) {
-				minHeap.add(lists[i]);
+		for(Node curr: lists) {
+			if(curr != null) {
+				minHeap.add(curr);
 			}
 		}
 		Node newList = new Node(0, null);
