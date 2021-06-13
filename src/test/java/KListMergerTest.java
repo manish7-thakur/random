@@ -3,9 +3,12 @@ import org.junit.*;
 public class KListMergerTest {
 	@Test
 	public void mergeSortedLists() {
+		Node actual = KListMerger.merge(new Node[]{});
+		Assert.assertNull(actual);
+
 		Node head1 = new Node(1, null);
 		Node head2 = new Node(1, null);
-		Node actual = KListMerger.merge(new Node[]{head1, head2});
+		actual = KListMerger.merge(new Node[]{head1, head2});
 		Assert.assertEquals(1, actual.data);
 		Assert.assertEquals(1, actual.next.data);
 		Assert.assertNull(actual.next.next);
