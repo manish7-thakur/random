@@ -20,6 +20,7 @@ public class KListMerger {
 			newList.next = minHeap.remove();
 			newList = newList.next;
 		}
+		newList.next = null;
 		return head.next;
 	}
 }
