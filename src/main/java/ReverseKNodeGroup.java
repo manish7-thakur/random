@@ -31,7 +31,6 @@ public class ReverseKNodeGroup {
             start = start.next;
         }
         int groups = count / k;
-        int startCount = groups;
         Node newHead = head;
         Node previousHead = head;
         Node traverser = head;
@@ -49,10 +48,10 @@ public class ReverseKNodeGroup {
         while (groups > 0) {
             Pair p = reverseNodesBy(traverser, k);
             previousHead.next = p.getMid();
-            previousHead = p.getHead();
             traverser = p.getTraverser();
+            previousHead = p.getHead();
             groups--;
-            if(groups == 0 && traverser != null) {
+            if(groups == 0) {
                 previousHead.next = traverser;
             }
         }
