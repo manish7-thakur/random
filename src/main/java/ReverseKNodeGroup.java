@@ -35,12 +35,12 @@ public class ReverseKNodeGroup {
         Node previousHead = head;
         Node traverser = head;
 
-        if(groups > 0) {
+        if (groups > 0) {
             Pair p = reverseNodesBy(traverser, k);
             traverser = p.getTraverser();
             newHead = p.getMid();
             groups--;
-            if(groups == 0) {
+            if (groups == 0) {
                 previousHead.next = traverser;
             }
         }
@@ -51,7 +51,7 @@ public class ReverseKNodeGroup {
             traverser = p.getTraverser();
             previousHead = p.getHead();
             groups--;
-            if(groups == 0) {
+            if (groups == 0) {
                 previousHead.next = traverser;
             }
         }
