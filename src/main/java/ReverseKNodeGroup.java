@@ -40,9 +40,6 @@ public class ReverseKNodeGroup {
             traverser = p.getTraverser();
             newHead = p.getMid();
             groups--;
-            if (groups == 0) {
-                previousHead.next = traverser;
-            }
         }
 
         while (groups > 0) {
@@ -51,10 +48,8 @@ public class ReverseKNodeGroup {
             traverser = p.getTraverser();
             previousHead = p.getHead();
             groups--;
-            if (groups == 0) {
-                previousHead.next = traverser;
-            }
         }
+        previousHead.next = traverser;
         return newHead;
     }
 
