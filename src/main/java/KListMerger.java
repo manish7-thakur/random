@@ -16,20 +16,20 @@ public class KListMerger {
                 minHeap.add(curr);
             }
         }
-        Node newList = new Node(0, null);
-        Node head = newList;
+        Node traverser = new Node(0, null);
+        Node head = traverser;
         //We take out & insert only one item in the heap to keep its size
         //equal to number of list rather than total elements of all lists.
         while (!minHeap.isEmpty()) {
             Node curr = minHeap.remove();
-            newList.next = curr;
+            traverser.next = curr;
+            traverser = traverser.next;
             curr = curr.next;
             if (curr != null) {
                 minHeap.add(curr);
             }
-            newList = newList.next;
         }
-        newList.next = null;
+        traverser.next = null;
         return head.next;
     }
 }
