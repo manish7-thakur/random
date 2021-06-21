@@ -5,8 +5,13 @@ import java.util.*;
 public class SubstringConcatFinderTest {
     @Test
     public void findWordsPermutations() {
-        List actual = SubstringConcatFinder.find("foobar", new String[]{"foo", "bar"});
+        List actual = SubstringConcatFinder.find("foo", new String[]{"foo"});
         List expected = new ArrayList();
+        expected.add(0);
+        Assert.assertEquals(expected, actual);
+
+        actual = SubstringConcatFinder.find("foobar", new String[]{"foo", "bar"});
+        expected = new ArrayList();
         expected.add(0);
         Assert.assertEquals(expected, actual);
 
@@ -45,6 +50,11 @@ public class SubstringConcatFinderTest {
 
         actual = SubstringConcatFinder.find("wordgoodgoodgoodbestword", new String[]{"word", "good", "best", "word"});
         expected = new ArrayList();
+        Assert.assertEquals(expected, actual);
+
+        actual = SubstringConcatFinder.find("wordgoodgoodgoodbestword", new String[]{"word", "good", "best", "good"});
+        expected = new ArrayList();
+        expected.add(8);
         Assert.assertEquals(expected, actual);
     }
 }
