@@ -16,7 +16,7 @@ public class SubstringConcatFinder {
             while (j + wordlength <= s.length() && map.getOrDefault(s.substring(j, j + wordlength), 0) > 0 && wordCount > 0) {
                 String currWord = s.substring(j, j + wordlength);
                 int count = map.get(currWord);
-                map.put(word, --count);
+                map.put(currWord, --count);
                 j += wordlength;
                 wordCount--;
                 if (wordCount == 0) {
