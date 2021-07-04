@@ -26,8 +26,10 @@ public class SudokuSolver {
     }
 
     static public boolean isValidSudoku(char[][] board, int row, int col, char c) {
+        int rowAdjustFactor = 3 * (row / 3);
+        int colAdjustFactor = 3 * (col / 3);
         for (int i = 0; i < board.length; i++) {
-            if (board[i][col] == c || board[row][i] == c || board[3 * (row / 3) + (i / 3)][3 * (col / 3) + (i % 3)] == c) {
+            if (board[i][col] == c || board[row][i] == c || board[rowAdjustFactor + (i / 3)][colAdjustFactor + (i % 3)] == c) {
                 return false;
             }
         }

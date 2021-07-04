@@ -25,6 +25,6 @@ public class SudokuSolverTest {
                 {'2', '8', '7', '4', '1', '9', '6', '3', '5'},
                 {'3', '4', '5', '2', '8', '6', '1', '7', '9'}};
         SudokuSolver.solveSudoku(board);
-        Assert.assertArrayEquals(board, expected);
+        Assert.assertArrayEquals(expected, board);
     }
 }
