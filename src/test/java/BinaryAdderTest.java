@@ -70,4 +70,27 @@ public class BinaryAdderTest {
         expected = new int[]{1, 1, 1, 0};
         Assert.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void addBinaryString() {
+      String actual = BinaryAdder.add("0,1");
+      String expected = "1";
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryAdder.add("00,11");
+      expected = "11";
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryAdder.add("1,11");
+      expected = "100";
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryAdder.add("111,11");
+      expected = "1010";
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryAdder.add("111,1");
+      expected = "1000";
+      Assert.assertEquals(expected, actual);
+    }
 }
