@@ -1,9 +1,8 @@
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.text.Format;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class BinaryAdder {
     static int[] add(int[] a, int[] b) {
@@ -28,7 +27,7 @@ public class BinaryAdder {
         String[] ops = input.split(",");
         String op1 = ops[0];
         String op2 = ops[1];
-        int[] res = new int[op1.length() > op2.length() ? op1.length() + 1 : op2.length() + 1];
+        int[] res = new int[op1.length() > op2.length() ? op1.length() : op2.length()];
         int carry = 0;
         int i = op1.length() - 1;
         int j = op2.length() - 1;
@@ -57,13 +56,8 @@ public class BinaryAdder {
             j--;
             r--;
         }
-        if (carry == 1) {
-            res[r] = 1;
-        }
-        if (res[r] == 0) {
-            res = Arrays.copyOfRange(res, 1, res.length);
-        }
-        return Arrays.toString(res).replace("[", "").replace("]", "").replace(", ", "");
+        String binString = Arrays.toString(res).replace("[", "").replace("]", "").replace(", ", "");
+        return carry == 1 ? "1" + binString : binString;
     }
 
     public static void main(String[] args) throws IOException {
