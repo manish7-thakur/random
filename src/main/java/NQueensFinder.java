@@ -14,31 +14,28 @@ public class NQueensFinder {
                 Arrays.fill(grid[j], '.');
             }
             grid[0][i] = 'Q';
-            isValid(grid, n, result);
+            if (isValid(grid, n)) {
+                List<String> gridList = new ArrayList<>();
+                for (int j = 0; j < n; j++) {
+                    gridList.add(new String(grid[j]));
+                }
+                result.add(gridList);
+            }
         }
         return result;
     }
 
-    static void isValid(char[][] grid, int n, List<List<String>> result) {
-        for (int i = 0; i < n; i++) {
+    static boolean isValid(char[][] grid, int n) {
+        for (int i = 1; i < n; i++) {
+            boolean valid = false;
             for (int j = 0; j < n; j++) {
                 if (canPlaceQueue(grid, i, j, n)) {
                     grid[i][j] = 'Q';
+                    valid = true;
+                    break;
                 }
             }
-        }
-        if (isValid(grid)) {
-            List<String> gridList = new ArrayList<>();
-            for (int j = 0; j < n; j++) {
-                gridList.add(new String(grid[j]));
-            }
-            result.add(gridList);
-        }
-    }
-
-    static boolean isValid(char[][] grid) {
-        for (int j = 0; j < grid.length; j++) {
-            if (!(new String(grid[j])).contains("Q")) {
+            if (!valid) {
                 return false;
             }
         }
