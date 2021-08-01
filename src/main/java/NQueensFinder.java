@@ -66,7 +66,7 @@ public class NQueensFinder {
 
         k = i;
         l = j;
-        while (k < n && l >= n) {
+        while (k < n && l >= 0) {
             if (grid[k][l] == 'Q') return false;
             k++;
             l--;
