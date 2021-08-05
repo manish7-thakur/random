@@ -36,7 +36,6 @@ public class NQueensFinder {
             gridList.add(new String(grid[j]));
         }
         result.add(gridList);
-        return;
     }
 
     static boolean canPlaceQueue(char[][] grid, int i, int j, int n) {
