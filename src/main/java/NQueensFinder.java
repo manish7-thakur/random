@@ -27,15 +27,17 @@ public class NQueensFinder {
 
     static boolean isValid(char[][] grid, int n) {
         for (int i = 1; i < n; i++) {
-            boolean valid = false;
             for (int j = 0; j < n; j++) {
                 if (canPlaceQueue(grid, i, j, n)) {
                     grid[i][j] = 'Q';
-                    valid = true;
-                    break;
+                    if (isValid(grid, n)) {
+                        return true;
+                    } else {
+                        grid[i][j] = '.';
+                    }
                 }
             }
-            if (!valid) {
+            if (!new String(grid[i]).contains("Q")) {
                 return false;
             }
         }
