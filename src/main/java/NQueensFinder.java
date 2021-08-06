@@ -14,16 +14,16 @@ public class NQueensFinder {
                 Arrays.fill(grid[j], '.');
             }
         }
-        addValidRes(grid, n, result);
+        addValidRes(grid, 0, n, result);
         return result;
     }
 
-    static void addValidRes(char[][] grid, int n, List<List<String>> result) {
-        for (int i = 0; i < n; i++) {
+    static void addValidRes(char[][] grid, int i, int n, List<List<String>> result) {
+        if (i < n) {
             for (int j = 0; j < n; j++) {
                 if (canPlaceQueue(grid, i, j, n)) {
                     grid[i][j] = 'Q';
-                    addValidRes(grid, n, result);
+                    addValidRes(grid, i + 1, n, result);
                     grid[i][j] = '.';
                 }
             }
