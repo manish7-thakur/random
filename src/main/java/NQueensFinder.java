@@ -9,11 +9,6 @@ public class NQueensFinder {
         for (int i = 0; i < n; i++) {
             Arrays.fill(grid[i], '.');
         }
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                Arrays.fill(grid[j], '.');
-            }
-        }
         addValidRes(grid, 0, n, result);
         return result;
     }
