@@ -16,15 +16,13 @@ public class NQueensFinder {
     static void addValidRes(char[][] grid, int i, int n, List<List<String>> result) {
         if (i < n) {
             for (int j = 0; j < n; j++) {
-                if (canPlaceQueue(grid, i, j, n)) {
+                if (canPlaceQueen(grid, i, j, n)) {
                     grid[i][j] = 'Q';
                     addValidRes(grid, i + 1, n, result);
                     grid[i][j] = '.';
                 }
             }
-            if (!new String(grid[i]).contains("Q")) {
-                return;
-            }
+            return;
         }
         List<String> gridList = new ArrayList<>();
         for (int j = 0; j < n; j++) {
@@ -33,7 +31,7 @@ public class NQueensFinder {
         result.add(gridList);
     }
 
-    static boolean canPlaceQueue(char[][] grid, int i, int j, int n) {
+    static boolean canPlaceQueen(char[][] grid, int i, int j, int n) {
         for (int k = 0; k < n; k++) {
             if (grid[i][k] == 'Q') return false;
             if (grid[k][j] == 'Q') return false;

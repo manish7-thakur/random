@@ -3,14 +3,15 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class NQueensFinderTest {
     @Test
     public void findNQueensSolutions() {
         List<List<String>> actual = NQueensFinder.solveNQueens(1);
-        List<String> sol1 = new ArrayList<>(Arrays.asList("Q"));
-        List<List<String>> expected = new ArrayList<>(Arrays.asList(sol1));
+        List<String> sol1 = new ArrayList<>(Collections.singletonList("Q"));
+        List<List<String>> expected = new ArrayList<>(Collections.singletonList(sol1));
         Assert.assertEquals(expected, actual);
 
         actual = NQueensFinder.solveNQueens(2);
