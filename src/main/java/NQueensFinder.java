@@ -31,42 +31,25 @@ public class NQueensFinder {
         result.add(gridList);
     }
 
-    static boolean canPlaceQueen(char[][] grid, int i, int j, int n) {
-        for (int k = 0; k < n; k++) {
-            if (grid[i][k] == 'Q') return false;
-            if (grid[k][j] == 'Q') return false;
+    static boolean canPlaceQueen(char[][] grid, int row, int col, int n) {
+        for (int k = 0; k < row; k++) {
+            if (grid[k][col] == 'Q') return false;
         }
 
-        int k = i;
-        int l = j;
+        int k = row;
+        int l = col;
         while (k >= 0 && l < n) {
             if (grid[k][l] == 'Q') return false;
             k--;
             l++;
         }
 
-        k = i;
-        l = j;
+        k = row;
+        l = col;
         while (k >= 0 && l >= 0) {
             if (grid[k][l] == 'Q') return false;
             k--;
             l--;
-        }
-
-        k = i;
-        l = j;
-        while (k < n && l >= 0) {
-            if (grid[k][l] == 'Q') return false;
-            k++;
-            l--;
-        }
-
-        k = i;
-        l = j;
-        while (k < n && l < n) {
-            if (grid[k][l] == 'Q') return false;
-            k++;
-            l++;
         }
         return true;
     }
