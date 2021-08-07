@@ -41,9 +41,6 @@ public class NQueensFinder {
     }
 
     static boolean canPlaceQueen(int row, int col, int n, boolean[] colV, boolean[] ld, boolean[] rd) {
-        if (colV[col] || ld[row - col + n - 1] || rd[row + col]) {
-            return false;
-        }
-        return true;
+        return !colV[col] && !ld[row - col + n - 1] && !rd[row + col];
     }
 }
