@@ -6,20 +6,29 @@ public class NQueensFinder {
     public static List<List<String>> solveNQueens(int n) {
         List<List<String>> result = new ArrayList<>();
         char[][] grid = new char[n][n];
+        boolean[] colV = new boolean[n];
+        boolean[] ld = new boolean[2 * n + 1];
+        boolean[] rd = new boolean[2 * n + 1];
         for (int i = 0; i < n; i++) {
             Arrays.fill(grid[i], '.');
         }
-        addValidRes(grid, 0, n, result);
+        addValidRes(grid, 0, n, result, colV, ld, rd);
         return result;
     }
 
-    static void addValidRes(char[][] grid, int i, int n, List<List<String>> result) {
+    static void addValidRes(char[][] grid, int i, int n, List<List<String>> result, boolean[] colV, boolean[] ld, boolean[] rd) {
         if (i < n) {
             for (int j = 0; j < n; j++) {
-                if (canPlaceQueen(grid, i, j, n)) {
+                if (canPlaceQueen(i, j, n, colV, ld, rd)) {
                     grid[i][j] = 'Q';
-                    addValidRes(grid, i + 1, n, result);
+                    colV[j] = true;
+                    ld[i - j + n - 1] = true;
+                    rd[i + j] = true;
+                    addValidRes(grid, i + 1, n, result, colV, ld, rd);
                     grid[i][j] = '.';
+                    colV[j] = false;
+                    ld[i - j + n - 1] = false;
+                    rd[i + j] = false;
                 }
             }
             return;
@@ -31,25 +40,9 @@ public class NQueensFinder {
         result.add(gridList);
     }
 
-    static boolean canPlaceQueen(char[][] grid, int row, int col, int n) {
-        for (int k = 0; k < row; k++) {
-            if (grid[k][col] == 'Q') return false;
-        }
-
-        int k = row;
-        int l = col;
-        while (k >= 0 && l < n) {
-            if (grid[k][l] == 'Q') return false;
-            k--;
-            l++;
-        }
-
-        k = row;
-        l = col;
-        while (k >= 0 && l >= 0) {
-            if (grid[k][l] == 'Q') return false;
-            k--;
-            l--;
+    static boolean canPlaceQueen(int row, int col, int n, boolean[] colV, boolean[] ld, boolean[] rd) {
+        if (colV[col] || ld[row - col + n - 1] || rd[row + col]) {
+            return false;
         }
         return true;
     }
