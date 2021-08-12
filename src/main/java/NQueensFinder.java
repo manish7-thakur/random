@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class NQueensFinder {
     public static List<List<String>> solveNQueens(int n) {
@@ -51,11 +48,11 @@ public class NQueensFinder {
                 this.stage = stage;
             }
         }
-        Stack<Snapshot> stack = new Stack<>();
-        Snapshot sp = new Snapshot(i, 0);
-        stack.push(sp);
+        Deque<Snapshot> stack = new ArrayDeque<>();
+        Snapshot csp = new Snapshot(i, 0);
+        stack.push(csp);
         while (!stack.isEmpty()) {
-            Snapshot csp = stack.pop();
+            csp = stack.pop();
             switch (csp.stage) {
                 case 0: {
                     if (csp.i < n) {
@@ -87,9 +84,9 @@ public class NQueensFinder {
                     colV[csp.j] = false;
                     ld[csp.i - csp.j + n - 1] = false;
                     rd[csp.i + csp.j] = false;
-                    Snapshot nsp = new Snapshot(csp.i, 0);//do it in old snapshot
-                    nsp.j = csp.j + 1;
-                    stack.push(nsp);
+                    csp.j++;
+                    csp.stage = 0;
+                    stack.push(csp);
                     break;
                 }
             }
