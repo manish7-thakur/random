@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 
 public class NQueensFinder {
     public static List<List<String>> solveNQueens(int n) {
@@ -12,7 +13,7 @@ public class NQueensFinder {
         for (int i = 0; i < n; i++) {
             Arrays.fill(grid[i], '.');
         }
-        addValidRes(grid, 0, n, result, colV, ld, rd);
+        addValidResIter(grid, 0, n, result, colV, ld, rd);
         return result;
     }
 
@@ -38,6 +39,61 @@ public class NQueensFinder {
             gridList.add(new String(grid[j]));
         }
         result.add(gridList);
+    }
+
+    static void addValidResIter(char[][] grid, int i, int n, List<List<String>> result, boolean[] colV, boolean[] ld, boolean[] rd) {
+        class Snapshot {
+            int i, j;
+            int stage;
+
+            public Snapshot(int i, int stage) {
+                this.i = i;
+                this.stage = stage;
+            }
+        }
+        Stack<Snapshot> stack = new Stack<>();
+        Snapshot sp = new Snapshot(i, 0);
+        stack.push(sp);
+        while (!stack.isEmpty()) {
+            Snapshot csp = stack.pop();
+            switch (csp.stage) {
+                case 0: {
+                    if (csp.i < n) {
+                        for (int j = csp.j; j < n; j++) {
+                            if (canPlaceQueen(csp.i, j, n, colV, ld, rd)) {
+                                grid[csp.i][j] = 'Q';
+                                colV[j] = true;
+                                ld[csp.i - j + n - 1] = true;
+                                rd[csp.i + j] = true;
+                                csp.stage = 1;
+                                csp.j = j;
+                                stack.push(csp);
+                                Snapshot nsp = new Snapshot(csp.i + 1, 0);
+                                stack.push(nsp);
+                                break;
+                            }
+                        }
+                        continue;
+                    }
+                    List<String> gridList = new ArrayList<>();
+                    for (int j = 0; j < n; j++) {
+                        gridList.add(new String(grid[j]));
+                    }
+                    result.add(gridList);
+                    break;
+                }
+                case 1: {
+                    grid[csp.i][csp.j] = '.';
+                    colV[csp.j] = false;
+                    ld[csp.i - csp.j + n - 1] = false;
+                    rd[csp.i + csp.j] = false;
+                    Snapshot nsp = new Snapshot(csp.i, 0);//do it in old snapshot
+                    nsp.j = csp.j + 1;
+                    stack.push(nsp);
+                    break;
+                }
+            }
+        }
     }
 
     static boolean canPlaceQueen(int row, int col, int n, boolean[] colV, boolean[] ld, boolean[] rd) {
