@@ -40,8 +40,8 @@ public class NQueensFinder {
 
     static void addValidResIter(char[][] grid, int i, int n, List<List<String>> result, boolean[] colV, boolean[] ld, boolean[] rd) {
         class Snapshot {
-            int i, j;
-            int stage;
+            private int i, j;
+            private int stage;
 
             public Snapshot(int i, int stage) {
                 this.i = i;
