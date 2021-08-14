@@ -20,26 +20,26 @@ public class NQueensFinder {
         boolean[] ld = new boolean[2 * n + 1];
         boolean[] rd = new boolean[2 * n + 1];
         AtomicInteger res = new AtomicInteger();
-        findTotalNQueens(0, n, res, colV, ld, rd);
+        addValidResSize(0, n, res, colV, ld, rd);
         return res.intValue();
     }
 
-    static int findTotalNQueens(int i, int n, AtomicInteger result, boolean[] colV, boolean[] ld, boolean[] rd) {
+    static void addValidResSize(int i, int n, AtomicInteger result, boolean[] colV, boolean[] ld, boolean[] rd) {
         if (i < n) {
             for (int j = 0; j < n; j++) {
                 if (canPlaceQueen(i, j, n, colV, ld, rd)) {
                     colV[j] = true;
                     ld[i - j + n - 1] = true;
                     rd[i + j] = true;
-                    findTotalNQueens(i + 1, n, result, colV, ld, rd);
+                    addValidResSize(i + 1, n, result, colV, ld, rd);
                     colV[j] = false;
                     ld[i - j + n - 1] = false;
                     rd[i + j] = false;
                 }
             }
-            return result.intValue();
+            return;
         }
-        return result.incrementAndGet();
+        result.incrementAndGet();
     }
 
     static void addValidRes(char[][] grid, int i, int n, List<List<String>> result, boolean[] colV, boolean[] ld, boolean[] rd) {
