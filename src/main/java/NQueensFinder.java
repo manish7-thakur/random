@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class NQueensFinder {
     public static List<List<String>> solveNQueens(int n) {
@@ -19,27 +18,26 @@ public class NQueensFinder {
         boolean[] colV = new boolean[n];
         boolean[] ld = new boolean[2 * n + 1];
         boolean[] rd = new boolean[2 * n + 1];
-        AtomicInteger res = new AtomicInteger();
-        addValidResSize(0, n, res, colV, ld, rd);
-        return res.intValue();
+        return addValidResSize(0, n, colV, ld, rd);
     }
 
-    static void addValidResSize(int i, int n, AtomicInteger result, boolean[] colV, boolean[] ld, boolean[] rd) {
-        if (i < n) {
-            for (int j = 0; j < n; j++) {
-                if (canPlaceQueen(i, j, n, colV, ld, rd)) {
-                    colV[j] = true;
-                    ld[i - j + n - 1] = true;
-                    rd[i + j] = true;
-                    addValidResSize(i + 1, n, result, colV, ld, rd);
-                    colV[j] = false;
-                    ld[i - j + n - 1] = false;
-                    rd[i + j] = false;
-                }
-            }
-            return;
+    static int addValidResSize(int i, int n, boolean[] colV, boolean[] ld, boolean[] rd) {
+        if (i >= n) {
+            return 1;
         }
-        result.incrementAndGet();
+        int curr = 0;
+        for (int j = 0; j < n; j++) {
+            if (canPlaceQueen(i, j, n, colV, ld, rd)) {
+                colV[j] = true;
+                ld[i - j + n - 1] = true;
+                rd[i + j] = true;
+                curr += addValidResSize(i + 1, n, colV, ld, rd);
+                colV[j] = false;
+                ld[i - j + n - 1] = false;
+                rd[i + j] = false;
+            }
+        }
+        return curr;
     }
 
     static void addValidRes(char[][] grid, int i, int n, List<List<String>> result, boolean[] colV, boolean[] ld, boolean[] rd) {
