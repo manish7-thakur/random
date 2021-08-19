@@ -3,7 +3,7 @@ import org.junit.Test;
 
 public class KthPermutationFinderTest {
     @Test
-    public void findKthPermuationFor() {
+    public void findKthPermutationFor() {
         String actual = KthPermutationFinder.getPermutation(1, 1);
         String expected = "1";
         Assert.assertEquals(expected, actual);

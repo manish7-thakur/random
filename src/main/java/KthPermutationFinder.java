@@ -1,28 +1,30 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class KthPermutationFinder {
     public static String getPermutation(int n, int k) {
         StringBuilder sb = new StringBuilder(n);
         for (int i = 1; i <= n; i++) {
             sb.append(i);
         }
-        List<String> list = permutate(sb.toString(), k);
-        return list.get(k - 1);
+        return findPermFor(sb, n, k - 1);
     }
 
-    private static List<String> permutate(String s, int k) {
-        List<String> list = new ArrayList<>();
-        if (s.length() == 1) {
-            list.add(s);
-            return list;
+    private static String findPermFor(StringBuilder sb, int n, int k) {
+        int[] factordicSeq = getFactoradicSeq(n, k);
+        StringBuilder res = new StringBuilder(n);
+        for (int idx : factordicSeq) {
+            res.append(sb.charAt(idx));
+            sb.deleteCharAt(idx);
         }
-        for (int i = 0; i < s.length(); i++) {
-            List<String> curr = permutate(s.substring(0, i) + s.substring(i + 1), k);
-            for (String str : curr) {
-                list.add(s.charAt(i) + str);
-            }
+        return res.toString();
+    }
+
+    private static int[] getFactoradicSeq(int n, int k) {
+        int[] seq = new int[n];
+        int i = 1;
+        while (k > 0) {
+            seq[n - i] = k % i;
+            k /= i;
+            i++;
         }
-        return list;
+        return seq;
     }
 }
