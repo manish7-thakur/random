@@ -28,3 +28,4 @@ public class KthPermutationFinder {
         return seq;
     }
 }
+//https://medium.com/@aiswaryamathur/find-the-n-th-permutation-of-an-ordered-string-using-factorial-number-system-9c81e34ab0c8
