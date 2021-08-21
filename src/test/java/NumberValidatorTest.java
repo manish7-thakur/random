@@ -7,7 +7,7 @@ public class NumberValidatorTest {
        boolean actual = NumberValidator.isNumber("");
        Assert.assertFalse(actual);
 
-       boolean actual = NumberValidator.isNumber(".");
+       actual = NumberValidator.isNumber(".");
        Assert.assertFalse(actual);
 
        actual = NumberValidator.isNumber("1");

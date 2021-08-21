@@ -14,7 +14,7 @@ public class NumberValidator {
     }
 
     static boolean isValidDecimal(String s, boolean isexp) {
-        if(s.isEmpty()){
+        if(s.isEmpty() || s.equals(".")){
           return false;
         }
         boolean containsDot = false;
