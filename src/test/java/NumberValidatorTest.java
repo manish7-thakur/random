@@ -51,5 +51,8 @@ public class NumberValidatorTest {
 
        actual = NumberValidator.isNumber("e3");
        Assert.assertFalse(actual);
+
+       actual = NumberValidator.isNumber("-123.456e789");
+       Assert.assertTrue(actual);
     }
 }
