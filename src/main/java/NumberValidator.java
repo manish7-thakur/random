@@ -10,10 +10,7 @@ public class NumberValidator {
           if (parts.length != 2) return false;
           return isValidDecimal(parts[0], false) && isValidDecimal(parts[1], true);
         }
-        if (!isValidDecimal(s, false)) {
-            return false;
-        }
-        return true;
+        return isValidDecimal(s, false));
     }
 
     static boolean isValidDecimal(String s, boolean isexp) {
