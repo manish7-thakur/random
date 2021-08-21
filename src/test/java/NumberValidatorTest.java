@@ -44,9 +44,12 @@ public class NumberValidatorTest {
        Assert.assertFalse(actual);
 
        actual = NumberValidator.isNumber("2e1.0");
-       Assert.assertTrue(actual);
+       Assert.assertFalse(actual);
 
        actual = NumberValidator.isNumber("-2e+1.0");
+       Assert.assertFalse(actual);
+
+       actual = NumberValidator.isNumber("-2E+1");
        Assert.assertTrue(actual);
 
        actual = NumberValidator.isNumber("e3");
