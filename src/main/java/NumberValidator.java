@@ -23,7 +23,8 @@ public class NumberValidator {
                 case 'e':
                 case 'E':
                     if (i == 0 || isexp || i == s.length() - 1) return false;
-                    if (!(Character.isDigit(s.charAt(i - 1)) || s.charAt(i - 1) == '.')) return false;
+                    previous = s.charAt(i - 1);
+                    if (!(Character.isDigit(previous) || previous == '.')) return false;
                     isexp = true;
                     break;
                 default:
