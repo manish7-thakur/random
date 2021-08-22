@@ -58,10 +58,25 @@ public class NumberValidatorTest {
       actual = NumberValidator.isNumber("2e10");
       Assert.assertTrue(actual);
 
+      actual = NumberValidator.isNumber("-2.e-10");
+      Assert.assertTrue(actual);
+
+      actual = NumberValidator.isNumber("0e");
+      Assert.assertFalse(actual);
+
+      actual = NumberValidator.isNumber(".e1");
+      Assert.assertFalse(actual);
+
+      actual = NumberValidator.isNumber("1e.");
+      Assert.assertFalse(actual);
+
       actual = NumberValidator.isNumber("2e1e0");
       Assert.assertFalse(actual);
 
       actual = NumberValidator.isNumber("4e+");
+      Assert.assertFalse(actual);
+
+      actual = NumberValidator.isNumber("+E3");
       Assert.assertFalse(actual);
 
       actual = NumberValidator.isNumber("2e1.0");
