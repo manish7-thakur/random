@@ -1,20 +1,19 @@
 public class NumberValidator {
     public static boolean isNumber(String s) {
         if (s.isEmpty()) return false;
-        if (s.contains("e")) {
-            String[] parts = s.split("e");
-            if (parts.length != 2) return false;
-            return isValidDecimal(parts[0], false) && isValidDecimal(parts[1], true);
-        } else if(s.contains("E")) {
-          String[] parts = s.split("E");
-          if (parts.length != 2) return false;
-          return isValidDecimal(parts[0], false) && isValidDecimal(parts[1], true);
+        int expIdx = s.indexOf('e');
+        if (expIdx != -1) {
+            return isValidDecimal(s.substring(0, expIdx), false) && isValidDecimal(s.substring(expIdx + 1), true);
+        }
+        expIdx = s.indexOf('E');
+        if(expIdx != -1) {
+          return isValidDecimal(s.substring(0, expIdx), false) && isValidDecimal(s.substring(expIdx + 1), true);
         }
         return isValidDecimal(s, false);
     }
 
     static boolean isValidDecimal(String s, boolean isexp) {
-        if(s.isEmpty() || s.equals(".")){
+        if(s.isEmpty() || (s.length() == 1 && !(s.charAt(0) >= '0' && s.charAt(0) <= '9'))) {
           return false;
         }
         boolean containsDot = false;
@@ -23,6 +22,7 @@ public class NumberValidator {
             else if (s.charAt(i) == '.') {
                 if(isexp) return false;
                 if (containsDot) return false;
+                if(i == s.length() - 1 && !(s.charAt(i-1) >= '0' && s.charAt(i-1) <= '9')) return false;
                 containsDot = true;
             } else if (!(s.charAt(i) >= '0' && s.charAt(i) <= '9')) {
                 return false;

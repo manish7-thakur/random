@@ -10,8 +10,23 @@ public class NumberValidatorTest {
        actual = NumberValidator.isNumber(".");
        Assert.assertFalse(actual);
 
+       actual = NumberValidator.isNumber("..");
+       Assert.assertFalse(actual);
+
        actual = NumberValidator.isNumber("1");
        Assert.assertTrue(actual);
+
+       actual = NumberValidator.isNumber("+");
+       Assert.assertFalse(actual);
+
+       actual = NumberValidator.isNumber("-");
+       Assert.assertFalse(actual);
+
+       actual = NumberValidator.isNumber("+.");
+       Assert.assertFalse(actual);
+
+       actual = NumberValidator.isNumber("+-1.");
+       Assert.assertFalse(actual);
 
        actual = NumberValidator.isNumber("+1");
        Assert.assertTrue(actual);
@@ -40,25 +55,31 @@ public class NumberValidatorTest {
        actual = NumberValidator.isNumber("+2.0.");
        Assert.assertFalse(actual);
 
-       actual = NumberValidator.isNumber("2e10");
-       Assert.assertTrue(actual);
+      actual = NumberValidator.isNumber("2e10");
+      Assert.assertTrue(actual);
 
-       actual = NumberValidator.isNumber("2e1e0");
+      actual = NumberValidator.isNumber("2e1e0");
+      Assert.assertFalse(actual);
+
+      actual = NumberValidator.isNumber("4e+");
+      Assert.assertFalse(actual);
+
+      actual = NumberValidator.isNumber("2e1.0");
+      Assert.assertFalse(actual);
+
+      actual = NumberValidator.isNumber("-2e+1.0");
+      Assert.assertFalse(actual);
+
+      actual = NumberValidator.isNumber("-2E+1");
+      Assert.assertTrue(actual);
+
+      actual = NumberValidator.isNumber("e3");
+      Assert.assertFalse(actual);
+
+      actual = NumberValidator.isNumber("-123.456e789");
+      Assert.assertTrue(actual);
+
+      actual = NumberValidator.isNumber("7e69e");
        Assert.assertFalse(actual);
-
-       actual = NumberValidator.isNumber("2e1.0");
-       Assert.assertFalse(actual);
-
-       actual = NumberValidator.isNumber("-2e+1.0");
-       Assert.assertFalse(actual);
-
-       actual = NumberValidator.isNumber("-2E+1");
-       Assert.assertTrue(actual);
-
-       actual = NumberValidator.isNumber("e3");
-       Assert.assertFalse(actual);
-
-       actual = NumberValidator.isNumber("-123.456e789");
-       Assert.assertTrue(actual);
     }
 }
