@@ -1,6 +1,6 @@
 public class NumberValidator {
     public static boolean isNumber(String s) {
-        if (s.isEmpty() || (s.length() == 1 && !(s.charAt(0) >= '0' && s.charAt(0) <= '9'))) {
+        if (s.isEmpty() || (s.length() == 1 && !Character.isDigit(s.charAt(0)))) {
             return false;
         }
         boolean containsDot = false;
