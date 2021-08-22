@@ -11,7 +11,8 @@ public class NumberValidator {
                 case '+':
                 case '-':
                     if (i == 0) continue;
-                    if (!(s.charAt(i - 1) == 'e' || s.charAt(i - 1) == 'E') || i == s.length() - 1) return false;
+                    char previous = s.charAt(i - 1);
+                    if (!(Character.toLowerCase(previous) == 'e') || i == s.length() - 1) return false;
                     break;
                 case '.':
                     if (isexp || containsDot) return false;
