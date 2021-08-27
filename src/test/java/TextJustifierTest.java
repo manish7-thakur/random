@@ -16,6 +16,10 @@ public class TextJustifierTest {
        expected = Arrays.asList("what ");
        Assert.assertEquals(expected, actual);
 
+       actual = TextJustifier.fullJustify(new String[]{"what"}, 10);
+       expected = Arrays.asList("what      ");
+       Assert.assertEquals(expected, actual);
+
        actual = TextJustifier.fullJustify(new String[]{"what", "is"}, 7);
        expected = Arrays.asList("what is");
        Assert.assertEquals(expected, actual);
@@ -26,6 +30,10 @@ public class TextJustifierTest {
 
        actual = TextJustifier.fullJustify(new String[]{"what", "is", "the"}, 6);
        expected = Arrays.asList("what  ", "is the");
+       Assert.assertEquals(expected, actual);
+
+       actual = TextJustifier.fullJustify(new String[]{"what", "is", "the"}, 7);
+       expected = Arrays.asList("what is", "the    ");
        Assert.assertEquals(expected, actual);
     }
 }
