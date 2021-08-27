@@ -28,16 +28,18 @@ public class TextJustifier {
                     break;
                 }
                 curr += words[j].length();
-                space++;
                 if (j + 1 == words.length) {
                     String str = "";
+                    int exSpc = maxWidth - (curr + space);
                     for (int k = i; k <= j; k++) {
-                        if (k == j) str = str + words[k];
-                        else str = str + words[k] + " ";
+                      if(k == i) str = String.format("%-"+(words[k].length() + exSpc) + "s", words[k]);
+                      else  if (k == j) str = str + words[k];
+                        if(k != j) str = str + " ";
                     }
                     res.add(str);
                     i = j + 1;
                 }
+                space++;
             }
             curr = 0;
             space = 0;
