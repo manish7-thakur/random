@@ -4,7 +4,7 @@ public class TextJustifier {
     static public List<String> fullJustify(String[] words, int maxWidth) {
         List<String> res = new ArrayList<>();
         int curr = 0;
-        int i = 0, j = 0;
+        int i = 0, j;
         int space = 0;
         while (i < words.length) {
             for (j = i; j < words.length; j++) {
@@ -18,24 +18,16 @@ public class TextJustifier {
                     i = j + 1;
                     break;
                 } else if (curr + words[j].length() + space > maxWidth) {
-                    String str = "";
-                    for (int k = i; k <= j; k++) {
-                        if (k == j) str = str + words[k];
-                        else str = str + words[k] + " ";
-                    }
+                    int exSpc = maxWidth - (curr + space - 1);
+                    String str = justify(i, j - 1, maxWidth, exSpc, words);
                     res.add(str);
                     i = j;
                     break;
                 }
                 curr += words[j].length();
                 if (j + 1 == words.length) {
-                    String str = "";
                     int exSpc = maxWidth - (curr + space);
-                    for (int k = i; k <= j; k++) {
-                      if(k == i) str = String.format("%-"+(words[k].length() + exSpc) + "s", words[k]);
-                      else  if (k == j) str = str + words[k];
-                        if(k != j) str = str + " ";
-                    }
+                    String str = justify(i, j, maxWidth, exSpc, words);
                     res.add(str);
                     i = j + 1;
                 }
@@ -45,5 +37,18 @@ public class TextJustifier {
             space = 0;
         }
         return res;
+    }
+
+    static String justify(int i, int j, int maxWidth, int exSpc, String[] words) {
+      if(i == j) {
+       return String.format("%-"+(words[i].length() + exSpc) + "s", words[i]);
+      }
+      String str = "";
+      for (int k = i; k <= j; k++) {
+        if(k == i) str = String.format("%-"+(words[k].length() + exSpc) + "s", words[k]);
+        else  if (k == j) str = str + words[k];
+          if(k != j) str = str + " ";
+      }
+      return str;
     }
 }

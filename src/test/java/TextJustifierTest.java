@@ -5,16 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TextJustifierTest {
-  // @Test
-  // public void justifyStringFromIndex() {
-  //   String actual = TextJustifier.justify(0, 0, new String[] {"what"}, 5);
-  //   String expected = "what ";
-  //   Assert.assertEquals(expected, actual);
-  // }
+
     @Test
     public void justifyTest() {
-       List<String> actual = TextJustifier.fullJustify(new String[]{"what"}, 5);
-       List<String> expected = Arrays.asList("what ");
+      List<String> actual = TextJustifier.fullJustify(new String[]{"what"}, 4);
+      List<String> expected = Arrays.asList("what");
+      Assert.assertEquals(expected, actual);
+
+       actual = TextJustifier.fullJustify(new String[]{"what"}, 5);
+       expected = Arrays.asList("what ");
        Assert.assertEquals(expected, actual);
 
        actual = TextJustifier.fullJustify(new String[]{"what", "is"}, 7);
@@ -24,5 +23,9 @@ public class TextJustifierTest {
         actual = TextJustifier.fullJustify(new String[]{"what", "is"}, 8);
         expected = Arrays.asList("what  is");
         Assert.assertEquals(expected, actual);
+
+       actual = TextJustifier.fullJustify(new String[]{"what", "is", "the"}, 6);
+       expected = Arrays.asList("what  ", "is the");
+       Assert.assertEquals(expected, actual);
     }
 }
