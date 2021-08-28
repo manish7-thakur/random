@@ -9,11 +9,7 @@ public class TextJustifier {
         while (i < words.length) {
             for (j = i; j < words.length; j++) {
                 if (curr + words[j].length() + spaceCount == maxWidth) {
-                    String str = "";
-                    for (int k = i; k <= j; k++) {
-                        if (k == j) str = str + words[k];
-                        else str = str + words[k] + " ";
-                    }
+                    String str = justify(i, j, maxWidth, 1, 0, words);
                     res.add(str);
                     i = j + 1;
                     break;
