@@ -40,9 +40,9 @@ public class TextJustifier {
     }
 
     static String justify(int i, int j, int maxWidth, int exSpc, String[] words) {
-      if(i == j) {
-       return String.format("%-"+(words[i].length() + exSpc) + "s", words[i]);
-      }
+      // if(i == j) {
+      //  return String.format("%-"+(words[i].length() + exSpc) + "s", words[i]);
+      // }
       String str = "";
       for (int k = i; k <= j; k++) {
         if(k == i) str = String.format("%-"+(words[k].length() + exSpc) + "s", words[k]);
