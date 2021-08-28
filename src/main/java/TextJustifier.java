@@ -9,12 +9,14 @@ public class TextJustifier {
         while (i < words.length) {
             for (j = i; j < words.length; j++) {
                 if (curr + words[j].length() + spaceCount == maxWidth) {
-                    String str = justify(i, j, maxWidth, 1, 0, words);
+                    int cSpc = 0;
+                    if(spaceCount != 0) cSpc = 1;
+                    String str = justify(i, j, maxWidth, cSpc, 0, words);
                     res.add(str);
                     i = j + 1;
                     break;
                 } else if (curr + words[j].length() + spaceCount > maxWidth) {
-                    int spaces = maxWidth - (curr);
+                    int spaces = maxWidth - curr;
                     int cSpc = spaceCount == 0 ? 0:  spaces / spaceCount;
                     int exSpc = spaceCount == 0 ? spaces: spaces % spaceCount;
                     String str = justify(i, j - 1, maxWidth, cSpc, exSpc, words);
@@ -24,7 +26,7 @@ public class TextJustifier {
                 }
                 curr += words[j].length();
                 if (j + 1 == words.length) {
-                    int spaces = (maxWidth - (curr));
+                    int spaces = maxWidth - curr;
                     int cSpc = spaceCount == 0 ? 0:  spaces / spaceCount;
                     int exSpc = spaceCount == 0 ? spaces: spaces % spaceCount;
                     String str = justify(i, j, maxWidth, cSpc, exSpc, words);
@@ -40,6 +42,7 @@ public class TextJustifier {
     }
 
     static String justify(int i, int j, int maxWidth, int cSpc, int exSpc, String[] words) {
+      if(i == j) return String.format("%-"+(words[i].length() + exSpc + cSpc) + "s", words[i]);
       String str = "";
       for (int k = i; k <= j; k++) {
         if(k == i) str = String.format("%-"+(words[k].length() + exSpc) + "s", words[k]);
