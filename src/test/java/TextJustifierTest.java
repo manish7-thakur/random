@@ -39,5 +39,9 @@ public class TextJustifierTest {
        actual = TextJustifier.fullJustify(new String[]{"what", "is", "the"}, 11);
        expected = Arrays.asList("what is the");
        Assert.assertEquals(expected, actual);
+
+       actual = TextJustifier.fullJustify(new String[]{"This", "is", "an", "example", "of", "text", "justification."}, 16);
+       expected = Arrays.asList("This    is    an", "example  of text", "justification.  ");
+       Assert.assertEquals(expected, actual);
     }
 }
