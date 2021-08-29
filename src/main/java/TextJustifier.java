@@ -32,17 +32,6 @@ public class TextJustifier {
         return res;
     }
 
-    static String justify(int i, int j, int maxWidth, int cSpc, int exSpc, String[] words) {
-        if (i == j) return String.format("%-" + (words[i].length() + exSpc + cSpc) + "s", words[i]);
-        String str = "";
-        for (int k = i; k <= j; k++) {
-            if (k == i) str = String.format("%-" + (words[k].length() + exSpc) + "s", words[k]);
-            else str = str + words[k];
-            if (k != j) str = str + String.format("%" + cSpc + "s", "");
-        }
-        return str;
-    }
-
     static String justify(int i, int j, int maxWidth, int textLen, String[] words) {
       if(i == j) {
         return String.format("%-" + maxWidth + "s", words[i]);
