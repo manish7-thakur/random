@@ -3,13 +3,13 @@ import java.util.List;
 
 public class TextJustifier {
     static public List<String> fullJustify(String[] words, int maxWidth) {
-        List<String> res = new ArrayList<>();
+        List<String> res = new ArrayList<>(words.length);
         int curr = 0;
         int i = 0, j;
         while (i < words.length) {
             for (j = i; j < words.length; j++) {
               int textLen = curr + words[j].length();
-                if (curr + words[j].length() + j - i == maxWidth) {
+                if (textLen + j - i == maxWidth) {
                     String str = justify(i, j, maxWidth, textLen, words, false);
                     res.add(str);
                     i = j + 1;
