@@ -36,28 +36,29 @@ public class TextJustifier {
       if(i == j) {
         return String.format("%-" + maxWidth + "s", words[i]);
       }
-      StringBuilder sb = new StringBuilder();
+      StringBuilder sb;
+      int exSpc = 0;
+      int cSpc = 0;
       if(lastLine) {
-        for(int k = i; k <= j; k++) {
-          sb.append(words[k]);
-          if(k != j) {
-            sb.append(" ");
-          }
-        }
-        if(maxWidth > sb.length()) sb.append(String.format("%-" + (maxWidth - sb.length()) + "s", ""));
-        return sb.toString();
+        cSpc = 1;
+        exSpc = maxWidth - (textLen + j - i);
+        sb = new StringBuilder(String.format("%-" + (words[i].length() + cSpc) + "s", words[i]));
+      } else {
+        int spaceCount = j - i;
+        int spaces = maxWidth - textLen;
+        exSpc = spaces % spaceCount;
+        cSpc = spaces / spaceCount;
+        sb = new StringBuilder(String.format("%-" + (words[i].length() + exSpc + cSpc) + "s", words[i]));
       }
-      int spaceCount = j - i;
-      int spaces = maxWidth - textLen;
-      int exSpc = spaces % spaceCount;
-      int cSpc = spaces / spaceCount;
-      sb = new StringBuilder(String.format("%-" + (words[i].length() + exSpc + cSpc) + "s", words[i]));
       String cSpcStr = String.format("%-" + cSpc + "s", "");
       for(int k = i + 1; k <= j; k++) {
         sb.append(words[k]);
         if(k != j) {
           sb.append(cSpcStr);
         }
+      }
+      if(lastLine && exSpc > 0) {
+        sb.append(String.format("%-" + (maxWidth - sb.length()) + "s", ""));
       }
       return sb.toString();
     }
