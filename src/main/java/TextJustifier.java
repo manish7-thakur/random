@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TextJustifier {
     static public List<String> fullJustify(String[] words, int maxWidth) {
@@ -10,15 +11,15 @@ public class TextJustifier {
             for (j = i; j < words.length; j++) {
                 if (curr + words[j].length() + spaceCount == maxWidth) {
                     int cSpc = 0;
-                    if(spaceCount != 0) cSpc = 1;
+                    if (spaceCount != 0) cSpc = 1;
                     String str = justify(i, j, maxWidth, cSpc, 0, words);
                     res.add(str);
                     i = j + 1;
                     break;
                 } else if (curr + words[j].length() + spaceCount > maxWidth) {
                     int spaces = maxWidth - curr;
-                    int cSpc = spaceCount == 0 ? 0:  spaces / spaceCount;
-                    int exSpc = spaceCount == 0 ? spaces: spaces % spaceCount;
+                    int cSpc = spaceCount == 0 ? 0 : spaces / spaceCount;
+                    int exSpc = spaceCount == 0 ? spaces : spaces % spaceCount;
                     String str = justify(i, j - 1, maxWidth, cSpc, exSpc, words);
                     res.add(str);
                     i = j;
@@ -27,8 +28,8 @@ public class TextJustifier {
                 curr += words[j].length();
                 if (j + 1 == words.length) {
                     int spaces = maxWidth - curr;
-                    int cSpc = spaceCount == 0 ? 0:  spaces / spaceCount;
-                    int exSpc = spaceCount == 0 ? spaces: spaces % spaceCount;
+                    int cSpc = spaceCount == 0 ? 0 : spaces / spaceCount;
+                    int exSpc = spaceCount == 0 ? spaces : spaces % spaceCount;
                     String str = justify(i, j, maxWidth, cSpc, exSpc, words);
                     res.add(str);
                     i = j + 1;
@@ -42,12 +43,30 @@ public class TextJustifier {
     }
 
     static String justify(int i, int j, int maxWidth, int cSpc, int exSpc, String[] words) {
-      if(i == j) return String.format("%-"+(words[i].length() + exSpc + cSpc) + "s", words[i]);
-      String str = "";
-      for (int k = i; k <= j; k++) {
-        if(k == i) str = String.format("%-"+(words[k].length() + exSpc) + "s", words[k]);
-        else str = str + words[k];
-          if(k != j) str = str + String.format("%"+ cSpc + "s", "");
+        if (i == j) return String.format("%-" + (words[i].length() + exSpc + cSpc) + "s", words[i]);
+        String str = "";
+        for (int k = i; k <= j; k++) {
+            if (k == i) str = String.format("%-" + (words[k].length() + exSpc) + "s", words[k]);
+            else str = str + words[k];
+            if (k != j) str = str + String.format("%" + cSpc + "s", "");
+        }
+        return str;
+    }
+
+    static String justify(int i, int j, int maxWidth, int textLen, String[] words) {
+      if(i == j) {
+        return String.format("%-" + maxWidth + "s", words[i]);
+      }
+      int spaceCount = j - i;
+      int spaces = maxWidth - textLen;
+      int exSpc = spaces % spaceCount;
+      int cSpc = spaces / spaceCount;
+      String str  = String.format("%-" + (words[i].length() + exSpc + cSpc) + "s", words[i]);
+      for(int k = i + 1; k <= j; k++) {
+        str += words[k];
+        if(k != j) {
+          str += String.format("%-" + cSpc + "s", "");
+        }
       }
       return str;
     }
