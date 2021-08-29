@@ -59,8 +59,20 @@ public class TextJustifierTest {
     expected = "what  is the time";
     Assert.assertEquals(expected, actual);
 
+    actual = TextJustifier.justify(0 , 3, 18, 13, new String[] {"what", "is", "the", "time"}, false);
+    expected = "what  is  the time";
+    Assert.assertEquals(expected, actual);
+
     actual = TextJustifier.justify(0 , 3, 19, 13, new String[] {"what", "is", "the", "time"}, false);
     expected = "what  is  the  time";
+    Assert.assertEquals(expected, actual);
+
+    actual = TextJustifier.justify(0 , 3, 20, 13, new String[] {"what", "is", "the", "time"}, false);
+    expected = "what   is  the  time";
+    Assert.assertEquals(expected, actual);
+
+    actual = TextJustifier.justify(0 , 3, 21, 13, new String[] {"what", "is", "the", "time"}, false);
+    expected = "what   is   the  time";
     Assert.assertEquals(expected, actual);
 
     actual = TextJustifier.justify(0 , 3, 19, 13, new String[] {"what", "is", "the", "time"}, true);
@@ -108,6 +120,14 @@ public class TextJustifierTest {
 
       actual = TextJustifier.fullJustify(new String[]{"This", "is", "an", "example", "of", "text", "justification."}, 16);
       expected = Arrays.asList("This    is    an", "example  of text", "justification.  ");
+      Assert.assertEquals(expected, actual);
+
+      actual = TextJustifier.fullJustify(new String[]{"What","must","be","acknowledgment","shall","be"}, 16);
+      expected = Arrays.asList("What   must   be", "acknowledgment  ", "shall be        ");
+      Assert.assertEquals(expected, actual);
+
+      actual = TextJustifier.fullJustify(new String[]{"Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art","is","everything","else","we","do"}, 20);
+      expected = Arrays.asList("Science  is  what we", "understand      well", "enough to explain to", "a  computer.  Art is", "everything  else  we", "do                  ");
       Assert.assertEquals(expected, actual);
   }
 }

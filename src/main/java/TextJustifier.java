@@ -42,16 +42,19 @@ public class TextJustifier {
       if(lastLine) {
         cSpc = 1;
         exSpc = maxWidth - (textLen + j - i);
-        sb = new StringBuilder(String.format("%-" + (words[i].length() + cSpc) + "s", words[i]));
       } else {
         int spaceCount = j - i;
         int spaces = maxWidth - textLen;
         exSpc = spaces % spaceCount;
         cSpc = spaces / spaceCount;
-        sb = new StringBuilder(String.format("%-" + (words[i].length() + exSpc + cSpc) + "s", words[i]));
       }
+      sb = new StringBuilder(String.format("%-" + (words[i].length() + cSpc) + "s", words[i]));
       String cSpcStr = String.format("%-" + cSpc + "s", "");
       for(int k = i + 1; k <= j; k++) {
+        if(!lastLine && exSpc > 0) {
+          sb.append(" ");
+          exSpc--;
+        }
         sb.append(words[k]);
         if(k != j) {
           sb.append(cSpcStr);
