@@ -6,7 +6,7 @@ import java.util.List;
 
 public class TextJustifierTest {
   @Test
-  public void justify() {
+  public void justifyString() {
     String actual = TextJustifier.justify(0 , 0, 4, 4, new String[] {"what"});
     String expected = "what";
     Assert.assertEquals(expected, actual);
@@ -53,7 +53,7 @@ public class TextJustifierTest {
   }
 
   @Test
-  public void justifyTest() {
+  public void justifyText() {
       List<String> actual = TextJustifier.fullJustify(new String[]{"what"}, 4);
       List<String> expected = Arrays.asList("what");
       Assert.assertEquals(expected, actual);
