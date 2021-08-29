@@ -3,10 +3,10 @@ import java.util.List;
 
 public class TextJustifier {
     static public List<String> fullJustify(String[] words, int maxWidth) {
-        List<String> res = new ArrayList<>(words.length);
+        List<String> res = new ArrayList<>();
         int curr = 0;
         int i = 0, j;
-            for (j = i; j < words.length; j++) {
+            for (j = 0; j < words.length; j++) {
                if (curr + words[j].length() + j - i > maxWidth) {
                     String str = justify(i, j - 1, maxWidth, curr, words, false);
                     res.add(str);
