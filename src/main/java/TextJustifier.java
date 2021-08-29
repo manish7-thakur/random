@@ -8,13 +8,7 @@ public class TextJustifier {
         int i = 0, j;
         while (i < words.length) {
             for (j = i; j < words.length; j++) {
-              int textLen = curr + words[j].length();
-                if (textLen + j - i == maxWidth) {
-                    String str = justify(i, j, maxWidth, textLen, words, false);
-                    res.add(str);
-                    i = j + 1;
-                    break;
-                } else if (textLen + j - i > maxWidth) {
+               if (curr + words[j].length() + j - i > maxWidth) {
                     String str = justify(i, j - 1, maxWidth, curr, words, false);
                     res.add(str);
                     i = j;
