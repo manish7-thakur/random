@@ -6,23 +6,17 @@ public class TextJustifier {
         List<String> res = new ArrayList<>(words.length);
         int curr = 0;
         int i = 0, j;
-        while (i < words.length) {
             for (j = i; j < words.length; j++) {
                if (curr + words[j].length() + j - i > maxWidth) {
                     String str = justify(i, j - 1, maxWidth, curr, words, false);
                     res.add(str);
                     i = j;
-                    break;
+                    curr = 0;
                 }
                 curr += words[j].length();
-                if (j + 1 == words.length) {
-                    String str = justify(i, j, maxWidth, curr, words, true);
-                    res.add(str);
-                    i = j + 1;
-                }
             }
-            curr = 0;
-        }
+            String str = justify(i, j - 1, maxWidth, curr, words, true);
+            res.add(str);
         return res;
     }
 
