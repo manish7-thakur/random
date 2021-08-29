@@ -21,10 +21,14 @@ public class TextJustifier {
     }
 
     static String justify(int i, int j, int maxWidth, int textLen, String[] words, boolean lastLine) {
-      if(i == j) {
-        return String.format("%-" + maxWidth + "s", words[i]);
-      }
       StringBuilder sb = new StringBuilder(maxWidth);
+      if(i == j) {
+        sb.append(words[i]);
+        for(int k = 0; k < maxWidth - textLen; k++) {
+          sb.append(' ');
+        }
+        return sb.toString();
+      }
       int exSpc;
       int cSpc;
       if(lastLine) {
@@ -36,8 +40,14 @@ public class TextJustifier {
         exSpc = spaces % spaceCount;
         cSpc = spaces / spaceCount;
       }
-      sb.append(String.format("%-" + (words[i].length() + cSpc) + "s", words[i]));
-      String cSpcStr = String.format("%-" + cSpc + "s", "");
+      StringBuilder spcB = new StringBuilder(cSpc);
+      for(int k = 0; k < cSpc; k++) {
+        spcB.append(' ');
+      }
+      //String cSpcStr = String.format("%-" + cSpc + "s", ""); Using lib method slowed the algo to 13 ms
+      String cSpcStr = spcB.toString();
+      sb.append(words[i]);
+      sb.append(cSpcStr);
       for(int k = i + 1; k <= j; k++) {
         if(!lastLine && exSpc > 0) {
           sb.append(" ");
@@ -49,7 +59,10 @@ public class TextJustifier {
         }
       }
       if(lastLine && exSpc > 0) {
-        sb.append(String.format("%-" + (maxWidth - sb.length()) + "s", ""));
+        int sp = maxWidth - sb.length();
+        for(int k = 0; k < sp; k++) {
+          sb.append(' ');
+        }
       }
       return sb.toString();
     }
