@@ -38,6 +38,18 @@ public class TextJustifierTest {
     actual = TextJustifier.justify(0 , 2, 14, 9, new String[] {"what", "is", "the"});
     expected = "what   is  the";
     Assert.assertEquals(expected, actual);
+
+    actual = TextJustifier.justify(0 , 3, 16, 13, new String[] {"what", "is", "the", "time"});
+    expected = "what is the time";
+    Assert.assertEquals(expected, actual);
+
+    actual = TextJustifier.justify(0 , 3, 17, 13, new String[] {"what", "is", "the", "time"});
+    expected = "what  is the time";
+    Assert.assertEquals(expected, actual);
+
+    actual = TextJustifier.justify(0 , 3, 19, 13, new String[] {"what", "is", "the", "time"});
+    expected = "what  is  the  time";
+    Assert.assertEquals(expected, actual);
   }
 
     @Test
