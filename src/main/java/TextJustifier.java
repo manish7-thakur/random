@@ -61,13 +61,14 @@ public class TextJustifier {
       int spaces = maxWidth - textLen;
       int exSpc = spaces % spaceCount;
       int cSpc = spaces / spaceCount;
-      String str  = String.format("%-" + (words[i].length() + exSpc + cSpc) + "s", words[i]);
+      StringBuilder sb = new StringBuilder(String.format("%-" + (words[i].length() + exSpc + cSpc) + "s", words[i]));
+      String cSpcStr = String.format("%-" + cSpc + "s", "");
       for(int k = i + 1; k <= j; k++) {
-        str += words[k];
+        sb.append(words[k]);
         if(k != j) {
-          str += String.format("%-" + cSpc + "s", "");
+          sb.append(cSpcStr);
         }
       }
-      return str;
+      return sb.toString();
     }
 }
