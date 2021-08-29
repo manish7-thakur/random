@@ -6,38 +6,28 @@ public class TextJustifier {
         List<String> res = new ArrayList<>();
         int curr = 0;
         int i = 0, j;
-        int spaceCount = 0;
         while (i < words.length) {
             for (j = i; j < words.length; j++) {
-                if (curr + words[j].length() + spaceCount == maxWidth) {
-                    int cSpc = 0;
-                    if (spaceCount != 0) cSpc = 1;
-                    String str = justify(i, j, maxWidth, cSpc, 0, words);
+              int textLen = curr + words[j].length();
+                if (curr + words[j].length() + j - i == maxWidth) {
+                    String str = justify(i, j, maxWidth, textLen, words);
                     res.add(str);
                     i = j + 1;
                     break;
-                } else if (curr + words[j].length() + spaceCount > maxWidth) {
-                    int spaces = maxWidth - curr;
-                    int cSpc = spaceCount == 0 ? 0 : spaces / spaceCount;
-                    int exSpc = spaceCount == 0 ? spaces : spaces % spaceCount;
-                    String str = justify(i, j - 1, maxWidth, cSpc, exSpc, words);
+                } else if (textLen + j - i > maxWidth) {
+                    String str = justify(i, j - 1, maxWidth, curr, words);
                     res.add(str);
                     i = j;
                     break;
                 }
                 curr += words[j].length();
                 if (j + 1 == words.length) {
-                    int spaces = maxWidth - curr;
-                    int cSpc = spaceCount == 0 ? 0 : spaces / spaceCount;
-                    int exSpc = spaceCount == 0 ? spaces : spaces % spaceCount;
-                    String str = justify(i, j, maxWidth, cSpc, exSpc, words);
+                    String str = justify(i, j, maxWidth, curr, words);
                     res.add(str);
                     i = j + 1;
                 }
-                spaceCount++;
             }
             curr = 0;
-            spaceCount = 0;
         }
         return res;
     }
