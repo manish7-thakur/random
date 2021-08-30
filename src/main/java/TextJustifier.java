@@ -61,14 +61,12 @@ public class TextJustifier {
         }
         //String cSpcStr = String.format("%-" + cSpc + "s", ""); Using lib method slowed the algo to 13 ms
         String cSpcStr = spcB.toString();
-        sb.append(words[i]);
-        sb.append(cSpcStr);
-        for (int k = i + 1; k <= j; k++) {
+        for (int k = i; k <= j; k++) {
+          sb.append(words[k]);
             if (exSpc > 0) {
                 sb.append(' ');
                 exSpc--;
             }
-            sb.append(words[k]);
             if (k != j) {
                 sb.append(cSpcStr);
             }
