@@ -22,13 +22,6 @@ public class TextJustifier {
 
     static String leftJustify(int i, int j, int maxWidth, int textLen, String[] words) {
         StringBuilder sb = new StringBuilder(maxWidth);
-        if (i == j) {
-            sb.append(words[i]);
-            for (int k = 0; k < maxWidth - textLen; k++) {
-                sb.append(' ');
-            }
-            return sb.toString();
-        }
         for (int k = i; k <= j; k++) {
             sb.append(words[k]);
             if (k != j) {
