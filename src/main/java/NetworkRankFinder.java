@@ -7,7 +7,7 @@ public class NetworkRankFinder {
     for(int i = 0; i < roads.length; i++) {
       nMap[roads[i][0]]++;
       nMap[roads[i][1]]++;
-      pairs.add(roads[i][0] + "" + roads[i][1]);
+      pairs.add(getKey(roads[i][0], roads[i][1]));
     }
 
     int max1 = Integer.MIN_VALUE;
@@ -23,16 +23,23 @@ public class NetworkRankFinder {
       } else if(nMap[i] > max2) {
         max2 = nMap[i];
         r2 = i;
-      } else if(nMap[i] == max1 && !pairs.contains(i+""+r2) &&  !pairs.contains(r2 + "" + i)) {
+      } else if(nMap[i] == max1 && !pairs.contains(getKey(i, r2))) {
         max1 = nMap[i];
         r1 = i;
-      } else if(nMap[i] == max2 && !pairs.contains(i+""+r1) &&  !pairs.contains(r1 + "" + i)) {
+      } else if(nMap[i] == max2 && !pairs.contains(getKey(i, r1))) {
         max2 = nMap[i];
         r2 = i;
       }
     }
-    if(pairs.contains(r1 + "" + r2) || pairs.contains(r2 + "" +r1))
+    if(pairs.contains(getKey(r1, r2)))
     return max1 + max2 - 1;
     else return max1 + max2;
+  }
+
+  static String getKey(int i , int j) {
+    if(i < j) {
+      return i + "" + j;
+    }
+    return j + "" + i;
   }
 }
