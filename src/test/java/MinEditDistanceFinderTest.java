@@ -34,5 +34,21 @@ public class MinEditDistanceFinderTest {
     actual = MinEditDistanceFinder.minDistance("cab", "cbb");
     expected = 1;
     Assert.assertEquals(expected, actual);
+
+    actual = MinEditDistanceFinder.minDistance("cab", "cbb");
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = MinEditDistanceFinder.minDistance("ccagb", "ccabb");
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = MinEditDistanceFinder.minDistance("horse", "ros");
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = MinEditDistanceFinder.minDistance("intention", "execution");
+    expected = 5;
+    Assert.assertEquals(expected, actual);
   }
 }
