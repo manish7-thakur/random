@@ -50,5 +50,13 @@ public class MinEditDistanceFinderTest {
     actual = MinEditDistanceFinder.minDistance("intention", "execution");
     expected = 5;
     Assert.assertEquals(expected, actual);
+
+    actual = MinEditDistanceFinder.minDistance("intention", "intention");
+    expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = MinEditDistanceFinder.minDistance("dinitrophenylhydrazine", "benzalphenylhydrazone");
+    expected = 7;
+    Assert.assertEquals(expected, actual);
   }
 }
