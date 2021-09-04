@@ -14,7 +14,7 @@ import org.junit.Test;
 
 public class EditDistanceTest {
     @Test
-    public void singleCharStringEmptySource() {
+    public void editDistanceWithDefinedOpsCost() {
         char[][] path = new char[0][1];
         int actual = EditDistance.findNow("", "n", -1, 0, path);
         int expected = 2;//insert
@@ -72,7 +72,7 @@ public class EditDistanceTest {
     }
 
     @Test
-    public void opsSingleCharStringEmptySource() {
+    public void editDistanceWithDefinedOps() {
         String actual = EditDistance.find("", "n", -1, 0);
         String expected = "i";//insert
         Assert.assertEquals(expected, actual);
