@@ -16,7 +16,7 @@ public class MinEditDistanceFinder {
     if(word1.charAt(l1) == word2.charAt(l2)) {
       return find(word1, word2, l1 - 1, l2 - 1);
     }
-    int min = Math.min(1 + find(word1, word2, l1 - 1, l2), 1 + find(word1, word2, l1, l2 - 1));
-    return Math.min(1 + find(word1, word2, l1 - 1, l2 - 1), min);
+    int min = Math.min(1 + find(word1, word2, l1 - 1, l2)/*delete*/, 1 + find(word1, word2, l1, l2 - 1)/*insert*/);
+    return Math.min(1 + find(word1, word2, l1 - 1, l2 - 1)/*replace*/, min);
   }
 }
