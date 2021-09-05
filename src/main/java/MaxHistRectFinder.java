@@ -9,7 +9,7 @@ public class MaxHistRectFinder {
         int i;
         for (i = 0; i < padArr.length; i++) {
             int nextIdx = i;
-            while (!stack.isEmpty() && padArr[stack.peek()[0]] > padArr[i]) {
+            while (!stack.isEmpty() && stack.peek()[1] > padArr[i]) {
                 Integer[] p = stack.pop();
                 res = Math.max(res, (i - p[0]) * p[1]);
                 nextIdx = p[0];
