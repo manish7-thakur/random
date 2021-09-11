@@ -12,10 +12,13 @@ public class ScrambleStringTest {
     actual = ScrambleString.isScramble("aa", "ba");
     Assert.assertFalse(actual);
 
-    actual = ScrambleString.isScramble("aa", "ba");
-    Assert.assertFalse(actual);
+    actual = ScrambleString.isScramble("abc", "bca");
+    Assert.assertTrue(actual);
 
     actual = ScrambleString.isScramble("abc", "bca");
+    Assert.assertTrue(actual);
+
+    actual = ScrambleString.isScramble("abcd", "cdba");
     Assert.assertTrue(actual);
   }
 
