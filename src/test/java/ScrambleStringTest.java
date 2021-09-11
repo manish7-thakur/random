@@ -15,11 +15,17 @@ public class ScrambleStringTest {
     actual = ScrambleString.isScramble("abc", "bca");
     Assert.assertTrue(actual);
 
-    actual = ScrambleString.isScramble("abc", "bca");
-    Assert.assertTrue(actual);
-
     actual = ScrambleString.isScramble("abcd", "cdba");
     Assert.assertTrue(actual);
+
+    actual = ScrambleString.isScramble("abcd", "acdb");
+    Assert.assertTrue(actual);
+
+    actual = ScrambleString.isScramble("great", "rgeat");
+    Assert.assertTrue(actual);
+
+    actual = ScrambleString.isScramble("abcde", "caebd");
+    Assert.assertFalse(actual);
   }
 
 }
