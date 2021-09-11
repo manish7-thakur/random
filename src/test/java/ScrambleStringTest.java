@@ -6,6 +6,9 @@ public class ScrambleStringTest {
     boolean actual = ScrambleString.isScramble("a", "a");
     Assert.assertTrue(actual);
 
+    actual = ScrambleString.isScramble("a", "ab");
+    Assert.assertFalse(actual);
+
     actual = ScrambleString.isScramble("ab", "ba");
     Assert.assertTrue(actual);
 
