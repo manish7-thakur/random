@@ -1,10 +1,10 @@
 import java.util.*;
 
 public class ScrambleString {
+  static Map<String, Boolean> mem = new HashMap<>();
+
   static public boolean isScramble(String s1, String s2) {
-    Map<String, Boolean> mem = new HashMap<>();
-    boolean scramble = isScramble(s1, s2, mem);
-    return scramble;
+    return isScramble(s1, s2, mem);
   }
 
   static public boolean isScramble(String s1, String s2, Map<String, Boolean> mem) {
@@ -21,7 +21,7 @@ public class ScrambleString {
         mem.put(key, true);
         return true;
       }
-      boolean flipCase = isScramble(s1.substring(0, i), s2.substring( n - i)) && isScramble(s1.substring(i), s2.substring(0, n - i));
+      boolean flipCase = isScramble(s1.substring(0, i), s2.substring(n - i)) && isScramble(s1.substring(i), s2.substring(0, n - i));
       if(flipCase) {
         mem.put(key, true);
         return true;
