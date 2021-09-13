@@ -21,6 +21,7 @@ public class ScrambleString {
         mem.put(key, true);
         return true;
       }
+      // great -> (divide) g / reat -> (swap) -> reat / g -> (compare) g && t && reat - rgea
       boolean flipCase = isScramble(s1.substring(0, i), s2.substring(n - i)) && isScramble(s1.substring(i), s2.substring(0, n - i));
       if(flipCase) {
         mem.put(key, true);
