@@ -43,5 +43,9 @@ public class ExpressionEvaluatorTest {
     expected = 2;
     Assert.assertEquals(expected, actual);
 
+    ctual = ExpressionEvaluator.evaluate("23-2+1-42+32");
+    expected = 12;
+    Assert.assertEquals(expected, actual);
+
   }
 }
