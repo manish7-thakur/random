@@ -1,9 +1,9 @@
 import java.util.*;
 
 public class ExpressionEvaluator {
-  public static int evaluate(String exp) {
+  public static double evaluate(String exp) {
     Stack<Character> opStack = new Stack<>();
-    Stack<Integer> nStack = new Stack<>();
+    Stack<Double> nStack = new Stack<>();
     Set<Character> ops = new HashSet<>();
     ops.add('+');
     ops.add('-');
@@ -14,7 +14,7 @@ public class ExpressionEvaluator {
     while(!ops.contains(exp.charAt(i))) {
       i++;
     }
-    Integer num = Integer.parseInt(exp.substring(j, i));
+    double num = Integer.parseInt(exp.substring(j, i));
     nStack.push(num);
     while(i < exp.length()) {
       char c = exp.charAt(i);
@@ -22,7 +22,7 @@ public class ExpressionEvaluator {
       while(i < exp.length() && !ops.contains(exp.charAt(i))) {
         i++;
       }
-      num = Integer.parseInt(exp.substring(j, i));
+      num = Double.parseDouble(exp.substring(j, i));
       switch (c) {
         case '*' :
           nStack.push(num * nStack.pop());
@@ -39,8 +39,8 @@ public class ExpressionEvaluator {
     }
     while(!opStack.isEmpty()) {
       char op = opStack.pop();
-      int opd1 = nStack.pop();
-      int opd2 = nStack.pop();
+      double opd1 = nStack.pop();
+      double opd2 = nStack.pop();
       if(op == '+') {
         if(!opStack.isEmpty() && opStack.peek() == '-') nStack.push(opd2 - opd1);
          else nStack.push(opd1 + opd2);
