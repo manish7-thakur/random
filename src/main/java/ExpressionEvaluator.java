@@ -41,10 +41,12 @@ public class ExpressionEvaluator {
       char op = opStack.pop();
       int opd1 = nStack.pop();
       int opd2 = nStack.pop();
-      if(op == '+' || (!opStack.isEmpty() && opStack.peek() == '-')) {
-        nStack.push(opd1 + opd2);
+      if(op == '+') {
+        if(!opStack.isEmpty() && opStack.peek() == '-') nStack.push(opd2 - opd1);
+         else nStack.push(opd1 + opd2);
       } else {
-        nStack.push(opd2 - opd1);
+        if(!opStack.isEmpty() && opStack.peek() == '-') nStack.push(opd2 + opd1);
+        else nStack.push(opd2 - opd1);
       }
     }
     return nStack.pop();
