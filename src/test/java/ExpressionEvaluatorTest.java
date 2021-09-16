@@ -11,6 +11,18 @@ public class ExpressionEvaluatorTest {
     expected = -1;
     Assert.assertEquals(expected, actual, 0.5);
 
+    actual = ExpressionEvaluator.evaluate("3-2+1");
+    expected = 2;
+    Assert.assertEquals(expected, actual, 0.5);
+
+    actual = ExpressionEvaluator.evaluate("43-34-12");
+    expected = -3;
+    Assert.assertEquals(expected, actual, 0.5);
+
+    actual = ExpressionEvaluator.evaluate("23-2+1-42+32");
+    expected = 12;
+    Assert.assertEquals(expected, actual, 0.5);
+
     actual = ExpressionEvaluator.evaluate("23*321");
     expected = 7383;
     Assert.assertEquals(expected, actual, 0.5);
@@ -31,22 +43,6 @@ public class ExpressionEvaluatorTest {
     expected = 594;
     Assert.assertEquals(expected, actual, 0.5);
 
-    actual = ExpressionEvaluator.evaluate("43-34-12");
-    expected = -3;
-    Assert.assertEquals(expected, actual, 0.5);
-
-    actual = ExpressionEvaluator.evaluate("43-34-12");
-    expected = -3;
-    Assert.assertEquals(expected, actual, 0.5);
-
-    actual = ExpressionEvaluator.evaluate("3-2+1");
-    expected = 2;
-    Assert.assertEquals(expected, actual, 0.5);
-
-    actual = ExpressionEvaluator.evaluate("23-2+1-42+32");
-    expected = 12;
-    Assert.assertEquals(expected, actual, 0.5);
-
     actual = ExpressionEvaluator.evaluate("367/35*24");
     expected = 251.65;
     Assert.assertEquals(expected, actual, 0.5);
@@ -58,6 +54,5 @@ public class ExpressionEvaluatorTest {
     actual = ExpressionEvaluator.evaluate("54*44-4*453-367/35*24+34-572*322/34-25+28");
     expected = -5067.83;
     Assert.assertEquals(expected, actual, 0.5);
-
   }
 }
