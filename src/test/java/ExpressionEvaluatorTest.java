@@ -31,8 +31,8 @@ public class ExpressionEvaluatorTest {
     expected = 594;
     Assert.assertEquals(expected, actual);
 
-    actual = ExpressionEvaluator.evaluate("54*44-4*453-367/35*24+34-572*322/34-25+28");
-    expected = -5067;
+    actual = ExpressionEvaluator.evaluate("43-34-12");
+    expected = -3;
     Assert.assertEquals(expected, actual);
 
   }

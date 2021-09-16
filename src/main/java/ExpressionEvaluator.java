@@ -41,7 +41,7 @@ public class ExpressionEvaluator {
       char op = opStack.pop();
       int opd1 = nStack.pop();
       int opd2 = nStack.pop();
-      if(op == '+') {
+      if(op == '+' || (!opStack.isEmpty() && opStack.peek() == '-')) {
         nStack.push(opd1 + opd2);
       } else {
         nStack.push(opd2 - opd1);
