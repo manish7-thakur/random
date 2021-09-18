@@ -18,7 +18,7 @@ public class StringDecoder {
         }
         stack.pop();
         String repeat = b.toString();
-        while(count - 1 > 0) {
+        while(count > 1) {
           b.append(repeat);
           count--;
         }
