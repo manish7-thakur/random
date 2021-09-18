@@ -14,7 +14,7 @@ public class StringDecoder {
         i--;
       } else if(c == '[') {
         int j = i--;
-        while(i >= 0 && Character.isDigit(s.charAt(i))) {
+        while(i >= 0 && s.charAt(i) >= '0' && s.charAt(i) <= '9') {
           i--;
         }
         int count = Integer.parseInt(s.substring(i + 1, j));
