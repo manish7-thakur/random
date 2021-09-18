@@ -14,7 +14,7 @@ public class StringDecoder {
       if(c == ']') {
         stack.push(b.toString());
         b.setLength(0);
-        stack.push("" + c);
+        stack.push(String.valueOf(c));
         i--;
       } else if(c == '[') {
         int j = i--;
