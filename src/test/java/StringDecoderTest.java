@@ -23,5 +23,17 @@ public class StringDecoderTest {
     expected = "sfhsfhabab";
     Assert.assertEquals(expected, actual);
 
+    actual = StringDecoder.decode("2[sfh2[ab]]");
+    expected = "sfhababsfhabab";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringDecoder.decode("2[a3[d]b]");
+    expected = "adddbadddb";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringDecoder.decode("2[sf2[a3[d]b]]");
+    expected = "sfadddbadddbsfadddbadddb";
+    Assert.assertEquals(expected, actual);
+
   }
 }

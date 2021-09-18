@@ -12,6 +12,8 @@ public class StringDecoder {
     while(i >= 0) {
       char c = s.charAt(i);
       if(c == ']') {
+        stack.push(b.toString());
+        b.setLength(0);
         stack.push(""+']');
         i--;
       } else if(c == '[') {
