@@ -7,12 +7,7 @@ public class StringDecoder {
     int i = s.length() - 1;
     while(i >= 0) {
       char c = s.charAt(i);
-      if(c == ']') {
-        stack.push(b.toString());
-        b.setLength(0);
-        stack.push(String.valueOf(c));
-        i--;
-      } else if(c == '[') {
+      if(c == '[') {
         int j = i--;
         while(i >= 0 && s.charAt(i) >= '0' && s.charAt(i) <= '9') {
           i--;
@@ -30,7 +25,7 @@ public class StringDecoder {
         stack.push(b.toString());
         b.setLength(0);
       } else {
-        b.insert(0, c);
+        stack.push(String.valueOf(c));
         i--;
       }
     }
