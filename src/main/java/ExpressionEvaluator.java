@@ -2,8 +2,8 @@ import java.util.*;
 
 public class ExpressionEvaluator {
   public static double evaluate(String exp) {
-    Stack<Character> opStack = new Stack<>();
-    Stack<Double> nStack = new Stack<>();
+    Queue<Character> opQueue = new ArrayDeque<>();
+    Queue<Double> nQueue = new ArrayDeque<>();
     Set<Character> ops = new HashSet<>();
     ops.add('+');
     ops.add('-');
@@ -14,41 +14,37 @@ public class ExpressionEvaluator {
     while(!ops.contains(exp.charAt(i))) {
       i++;
     }
-    double num = Double.parseDouble(exp.substring(j, i));
-    nStack.push(num);
+
+    double acc = Double.parseDouble(exp.substring(j, i));
     while(i < exp.length()) {
       char c = exp.charAt(i);
       j = ++i;
       while(i < exp.length() && !ops.contains(exp.charAt(i))) {
         i++;
       }
-      num = Double.parseDouble(exp.substring(j, i));
+      double num = Double.parseDouble(exp.substring(j, i));
       switch (c) {
         case '*' :
-          nStack.push(num * nStack.pop());
+          acc *= num;
           break;
         case '/' :
-          nStack.push(nStack.pop() / num);
+          acc /= num;
           break;
         case '+' :
         case '-' :
-          nStack.push(num);
-          opStack.push(c);
+          nQueue.add(acc);
+          acc = num;
+          opQueue.add(c);
           break;
       }
     }
-    while(!opStack.isEmpty()) {
-      char op = opStack.pop();
-      double opd1 = nStack.pop();
-      double opd2 = nStack.pop();
-      if(op == '+') {
-        if(!opStack.isEmpty() && opStack.peek() == '-') nStack.push(opd2 - opd1);
-         else nStack.push(opd1 + opd2);
-      } else {
-        if(!opStack.isEmpty() && opStack.peek() == '-') nStack.push(opd2 + opd1);
-        else nStack.push(opd2 - opd1);
-      }
+    nQueue.add(acc);
+    acc = nQueue.remove();
+    while(!opQueue.isEmpty()) {
+        char op = opQueue.remove();
+        double opd = nQueue.remove();
+        acc = op == '+' ? acc + opd : acc - opd;
     }
-    return nStack.pop();
+    return acc;
   }
 }
