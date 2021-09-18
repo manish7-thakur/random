@@ -14,7 +14,7 @@ public class ExpressionEvaluator {
     while(!ops.contains(exp.charAt(i))) {
       i++;
     }
-    double num = Integer.parseInt(exp.substring(j, i));
+    double num = Double.parseDouble(exp.substring(j, i));
     nStack.push(num);
     while(i < exp.length()) {
       char c = exp.charAt(i);
