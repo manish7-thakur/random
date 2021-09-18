@@ -3,10 +3,6 @@ import java.util.*;
 public class StringDecoder {
   public static String decode(String s) {
     Stack<String> stack = new Stack<>();
-    Set<Character> set = new HashSet<>();
-    for(char c = '0'; c <= '9'; c++) {
-      set.add(c);
-    }
     StringBuilder b = new StringBuilder();
     int i = s.length() - 1;
     while(i >= 0) {
@@ -18,7 +14,7 @@ public class StringDecoder {
         i--;
       } else if(c == '[') {
         int j = i--;
-        while(i >= 0 && set.contains(s.charAt(i))) {
+        while(i >= 0 && Character.isDigit(s.charAt(i))) {
           i--;
         }
         int count = Integer.parseInt(s.substring(i + 1, j));
