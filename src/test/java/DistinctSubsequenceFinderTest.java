@@ -19,12 +19,16 @@ public class DistinctSubsequenceFinderTest {
     expected = 2;
     Assert.assertEquals(expected, actual);
 
-    actual = DistinctSubsequenceFinder.numDistinct("aba", "aa");
-    expected = 1;
+    actual = DistinctSubsequenceFinder.numDistinct("ab", "ba");
+    expected = 0;
     Assert.assertEquals(expected, actual);
 
     actual = DistinctSubsequenceFinder.numDistinct("aba", "aa");
     expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DistinctSubsequenceFinder.numDistinct("abc", "ca");
+    expected = 0;
     Assert.assertEquals(expected, actual);
 
     actual = DistinctSubsequenceFinder.numDistinct("abab", "ab");
