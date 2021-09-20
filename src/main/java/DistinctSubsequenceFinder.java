@@ -20,7 +20,7 @@ public class DistinctSubsequenceFinder {
   public static int numDistinct(String s, String t) {
     int[][] mem = new int[s.length()][t.length()];
     for(int i = 0; i < mem.length; i++) {
-      Arrays.fill(mem[i], -1);
+      Arrays.fill(mem[i], -1); // 0 can be a valid value and it could calculation again, see last test case
     }
     int n = find(s, s.length() - 1, t, t.length() - 1, mem);
     return n;
