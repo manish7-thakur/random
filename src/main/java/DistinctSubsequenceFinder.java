@@ -16,19 +16,22 @@ public class DistinctSubsequenceFinder {
     return count1 + count2;
   }
   public static int numDistinct(String s, String t) {
-    int n = find(s, s.length() - 1, t, t.length() - 1);
+    int[][] mem = new int[s.length()][t.length()];
+    int n = find(s, s.length() - 1, t, t.length() - 1, mem);
     return n;
   }
-  static int find(String s, int si, String t, int ti) {
+  static int find(String s, int si, String t, int ti, int[][] mem) {
     if(ti < 0) {
       return 1;
     }
     if(si < 0) return 0;
-    int c = 0;
+    if(mem[si][ti] != 0) return mem[si][ti];
+    int count1 = 0;
     if(s.charAt(si) == t.charAt(ti)) {
-      c =  find(s, si - 1, t, ti - 1);
+      count1 =  find(s, si - 1, t, ti - 1, mem);
     }
-    int count = find(s, si - 1, t, ti);
-    return count + c;
+    int count2 = find(s, si - 1, t, ti, mem);
+    mem[si][ti] = count1 + count2;
+    return mem[si][ti];
   }
 }
