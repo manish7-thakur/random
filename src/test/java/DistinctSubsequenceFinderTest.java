@@ -3,12 +3,12 @@ import org.junit.*;
 public class DistinctSubsequenceFinderTest {
   @Test
   public void findDistinctSubsequences() {
-    int actual = DistinctSubsequenceFinder.numDistinct("a", "a");
-    int expected = 1;
-    Assert.assertEquals(expected, actual);
+//    int actual = DistinctSubsequenceFinder.numDistinct("a", "a");
+//    int expected = 1;
+//    Assert.assertEquals(expected, actual);
 
-    actual = DistinctSubsequenceFinder.numDistinct("ab", "a");
-    expected = 1;
+    int actual = DistinctSubsequenceFinder.numDistinct("ab", "a");
+    int expected = 1;
     Assert.assertEquals(expected, actual);
 
     actual = DistinctSubsequenceFinder.numDistinct("ba", "a");
@@ -45,6 +45,14 @@ public class DistinctSubsequenceFinderTest {
 
     actual = DistinctSubsequenceFinder.numDistinct("babgbag", "bag");
     expected = 5;
+    Assert.assertEquals(expected, actual);
+
+    actual = DistinctSubsequenceFinder.numDistinct("babgbag", "bag");
+    expected = 5;
+    Assert.assertEquals(expected, actual);
+
+    actual = DistinctSubsequenceFinder.numDistinct("abbbabaabbababbaabababbbabaabababbaabababbabababababbababbabababbab", "abbbbababab");
+    expected = 1098724087;
     Assert.assertEquals(expected, actual);
   }
 }

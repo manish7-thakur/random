@@ -1,5 +1,5 @@
 public class DistinctSubsequenceFinder {
-  public static int numDistinct(String s, String t) {
+  public static int numDistinctPermutations(String s, String t) {
     char[] acc = new char[t.length()];
     int n = find(s, s.length() - 1, acc, acc.length - 1, t);
     return n;
@@ -14,5 +14,21 @@ public class DistinctSubsequenceFinder {
     int count1 = find(s, slen - 1, acc, aclen - 1, t);
     int count2 = find(s, slen - 1, acc, aclen, t);
     return count1 + count2;
+  }
+  public static int numDistinct(String s, String t) {
+    int n = find(s, s.length() - 1, t, t.length() - 1);
+    return n;
+  }
+  static int find(String s, int si, String t, int ti) {
+    if(ti < 0) {
+      return 1;
+    }
+    if(si < 0) return 0;
+    int c = 0;
+    if(s.charAt(si) == t.charAt(ti)) {
+      c =  find(s, si - 1, t, ti - 1);
+    }
+    int count = find(s, si - 1, t, ti);
+    return count + c;
   }
 }
