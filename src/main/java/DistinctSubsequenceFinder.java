@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class DistinctSubsequenceFinder {
   public static int numDistinctPermutations(String s, String t) {
     char[] acc = new char[t.length()];
@@ -17,6 +19,9 @@ public class DistinctSubsequenceFinder {
   }
   public static int numDistinct(String s, String t) {
     int[][] mem = new int[s.length()][t.length()];
+    for(int i = 0; i < mem.length; i++) {
+      Arrays.fill(mem[i], -1);
+    }
     int n = find(s, s.length() - 1, t, t.length() - 1, mem);
     return n;
   }
@@ -25,7 +30,7 @@ public class DistinctSubsequenceFinder {
       return 1;
     }
     if(si < 0) return 0;
-    if(mem[si][ti] != 0) return mem[si][ti];
+    if(mem[si][ti] != -1) return mem[si][ti];
     int count1 = 0;
     if(s.charAt(si) == t.charAt(ti)) {
       count1 =  find(s, si - 1, t, ti - 1, mem);
