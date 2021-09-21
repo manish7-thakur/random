@@ -95,14 +95,9 @@ public class EditDistance {
       if(l2 < 0) {
         return l1 + 1;
       }
-      if(mem[l1][l2] != 0) {
-        return mem[l1][l2];
-      }
-      if(word1.charAt(l1) == word2.charAt(l2)) {
-        int min = find(word1, word2, l1 - 1, l2 - 1, mem);
-        mem[l1][l2] = min;
-        return min;
-      }
+      if(mem[l1][l2] != 0) return mem[l1][l2];
+
+      if(word1.charAt(l1) == word2.charAt(l2)) return find(word1, word2, l1 - 1, l2 - 1, mem);
       int min = Math.min(1 + find(word1, word2, l1 - 1, l2, mem)/*delete*/, 1 + find(word1, word2, l1, l2 - 1, mem)/*insert*/);
       min = Math.min(1 + find(word1, word2, l1 - 1, l2 - 1, mem)/*replace*/, min);
       mem[l1][l2] = min;
