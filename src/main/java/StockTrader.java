@@ -7,7 +7,8 @@ public class StockTrader {
     int maxProfit = 0;
     int min = prices[0];
     for(int i = 0; i < prices.length; i++) {
-      leftProfits[i] = Math.max(maxProfit, prices[i] - min);
+      maxProfit = Math.max(maxProfit, prices[i] - min);
+      leftProfits[i] = maxProfit;
       if(prices[i] < min) {
         min = prices[i];
       }
@@ -15,11 +16,13 @@ public class StockTrader {
     maxProfit = 0;
     int max = prices[prices.length - 1];
     for(int i = prices.length - 1; i >= 0; i--) {
-      rightProfits[i] = Math.max(maxProfit, max - prices[i]);
+      maxProfit = Math.max(maxProfit, max - prices[i]);
+      rightProfits[i] = maxProfit;
       if(prices[i] > max) {
         max = prices[i];
       }
     }
+    
     for(int i = 0; i < leftProfits.length; i++) {
       maxProfit = Math.max(maxProfit, leftProfits[i] + rightProfits[i]);
     }
