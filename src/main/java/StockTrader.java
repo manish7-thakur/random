@@ -2,23 +2,23 @@ public class StockTrader {
   static public int maxProfit(int[] prices) {
     int[] leftProfits = new int[prices.length];
     int[] rightProfits = new int[prices.length];
-    int maxProfit = 0;
+    int maxProfit = 0, maxLeftProfit = 0, maxRightProfit = 0;
     int min = prices[0];
-    for(int i = 0; i < prices.length; i++) {
-      maxProfit = Math.max(maxProfit, prices[i] - min);
-      leftProfits[i] = maxProfit;
-      if(prices[i] < min) {
-        min = prices[i];
-      }
-    }
-    maxProfit = 0;
     int max = prices[prices.length - 1];
-    for(int i = prices.length - 1; i >= 0; i--) {
-      maxProfit = Math.max(maxProfit, max - prices[i]);
-      rightProfits[i] = maxProfit;
-      if(prices[i] > max) {
-        max = prices[i];
+    int l = 0, r = prices.length - 1;
+    while(l < prices.length && r >= 0) {
+      maxLeftProfit = Math.max(maxLeftProfit, prices[l] - min);
+      leftProfits[l] = maxLeftProfit;
+      if(prices[l] < min) {
+        min = prices[l];
       }
+      maxRightProfit = Math.max(maxRightProfit, max - prices[r]);
+      rightProfits[r] = maxRightProfit;
+      if(prices[r] > max) {
+        max = prices[r];
+      }
+      l++;
+      r--;
     }
 
     for(int i = 0; i < leftProfits.length; i++) {
@@ -44,7 +44,7 @@ public class StockTrader {
         leftMaxProfit = newProfit;
         lbound = l;
       }
-      
+
       newProfit = rightMax - prices[r];
       if(newProfit > rightMaxProfit) {
         rightMaxProfit = newProfit;
