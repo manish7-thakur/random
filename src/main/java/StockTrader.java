@@ -35,12 +35,23 @@ public class StockTrader {
     int maxProfit = 0;
     int l = 0;
     int r = prices.length - 1;
+    int lbound = l;
+    int rbound = r;
 
     while(l < prices.length && r >= 0) {
-      leftMaxProfit = Math.max(leftMaxProfit, prices[l] - leftMin);
-      rightMaxProfit = Math.max(rightMaxProfit, rightMax - prices[r]);
+      int newProfit = prices[l] - leftMin;
+      if(newProfit > leftMaxProfit) {
+        leftMaxProfit = newProfit;
+        lbound = l;
+      }
+      
+      newProfit = rightMax - prices[r];
+      if(newProfit > rightMaxProfit) {
+        rightMaxProfit = newProfit;
+        rbound = r;
+      }
 
-      maxProfit = l > r ? Math.max(Math.max(maxProfit, leftMaxProfit), rightMaxProfit) : leftMaxProfit + rightMaxProfit;
+      maxProfit = lbound > rbound ? Math.max(Math.max(maxProfit, leftMaxProfit), rightMaxProfit) : leftMaxProfit + rightMaxProfit;
 
       if(prices[l] < leftMin) leftMin = prices[l];
       if(prices[r] > rightMax) rightMax = prices[r];
