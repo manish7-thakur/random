@@ -15,6 +15,14 @@ public class BinaryTreeMaxPathSumTest {
     expected = 2;
     Assert.assertEquals(expected, actual);
 
+    actual = BinaryTreeMaxPathSum.maxPathSum(new TreeNode(-1, new TreeNode(-2), null));
+    expected = -1;
+    Assert.assertEquals(expected, actual);
+
+    actual = BinaryTreeMaxPathSum.maxPathSum(new TreeNode(-3, new TreeNode(-2), new TreeNode(-1)));
+    expected = -1;
+    Assert.assertEquals(expected, actual);
+
     actual = BinaryTreeMaxPathSum.maxPathSum(new TreeNode(2, new TreeNode(-1), null));
     expected = 2;
     Assert.assertEquals(expected, actual);
