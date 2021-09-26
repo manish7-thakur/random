@@ -7,12 +7,24 @@ public class BinaryTreeMaxPathSumTest {
     int expected = 0;
     Assert.assertEquals(expected, actual);
 
+    actual = BinaryTreeMaxPathSum.maxPathSum(new TreeNode(-1));
+    expected = 0;
+    Assert.assertEquals(expected, actual);
+
     actual = BinaryTreeMaxPathSum.maxPathSum(new TreeNode(1));
     expected = 1;
     Assert.assertEquals(expected, actual);
 
+    actual = BinaryTreeMaxPathSum.maxPathSum(new TreeNode(-1, new TreeNode(2), null));
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
     actual = BinaryTreeMaxPathSum.maxPathSum(new TreeNode(2, new TreeNode(-1), null));
     expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = BinaryTreeMaxPathSum.maxPathSum(new TreeNode(-2, new TreeNode(-1), new TreeNode(-1, new TreeNode(-5), new TreeNode(7))));
+    expected = 7;
     Assert.assertEquals(expected, actual);
 
     actual = BinaryTreeMaxPathSum.maxPathSum(new TreeNode(2, new TreeNode(-1), new TreeNode(3)));
