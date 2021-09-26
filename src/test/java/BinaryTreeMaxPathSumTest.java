@@ -3,12 +3,8 @@ import org.junit.*;
 public class BinaryTreeMaxPathSumTest {
   @Test
   public void findMaxSum() {
-    int actual = BinaryTreeMaxPathSum.maxPathSum(null);
-    int expected = 0;
-    Assert.assertEquals(expected, actual);
-
-    actual = BinaryTreeMaxPathSum.maxPathSum(new TreeNode(-1));
-    expected = 0;
+    int actual = BinaryTreeMaxPathSum.maxPathSum(new TreeNode(-1));
+    int expected = -1;
     Assert.assertEquals(expected, actual);
 
     actual = BinaryTreeMaxPathSum.maxPathSum(new TreeNode(1));
