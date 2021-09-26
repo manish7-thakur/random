@@ -11,10 +11,10 @@ public class BinaryTreeMaxPathSum {
     }
     int leftSubtreeSum = maxPathSumRec(root.left);
     int rigthSubtreeSum = maxPathSumRec(root.right);
-    int max1 = Math.max(leftSubtreeSum, rigthSubtreeSum);
-    int max2 = Math.max(max1 + root.val, root.val);
-    int max4 = Math.max(max2, leftSubtreeSum + rigthSubtreeSum + root.val);
-    result = Math.max(max4, result);
+    int max = Math.max(leftSubtreeSum, rigthSubtreeSum);
+    max = Math.max(max + root.val, root.val);
+    max = Math.max(max, leftSubtreeSum + rigthSubtreeSum + root.val);
+    result = Math.max(max, result);
     return Math.max(root.val + Math.max(leftSubtreeSum, rigthSubtreeSum), Math.max(root.val, root.val + leftSubtreeSum + rigthSubtreeSum));
   }
 }
