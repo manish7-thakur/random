@@ -7,14 +7,14 @@ public class MaxConsecutiveSeq {
         if (node == null) {
             return maxCount;
         }
-        if (node.value == parentVal + 1) {
+        if (node.val == parentVal + 1) {
             count++;
             if (count > maxCount) {
                 maxCount = count;
             }
-            return Math.max(findNow(node.left, node.value, count, maxCount), findNow(node.right, node.value, count, maxCount));
+            return Math.max(findNow(node.left, node.val, count, maxCount), findNow(node.right, node.val, count, maxCount));
         } else {
-            return Math.max(findNow(node.left, node.value, 1, maxCount), findNow(node.right, node.value, 1, maxCount));
+            return Math.max(findNow(node.left, node.val, 1, maxCount), findNow(node.right, node.val, 1, maxCount));
         }
     }
 }

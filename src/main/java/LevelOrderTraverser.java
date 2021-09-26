@@ -8,7 +8,7 @@ public class LevelOrderTraverser {
         queue.add(root);
         while (!queue.isEmpty()) {
                 TreeNode curr = queue.poll();
-                res.add(curr.value);
+                res.add(curr.val);
                 if (curr.left != null) {
                     queue.add(curr.left);
                 }

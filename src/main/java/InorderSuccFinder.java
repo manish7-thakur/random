@@ -10,25 +10,25 @@ public class InorderSuccFinder {
         if(root == null) {
             return true;
         }
-        if((max != null && root.value >= max ) || (min != null && root.value <= min)) {
+        if((max != null && root.val >= max ) || (min != null && root.val <= min)) {
             return false;
         }
-        return validate(root.left, root.value, min) && validate(root.right, max, root.value);
+        return validate(root.left, root.val, min) && validate(root.right, max, root.val);
     }
 
     public static int findNow(TreeNode root, int value, TreeNode parent) {
         if (root == null) {
             return -1;
         }
-        if (value < root.value) {
+        if (value < root.val) {
             return findNow(root.left, value, root);
-        } else if (value > root.value) {
+        } else if (value > root.val) {
             return findNow(root.right, value, parent);
         }
         if (root.right != null) {
             return findSucc(root.right);
         } else {
-            return parent.value;
+            return parent.val;
         }
     }
 
@@ -36,6 +36,6 @@ public class InorderSuccFinder {
         while (node.left != null) {
             node = node.left;
         }
-        return node.value;
+        return node.val;
     }
 }

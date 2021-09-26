@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
 class BinaryTreeLevelAvg {
     public static List<Double> calcAvgs(TreeNode node) {
@@ -20,7 +19,7 @@ class BinaryTreeLevelAvg {
             count = queue.size();
             for (int i = 0; i < count; i++) {
                 TreeNode node = queue.poll();
-                sum += node.value;
+                sum += node.val;
                 if (node.left != null) {
                     queue.add(node.left);
                 }

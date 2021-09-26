@@ -20,9 +20,9 @@ public class LowestCommonAncesterFinder {
     }
 
     private static boolean findAncestors(TreeNode traverser, ArrayList<Integer> ancesters, int value) {
-        while (traverser != null && traverser.value != value) {
-            ancesters.add(traverser.value);
-            if (value < traverser.value) {
+        while (traverser != null && traverser.val != value) {
+            ancesters.add(traverser.val);
+            if (value < traverser.val) {
                 traverser = traverser.left;
             } else {
                 traverser = traverser.right;
@@ -31,7 +31,7 @@ public class LowestCommonAncesterFinder {
         if (traverser == null) {
             return true;
         }
-        ancesters.add(traverser.value);
+        ancesters.add(traverser.val);
         return false;
     }
 
@@ -40,8 +40,8 @@ public class LowestCommonAncesterFinder {
         if (traverser == null) {
             return false;
         }
-        ancesters.add(traverser.value);
-        if (traverser.value == value) {
+        ancesters.add(traverser.val);
+        if (traverser.val == value) {
             return true;
         }
         if (findBTAncestors(traverser.left, ancesters, value) || findBTAncestors(traverser.right, ancesters, value))
@@ -62,11 +62,11 @@ public class LowestCommonAncesterFinder {
         if (curr == null) {
             return null;
         }
-        if (curr.value == key1) {
+        if (curr.val == key1) {
             pair.b1 = true;
             return curr;
         }
-        if (curr.value == key2) {
+        if (curr.val == key2) {
             pair.b2 = true;
             return curr;
         }
@@ -86,7 +86,7 @@ public class LowestCommonAncesterFinder {
         if (curr == null) {
             return false;
         }
-        return curr.value == key || find(curr.left, key) || find(curr.right, key);
+        return curr.val == key || find(curr.left, key) || find(curr.right, key);
     }
 
     static int forBinaryTreeRecursion(TreeNode curr, int key1, int key2) {
@@ -95,7 +95,7 @@ public class LowestCommonAncesterFinder {
         //because we return the first found node, so we need 
         //to check the other one if it is present or not
         if (pair.b1 && pair.b2 || pair.b1 && find(ancestor, key2) || pair.b2 && find(ancestor, key1)) {
-            return ancestor.value;
+            return ancestor.val;
         } else {
             return -1;
         }
