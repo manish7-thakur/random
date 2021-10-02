@@ -13,6 +13,7 @@ public class WordTransformer {
       }
     });
     for(int i = 0; i < wordList.size(); i++) {
+      if(!wordList.get(i).equals(beginWord))
       map.put(wordList.get(i), false);
     }
     find(beginWord, endWord, input, queue, map);

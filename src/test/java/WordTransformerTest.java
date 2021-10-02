@@ -15,6 +15,10 @@ public class WordTransformerTest {
    expected = Arrays.asList(Arrays.asList("dog", "bog", "bag"));
    Assert.assertEquals(expected, actual);
 
+   actual = WordTransformer.findLadders("hot", "dog", Arrays.asList("hot","dog","dot"));
+   expected = Arrays.asList(Arrays.asList("hot", "dot", "dog"));
+   Assert.assertEquals(expected, actual);
+
    actual = WordTransformer.findLadders("dog", "bag", Arrays.asList("bog", "koi"));
    Assert.assertTrue(actual.isEmpty());
 
