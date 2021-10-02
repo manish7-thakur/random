@@ -33,5 +33,12 @@ public class WordTransformerTest {
    actual = WordTransformer.findLadders("dog", "sac", Arrays.asList("dag", "koi", "dac", "sog", "poi", "sag", "sac"));
    expected = Arrays.asList(Arrays.asList("dog", "sog", "sag", "sac"), Arrays.asList("dog", "dag", "sag", "sac"), Arrays.asList("dog", "dag", "dac", "sac"));
    Assert.assertEquals(expected, actual);
+
+   actual = WordTransformer.findLadders("hit", "cog", Arrays.asList("hot","dot","dog","lot","log","cog"));
+   expected = Arrays.asList(Arrays.asList("hit","hot","lot","log","cog"), Arrays.asList("hit","hot","dot","dog","cog"));
+   Assert.assertEquals(expected, actual);
+
+   actual = WordTransformer.findLadders("hit", "cog", Arrays.asList("hot","dot","dog","lot","log"));
+   Assert.assertTrue(actual.isEmpty());
   }
 }
