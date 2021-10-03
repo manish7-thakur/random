@@ -28,10 +28,10 @@ public class WordTransformer {
           }
         }
       }
-        currList.addAll(adjList);
-        map.put(currWord, adjList);
+      currList.addAll(adjList);
+      map.put(currWord, adjList);
       }
-        wordSet.removeAll(currList);
+      wordSet.removeAll(currList);
     }
     find(beginWord, endWord, input, result, map);
     return result;
