@@ -4,15 +4,15 @@ public class WordTransformer {
   static public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
     List<List<String>> result = new ArrayList<>();
     List<String> input = new ArrayList<>();
-    input.add(beginWord);
     Map<String, Set<String>> map = new HashMap<>();
     Set<String> visited = new HashSet<>();
-    map.put(beginWord, new HashSet<String>());
     Queue<String> wordQueue = new LinkedList<>();
     Set<String> wordSet = new HashSet<>(wordList);
     wordSet.remove(beginWord);
     visited.add(beginWord);
     wordQueue.add(beginWord);
+    input.add(beginWord);
+    
     while(!wordQueue.isEmpty()) {
       List<String> currList = new ArrayList<>();
       int count = wordQueue.size();
@@ -43,7 +43,8 @@ public class WordTransformer {
       result.add(l);
       return;
     }
-    for(String s : map.get(beginWord)) {
+    Set<String> closeWords = map.get(beginWord);
+    for(String s : closeWords) {
         input.add(s);
         find(s, endWord, input, result, map);
         input.remove(input.size() - 1);
