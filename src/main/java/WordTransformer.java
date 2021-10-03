@@ -18,7 +18,7 @@ public class WordTransformer {
       int count = wordQueue.size();
       while (count-- > 0) {
       String currWord = wordQueue.poll();
-      Set<String> adjList = map.getOrDefault(currWord, new HashSet<>());
+      Set<String> adjList = new HashSet<>();
       for (String s : wordSet) {
         if (isClose(s, currWord)) {
           adjList.add(s);
@@ -53,9 +53,9 @@ public class WordTransformer {
     int count = 0;
     for(int i = 0; i < word1.length(); i++) {
       if(word1.charAt(i) != word2.charAt(i)) {
-        count++;
+        if(++count > 1) return false ;
       }
     }
-    return count == 1;
+    return true;
   }
 }
