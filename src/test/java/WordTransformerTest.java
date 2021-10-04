@@ -15,6 +15,10 @@ public class WordTransformerTest {
    expected = Arrays.asList(Arrays.asList("dog", "bog", "bag"));
    Assert.assertEquals(expected, actual);
 
+   actual = WordTransformer.findLadders("dog", "bag", Arrays.asList("bog", "dog", "koi", "bag"));
+   expected = Arrays.asList(Arrays.asList("dog", "bog", "bag"));
+   Assert.assertEquals(expected, actual);
+
    actual = WordTransformer.findLadders("dog", "bag", Arrays.asList("bog", "koi"));
    Assert.assertTrue(actual.isEmpty());
 
@@ -72,12 +76,36 @@ public class WordTransformerTest {
     expected = 3;
     Assert.assertEquals(expected, actual);
 
+    actual = WordTransformer.ladderLength("dog", "bag", Arrays.asList("bog", "dog", "koi", "bag"));
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
     actual = WordTransformer.ladderLength("dog", "bag", Arrays.asList("bog", "koi"));
     expected = 0;
     Assert.assertEquals(expected, actual);
 
     actual = WordTransformer.ladderLength("dog", "bag", Arrays.asList("dag", "bog", "koi", "bag"));
     expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = WordTransformer.ladderLength("dog", "bag", Arrays.asList("dag", "dol", "koi", "bag"));
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = WordTransformer.ladderLength("dog", "sac", Arrays.asList("dag", "koi", "dac", "sog", "poi", "sag", "sac"));
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+
+    actual = WordTransformer.ladderLength("hit", "cog", Arrays.asList("hot","dot","dog","lot","log","cog"));
+    expected = 5;
+    Assert.assertEquals(expected, actual);
+
+    actual = WordTransformer.ladderLength("hit", "cog", Arrays.asList("hot","dot","dog","lot","log"));
+    expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = WordTransformer.ladderLength("qa", "sq",  Arrays.asList("si","go","se","cm","so","ph","mt","db","mb","sb","kr","ln","tm","le","av","sm","ar","ci","ca","br","ti","ba","to","ra","fa","yo","ow","sn","ya","cr","po","fe","ho","ma","re","or","rn","au","ur","rh","sr","tc","lt","lo","as","fr","nb","yb","if","pb","ge","th","pm","rb","sh","co","ga","li","ha","hz","no","bi","di","hi","qa","pi","os","uh","wm","an","me","mo","na","la","st","er","sc","ne","mn","mi","am","ex","pt","io","be","fm","ta","tb","ni","mr","pa","he","lr","sq","ye"));
+    expected = 5;
     Assert.assertEquals(expected, actual);
 
   }
