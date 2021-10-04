@@ -12,7 +12,7 @@ public class WordTransformer {
     visited.add(beginWord);
     wordQueue.add(beginWord);
     input.add(beginWord);
-    
+
     while(!wordQueue.isEmpty()) {
       List<String> currList = new ArrayList<>();
       int count = wordQueue.size();
@@ -58,5 +58,48 @@ public class WordTransformer {
       }
     }
     return true;
+  }
+  static public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+    Map<String, Set<String>> map = new HashMap<>();
+    Set<String> visited = new HashSet<>();
+    Queue<String> wordQueue = new LinkedList<>();
+    Set<String> wordSet = new HashSet<>(wordList);
+    wordSet.remove(beginWord);
+    visited.add(beginWord);
+    wordQueue.add(beginWord);
+
+    while(!wordQueue.isEmpty()) {
+      List<String> currList = new ArrayList<>();
+      int count = wordQueue.size();
+      while (count-- > 0) {
+      String currWord = wordQueue.poll();
+      Set<String> adjList = new HashSet<>();
+      for (String s : wordSet) {
+        if (isClose(s, currWord)) {
+          adjList.add(s);
+          if (!visited.contains(s)) {
+            wordQueue.add(s);
+            visited.add(s);
+          }
+        }
+      }
+      currList.addAll(adjList);
+      map.put(currWord, adjList);
+      }
+      wordSet.removeAll(currList);
+    }
+    return find(beginWord, endWord, map);
+  }
+  static int find(String beginWord, String endWord, Map<String, Set<String>> map) {
+    if(map.get(beginWord).contains(endWord)) {
+      return 2;
+    }
+    int len = 0;
+    Set<String> closeWords = map.get(beginWord);
+    for(String s : closeWords) {
+        int subLen = find(s, endWord, map);
+        if(subLen > 0) len = 1 + subLen;
+    }
+    return len;
   }
 }

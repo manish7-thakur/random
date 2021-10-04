@@ -58,4 +58,23 @@ public class WordTransformerTest {
            Arrays.asList("qa", "ba", "br", "sr", "sq"), Arrays.asList("qa", "ba", "be", "se", "sq"), Arrays.asList("qa", "ba", "bi", "si", "sq"));
    Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void findLadderLength() {
+    int actual = WordTransformer.ladderLength("dog", "cog", Arrays.asList("hoi", "cog"));
+    int expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = WordTransformer.ladderLength("dog", "cog", Arrays.asList("hoi", "koi"));
+    expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = WordTransformer.ladderLength("dog", "bag", Arrays.asList("bog", "koi", "bag"));
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = WordTransformer.ladderLength("dog", "bag", Arrays.asList("bog", "koi"));
+    expected = 0;
+    Assert.assertEquals(expected, actual);
+
+  }
 }
