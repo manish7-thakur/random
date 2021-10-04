@@ -76,5 +76,9 @@ public class WordTransformerTest {
     expected = 0;
     Assert.assertEquals(expected, actual);
 
+    actual = WordTransformer.ladderLength("dog", "bag", Arrays.asList("dag", "bog", "koi", "bag"));
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
   }
 }
