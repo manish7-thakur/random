@@ -60,46 +60,39 @@ public class WordTransformer {
     return true;
   }
   static public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-    Map<String, Set<String>> map = new HashMap<>();
+    class Pair {
+      String word;
+      int level;
+      public Pair(String word, int level) {
+        this.word = word;
+        this.level = level;
+      }
+    }
     Set<String> visited = new HashSet<>();
-    Queue<String> wordQueue = new LinkedList<>();
+    Queue<Pair> wordQueue = new LinkedList<>();
     Set<String> wordSet = new HashSet<>(wordList);
     wordSet.remove(beginWord);
     visited.add(beginWord);
-    wordQueue.add(beginWord);
+    wordQueue.add(new Pair(beginWord, 1));
 
     while(!wordQueue.isEmpty()) {
       List<String> currList = new ArrayList<>();
       int count = wordQueue.size();
       while (count-- > 0) {
-      String currWord = wordQueue.poll();
-      Set<String> adjList = new HashSet<>();
-      for (String s : wordSet) {
-        if (isClose(s, currWord)) {
-          adjList.add(s);
-          if (!visited.contains(s)) {
-            wordQueue.add(s);
-            visited.add(s);
+        Pair currPair = wordQueue.poll();
+        for (String s : wordSet) {
+          if (isClose(s, currPair.word)) {
+            if(s.equals(endWord)) return currPair.level + 1;
+            else if (!visited.contains(s)) {
+              wordQueue.add(new Pair(s, currPair.level + 1));
+              visited.add(s);
+            }
+            currList.add(s);
           }
         }
       }
-      currList.addAll(adjList);
-      map.put(currWord, adjList);
-      }
       wordSet.removeAll(currList);
     }
-    return find(beginWord, endWord, map);
-  }
-  static int find(String beginWord, String endWord, Map<String, Set<String>> map) {
-    if(map.get(beginWord).contains(endWord)) {
-      return 2;
-    }
-    int len = 0;
-    Set<String> closeWords = map.get(beginWord);
-    for(String s : closeWords) {
-        int subLen = find(s, endWord, map);
-        if(subLen > 0) len = 1 + subLen;
-    }
-    return len;
+    return 0;
   }
 }
