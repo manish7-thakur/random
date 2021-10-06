@@ -68,30 +68,36 @@ public class WordTransformer {
         this.level = level;
       }
     }
-    Set<String> visited = new HashSet<>();
-    Queue<Pair> wordQueue = new LinkedList<>();
-    Set<String> wordSet = new HashSet<>(wordList);
-    wordSet.remove(beginWord);
+    Map<String, List<String>> map = new HashMap<>(wordList.size());
+    for(String word: wordList) {
+      for(int i = 0; i < word.length(); i++) {
+        String pattern = word.substring(0, i) + "*" + word.substring(i + 1);
+        List<String> list = map.getOrDefault(pattern, new ArrayList<>());
+        list.add(word);
+        map.put(pattern, list);
+      }
+    }
+    Set<String> visited = new HashSet<>(wordList.size());
+    Queue<Pair> wordQueue = new ArrayDeque<>(wordList.size());
     visited.add(beginWord);
     wordQueue.add(new Pair(beginWord, 1));
 
     while(!wordQueue.isEmpty()) {
-      List<String> currList = new ArrayList<>();
-      int count = wordQueue.size();
-      while (count-- > 0) {
-        Pair currPair = wordQueue.poll();
-        for (String s : wordSet) {
-          if (isClose(s, currPair.word)) {
-            if(s.equals(endWord)) return currPair.level + 1;
-            else if (!visited.contains(s)) {
-              wordQueue.add(new Pair(s, currPair.level + 1));
-              visited.add(s);
-            }
-            currList.add(s);
+      Pair p = wordQueue.remove();
+      String word = p.word;
+      int level = p.level;
+      for(int i = 0; i < word.length(); i++) {
+        String pattern = word.substring(0, i) + "*" + word.substring(i + 1);
+        List<String> list = map.getOrDefault(pattern, new ArrayList<>());
+        for(int j = 0; j < list.size(); j++) {
+          String s = list.get(j);
+          if(s.equals(endWord)) return level + 1;
+          if(!visited.contains(s)) {
+            visited.add(s);
+            wordQueue.add(new Pair(s, level + 1));
           }
         }
       }
-      wordSet.removeAll(currList);
     }
     return 0;
   }
