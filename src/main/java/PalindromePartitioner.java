@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class PalindromePartitioner {
   static public int minCut(String s) {
     return findMinCut(s, 0, s.length() - 1);
