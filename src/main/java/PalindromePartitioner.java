@@ -3,10 +3,7 @@ public class PalindromePartitioner {
     return findMinCut(s, 0, s.length() - 1);
   }
   static int findMinCut(String s, int start, int end) {
-    if(start >= end) {
-      return 0;
-    }
-    if(isPalindrome(s, start, end)) {
+    if(start >= end || isPalindrome(s, start, end)) {
       return 0;
     }
     int min = Integer.MAX_VALUE;
@@ -15,6 +12,7 @@ public class PalindromePartitioner {
     }
     return min;
   }
+
   static boolean isPalindrome(String s, int start, int end) {
     while(start < end) {
       if(s.charAt(start) != s.charAt(end)) {
