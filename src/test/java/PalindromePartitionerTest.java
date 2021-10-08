@@ -30,5 +30,9 @@ public class PalindromePartitionerTest {
     actual = PalindromePartitioner.minCut("dddccccbbabbccccddd");
     expected = 0;
     Assert.assertEquals(expected, actual);
+
+    actual = PalindromePartitioner.minCut("addhdfkugowerskdhsiwh");
+    expected = 18;
+    Assert.assertEquals(expected, actual);
   }
 }
