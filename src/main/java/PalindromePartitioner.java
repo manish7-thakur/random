@@ -2,35 +2,39 @@ import java.util.Arrays;
 
 public class PalindromePartitioner {
   static public int minCut(String s) {
-    int[][] mem = new int[s.length()][s.length()];
-    for(int[] arr : mem) {
-      Arrays.fill(arr, -1);
+    int[][] memCount = new int[s.length()][s.length()];
+    int[][] memP = new int[s.length()][s.length()];
+    for(int i = 0; i < memCount.length; i++) {
+      Arrays.fill(memCount[i], -1);
+      Arrays.fill(memP[i], -1);
     }
-    return findMinCut(s, 0, s.length() - 1, mem);
+    return findMinCut(s, 0, s.length() - 1, memCount, memP);
   }
-  static int findMinCut(String s, int start, int end, int[][] mem) {
-    if(start >= end || isPalindrome(s, start, end)) {
+  static int findMinCut(String s, int start, int end, int[][] memCount, int[][] memP) {
+    if(start >= end || isPalindrome(s, start, end, memP)) {
       return 0;
     }
-    if(mem[start][end] != -1) {
-      return mem[start][end];
+    if(memCount[start][end] != -1) {
+      return memCount[start][end];
     }
     int min = Integer.MAX_VALUE;
     for(int i = start; i < end; i++) {
-      min = Math.min(min, 1 + findMinCut(s, start, i, mem) + findMinCut(s, i + 1, end, mem));
+      if(isPalindrome(s, i + 1, end, memP))
+      min = Math.min(min, 1 + findMinCut(s, start, i, memCount, memP));
     }
-    mem[start][end] = min;
+    memCount[start][end] = min;
     return min;
   }
 
-  static boolean isPalindrome(String s, int start, int end) {
-    while(start < end) {
-      if(s.charAt(start) != s.charAt(end)) {
-        return false;
+  static boolean isPalindrome(String s, int start, int end, int[][] memP) {
+    if(start >= end) return true;
+    if(memP[start][end] == -1) {
+      if(isPalindrome(s, start + 1, end - 1, memP) && s.charAt(start) == s.charAt(end)) {
+        memP[start][end] = 1;
+      } else {
+        memP[start][end] = 2;
       }
-      start++;
-      end--;
     }
-    return true;
+    return memP[start][end] == 1;
   }
 }
