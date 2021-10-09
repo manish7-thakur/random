@@ -19,7 +19,7 @@ public class PalindromePartitioner {
     }
     int min = Integer.MAX_VALUE;
     for(int i = start; i < end; i++) {
-      if(isPalindrome(s, i + 1, end, memP))
+      if(isPalindrome(s, i + 1, end, memP)) // can be switched with isPalindrome(s, start, i, memP)
       min = Math.min(min, 1 + findMinCut(s, start, i, memCount, memP));
     }
     memCount[start][end] = min;
