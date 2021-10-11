@@ -31,6 +31,10 @@ public class CandyDistributorTest {
     expected = 6;
     Assert.assertEquals(expected, actual);
 
+    actual = CandyDistributor.candy(new int[] {1, 2, 2, 1, 0});
+    expected = 9;
+    Assert.assertEquals(expected, actual);
+
     actual = CandyDistributor.candy(new int[] {1, 0, 2});
     expected = 5;
     Assert.assertEquals(expected, actual);
