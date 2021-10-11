@@ -7,7 +7,7 @@ public class CandyDistributor {
         if(i - 1 >= 0 && ratings[i] > ratings[i - 1]) {
           res += curr;
           curr++;
-        } else if(i + 1 < ratings.length && ratings[i] > ratings[i+1]) {
+        } else {
           curr = 1;
           while(i + 1 < ratings.length && ratings[i] > ratings[i+1]) {
             curr++;
@@ -15,7 +15,7 @@ public class CandyDistributor {
             i++;
           }
           curr = 1;
-        } else curr = 1;
+        }
     }
     return res;
   }
