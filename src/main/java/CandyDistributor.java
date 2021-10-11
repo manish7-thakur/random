@@ -4,12 +4,12 @@ public class CandyDistributor {
     int curr = 1;
     for(int i = 0; i < ratings.length; i++) {
         res++;
-        if(i - 1 >= 0 && ratings[i] > ratings[i - 1]) {
+        if(i > 0 && ratings[i] > ratings[i - 1]) {
           res += curr;
           curr++;
         } else {
           curr = 1;
-          while(i + 1 < ratings.length && ratings[i] > ratings[i+1]) {
+          while(i + 1 < ratings.length && ratings[i] > ratings[i + 1]) {
             curr++;
             res += curr;
             i++;
