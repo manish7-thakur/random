@@ -5,7 +5,7 @@ public class CandyDistributor {
         res++;
         if(i + 1 < ratings.length && ratings[i] > ratings[i + 1]) {
           int rightLevel = 0;
-          boolean takeRight = i > 0 && ratings[i] == ratings[i - 1];
+          boolean takeRight = i > 0 && ratings[i] <= ratings[i - 1];
           while(i + 1 < ratings.length && ratings[i] > ratings[i + 1]) {
             res++;
             res += rightLevel;
