@@ -18,8 +18,7 @@ public class CandyDistributor {
             res += curr > level ? curr : level;
           }
           curr = 1;
-        }
-        if(i > 0 && ratings[i] > ratings[i - 1]) {
+        } else if(i > 0 && ratings[i] > ratings[i - 1]) {
           res += curr;
           curr++;
         } else {
