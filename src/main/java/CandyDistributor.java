@@ -1,28 +1,28 @@
 public class CandyDistributor {
   static public int candy(int[] ratings) {
-    int res = 0, curr = 1;
+    int res = 0, leftLevel = 1;
     for(int i = 0; i < ratings.length; i++) {
         res++;
         if(i + 1 < ratings.length && ratings[i] > ratings[i + 1]) {
-          int level = 0;
+          int rightLevel = 0;
           boolean takeRight = i > 0 && ratings[i] == ratings[i - 1];
           while(i + 1 < ratings.length && ratings[i] > ratings[i + 1]) {
             res++;
-            res += level;
-            level++;
+            res += rightLevel;
+            rightLevel++;
             i++;
           }
           if(takeRight) {
-            res += level;
+            res += rightLevel;
           } else {
-            res += curr > level ? curr : level;
+            res += leftLevel > rightLevel ? leftLevel : rightLevel;
           }
-          curr = 1;
+          leftLevel = 1;
         } else if(i > 0 && ratings[i] > ratings[i - 1]) {
-          res += curr;
-          curr++;
+          res += leftLevel;
+          leftLevel++;
         } else {
-          curr = 1;
+          leftLevel = 1;
         }
     }
     return res;
