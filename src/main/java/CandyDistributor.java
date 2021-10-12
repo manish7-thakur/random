@@ -12,11 +12,8 @@ public class CandyDistributor {
             rightLevel++;
             i++;
           }
-          if(takeRight) {
-            res += rightLevel;
-          } else {
-            res += leftLevel > rightLevel ? leftLevel : rightLevel;
-          }
+          if(takeRight) res += rightLevel;
+          else res += leftLevel > rightLevel ? leftLevel : rightLevel;
           leftLevel = 1;
         } else if(i > 0 && ratings[i] > ratings[i - 1]) {
           res += leftLevel;
