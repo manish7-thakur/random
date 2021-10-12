@@ -24,7 +24,7 @@ public class CandyDistributor {
         } else {
           leftLevel = 1;
         }
-    }
+      }
     return res;
   }
 }
