@@ -17,7 +17,6 @@ public class WordBreakFinder {
       if(wordSet.contains(s.substring(l, i))) {
         curr.add(s.substring(l, i));
         if(findWords(s, i, h, curr, res, wordSet)) {
-          if(!s.substring(i, h).isEmpty()) curr.add(s.substring(i, h));
           addResult(res, curr);
         } else {
           curr.remove(curr.size() - 1);
