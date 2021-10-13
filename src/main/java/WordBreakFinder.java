@@ -14,14 +14,15 @@ public class WordBreakFinder {
       return true;
     }
     for(int i = l + 1; i <= h; i++) {
-      if(wordSet.contains(s.substring(l, i))) {
-        curr.add(s.substring(l, i));
+      String prefix = s.substring(l, i);
+      if(wordSet.contains(prefix)) {
+        curr.add(prefix);
         if(findWords(s, i, h, curr, res, wordSet)) {
           addResult(res, curr);
         } else {
           curr.remove(curr.size() - 1);
         }
-        curr.remove(s.substring(l, i));
+        curr.remove(prefix);
       }
     }
     return false;
