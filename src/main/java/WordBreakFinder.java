@@ -19,8 +19,6 @@ public class WordBreakFinder {
         curr.add(prefix);
         if(findWords(s, i, h, curr, res, wordSet)) {
           addResult(res, curr);
-        } else {
-          curr.remove(curr.size() - 1);
         }
         curr.remove(prefix);
       }
