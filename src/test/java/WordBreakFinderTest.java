@@ -23,5 +23,16 @@ public class WordBreakFinderTest {
     expected = Arrays.asList("c a t", "c at", "ca t", "cat");
     Assert.assertEquals(expected, actual);
 
+    actual = WordBreakFinder.wordBreak("catsanddog", Arrays.asList("cat", "cats", "and", "sand", "dog"));
+    expected = Arrays.asList("cat sand dog", "cats and dog");
+    Assert.assertEquals(expected, actual);
+
+    actual = WordBreakFinder.wordBreak("pineapplepenapple", Arrays.asList("apple", "pen", "applepen", "pine", "pineapple"));
+    expected = Arrays.asList("pine apple pen apple", "pine applepen apple", "pineapple pen apple");
+    Assert.assertEquals(expected, actual);
+
+    actual = WordBreakFinder.wordBreak("catsandog", Arrays.asList("cats", "dog", "sand", "and", "cat"));
+    Assert.assertTrue(actual.isEmpty());
+
   }
 }
