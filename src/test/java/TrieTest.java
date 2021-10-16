@@ -9,5 +9,6 @@ public class TrieTest {
     Assert.assertFalse(t.search("w"));
     t.insert("polo");
     Assert.assertTrue(t.search("polo"));
+    Assert.assertFalse(t.search("pol"));
   }
 }

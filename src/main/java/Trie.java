@@ -4,6 +4,7 @@ public class Trie {
   class TrieNode {
     Character c;
     Map<Character, TrieNode> map;
+    boolean endOfWord;
     public TrieNode(Character c) {
       this.c = c;
       this.map = new HashMap<>();
@@ -24,6 +25,7 @@ public class Trie {
       }
       current = current.getChild(c);
     }
+    current.endOfWord = true;
   }
 
   public boolean search(String str) {
@@ -34,6 +36,6 @@ public class Trie {
         return false;
       }
     }
-    return true;
+    return current.endOfWord;
   }
 }
