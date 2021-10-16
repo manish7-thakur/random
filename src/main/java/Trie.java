@@ -16,7 +16,7 @@ public class Trie {
       map.put(c, new TrieNode(c));
     }
   }
-  private TrieNode root = new TrieNode(' ');
+  private TrieNode root = new TrieNode('\0');
   public void insert(String str) {
     TrieNode current = root;
     for(char c : str.toCharArray()) {
