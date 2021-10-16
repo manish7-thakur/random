@@ -29,11 +29,10 @@ public class Trie {
   public boolean search(String str) {
     TrieNode current = root;
     for(char c : str.toCharArray()) {
-      TrieNode node = current.getChild(c);
-      if(node == null) {
+      current = current.getChild(c);
+      if(current == null) {
         return false;
       }
-      current = node;
     }
     return true;
   }
