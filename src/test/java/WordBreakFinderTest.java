@@ -33,7 +33,6 @@ public class WordBreakFinderTest {
 
     actual = WordBreakFinder.wordBreak("pineapplepenapplepineapplepenappleapineapplepenple", Arrays.asList("apple", "pen", "applepen",
     "pine", "p", "i", "n", "a", "e", "l", "ne", "pe", "ple", "en", "app", "pin"));
-    expected = Arrays.asList("pine apple pen apple", "pine applepen apple", "pineapple pen apple");
     Assert.assertEquals(10061824, actual.size());
 
     actual = WordBreakFinder.wordBreak("catsandog", Arrays.asList("cats", "dog", "sand", "and", "cat"));
