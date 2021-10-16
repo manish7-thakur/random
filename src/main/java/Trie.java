@@ -38,4 +38,13 @@ public class Trie {
     }
     return current.endOfWord;
   }
+
+  public boolean startsWith(String prefix) {
+    TrieNode current = root;
+    for(char c : prefix.toCharArray()) {
+      current = current.getChild(c);
+      if(current == null) return false;
+    }
+    return true;
+  }
 }
