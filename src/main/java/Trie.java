@@ -20,9 +20,7 @@ public class Trie {
   public void insert(String str) {
     TrieNode current = root;
     for(char c : str.toCharArray()) {
-      if(current.getChild(c) == null) {
-        current.addChild(c);
-      }
+      if(current.getChild(c) == null) current.addChild(c);
       current = current.getChild(c);
     }
     current.endOfWord = true;
@@ -32,9 +30,7 @@ public class Trie {
     TrieNode current = root;
     for(char c : str.toCharArray()) {
       current = current.getChild(c);
-      if(current == null) {
-        return false;
-      }
+      if(current == null) return false;
     }
     return current.endOfWord;
   }
