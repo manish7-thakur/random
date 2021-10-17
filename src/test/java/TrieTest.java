@@ -9,6 +9,7 @@ public class TrieTest {
     Assert.assertFalse(t.search("w"));
     Assert.assertTrue(t.startsWith("s"));
     Assert.assertFalse(t.startsWith("w"));
+    
     t.insert("polo");
     Assert.assertTrue(t.search("polo"));
     Assert.assertFalse(t.search("pol"));
