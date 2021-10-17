@@ -16,19 +16,22 @@ public class ArrayTrie {
     }
   }
 
-  private TrieNode root = new TrieNode('\0');
+  private TrieNode root;
+  public ArrayTrie() {
+    root = new TrieNode('\0');
+  }
 
-  public void insert(String str) {
+  public void insert(String word) {
     TrieNode current = root;
-    for(char c : str.toCharArray()) {
+    for(char c : word.toCharArray()) {
       if(current.getChild(c) == null) current.addChild(c);
       current = current.getChild(c);
     }
     current.endOfWord = true;
   }
-  public boolean search(String str) {
+  public boolean search(String word) {
     TrieNode current = root;
-    for(char c : str.toCharArray()) {
+    for(char c : word.toCharArray()) {
       current = current.getChild(c);
       if(current == null) return false;
     }
