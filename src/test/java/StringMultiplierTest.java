@@ -14,5 +14,13 @@ public class StringMultiplierTest {
     actual = StringMultiplier.multiply("78", "9");
     expected = "702";
     Assert.assertEquals(expected, actual);
+
+    actual = StringMultiplier.multiply("78", "99");
+    expected = "7722";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMultiplier.multiply("728", "199");
+    expected = "144872";
+    Assert.assertEquals(expected, actual);
   }
 }
