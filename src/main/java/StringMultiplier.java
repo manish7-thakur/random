@@ -16,4 +16,26 @@ public class StringMultiplier {
     }
     return b.toString();
   }
+
+  static public String multiply2(String num1, String num2) {
+    int res = 0;
+    int powi = 0;
+    for(int n1 = num1.length() - 1; n1 >= 0; n1--) {
+      int den = Character.digit(num1.charAt(n1), 10);
+      int sum = 0;
+      int pow = 0;
+      int carry = 0;
+      for(int n2 = num2.length() - 1; n2 >= 0; n2--) {
+        int nume = Character.digit(num2.charAt(n2), 10);
+        int curr = den * nume + carry;
+        sum += curr % 10 * (int)Math.pow(10, pow);
+        carry = curr / 10;
+        pow++;
+      }
+      sum += carry * Math.pow(10, pow);
+      res += sum * Math.pow(10, powi);
+      powi++;
+    }
+    return String.valueOf(res);
+  }
 }
