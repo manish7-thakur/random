@@ -26,5 +26,9 @@ public class MaxPointsLineFinderTest {
     actual = MaxPointsLineFinder.maxPoints(new int[][]{{1, 1}, {3, 2}, {5, 3}, {4, 1}, {2, 3}, {1, 4}});
     expected = 4;
     Assert.assertEquals(expected, actual);
+
+    actual = MaxPointsLineFinder.maxPoints(new int[][]{{1, 1}, {3, 2}, {5, 3}, {4, 1}, {2, 3}, {1, 4}, {7, 4}, {9, 5}, {11, 6}});
+    expected = 6;
+    Assert.assertEquals(expected, actual);
   }
 }
