@@ -2,7 +2,7 @@ import java.math.*;
 import java.util.*;
 
 public class MaxPointsLineFinder {
-  static class Pair<T> {
+  static class Pair<T extends Comparable> {
     T x;
     T y;
     public Pair(T x, T y) {
@@ -12,7 +12,7 @@ public class MaxPointsLineFinder {
     @Override
     public boolean equals(Object other) {
       Pair<T> pOther = (Pair<T>) other;
-      return this.x == pOther.x && this.y == pOther.y;
+      return this.x.compareTo(pOther.x) == 0 && this.y.compareTo(pOther.y) == 0;
     }
     @Override
     public int hashCode() {
