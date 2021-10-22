@@ -7,7 +7,7 @@ public class StringMultiplierTest {
     String expected = "2";
     Assert.assertEquals(expected, actual);
 
-    actual = StringMultiplier.multiply2("12", "2");
+    actual = StringMultiplier.multiply("12", "2");
     expected = "24";
     Assert.assertEquals(expected, actual);
 
