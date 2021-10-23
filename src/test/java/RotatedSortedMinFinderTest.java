@@ -19,11 +19,15 @@ public class RotatedSortedMinFinderTest {
     expected = 0;
     Assert.assertEquals(expected, actual);
 
-    actual = RotatedSortedMinFinder.findMin(new int[]{-1, 1, 2, 0});
+    actual = RotatedSortedMinFinder.findMin(new int[]{-1, 0, 2});
     expected = -1;
     Assert.assertEquals(expected, actual);
 
-    actual = RotatedSortedMinFinder.findMin(new int[]{-1, 1, 2, 0, 0});
+    actual = RotatedSortedMinFinder.findMin(new int[]{0, 1, 2, -1});
+    expected = -1;
+    Assert.assertEquals(expected, actual);
+
+    actual = RotatedSortedMinFinder.findMin(new int[]{1, 2, -1, 0, 0});
     expected = -1;
     Assert.assertEquals(expected, actual);
 
@@ -39,7 +43,7 @@ public class RotatedSortedMinFinderTest {
     expected = -1;
     Assert.assertEquals(expected, actual);
 
-    actual = RotatedSortedMinFinder.findMin(new int[]{7, 6, 5, 4, 2});
+    actual = RotatedSortedMinFinder.findMin(new int[]{4, 5, 6, 7, 2});
     expected = 2;
     Assert.assertEquals(expected, actual);
 
