@@ -32,6 +32,7 @@ public class MaxPointsLineFinder {
     int x1 = points[i][0];
     int y1 = points[i][1];
     int duplicates = 0;
+    int maxCount = 0;
     int count = 1;
     for(int j = i + 1; j < points.length; j++) {
       int x2 = points[j][0];
@@ -43,8 +44,9 @@ public class MaxPointsLineFinder {
         count++;
         map.put(slope, count);
       }
+      maxCount = Math.max(maxCount, count + duplicates);
     }
-    return count + duplicates;
+    return maxCount;
   }
   static Pair<Integer> getSlopeCoprime(int x1, int y1, int x2, int y2) {
     int deltaX = x2 - x1;
