@@ -10,17 +10,15 @@ public class MaxGapFinder {
       if(num < min) min = num;
       else if(num > max) max = num;
     }
-    System.out.println("Mix " + min + " Max " + max);
     int bucketLen = nums.length - 1;
     int gap = (int)Math.ceil((max - min) / bucketLen);
-    System.out.println("Gap " + gap);
-    int[] minBucket = new int[bucketLen];
+    int[] minBucket = new int[bucketLen]; // we maintain only min & max within a bucket since no 2 nums with max gap will be in same bucket
     int[] maxBucket = new int[bucketLen];
     Arrays.fill(minBucket, Integer.MAX_VALUE);
     Arrays.fill(maxBucket, Integer.MIN_VALUE);
     for(int num : nums) {
       if(num != min && num != max) {
-        int idx = (num - min) / gap;
+        int idx = (num - min) / gap; // index of the bucket
         minBucket[idx] = Math.min(num, minBucket[idx]);
         maxBucket[idx] = Math.max(num, maxBucket[idx]);
       }
