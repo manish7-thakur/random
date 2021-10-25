@@ -32,17 +32,17 @@ public class DungeonGameHealthFinder {
   // }
 
   static int calculate(int[][] mat, int i, int j) {
-    if(i == 0 && j == 0) {
-      return Math.max(1, 1 - mat[0][0]);
+    if(i == mat.length - 1 && j == mat[0].length - 1) {
+      return Math.max(1, 1 - mat[i][j]);
     }
-    if(i <= 0 || j <= 0) return Integer.MAX_VALUE;
-    int h1 = calculate(mat, i - 1, j);
-    int h2 = calculate(mat, i, j - 1);
+    if(i >= mat.length || j >= mat[0].length) return Integer.MAX_VALUE;
+    int h1 = calculate(mat, i + 1, j);
+    int h2 = calculate(mat, i, j + 1);
     int min1 = 0, min2 = 0;
     if(h1 == Integer.MAX_VALUE) min1 = mat[i][j];
     else min1 = Math.max(h1 - mat[i][j], 1);
     if(h2 == Integer.MAX_VALUE) min2 = mat[i][j];
     else min2 = Math.max(h2 - mat[i][j], 1);
-    return Math.min(min1, min2);
+    return Math.max(min1, min2);
   }
 }
