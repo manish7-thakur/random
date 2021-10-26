@@ -36,9 +36,7 @@ public class DungeonGameHealthFinder {
       return Math.max(1, 1 - mat[i][j]);
     }
     if(i >= mat.length || j >= mat[0].length) return Integer.MAX_VALUE;
-    int h1 = calculate(mat, i + 1, j);
-    int h2 = calculate(mat, i, j + 1);
-    int health = Math.min(h1, h2) - mat[i][j];
+    int health = Math.min(calculate(mat, i + 1, j), calculate(mat, i, j + 1)) - mat[i][j];
     return Math.max(1, health);
   }
 }
