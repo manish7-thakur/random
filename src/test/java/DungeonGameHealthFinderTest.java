@@ -53,5 +53,12 @@ public class DungeonGameHealthFinderTest {
      {1, 2, -2}});
     expected = 6;
     Assert.assertEquals(expected, actual);
+
+    actual = DungeonGameHealthFinder.calculateMinimumHP(new int[][]
+    {{-2, -3, 3},
+     {-5, -10, 1},
+     {10, 30, -5}});
+    expected = 7;
+    Assert.assertEquals(expected, actual);
   }
 }
