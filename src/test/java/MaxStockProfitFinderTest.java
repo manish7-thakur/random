@@ -82,7 +82,28 @@ public class MaxStockProfitFinderTest {
        expected = 12;
        Assert.assertEquals(expected, actual);
     }
+
     @Test
     public void findMaxProfitFromAtmostKTransactions() {
+      int actual = MaxStockProfitFinder.maxProfit(0, new int[]{1, 2});
+      int expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = MaxStockProfitFinder.maxProfit(1, new int[]{1, 2});
+      expected = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = MaxStockProfitFinder.maxProfit(1, new int[]{1, 2, 4});
+      expected = 3;
+      Assert.assertEquals(expected, actual);
+
+      actual = MaxStockProfitFinder.maxProfit(1, new int[]{1, 3, 1, 4});
+      expected = 3;
+      Assert.assertEquals(expected, actual);
+
+      actual = MaxStockProfitFinder.maxProfit(2, new int[]{1, 3, 1, 4});
+      expected = 5;
+      Assert.assertEquals(expected, actual);
     }
+
 }

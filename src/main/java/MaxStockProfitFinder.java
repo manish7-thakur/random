@@ -29,4 +29,13 @@ public class MaxStockProfitFinder {
 
       return maxProfit;
     }
+    static public int maxProfit(int k, int[] prices) {
+      return findMaxWithK(k, prices, 0, 0, prices.length - 1);
+    }
+
+    static int findMaxWithK(int k, int[] prices, int l, int p, int h) {
+      if(k <= 0 || p > h) return 0;
+      return Math.max((prices[p] - prices[l]) + findMaxWithK(k - 1, prices, p + 1, p + 1, h),
+      findMaxWithK(k, prices, l, p + 1, h));
+    }
 }
