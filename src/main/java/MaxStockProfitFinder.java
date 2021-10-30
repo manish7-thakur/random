@@ -35,7 +35,8 @@ public class MaxStockProfitFinder {
 
     static int findMaxWithK(int k, int[] prices, int l, int p, int h) {
       if(k <= 0 || p > h) return 0;
-      int p1 = (prices[p] - prices[l]) + findMaxWithK(k - 1, prices, p, p, h);
+      int p1 = 0;
+      if(prices[p] > prices[l]) p1 = (prices[p] - prices[l]) + findMaxWithK(k - 1, prices, p, p, h);
       int p2 = findMaxWithK(k, prices, l, p + 1, h);
       int p3 = findMaxWithK(k, prices, l + 1, l + 1, h);
       return Math.max(Math.max(p1, p2), p3);
