@@ -1,5 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
+import java.util.Arrays;
 
 public class MaxStockProfitFinderTest {
     @Test
@@ -119,6 +120,10 @@ public class MaxStockProfitFinderTest {
 
       actual = MaxStockProfitFinder.maxProfit(3, new int[]{5, 3, 2, 4, 7, 2, 5, 0});
       expected = 8;
+      Assert.assertEquals(expected, actual);
+
+      actual = MaxStockProfitFinder.maxProfit(5, new int[]{4, 3, 18, 49, 11, 95, 58, 81, 21, 85, 8, 59});
+      expected = 268;
       Assert.assertEquals(expected, actual);
     }
 
