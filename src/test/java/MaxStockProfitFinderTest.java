@@ -104,6 +104,14 @@ public class MaxStockProfitFinderTest {
       actual = MaxStockProfitFinder.maxProfit(2, new int[]{1, 3, 1, 4});
       expected = 5;
       Assert.assertEquals(expected, actual);
+
+      actual = MaxStockProfitFinder.maxProfit(2, new int[]{1, 3, 1, 4, 1, 2, 5, 6});
+      expected = 8;
+      Assert.assertEquals(expected, actual);
+
+      actual = MaxStockProfitFinder.maxProfit(3, new int[]{1, 3, 2, 4, 1, 2, 5, 6});
+      expected = 9;
+      Assert.assertEquals(expected, actual);
     }
 
 }
