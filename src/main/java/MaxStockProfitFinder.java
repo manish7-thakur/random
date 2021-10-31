@@ -32,23 +32,20 @@ public class MaxStockProfitFinder {
       return maxProfit;
     }
     static public int maxProfit(int k, int[] prices) {
-      Map<String, Integer> mem = new HashMap<>();
-      return findMaxWithK(k, prices, 0, 0, prices.length - 1, mem);
+      Integer[][] mem = new Integer[prices.length][k + 1];
+      return findMaxWithK(k, prices, 0, prices.length - 1, mem);
     }
 
-    static int findMaxWithK(int k, int[] prices, int l, int p, int h, Map<String, Integer> mem) {
-      if(k <= 0 || p > h) return 0;
-      String key = getKey(l , p, k);
-      if(mem.containsKey(key)) return mem.get(key);
-      int p1 = 0;
-      if(prices[p] > prices[l]) p1 = (prices[p] - prices[l]) + findMaxWithK(k - 1, prices, p, p, h, mem);
-      int p2 = findMaxWithK(k, prices, l, p + 1, h, mem);
-      int p3 = findMaxWithK(k, prices, l + 1, l + 1, h, mem);
-      int res = Math.max(Math.max(p1, p2), p3);
-      mem.put(key, res);
-      return res;
-    }
-    static String getKey(int a , int b, int c){
-      return a + "," + b + "," + c;
+    static int findMaxWithK(int k, int[] prices, int l, int h, Integer[][] mem) {
+      if(k <= 0 || l >= h) return 0;
+      if(mem[l][k] != null) return mem[l][k];
+      int profit = 0;
+      int min = prices[l];
+      for(int i = l; i <= h; i++) {
+        min = Math.min(min, prices[i]);
+        profit = Math.max(profit, findMaxWithK(k - 1, prices, i + 1, h, mem) + prices[i] - min);
+      }
+      mem[l][k] = profit;
+      return profit;
     }
 }
