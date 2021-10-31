@@ -41,7 +41,7 @@ public class MaxStockProfitFinder {
       if(mem[l][k] != null) return mem[l][k];
       int profit = 0;
       int min = prices[l];
-      for(int i = l; i <= h; i++) {
+      for(int i = l + 1; i <= h; i++) {
         min = Math.min(min, prices[i]);
         int bookedProfit = prices[i] - min + findMaxWithK(k - 1, prices, i + 1, h, mem);
         profit = Math.max(profit, bookedProfit);
