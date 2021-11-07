@@ -1,4 +1,5 @@
 import java.util.*;
+import static java.util.stream.Collectors.toList;
 
 public class Skyliner {
   static class Point implements Comparable<Point> {
