@@ -15,7 +15,7 @@ public class BinaryTree {
     public static List<Integer> rightSideView(TreeNode root) {
       List<Integer> res = new ArrayList<>();
       if(root == null) return res;
-      LinkedList<TreeNode> queue = new LinkedList<>();
+      Deque<TreeNode> queue = new LinkedList<>();
       queue.add(root);
       while(!queue.isEmpty()) {
         int count = queue.size();
