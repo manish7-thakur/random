@@ -16,17 +16,11 @@ public class ArrayIntersectionFinder {
       }
     }
     List<Integer> interList = new ArrayList<>();
-    for(int i = 0; i < arr.length; i++) {
-      if(occMap.containsKey(arr[i])) {
-        interList.add(arr[i]);
-        int occ = occMap.get(arr[i]);
-        occ--;
-        if(occ == 0) {
-          occMap.remove(arr[i]);
-        } else {
-          occMap.put(arr[i], occ);
-        }
-      }
+    for(Integer elem: arr) {
+      occMap.computeIfPresent(elem, (k, v) -> {
+        interList.add(elem);
+        return --v == 0 ? null: v;
+      });
     }
     return interList;
   }
