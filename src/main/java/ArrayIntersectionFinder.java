@@ -7,16 +7,12 @@ public class ArrayIntersectionFinder {
     if(a.length > b.length) {
       arr = a;
       for(int i = 0; i < b.length; i++) {
-      int occ =  occMap.getOrDefault(b[i], 0);
-      occ++;
-      occMap.put(b[i], occ);
+        occMap.merge(b[i], 1, Integer::sum);
       }
     } else {
       arr = b;
       for(int i = 0; i < a.length; i++) {
-      int occ =  occMap.getOrDefault(a[i], 0);
-      occ++;
-      occMap.put(a[i], occ);
+        occMap.merge(a[i], 1, Integer::sum);
       }
     }
     List<Integer> interList = new ArrayList<>();
