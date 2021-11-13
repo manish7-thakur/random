@@ -2,11 +2,10 @@ import java.util.*;
 
 public class WordBreakFinder {
   static public List<String> wordBreak(String s, List<String> wordDict) {
-    List<String> res = new ArrayList<>();
     Set<String> set = new HashSet<>(wordDict);
     ArrayList<String>[][] mem = new ArrayList[s.length() + 1][s.length() + 1];
-    findWords(s, 0, s.length(), "", res, set);
-    // res = findWords(s, 0, s.length(), res, set, mem);
+    //findWords(s, 0, s.length(), "", res, set);
+    List<String> res = findWords(s, 0, s.length(), set, mem);
     return res;
   }
 
@@ -23,7 +22,7 @@ public class WordBreakFinder {
     }
   }
 
-  static List<String> findWords(String s, int l, int h, List<String> res, Set<String> wordSet, List<String>[][] mem) {
+  static List<String> findWords(String s, int l, int h, Set<String> wordSet, List<String>[][] mem) {
     if(l >= h) {
       return Arrays.asList("");
     }
@@ -35,7 +34,7 @@ public class WordBreakFinder {
     for(int i = l + 1; i <= h; i++) {
       String prefix = s.substring(l, i);
       if(wordSet.contains(prefix)) {
-        List<String> clist = findWords(s, i, h, res, wordSet, mem);
+        List<String> clist = findWords(s, i, h, wordSet, mem);
         for(String str: clist) {
           list.add((prefix + " " + str).trim());
         }
