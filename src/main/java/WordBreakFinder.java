@@ -27,7 +27,6 @@ public class WordBreakFinder {
       return Arrays.asList("");
     }
     if(mem[l][h] != null) {
-      System.out.println("Reading from mem " + l +": " + h);
       return mem[l][h];
     }
     List<String> list = new ArrayList<>();
