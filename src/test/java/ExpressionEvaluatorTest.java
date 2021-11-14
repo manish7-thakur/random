@@ -59,4 +59,14 @@ public class ExpressionEvaluatorTest {
     expected = -5067.83;
     Assert.assertEquals(expected, actual, 0.5);
   }
+  @Test
+  public void testBasicWithAdditionAndSubstraction() {
+    int actual = ExpressionEvaluator.calculate("-1");
+    int expected = -1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ExpressionEvaluator.calculate("1-1");
+    expected = 0;
+    Assert.assertEquals(expected, actual);
+  }
 }

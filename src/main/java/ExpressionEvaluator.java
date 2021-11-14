@@ -47,4 +47,22 @@ public class ExpressionEvaluator {
     }
     return acc;
   }
+  static public int calculate(String s) {
+    int j = 0;
+    int i = s.charAt(0) == '+' || s.charAt(0) == '-' ? 1 : 0;
+    while(i < s.length() && s.charAt(i) != '+' && s.charAt(i) != '-') i++;
+    int acc = Integer.parseInt(s.substring(j, i));
+
+    while(i < s.length()) {
+      j = ++i;
+      while(i < s.length() && (s.charAt(i) != '+' || s.charAt(i) != '-')) i++;
+      if('+' == s.charAt(j)) {
+        acc += Integer.parseInt(s.substring(j, i));
+      } else {
+        acc -= Integer.parseInt(s.substring(j, i));
+      }
+      i++;
+    }
+    return acc;
+  }
 }
