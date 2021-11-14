@@ -51,16 +51,16 @@ public class ExpressionEvaluator {
     int j = 0;
     int i = s.charAt(0) == '+' || s.charAt(0) == '-' ? 1 : 0;
     while(i < s.length() && s.charAt(i) != '+' && s.charAt(i) != '-') i++;
-    int acc = Integer.parseInt(s.substring(j, i));
+    int acc = Integer.parseInt(s.substring(j, i).trim());
 
     while(i < s.length()) {
       char c = s.charAt(i);
       j = ++i;
       while(i < s.length() && s.charAt(i) != '+' && s.charAt(i) != '-') i++;
       if('+' == c) {
-        acc += Integer.parseInt(s.substring(j, i));
+        acc += Integer.parseInt(s.substring(j, i).trim());
       } else {
-        acc -= Integer.parseInt(s.substring(j, i));
+        acc -= Integer.parseInt(s.substring(j, i).trim());
       }
     }
     return acc;

@@ -80,5 +80,17 @@ public class ExpressionEvaluatorTest {
     actual = ExpressionEvaluator.calculate("-1341+3451-5232+4732");
     expected = 1610;
     Assert.assertEquals(expected, actual);
+
+    actual = ExpressionEvaluator.calculate("-1+ 31-2+ 4");
+    expected = 32;
+    Assert.assertEquals(expected, actual);
+
+    actual = ExpressionEvaluator.calculate("-1 +31 -2+ 40");
+    expected = 68;
+    Assert.assertEquals(expected, actual);
+
+    actual = ExpressionEvaluator.calculate("-13 ");
+    expected = -13;
+    Assert.assertEquals(expected, actual);
   }
 }
