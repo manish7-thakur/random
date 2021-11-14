@@ -68,7 +68,7 @@ public class ExpressionEvaluator {
     return acc;
   }
 
-  static public int resolveBrackets(String s) {
+  static public int calculate(String s) {
     int i = s.length() - 1;
     Stack<String> stack = new Stack<>(); // for String you do substring which is equal to stack.pop char by char so by using string stack doesn't harm
     while(i >= 0) {
