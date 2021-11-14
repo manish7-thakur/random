@@ -61,44 +61,24 @@ public class ExpressionEvaluatorTest {
   }
   @Test
   public void testBasicWithAdditionAndSubstraction() {
-    int actual = ExpressionEvaluator.calculate("-1");
+    int actual = ExpressionEvaluator.calculatePlainExp("-1");
     int expected = -1;
     Assert.assertEquals(expected, actual);
 
-    actual = ExpressionEvaluator.calculate("1-1");
+    actual = ExpressionEvaluator.calculatePlainExp("1-1");
     expected = 0;
     Assert.assertEquals(expected, actual);
 
-    actual = ExpressionEvaluator.calculate("1-1-2");
+    actual = ExpressionEvaluator.calculatePlainExp("1-1-2");
     expected = -2;
     Assert.assertEquals(expected, actual);
 
-    actual = ExpressionEvaluator.calculate("-11+1-2");
+    actual = ExpressionEvaluator.calculatePlainExp("-11+1-2");
     expected = -12;
     Assert.assertEquals(expected, actual);
 
-    actual = ExpressionEvaluator.calculate("-1341+3451-5232+4732");
+    actual = ExpressionEvaluator.calculatePlainExp("-1341+3451-5232+4732");
     expected = 1610;
-    Assert.assertEquals(expected, actual);
-
-    actual = ExpressionEvaluator.calculate("-1+ 31-2+ 4");
-    expected = 32;
-    Assert.assertEquals(expected, actual);
-
-    actual = ExpressionEvaluator.calculate("-13 ");
-    expected = -13;
-    Assert.assertEquals(expected, actual);
-
-    actual = ExpressionEvaluator.calculate(" -14");
-    expected = -14;
-    Assert.assertEquals(expected, actual);
-
-    actual = ExpressionEvaluator.calculate(" -144 ");
-    expected = -144;
-    Assert.assertEquals(expected, actual);
-
-    actual = ExpressionEvaluator.calculate(" -11 +31 -22+ 40 ");
-    expected = 38;
     Assert.assertEquals(expected, actual);
   }
 
@@ -142,6 +122,26 @@ public class ExpressionEvaluatorTest {
 
     actual = ExpressionEvaluator.resolveBrackets("- (1 - 2)");
     expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ExpressionEvaluator.resolveBrackets("-1+ 31-2+ 4");
+    expected = 32;
+    Assert.assertEquals(expected, actual);
+
+    actual = ExpressionEvaluator.resolveBrackets("-13 ");
+    expected = -13;
+    Assert.assertEquals(expected, actual);
+
+    actual = ExpressionEvaluator.resolveBrackets(" -14");
+    expected = -14;
+    Assert.assertEquals(expected, actual);
+
+    actual = ExpressionEvaluator.resolveBrackets(" -144 ");
+    expected = -144;
+    Assert.assertEquals(expected, actual);
+
+    actual = ExpressionEvaluator.resolveBrackets(" -11 +31 -22+ 40 ");
+    expected = 38;
     Assert.assertEquals(expected, actual);
   }
 }

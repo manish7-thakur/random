@@ -47,22 +47,22 @@ public class ExpressionEvaluator {
     }
     return acc;
   }
-  static public int calculate(String s) {
+  static public int calculatePlainExp(String s) {
     int j = 0;
     int i = 0;
     while(s.charAt(i) == ' ') i++;
     i = s.charAt(i) == '+' || s.charAt(i) == '-' ? i + 1 : i;
     while(i < s.length() && s.charAt(i) != '+' && s.charAt(i) != '-') i++;
-    int acc = Integer.parseInt(s.substring(j, i).trim());
+    int acc = Integer.parseInt(s.substring(j, i));
 
     while(i < s.length()) {
       char c = s.charAt(i);
       j = ++i;
       while(i < s.length() && s.charAt(i) != '+' && s.charAt(i) != '-') i++;
       if('+' == c) {
-        acc += Integer.parseInt(s.substring(j, i).trim());
+        acc += Integer.parseInt(s.substring(j, i));
       } else {
-        acc -= Integer.parseInt(s.substring(j, i).trim());
+        acc -= Integer.parseInt(s.substring(j, i));
       }
     }
     return acc;
@@ -77,7 +77,7 @@ public class ExpressionEvaluator {
         while(!stack.isEmpty() && !stack.peek().equals(")")) {
           b.append(stack.pop());
         }
-        int res = calculate(b.toString());
+        int res = calculatePlainExp(b.toString());
         stack.pop();
         if(res < 0) {
           stack.push(String.valueOf(-res));
@@ -86,13 +86,12 @@ public class ExpressionEvaluator {
       } else if(s.charAt(i) == '-' && stack.peek().equals("-")) {
         stack.pop();
         stack.push("+");
-      }
-      else if(s.charAt(i) != ' ') stack.push(s.valueOf(s.charAt(i)));
+      } else if(s.charAt(i) != ' ') stack.push(s.valueOf(s.charAt(i)));
       i--;
     }
     StringBuilder b = new StringBuilder();
     while(!stack.isEmpty()) b.append(stack.pop());
 
-    return calculate(b.toString());
+    return calculatePlainExp(b.toString());
   }
 }
