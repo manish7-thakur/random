@@ -79,7 +79,12 @@ public class ExpressionEvaluator {
         }
         int res = calculate(b.toString());
         stack.pop();
-        stack.push(String.valueOf(res));
+        if(res < 0 && s.charAt(i - 1) == '-') {
+          res = -res;
+          stack.push(String.valueOf(res));
+          stack.push("+");
+          i--;
+        } else stack.push(String.valueOf(res));
       } else stack.push(s.valueOf(s.charAt(i)));
       i--;
     }
