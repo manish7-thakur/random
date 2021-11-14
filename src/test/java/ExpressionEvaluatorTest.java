@@ -76,5 +76,9 @@ public class ExpressionEvaluatorTest {
     actual = ExpressionEvaluator.calculate("-11+1-2");
     expected = -12;
     Assert.assertEquals(expected, actual);
+
+    actual = ExpressionEvaluator.calculate("-1341+3451-5232+4732");
+    expected = 1610;
+    Assert.assertEquals(expected, actual);
   }
 }
