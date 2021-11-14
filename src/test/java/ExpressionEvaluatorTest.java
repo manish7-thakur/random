@@ -101,4 +101,15 @@ public class ExpressionEvaluatorTest {
     expected = 38;
     Assert.assertEquals(expected, actual);
   }
+
+  @Test
+  public void testResolveBrackets() {
+    int actual = ExpressionEvaluator.resolveBrackets("(1 + 2)");
+    int expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = ExpressionEvaluator.resolveBrackets("-(1)");
+    expected = -1;
+    Assert.assertEquals(expected, actual);
+  }
 }

@@ -67,4 +67,27 @@ public class ExpressionEvaluator {
     }
     return acc;
   }
+
+  static public int resolveBrackets(String s) {
+    int i = s.length() - 1;
+    Stack<String> expStack = new Stack<>();
+    Stack<Character> stack = new Stack<>(); // for String you do substring which is equal to stack.pop char by char so by using string stack doesn't give you any benefit
+    while(i >= 0) {
+      if(s.charAt(i) == '(') {
+        StringBuilder b = new StringBuilder();
+        while(!stack.isEmpty() && stack.peek() != ')') {
+          b.append(stack.pop());
+        }
+        int res = calculate(b.toString());
+        stack.pop();
+        expStack.push(String.valueOf(res));
+      } else stack.push(s.charAt(i));
+      i--;
+    }
+    StringBuilder b = new StringBuilder();
+    while(!stack.isEmpty()) b.append(stack.pop());
+    while(!expStack.isEmpty()) b.append(expStack.pop());
+    
+    return calculate(b.toString());
+  }
 }
