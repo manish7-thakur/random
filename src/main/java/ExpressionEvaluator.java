@@ -54,14 +54,14 @@ public class ExpressionEvaluator {
     int acc = Integer.parseInt(s.substring(j, i));
 
     while(i < s.length()) {
+      char c = s.charAt(i);
       j = ++i;
-      while(i < s.length() && (s.charAt(i) != '+' || s.charAt(i) != '-')) i++;
-      if('+' == s.charAt(j)) {
+      while(i < s.length() && s.charAt(i) != '+' && s.charAt(i) != '-') i++;
+      if('+' == c) {
         acc += Integer.parseInt(s.substring(j, i));
       } else {
         acc -= Integer.parseInt(s.substring(j, i));
       }
-      i++;
     }
     return acc;
   }
