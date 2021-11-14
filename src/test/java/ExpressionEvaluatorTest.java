@@ -135,5 +135,9 @@ public class ExpressionEvaluatorTest {
     actual = ExpressionEvaluator.resolveBrackets("1 + (-(-10 -20))");
     expected = 31;
     Assert.assertEquals(expected, actual);
+
+    actual = ExpressionEvaluator.resolveBrackets("(1+(4+5+2)-3)+(6+8)");
+    expected = 23;
+    Assert.assertEquals(expected, actual);
   }
 }
