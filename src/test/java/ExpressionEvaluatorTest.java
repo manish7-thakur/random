@@ -92,5 +92,9 @@ public class ExpressionEvaluatorTest {
     actual = ExpressionEvaluator.calculate("-13 ");
     expected = -13;
     Assert.assertEquals(expected, actual);
+
+    actual = ExpressionEvaluator.calculate(" -14");
+    expected = -14;
+    Assert.assertEquals(expected, actual);
   }
 }

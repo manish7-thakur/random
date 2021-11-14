@@ -49,7 +49,9 @@ public class ExpressionEvaluator {
   }
   static public int calculate(String s) {
     int j = 0;
-    int i = s.charAt(0) == '+' || s.charAt(0) == '-' ? 1 : 0;
+    int i = 0;
+    while(s.charAt(i) == ' ') i++;
+    i = s.charAt(i) == '+' || s.charAt(i) == '-' ? i + 1 : i;
     while(i < s.length() && s.charAt(i) != '+' && s.charAt(i) != '-') i++;
     int acc = Integer.parseInt(s.substring(j, i).trim());
 
