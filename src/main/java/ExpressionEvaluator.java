@@ -47,49 +47,29 @@ public class ExpressionEvaluator {
     }
     return acc;
   }
-  static public int calculatePlainExp(String s) {
-    int j = 0;
-    int i = s.charAt(0) == '+' || s.charAt(0) == '-' ? 1 : 0;
-    while(i < s.length() && s.charAt(i) != '+' && s.charAt(i) != '-') i++;
-    int acc = Integer.parseInt(s.substring(j, i));
-
+  static public int calculate(String s) {
+    int i = 0, j = 0, acc = 0, sign = 1;
+    Stack<Integer> stack = new Stack<>();
     while(i < s.length()) {
       char c = s.charAt(i);
-      j = ++i;
-      while(i < s.length() && s.charAt(i) != '+' && s.charAt(i) != '-') i++;
-      if('+' == c) {
-        acc += Integer.parseInt(s.substring(j, i));
-      } else {
-        acc -= Integer.parseInt(s.substring(j, i));
+      if(Character.isDigit(c)) {
+        j = i;
+        while(i + 1 < s.length() && Character.isDigit(s.charAt(i + 1))) i++;
+        acc += Integer.parseInt(s.substring(j, i + 1)) * sign;
+      } else if('+' == c) {
+        sign = 1;
+      } else if('-' == c){
+        sign = -1;
+      } else if('(' == c) {
+        stack.push(acc);
+        stack.push(sign);
+        acc = 0;
+        sign = 1;
+      } else if(')' == c) {
+        acc = acc * stack.pop() + stack.pop();
       }
+      i++;
     }
     return acc;
-  }
-
-  static public int calculate(String s) {
-    int i = s.length() - 1;
-    Stack<String> stack = new Stack<>(); // for String you do substring which is equal to stack.pop char by char so by using string stack doesn't harm
-    while(i >= 0) {
-      if(s.charAt(i) == '(') {
-        StringBuilder b = new StringBuilder();
-        while(!stack.isEmpty() && !stack.peek().equals(")")) {
-          b.append(stack.pop());
-        }
-        int res = calculatePlainExp(b.toString());
-        stack.pop();
-        if(res < 0) {
-          stack.push(String.valueOf(-res));
-          stack.push("-");
-        } else stack.push(String.valueOf(res));
-      } else if(s.charAt(i) == '-' && stack.peek().equals("-")) {
-        stack.pop();
-        stack.push("+");
-      } else if(s.charAt(i) != ' ') stack.push(s.valueOf(s.charAt(i)));
-      i--;
-    }
-    StringBuilder b = new StringBuilder();
-    while(!stack.isEmpty()) b.append(stack.pop());
-
-    return calculatePlainExp(b.toString());
   }
 }

@@ -60,32 +60,29 @@ public class ExpressionEvaluatorTest {
     Assert.assertEquals(expected, actual, 0.5);
   }
   @Test
-  public void testCalculatePlainExp() {
-    int actual = ExpressionEvaluator.calculatePlainExp("-1");
+  public void testcalculate() {
+    int actual = ExpressionEvaluator.calculate("-1");
     int expected = -1;
     Assert.assertEquals(expected, actual);
 
-    actual = ExpressionEvaluator.calculatePlainExp("1-1");
+    actual = ExpressionEvaluator.calculate("1-1");
     expected = 0;
     Assert.assertEquals(expected, actual);
 
-    actual = ExpressionEvaluator.calculatePlainExp("1-1-2");
+    actual = ExpressionEvaluator.calculate("1-1-2");
     expected = -2;
     Assert.assertEquals(expected, actual);
 
-    actual = ExpressionEvaluator.calculatePlainExp("-11+1-2");
+    actual = ExpressionEvaluator.calculate("-11+1-2");
     expected = -12;
     Assert.assertEquals(expected, actual);
 
-    actual = ExpressionEvaluator.calculatePlainExp("-1341+3451-5232+4732");
+    actual = ExpressionEvaluator.calculate("-1341+3451-5232+4732");
     expected = 1610;
     Assert.assertEquals(expected, actual);
-  }
 
-  @Test
-  public void testCalculate() {
-    int actual = ExpressionEvaluator.calculate("(1 + 2)");
-    int expected = 3;
+    actual = ExpressionEvaluator.calculate("(1 + 2)");
+    expected = 3;
     Assert.assertEquals(expected, actual);
 
     actual = ExpressionEvaluator.calculate("-(1)");
@@ -142,6 +139,10 @@ public class ExpressionEvaluatorTest {
 
     actual = ExpressionEvaluator.calculate(" -11 +31 -22+ 40 ");
     expected = 38;
+    Assert.assertEquals(expected, actual);
+
+    actual = ExpressionEvaluator.calculate("1-(2+3-(4+(5-(1-(2+4-(5+6))))))");
+    expected = -1;
     Assert.assertEquals(expected, actual);
   }
 }
