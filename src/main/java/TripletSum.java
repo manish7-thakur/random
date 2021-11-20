@@ -63,9 +63,10 @@ public class TripletSum {
       }
       for(int i = 0; i < nums.length; i++) {
           for(int j = i + 1; j < nums.length; j++) {
-              Integer index = map.get(-(nums[i] + nums[j]));
+              int sum = nums[i] + nums[j];
+              Integer index = map.get(-sum);
               if(index != null && index != i && index != j) {
-                  List<Integer> num = List.of(nums[i], nums[j], -(nums[i] + nums[j]));
+                  List<Integer> num = List.of(nums[i], nums[j], -sum);
                   String key = getKey(num);
                   if(!keys.contains(key)) {
                       res.add(num);
