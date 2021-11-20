@@ -53,4 +53,33 @@ public class TripletSum {
         Collections.sort(list);
         return list.toString();
     }
+
+    static public List<List<Integer>> threeSum(int[] nums) {
+      Map<Integer, Integer> map = new HashMap<>(nums.length);
+      Set<String> keys = new HashSet<>();
+      List<List<Integer>> res = new ArrayList<>();
+      for(int i = 0; i < nums.length; i++) {
+          map.put(nums[i], i);
+      }
+      for(int i = 0; i < nums.length; i++) {
+          for(int j = i + 1; j < nums.length; j++) {
+              Integer index = map.get(-(nums[i] + nums[j]));
+              if(index != null && index != i && index != j) {
+                  List<Integer> num = Arrays.asList(nums[i], nums[j], -(nums[i] + nums[j]));
+                  String key = getKey(num);
+                  if(!keys.contains(key)) {
+                      res.add(num);
+                      keys.add(key);
+                  }
+              }
+          }
+      }
+      return res;
+  }
+
+  static private String getKey(List<Integer> nums) {
+    Collections.sort(nums);
+    return String.valueOf(nums);
+  }
+
 }
