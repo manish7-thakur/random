@@ -32,11 +32,11 @@ public class TripletSumTest {
         Assert.assertEquals(expected, actual);
 
         actual = TripletSum.threeSum(new int[]{-1,0,1,2,-1,-4});
-        expected = List.of(List.of(-1,0,1), List.of(-1,-1,2));
+        expected = List.of(List.of(-1,0,1), List.of(-1, 2, -1));
         Assert.assertEquals(expected, actual);
 
         actual = TripletSum.threeSum(new int[]{-1, 23, 3, 2, -4, 2, -34, 20, 4, 2, -3, 2, 34, 72, -38, 3, 3, -27, 2, -3, 48, 3, -30, 1, 2, -1, -4});
-        expected = List.of(List.of(-1, -1, 2), List.of(-3, -1, 4), List.of(-27, 4, 23), List.of(-4, 1, 3), List.of(-4, 2, 2), List.of(-3, 1, 2), List.of(-30, -4, 34), List.of(-38, -34, 72), List.of(-38, 4, 34));
+        expected = List.of(List.of(-1, 2, -1), List.of(-1, 4, -3), List.of(23, 4, -27), List.of(3, -4, 1), List.of(2, -4, 2), List.of(2, -3, 1), List.of(-4, 34, -30), List.of(-34, 72, -38), List.of(4, 34, -38));
         Assert.assertEquals(expected, actual);
     }
 }
