@@ -135,5 +135,9 @@ public class NumberToWordsConverterTest {
     expected = "Two Million One Hundred Thousand Three Hundred Forty One";
     Assert.assertEquals(expected, actual);
 
+    actual = NumberToWordsConverter.numberToWords(22100341);
+    expected = "Twenty Two Million One Hundred Thousand Three Hundred Forty One";
+    Assert.assertEquals(expected, actual);
+
   }
 }
