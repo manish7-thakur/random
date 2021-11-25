@@ -1,20 +1,18 @@
 public class NumberToWordsConverter {
-  static String[] ones = new String[]{"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
-  static String[] tens = new String[]{"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
-  static String[] tys = new String[]{"", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety", "Eighteen"};
+  static String[] under20 = {"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
+  static String[] under100 = new String[]{"", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety", "Eighteen"};
+
+  static public String convert(int num) {
+    if(num < 20) return under20[num];
+    else if(num < 100) return under100[num / 10] + " " + convert(num % 10);
+    else if(num < 1000) return convert(num / 100) + " Hundred " + convert(num % 100);
+    else if(num < 1000000) return convert(num / 1000) + " Thousand " + convert(num % 1000);
+    else if(num < 1000000000) return convert(num / 1000000) + " Million " + convert(num % 1000000);
+    return "";
+  }
 
   static public String numberToWords(int num) {
-    StringBuilder b = new StringBuilder();
-    if(num < 10) b.append(ones[num]);
-    else if(num >= 10  && num < 20) b.append(tens[num % 10]);
-    else if(num >= 20 && num < 100) {
-      b.append(tys[num / 10]);
-      int one = num % 10;
-      if(one > 0) {
-        b. append(" ");
-        b.append(ones[one]);
-      }
-    }
-    return b.toString();
+    if(num == 0) return "Zero";
+    return convert(num).replace("  ", " ").trim();
   }
 }
