@@ -139,5 +139,21 @@ public class NumberToWordsConverterTest {
     expected = "Twenty Two Million One Hundred Thousand Three Hundred Forty One";
     Assert.assertEquals(expected, actual);
 
+    actual = NumberToWordsConverter.numberToWords(922100341);
+    expected = "Nine Hundred Twenty Two Million One Hundred Thousand Three Hundred Forty One";
+    Assert.assertEquals(expected, actual);
+
+    actual = NumberToWordsConverter.numberToWords(1000000000);
+    expected = "One Billion";
+    Assert.assertEquals(expected, actual);
+
+    actual = NumberToWordsConverter.numberToWords(1200040400);
+    expected = "One Billion Two Hundred Million Forty Thousand Four Hundred";
+    Assert.assertEquals(expected, actual);
+
+    actual = NumberToWordsConverter.numberToWords(Integer.MAX_VALUE);
+    expected = "Two Billion One Hundred Forty Seven Million Four Hundred Eighty Three Thousand Six Hundred Forty Seven";
+    Assert.assertEquals(expected, actual);
+
   }
 }

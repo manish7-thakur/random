@@ -8,7 +8,7 @@ public class NumberToWordsConverter {
     else if(num < 1000) return convert(num / 100) + " Hundred " + convert(num % 100);
     else if(num < 1000000) return convert(num / 1000) + " Thousand " + convert(num % 1000);
     else if(num < 1000000000) return convert(num / 1000000) + " Million " + convert(num % 1000000);
-    return "";
+    else return convert(num / 1000000000) + " Billion " + convert(num % 1000000000);
   }
 
   static public String numberToWords(int num) {
