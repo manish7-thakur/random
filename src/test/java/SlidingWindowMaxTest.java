@@ -38,5 +38,13 @@ public class SlidingWindowMaxTest {
     actual = SlidingWindowMax.maxSlidingWindow(new int[]{-3, -3, -3}, 1);
     expected = new int[]{-3, -3, -3};
     Assert.assertArrayEquals(expected, actual);
+
+    actual = SlidingWindowMax.maxSlidingWindow(new int[]{-3, -3, -3, -1}, 4);
+    expected = new int[]{-1};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = SlidingWindowMax.maxSlidingWindow(new int[]{-3, -1, -3, -1}, 3);
+    expected = new int[]{-1, -1};
+    Assert.assertArrayEquals(expected, actual);
   }
 }
