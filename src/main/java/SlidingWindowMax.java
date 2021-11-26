@@ -20,7 +20,7 @@ public class SlidingWindowMax {
         removalQueue.remove();
       }
       l++;
-      queue.add(nums[j]);
+      queue.add(nums[h]);
       h++;
       r++;
       result[r] = queue.peek();
