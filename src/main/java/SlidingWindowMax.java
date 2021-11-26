@@ -25,7 +25,6 @@ public class SlidingWindowMax {
       r++;
       result[r] = queue.peek();
     }
-
     return result;
   }
 }
