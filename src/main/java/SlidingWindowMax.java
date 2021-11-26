@@ -7,12 +7,18 @@ public class SlidingWindowMax {
     int r = 0, i = 0;
     int j;
     Queue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
+    Queue<Integer> removalQueue = new PriorityQueue<>(Collections.reverseOrder());
     for(j = 0; j < k; j++) {
       queue.add(nums[j]);
     }
     result[r] = queue.peek();
     while(j < nums.length) {
-      queue.remove(nums[i]);
+      if(nums[i] == queue.peek()) queue.remove();
+      else removalQueue.add(nums[i]);
+      while(!removalQueue.isEmpty() && queue.peek() == removalQueue.peek()) {
+        queue.remove();
+        removalQueue.remove();
+      }
       i++;
       queue.add(nums[j]);
       j++;
