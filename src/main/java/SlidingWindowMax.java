@@ -4,24 +4,24 @@ public class SlidingWindowMax {
   static public int[] maxSlidingWindow(int[] nums, int k) {
     int resultLen = nums.length - (k - 1);
     int[] result = new int[resultLen <= 0 ? 1 : resultLen];
-    int r = 0, i = 0;
-    int j;
+    int r = 0, l = 0;
+    int h;
     Queue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
     Queue<Integer> removalQueue = new PriorityQueue<>(Collections.reverseOrder());
-    for(j = 0; j < k; j++) {
-      queue.add(nums[j]);
+    for(h = 0; h < k; h++) {
+      queue.add(nums[h]);
     }
     result[r] = queue.peek();
-    while(j < nums.length) {
-      if(nums[i] == queue.peek()) queue.remove();
-      else removalQueue.add(nums[i]);
+    while(h < nums.length) {
+      if(nums[l] == queue.peek()) queue.remove();
+      else removalQueue.add(nums[l]);
       while(!removalQueue.isEmpty() && queue.peek() == removalQueue.peek()) {
         queue.remove();
         removalQueue.remove();
       }
-      i++;
+      l++;
       queue.add(nums[j]);
-      j++;
+      h++;
       r++;
       result[r] = queue.peek();
     }
