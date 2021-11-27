@@ -59,6 +59,10 @@ public class SlidingWindowMaxTest {
     expected = new int[]{3, 3, 5, 5, 6, 7};
     Assert.assertArrayEquals(expected, actual);
 
+    actual = SlidingWindowMax.maxSlidingWindow(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}, 4);
+    expected = new int[]{4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+    Assert.assertArrayEquals(expected, actual);
+
     actual = SlidingWindowMax.maxSlidingWindow(new int[]{1, 0, 2, -3, -2, -3, -1, -1, 7, 4, 2, 0, 2, 1, 4, -4, -3, -2, -3, 4, 0, 0, -3, -3, 3, 0, 4, 2, -3, -3}, 3);
     expected = new int[]{2, 2, 2, -2, -1, -1, 7, 7, 7, 4, 2, 2, 4, 4, 4, -2, -2, 4, 4, 4, 0, 0, 3, 3, 4, 4, 4, 2};
     Assert.assertArrayEquals(expected, actual);
