@@ -3,7 +3,7 @@ import java.util.*;
 public class SlidingWindowMax {
   static public int[] maxSlidingWindow(int[] nums, int k) {
     int resultLen = nums.length - (k - 1);
-    int[] result = new int[resultLen <= 0 ? 1 : resultLen];
+    int[] result = new int[resultLen];
     int r = 0, l = 0;
     int h;
     Queue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
