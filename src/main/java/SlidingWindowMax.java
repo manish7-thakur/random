@@ -14,7 +14,7 @@ public class SlidingWindowMax {
     while(h < nums.length) {
       if(nums[l] == queue.peek()) queue.remove();
       else removalQueue.add(nums[l]);
-      while(!removalQueue.isEmpty() && queue.peek() == removalQueue.peek()) {
+      while(!removalQueue.isEmpty() && queue.peek().equals(removalQueue.peek())) {
         queue.remove();
         removalQueue.remove();
       }
