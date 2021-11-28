@@ -17,5 +17,14 @@ public class MatrixTraverserTest {
 
     actual = MatrixTraverser.searchMatrix(new int[][]{{1, 2}, {3, 4}}, 3);
     Assert.assertTrue(actual);
+
+    actual = MatrixTraverser.searchMatrix(new int[][]{{1, 2}, {3, 4}}, 5);
+    Assert.assertFalse(actual);
+
+    actual = MatrixTraverser.searchMatrix(new int[][]{{1, 2, 4}, {5, 6, 8}}, 5);
+    Assert.assertTrue(actual);
+
+    actual = MatrixTraverser.searchMatrix(new int[][]{{1, 2, 4}, {5, 6, 8}, {6, 8, 9}}, 3);
+    Assert.assertFalse(actual);
   }
 }
