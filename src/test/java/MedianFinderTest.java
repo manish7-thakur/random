@@ -25,4 +25,16 @@ public class MedianFinderTest {
     mf.addNum(11);
     Assert.assertEquals(3.5, mf.findMedian(), delta);
   }
+
+  @Test
+  public void testFindRunningMedian() {
+    mf.addNum(10);
+    Assert.assertEquals(10, mf.findMedian(), delta);
+    mf.addNum(10);
+    Assert.assertEquals(10, mf.findMedian(), delta);
+    mf.addNum(10);
+    Assert.assertEquals(10, mf.findMedian(), delta);
+    mf.addNum(10);
+    Assert.assertEquals(10, mf.findMedian(), delta);
+  }
 }
