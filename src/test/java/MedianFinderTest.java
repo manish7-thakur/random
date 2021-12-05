@@ -37,4 +37,44 @@ public class MedianFinderTest {
     mf.addNum(10);
     Assert.assertEquals(10, mf.findMedian(), delta);
   }
+
+  @Test
+  public void testSortedListRunningMedian() {
+    mf.addNumS(4);
+    Assert.assertEquals(4, mf.findMedianS(), delta);
+    mf.addNumS(3);
+    Assert.assertEquals(3.5, mf.findMedianS(), delta);
+    mf.addNumS(1);
+    Assert.assertEquals(3, mf.findMedianS(), delta);
+    mf.addNumS(1);
+    Assert.assertEquals(2, mf.findMedianS(), delta);
+    mf.addNumS(1);
+    Assert.assertEquals(1, mf.findMedianS(), delta);
+    mf.addNumS(0);
+    Assert.assertEquals(1, mf.findMedianS(), delta);
+    mf.addNumS(2);
+    Assert.assertEquals(1, mf.findMedianS(), delta);
+    mf.addNumS(4);
+    Assert.assertEquals(1.5, mf.findMedianS(), delta);
+  }
+
+  @Test
+  public void testSortedListRunningMedianDuplicates() {
+    mf.addNumS(14);
+    Assert.assertEquals(14, mf.findMedianS(), delta);
+    mf.addNumS(14);
+    Assert.assertEquals(14, mf.findMedianS(), delta);
+    mf.addNumS(14);
+    Assert.assertEquals(14, mf.findMedianS(), delta);
+    mf.addNumS(14);
+    Assert.assertEquals(14, mf.findMedianS(), delta);
+    mf.addNumS(14);
+    Assert.assertEquals(14, mf.findMedianS(), delta);
+    mf.addNumS(14);
+    Assert.assertEquals(14, mf.findMedianS(), delta);
+    mf.addNumS(14);
+    Assert.assertEquals(14, mf.findMedianS(), delta);
+    mf.addNumS(14);
+    Assert.assertEquals(14, mf.findMedianS(), delta);
+  }
 }
