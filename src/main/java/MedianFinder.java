@@ -1,18 +1,18 @@
 import java.util.*;
 
 public class MedianFinder {
-  private double median;
-  private List<Integer> list;
-  private double sum;
+  private Queue<Integer> minHeap;
+  private Queue<Integer> maxHeap;
   public MedianFinder() {
-    list = new ArrayList();
+    minHeap = new PriorityQueue();
+    maxHeap = new PriorityQueue(Collections.reverseOrder());
   }
   public void addNum(int num) {
-    list.add(num);
-    sum += num;
-    median = sum / list.size();
+    maxHeap.add(num);
+    minHeap.add(maxHeap.poll());
+    if(minHeap.size() > maxHeap.size()) maxHeap.add(minHeap.poll());
   }
   public double findMedian() {
-    return median;
+    return minHeap.size() == maxHeap.size() ? (minHeap.peek() + maxHeap.peek()) / 2d : maxHeap.peek();
   }
 }
