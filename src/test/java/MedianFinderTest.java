@@ -27,7 +27,7 @@ public class MedianFinderTest {
   }
 
   @Test
-  public void testFindRunningMedian() {
+  public void testFindRunningMedianDuplicates() {
     mf.addNum(10);
     Assert.assertEquals(10, mf.findMedian(), delta);
     mf.addNum(10);
