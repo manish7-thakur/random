@@ -1,8 +1,7 @@
 import java.util.*;
 
 public class MedianFinder {
-  private Queue<Integer> minHeap;
-  private Queue<Integer> maxHeap;
+  private Queue<Integer> minHeap, maxHeap;
   /**
   Intuition: Keep the left part & right part of the list sorted.
   <------>|<------->
@@ -10,9 +9,8 @@ public class MedianFinder {
   which keeps 4 at the top which is part of answer. Left part is maxHeap which keeps 2 at top which is the also part of answer. answer -> (2 + 4) / 2
   <--->|<------->
   [0, 1, 2, 4, 5] For odd number of elements we keep one extra elements in minHeap(right part) which is the answer.
-  we always add the element to minHeap first to find the current min after addition. if elements in minHeap(right part) becomes more than maxHeap(left part) we transfer the
-  top element from minHeap to maxHeap.
-  We never let maxHeap have more elements than minHeap, which arises when list is initially empty, we transfer back from maxHeap(left part) to minHeap(right part)
+  we always add the element to minHeap first to find the current min after addition. we then transfer the top element from minHeap to maxHeap.
+  We never let maxHeap have more elements than minHeap, we transfer back from maxHeap(left part) to minHeap(right part)
   */
   public MedianFinder() {
     list = new ArrayList<>();
@@ -21,7 +19,7 @@ public class MedianFinder {
   }
   public void addNum(int num) {
     minHeap.add(num);
-    if(minHeap.size() > maxHeap.size()) maxHeap.add(minHeap.remove());
+    maxHeap.add(minHeap.remove());
     if(maxHeap.size() > minHeap.size()) minHeap.add(maxHeap.remove());
   }
 
