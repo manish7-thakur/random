@@ -31,9 +31,9 @@ public class MedianFinder {
 
   private List<Integer> list;
   public void addNumS(int num) {
-    int idx = Collections.binarySearch(list, num);
+    int idx = Collections.binarySearch(list, num); // log(n)
     int insPoint = idx < 0 ? -idx -1 : idx + 1;
-    list.add(insPoint, num);
+    list.add(insPoint, num); //O(n) this can optimized using heap, instead of shifting n elements, shift only log(n)
   }
   public double findMedianS() {
     int mid = list.size() / 2;
