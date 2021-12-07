@@ -10,7 +10,7 @@ public class MedianFinder {
   <--->|<------->
   [0, 1, 2, 4, 5] For odd number of elements we keep one extra elements in minHeap(right part) which is the answer.
   we always add the element to minHeap first to find the current min after addition. we then transfer the top element from minHeap to maxHeap.
-  We never let maxHeap have more elements than minHeap, we transfer back from maxHeap(left part) to minHeap(right part)
+  We never let maxHeap have more elements than minHeap, otherwise we transfer back from maxHeap(left part) to minHeap(right part)
   */
   public MedianFinder() {
     list = new ArrayList<>();
