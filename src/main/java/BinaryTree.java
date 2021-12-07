@@ -29,4 +29,37 @@ public class BinaryTree {
       }
       return res;
     }
+
+    static public TreeNode deserialize(String data) {
+      int i = 0;
+      int commaIdx = data.indexOf(",", i);
+      commaIdx = commaIdx < 0 ? data.length(): commaIdx;
+      TreeNode root = new TreeNode(Integer.parseInt(data.substring(i, commaIdx)));
+      Queue<TreeNode> queue = new LinkedList<>();
+      queue.add(root);
+      while(!queue.isEmpty()) {
+        TreeNode current = queue.remove();
+        i = commaIdx + 1;
+        if(i >= data.length()) break;
+        commaIdx = data.indexOf(",", i);
+        commaIdx = commaIdx < 0 ? data.length() : commaIdx;
+        String num = data.substring(i, commaIdx);
+        if(!num.equals("n")) {
+          TreeNode leftChild = new TreeNode(Integer.parseInt(num));
+          current.left = leftChild;
+          queue.add(leftChild);
+        }
+        i = commaIdx + 1;
+        if(i >= data.length()) break;
+        commaIdx = data.indexOf(",", i);
+        commaIdx = commaIdx < 0 ? data.length() : commaIdx;
+        num = data.substring(i, commaIdx);
+        if(!num.equals("n")) {
+          TreeNode rightChild = new TreeNode(Integer.parseInt(num));
+          current.right = rightChild;
+          queue.add(rightChild);
+        }
+      }
+      return root;
+    }
 }

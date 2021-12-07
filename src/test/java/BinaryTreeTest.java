@@ -55,4 +55,34 @@ public class BinaryTreeTest {
       expected = Arrays.asList(1, 3, 4, 5);
       Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void testDeserializeBinaryTree() {
+      TreeNode root = BinaryTree.deserialize("13");
+      Assert.assertEquals(13, root.val);
+
+      root = BinaryTree.deserialize("13,253,34");
+      Assert.assertEquals(13, root.val);
+      Assert.assertEquals(253, root.left.val);
+      Assert.assertEquals(34, root.right.val);
+
+      root = BinaryTree.deserialize("-13,n,34");
+      Assert.assertEquals(-13, root.val);
+      Assert.assertNull(root.left);
+      Assert.assertEquals(34, root.right.val);
+      root = BinaryTree.deserialize("-13,n,34,23");
+      Assert.assertEquals(-13, root.val);
+      Assert.assertNull(root.left);
+      Assert.assertEquals(34, root.right.val);
+      Assert.assertEquals(23, root.right.left.val);
+
+      root = BinaryTree.deserialize("-13,n,34,23,n,-364,456");
+      Assert.assertEquals(-13, root.val);
+      Assert.assertNull(root.left);
+      Assert.assertEquals(34, root.right.val);
+      Assert.assertEquals(23, root.right.left.val);
+      Assert.assertNull(root.right.right);
+      Assert.assertEquals(-364, root.right.left.left.val);
+      Assert.assertEquals(456, root.right.left.right.val);
+    }
 }
