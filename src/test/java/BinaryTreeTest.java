@@ -58,25 +58,26 @@ public class BinaryTreeTest {
 
     @Test
     public void testDeserializeBinaryTree() {
-      TreeNode root = BinaryTree.deserialize("13");
+      TreeNode root = BinaryTree.deserializeS("13");
       Assert.assertEquals(13, root.val);
 
-      root = BinaryTree.deserialize("13,253,34");
+      root = BinaryTree.deserializeS("13,253,34");
       Assert.assertEquals(13, root.val);
       Assert.assertEquals(253, root.left.val);
       Assert.assertEquals(34, root.right.val);
 
-      root = BinaryTree.deserialize("-13,n,34");
+      root = BinaryTree.deserializeS("-13,n,34");
       Assert.assertEquals(-13, root.val);
       Assert.assertNull(root.left);
       Assert.assertEquals(34, root.right.val);
-      root = BinaryTree.deserialize("-13,n,34,23");
+
+      root = BinaryTree.deserializeS("-13,n,34,23");
       Assert.assertEquals(-13, root.val);
       Assert.assertNull(root.left);
       Assert.assertEquals(34, root.right.val);
       Assert.assertEquals(23, root.right.left.val);
 
-      root = BinaryTree.deserialize("-13,n,34,23,n,-364,456");
+      root = BinaryTree.deserializeS("-13,n,34,23,n,-364,456");
       Assert.assertEquals(-13, root.val);
       Assert.assertNull(root.left);
       Assert.assertEquals(34, root.right.val);
@@ -85,14 +86,14 @@ public class BinaryTreeTest {
       Assert.assertEquals(-364, root.right.left.left.val);
       Assert.assertEquals(456, root.right.left.right.val);
 
-      root = BinaryTree.deserialize("1,n,2,n,3,n,4,n,5");
+      root = BinaryTree.deserializeS("1,n,2,n,3,n,4,n,5");
       Assert.assertEquals(1, root.val);
       Assert.assertEquals(2, root.right.val);
       Assert.assertEquals(3, root.right.right.val);
       Assert.assertEquals(4, root.right.right.right.val);
       Assert.assertEquals(5, root.right.right.right.right.val);
 
-      root = BinaryTree.deserialize("1,2,3,n,n,4,5");
+      root = BinaryTree.deserializeS("1,2,3,n,n,4,5");
       Assert.assertEquals(1, root.val);
       Assert.assertEquals(2, root.left.val);
       Assert.assertEquals(3, root.right.val);

@@ -62,4 +62,28 @@ public class BinaryTree {
       }
       return root;
     }
+
+    static public TreeNode deserializeS(String data) {
+      String[] nodes = data.split(",");
+      int i = 0;
+      Queue<TreeNode> queue = new LinkedList<>();
+      TreeNode root = createNode(nodes[i]);
+      queue.add(root);
+      i++;
+      while(i < nodes.length) {
+        TreeNode current = queue.remove();
+        current.left = createNode(nodes[i]);
+        if(current.left != null) queue.add(current.left);
+        if(++i >= nodes.length) break;
+        current.right = createNode(nodes[i]);
+        if(current.right != null) queue.add(current.right);
+        i++;
+      }
+      return root;
+    }
+
+    static private TreeNode createNode(String s) {
+      if(!s.equals("n")) return new TreeNode(Integer.parseInt(s));
+      return null;
+    }
 }
