@@ -30,6 +30,22 @@ public class BinaryTree {
       return res;
     }
 
+    static public String serialize(TreeNode root) {
+      StringBuilder b = new StringBuilder();
+      Queue<TreeNode> queue = new LinkedList<>();
+      queue.add(root);
+      while(!queue.isEmpty()) {
+        TreeNode curr = queue.remove();
+        if(curr != null) {
+          b.append(curr.val);
+          queue.add(curr.left);
+          queue.add(curr.right);
+        } else b.append("n");
+        if(!queue.isEmpty()) b.append(",");
+      }
+      return b.toString();
+    }
+
     static public TreeNode deserialize(String data) {
       int i = 0;
       int commaIdx = data.indexOf(",", i);

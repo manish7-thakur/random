@@ -57,6 +57,34 @@ public class BinaryTreeTest {
     }
 
     @Test
+    public void testSerializeBinaryTree() {
+      TreeNode root = new TreeNode(2);
+      String actual = BinaryTree.serialize(root);
+      String expected = "2,n,n";
+      Assert.assertEquals(expected, actual);
+
+      root = new TreeNode(2, null, new TreeNode(3));
+      actual = BinaryTree.serialize(root);
+      expected = "2,n,3,n,n";
+      Assert.assertEquals(expected, actual);
+
+      root = new TreeNode(2, new TreeNode(4), new TreeNode(3));
+      actual = BinaryTree.serialize(root);
+      expected = "2,4,3,n,n,n,n";
+      Assert.assertEquals(expected, actual);
+
+      root = new TreeNode(2, new TreeNode(-4, new TreeNode(1), null), new TreeNode(3, null, new TreeNode(-1)));
+      actual = BinaryTree.serialize(root);
+      expected = "2,-4,3,1,n,n,-1,n,n,n,n";
+      Assert.assertEquals(expected, actual);
+
+      root = new TreeNode(1, new TreeNode(2, null, new TreeNode(3, new TreeNode(4, null, new TreeNode(5)), null)), null);
+      actual = BinaryTree.serialize(root);
+      expected = "1,2,n,n,3,4,n,n,5,n,n";
+      Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void testDeserializeBinaryTree() {
       TreeNode root = BinaryTree.deserializeS("13");
       Assert.assertEquals(13, root.val);
