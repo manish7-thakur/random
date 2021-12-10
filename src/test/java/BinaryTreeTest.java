@@ -127,5 +127,12 @@ public class BinaryTreeTest {
       Assert.assertEquals(3, root.right.val);
       Assert.assertEquals(4, root.right.left.val);
       Assert.assertEquals(5, root.right.right.val);
+
+      root = BinaryTree.deserializeS("1,2,n,n,3,4,n,n,5,n,n");
+      Assert.assertEquals(1, root.val);
+      Assert.assertEquals(2, root.left.val);
+      Assert.assertEquals(3, root.left.right.val);
+      Assert.assertEquals(4, root.left.right.left.val);
+      Assert.assertEquals(5, root.left.right.left.right.val);
     }
 }
