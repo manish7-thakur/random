@@ -81,7 +81,7 @@ public class BinaryTree {
     }
 
     static public TreeNode deserializeS(String data) {
-      if(data == null || data.isEmpty()) return null;
+      if(data == null || data.isEmpty() || data.equals("n")) return null;
       String[] nodes = data.split(",");
       int i = 0;
       Queue<TreeNode> queue = new LinkedList<>();
