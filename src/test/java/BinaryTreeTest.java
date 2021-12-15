@@ -86,7 +86,10 @@ public class BinaryTreeTest {
 
     @Test
     public void testDeserializeBinaryTree() {
-      TreeNode root = BinaryTree.deserializeS("13");
+      TreeNode root = BinaryTree.deserializeS("");
+      Assert.assertNull(root);
+
+      root = BinaryTree.deserializeS("13");
       Assert.assertEquals(13, root.val);
 
       root = BinaryTree.deserializeS("13,253,34");
