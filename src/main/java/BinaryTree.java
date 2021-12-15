@@ -47,7 +47,7 @@ public class BinaryTree {
     }
 
     static public TreeNode deserialize(String data) {
-      if(data == null || data.isEmpty()) return null;
+      if(data == null || data.isEmpty() || data.equals("n")) return null;
       int i = 0;
       int commaIdx = data.indexOf(",", i);
       commaIdx = commaIdx < 0 ? data.length(): commaIdx;
