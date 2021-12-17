@@ -104,4 +104,27 @@ public class BinaryTree {
       if(!s.equals("n")) return new TreeNode(Integer.parseInt(s));
       return null;
     }
+
+
+    static public boolean isValidSerialization(String preorder) {
+      class NodeStatus {
+        int value;
+        boolean left;
+
+        public NodeStatus(int value) {
+          this.value = value;
+        }
+      }
+      Stack<NodeStatus> stack = new Stack<>();
+      String[] items = preorder.split(",");
+      NodeStatus root = new NodeStatus(Integer.parseInt(items[0]));
+      stack.push(root);
+      for(int i = 1; i < items.length; i++) {
+        if(stack.isEmpty()) return false;
+        if(!stack.peek().left) stack.peek().left = true;
+        else stack.pop();
+        if(!items[i].equals("#")) stack.push(new NodeStatus(Integer.parseInt(items[i])));
+      }
+      return stack.isEmpty();
+    }
 }

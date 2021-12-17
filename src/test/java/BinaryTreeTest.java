@@ -145,4 +145,19 @@ public class BinaryTreeTest {
       Assert.assertEquals(4, root.left.right.left.val);
       Assert.assertEquals(5, root.left.right.left.right.val);
     }
+
+    @Test
+    public void testValidatePreorderSerialization() {
+      String treeStr = "9,#,#";
+      Assert.assertTrue(BinaryTree.isValidSerialization(treeStr));
+
+      treeStr = "9,#";
+      Assert.assertFalse(BinaryTree.isValidSerialization(treeStr));
+
+      treeStr = "9,#,#,1";
+      Assert.assertFalse(BinaryTree.isValidSerialization(treeStr));
+
+      treeStr = "9,#,1,#,#";
+      Assert.assertTrue(BinaryTree.isValidSerialization(treeStr));
+    }
 }
