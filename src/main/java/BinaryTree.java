@@ -107,6 +107,7 @@ public class BinaryTree {
 
 
     static public boolean isValidSerialization(String preorder) {
+      if(preorder.equals("#")) return true;
       class NodeStatus {
         String value;
         boolean left;
@@ -117,8 +118,10 @@ public class BinaryTree {
       }
       Stack<NodeStatus> stack = new Stack<>();
       String[] items = preorder.split(",");
-      NodeStatus root = new NodeStatus(items[0]);
-      stack.push(root);
+      if(!items[0].equals("#")) {
+        NodeStatus root = new NodeStatus(items[0]);
+        stack.push(root);
+      }
       for(int i = 1; i < items.length; i++) {
         if(stack.isEmpty()) return false;
         if(!stack.peek().left) stack.peek().left = true;
