@@ -159,5 +159,14 @@ public class BinaryTreeTest {
 
       treeStr = "9,#,1,#,#";
       Assert.assertTrue(BinaryTree.isValidSerialization(treeStr));
+
+      treeStr = "9,1,#,#,#";
+      Assert.assertTrue(BinaryTree.isValidSerialization(treeStr));
+
+      treeStr = "9,-5,6,1,#,#,#,#,#";
+      Assert.assertTrue(BinaryTree.isValidSerialization(treeStr));
+
+      treeStr = "-9,#,-5,6,#,7,#,#,#";
+      Assert.assertTrue(BinaryTree.isValidSerialization(treeStr));
     }
 }
