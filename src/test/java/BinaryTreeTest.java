@@ -170,6 +170,6 @@ public class BinaryTreeTest {
       Assert.assertTrue(BinaryTree.isValidSerialization(treeStr));
 
       treeStr = "-9,#,-5,#,#,7,#,#,#";
-      Assert.assertTrue(BinaryTree.isValidSerialization(treeStr));
+      Assert.assertFalse(BinaryTree.isValidSerialization(treeStr));
     }
 }
