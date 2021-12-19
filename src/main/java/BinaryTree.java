@@ -108,25 +108,19 @@ public class BinaryTree {
 
     static public boolean isValidSerialization(String preorder) {
       if(preorder.equals("#")) return true;
-      class NodeStatus {
-        String value;
-        boolean left;
-
-        public NodeStatus(String value) {
-          this.value = value;
-        }
-      }
-      Stack<NodeStatus> stack = new Stack<>();
+      Stack<Boolean> stack = new Stack<>();
       String[] items = preorder.split(",");
       if(!items[0].equals("#")) {
-        NodeStatus root = new NodeStatus(items[0]);
-        stack.push(root);
+        stack.push(false);
       }
       for(int i = 1; i < items.length; i++) {
         if(stack.isEmpty()) return false;
-        if(!stack.peek().left) stack.peek().left = true;
+        if(!stack.peek()) {
+          stack.pop();
+          stack.push(true);
+        }
         else stack.pop();
-        if(!items[i].equals("#")) stack.push(new NodeStatus(items[i]));
+        if(!items[i].equals("#")) stack.push(false);
       }
       return stack.isEmpty();
     }
