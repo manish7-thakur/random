@@ -124,4 +124,16 @@ public class BinaryTree {
       }
       return stack.isEmpty();
     }
+
+    static public boolean isValidSerialization(String preorder) {
+      Stack<String> stack = new Stack<>();
+      String[] items = preorder.split(",");
+      stack.push(items[0]);
+      for(int i = 1; i < items.length; i++) {
+        if(items[i].equals("#")) {
+          if(stack.isEmpty()) return false;
+        } else stack.push(items[i]);
+      }
+      return stack.peek().equals("#");
+    }
 }
