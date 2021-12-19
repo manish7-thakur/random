@@ -125,15 +125,16 @@ public class BinaryTree {
       return stack.isEmpty();
     }
 
-    static public boolean isValidSerialization(String preorder) {
+    static public boolean isValidSerializationS(String preorder) {
       Stack<String> stack = new Stack<>();
       String[] items = preorder.split(",");
       stack.push(items[0]);
       for(int i = 1; i < items.length; i++) {
         if(items[i].equals("#")) {
           if(stack.isEmpty()) return false;
+          stack.pop();
         } else stack.push(items[i]);
       }
-      return stack.peek().equals("#");
+      return !stack.isEmpty() && stack.peek().equals("#");
     }
 }
