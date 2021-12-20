@@ -12,8 +12,16 @@ public class FlipCoinsTest {
       expected = 0;
       Assert.assertEquals(expected, actual);
 
+      actual = FlipCoins.minimumCoinFlips("TH");
+      expected = 1;
+      Assert.assertEquals(expected, actual);
+
       actual = FlipCoins.minimumCoinFlips("HHHT");
       expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = FlipCoins.minimumCoinFlips("TTHHH");
+      expected = 2;
       Assert.assertEquals(expected, actual);
 
       actual = FlipCoins.minimumCoinFlips("HTTTTTT");
