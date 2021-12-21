@@ -6,34 +6,39 @@ import java.util.List;
 public class MonotonicSequenceTest {
     @Test
     public void testLongestMonotonicSequence() {
-        int[] seq = new int[]{3, 5};
-        List<Integer> actual = MonotonicSequence.find(seq);
-        List<Integer> expected = List.of(3);
+        int[] seq = new int[]{5, 4};
+        int actual = MonotonicSequence.find(seq);
+        int expected = 1;
         Assert.assertEquals(expected, actual);
 
-        seq = new int[]{3, 5, 2};
+        seq = new int[]{4, 5};
         actual = MonotonicSequence.find(seq);
-        expected = List.of(3, 5);
+        expected = 2;
         Assert.assertEquals(expected, actual);
 
-        seq = new int[]{3, 2, 5};
+        seq = new int[]{2, 3, 5};
         actual = MonotonicSequence.find(seq);
-        expected = List.of(3, 5);
+        expected = 3;
         Assert.assertEquals(expected, actual);
 
-        seq = new int[]{1, 3, 2, 5};
+        seq = new int[]{3, 2, 5, 6};
         actual = MonotonicSequence.find(seq);
-        expected = List.of(1, 3, 5);
+        expected = 3;
         Assert.assertEquals(expected, actual);
 
-        seq = new int[]{1, 2, 3, 4, 5, 6};
+        seq = new int[]{1, 3, 2, 3, 5};
         actual = MonotonicSequence.find(seq);
-        expected = List.of(1, 2, 3, 4, 5);
+        expected = 4;
         Assert.assertEquals(expected, actual);
 
-        seq = new int[]{10, 22, 9, 33, 21, 50, 41, 60, 80};
+        seq = new int[]{2, 2, 1, 2, 5, 3, 4, 6};
         actual = MonotonicSequence.find(seq);
-        expected = List.of(10, 22, 33, 50, 60, 80);
+        expected = 5;
+        Assert.assertEquals(expected, actual);
+
+        seq = new int[]{10, 33, 9, 21, 22, 50, 41, 60, 80};
+        actual = MonotonicSequence.find(seq);
+        expected = 6;
         Assert.assertEquals(expected, actual);
     }
 
