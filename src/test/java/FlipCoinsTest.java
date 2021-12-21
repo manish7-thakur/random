@@ -58,6 +58,22 @@ public class FlipCoinsTest {
       actual = FlipCoins.minFlipsMonoIncr("10");
       expected = 1;
       Assert.assertEquals(expected, actual);
+
+      actual = FlipCoins.minFlipsMonoIncr("11");
+      expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = FlipCoins.minFlipsMonoIncr("00");
+      expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = FlipCoins.minFlipsMonoIncr("0011");
+      expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = FlipCoins.minFlipsMonoIncr("1100");
+      expected = 2;
+      Assert.assertEquals(expected, actual);
     }
 
 }
