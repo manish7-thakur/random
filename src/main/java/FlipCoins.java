@@ -14,4 +14,20 @@ public class FlipCoins {
         }
         return Math.min(headFlips, tailFlips);
     }
+
+    static public int minFlipsMonoIncr(String s) {
+      boolean oneSeen = false;
+      int zeroFlips = 0;
+      for(int i = 0; i < s.length(); i++) {
+        if(oneSeen && s.charAt(i) == '0') zeroFlips++;
+        if(s.charAt(i) == '1') oneSeen = true;
+      }
+      boolean zeroSeen = false;
+      int oneFlips = 0;
+      for(int i = s.length() - 1; i >= 0; i--) {
+        if(zeroSeen && s.charAt(i) == '1') oneFlips++;
+        if(s.charAt(i) == '0') zeroSeen = true;
+      }
+      return Math.max(zeroFlips, oneFlips);
+    }
 }
