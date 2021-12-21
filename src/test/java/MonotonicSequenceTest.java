@@ -7,29 +7,29 @@ public class MonotonicSequenceTest {
     @Test
     public void twoElemArray() {
         int[] seq = new int[]{3, 5};
-        List<Integer> actual = LIMS.find(seq);
+        List<Integer> actual = MonotonicSequence.find(seq);
         List<Integer> expected = List.of(3);
         Assert.assertEquals(expected, actual);
 
         seq = new int[]{3, 5, 2};
-        actual = LIMS.find(seq);
+        actual = MonotonicSequence.find(seq);
         expected = List.of(3, 5);
 
         seq = new int[]{3, 2, 5};
-        actual = LIMS.find(seq);
+        actual = MonotonicSequence.find(seq);
         expected = List.of(3, 5);
 
         seq = new int[]{1, 3, 2, 5};
-        actual = LIMS.find(seq);
+        actual = MonotonicSequence.find(seq);
         expected = List.of(1, 3, 5);
 
         seq = new int[]{1, 2, 3, 4, 5, 6};
-        actual = LIMS.find(seq);
+        actual = MonotonicSequence.find(seq);
         expected = List.of(1, 2, 3, 4, 5);
         Assert.assertEquals(expected, actual);
 
         seq = new int[]{10, 22, 9, 33, 21, 50, 41, 60, 80};
-        actual = LIMS.find(seq);
+        actual = MonotonicSequence.find(seq);
         expected = List.of(10, 22, 33, 50, 60, 80);
         Assert.assertEquals(expected, actual);
     }
