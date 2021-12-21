@@ -5,7 +5,7 @@ import java.util.List;
 
 public class MonotonicSequenceTest {
     @Test
-    public void twoElemArray() {
+    public void testLongestMonotonicSequence() {
         int[] seq = new int[]{3, 5};
         List<Integer> actual = MonotonicSequence.find(seq);
         List<Integer> expected = List.of(3);
