@@ -28,6 +28,6 @@ public class FlipCoins {
         if(zeroSeen && s.charAt(i) == '1') oneFlips++;
         if(s.charAt(i) == '0') zeroSeen = true;
       }
-      return Math.max(zeroFlips, oneFlips);
+      return Math.min(zeroFlips, oneFlips);
     }
 }
