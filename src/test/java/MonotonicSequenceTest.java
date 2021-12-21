@@ -40,6 +40,11 @@ public class MonotonicSequenceTest {
         actual = MonotonicSequence.find(seq);
         expected = 6;
         Assert.assertEquals(expected, actual);
+
+        seq = new int[]{0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15};
+        actual = MonotonicSequence.find(seq);
+        expected = 6;
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
