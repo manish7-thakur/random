@@ -14,14 +14,17 @@ public class MonotonicSequenceTest {
         seq = new int[]{3, 5, 2};
         actual = MonotonicSequence.find(seq);
         expected = List.of(3, 5);
+        Assert.assertEquals(expected, actual);
 
         seq = new int[]{3, 2, 5};
         actual = MonotonicSequence.find(seq);
         expected = List.of(3, 5);
+        Assert.assertEquals(expected, actual);
 
         seq = new int[]{1, 3, 2, 5};
         actual = MonotonicSequence.find(seq);
         expected = List.of(1, 3, 5);
+        Assert.assertEquals(expected, actual);
 
         seq = new int[]{1, 2, 3, 4, 5, 6};
         actual = MonotonicSequence.find(seq);
@@ -36,43 +39,43 @@ public class MonotonicSequenceTest {
 
     @Test
     public void testMinCharFlips() {
-      int actual = FlipCoins.minFlipsMonoIncr("0");
+      int actual = MonotonicSequence.minFlipsMonoIncr("0");
       int expected = 0;
       Assert.assertEquals(expected, actual);
 
-      actual = FlipCoins.minFlipsMonoIncr("10");
+      actual = MonotonicSequence.minFlipsMonoIncr("10");
       expected = 1;
       Assert.assertEquals(expected, actual);
 
-      actual = FlipCoins.minFlipsMonoIncr("11");
+      actual = MonotonicSequence.minFlipsMonoIncr("11");
       expected = 0;
       Assert.assertEquals(expected, actual);
 
-      actual = FlipCoins.minFlipsMonoIncr("00");
+      actual = MonotonicSequence.minFlipsMonoIncr("00");
       expected = 0;
       Assert.assertEquals(expected, actual);
 
-      actual = FlipCoins.minFlipsMonoIncr("0011");
+      actual = MonotonicSequence.minFlipsMonoIncr("0011");
       expected = 0;
       Assert.assertEquals(expected, actual);
 
-      actual = FlipCoins.minFlipsMonoIncr("1100");
+      actual = MonotonicSequence.minFlipsMonoIncr("1100");
       expected = 2;
       Assert.assertEquals(expected, actual);
 
-      actual = FlipCoins.minFlipsMonoIncr("010101");
+      actual = MonotonicSequence.minFlipsMonoIncr("010101");
       expected = 2;
       Assert.assertEquals(expected, actual);
 
-      actual = FlipCoins.minFlipsMonoIncr("0101010000");
+      actual = MonotonicSequence.minFlipsMonoIncr("0101010000");
       expected = 3;
       Assert.assertEquals(expected, actual);
 
-      actual = FlipCoins.minFlipsMonoIncr("11001011011");
+      actual = MonotonicSequence.minFlipsMonoIncr("11001011011");
       expected = 4;
       Assert.assertEquals(expected, actual);
 
-      actual = FlipCoins.minFlipsMonoIncr("100110");
+      actual = MonotonicSequence.minFlipsMonoIncr("100110");
       expected = 2;
       Assert.assertEquals(expected, actual);
     }
