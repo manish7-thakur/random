@@ -7,42 +7,42 @@ public class MonotonicSequenceTest {
     @Test
     public void testLongestMonotonicSequence() {
         int[] seq = new int[]{5, 4};
-        int actual = MonotonicSequence.find(seq);
+        int actual = MonotonicSequence.findRec(seq);
         int expected = 1;
         Assert.assertEquals(expected, actual);
 
         seq = new int[]{4, 5};
-        actual = MonotonicSequence.find(seq);
+        actual = MonotonicSequence.findRec(seq);
         expected = 2;
         Assert.assertEquals(expected, actual);
 
         seq = new int[]{2, 3, 5};
-        actual = MonotonicSequence.find(seq);
+        actual = MonotonicSequence.findRec(seq);
         expected = 3;
         Assert.assertEquals(expected, actual);
 
         seq = new int[]{3, 2, 5, 6};
-        actual = MonotonicSequence.find(seq);
+        actual = MonotonicSequence.findRec(seq);
         expected = 3;
         Assert.assertEquals(expected, actual);
 
         seq = new int[]{1, 3, 2, 3, 5};
-        actual = MonotonicSequence.find(seq);
+        actual = MonotonicSequence.findRec(seq);
         expected = 4;
         Assert.assertEquals(expected, actual);
 
         seq = new int[]{2, 2, 1, 2, 5, 3, 4, 6};
-        actual = MonotonicSequence.find(seq);
+        actual = MonotonicSequence.findRec(seq);
         expected = 5;
         Assert.assertEquals(expected, actual);
 
         seq = new int[]{10, 33, 9, 21, 22, 50, 41, 60, 80};
-        actual = MonotonicSequence.find(seq);
+        actual = MonotonicSequence.findRec(seq);
         expected = 6;
         Assert.assertEquals(expected, actual);
 
         seq = new int[]{0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15};
-        actual = MonotonicSequence.find(seq);
+        actual = MonotonicSequence.findRec(seq);
         expected = 6;
         Assert.assertEquals(expected, actual);
     }

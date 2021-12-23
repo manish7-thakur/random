@@ -23,6 +23,21 @@ public class MonotonicSequence {
       }
       return res[seq.length - 1];
     }
+
+    public static int findRec(int[] seq) {
+      int idx = seq.length - 1;
+      return findRec(seq, idx - 1, seq[idx]);
+    }
+
+
+    private static int findRec(int[] seq, int i, int num) {
+      if(i < 0) return 1;
+      int count1 = 0;
+      if(seq[i] < num) count1 = 1 + findRec(seq, i - 1, seq[i]);
+      int count2 = findRec(seq, i - 1, num);
+      return Math.max(count1, count2);
+    }
+
     static public int minFlipsMonoIncr(String s) {
       int oneCount = 0;
       int flips = 0;
