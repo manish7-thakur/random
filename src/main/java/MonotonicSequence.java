@@ -26,7 +26,7 @@ public class MonotonicSequence {
 
     public static int findRec(int[] seq) {
       int idx = seq.length - 1;
-      return findRec(seq, idx - 1, seq[idx]);
+      return findRec(seq, idx - 1, seq[idx]); // can be findRec(seq, idx, seq[idx])
     }
 
 
