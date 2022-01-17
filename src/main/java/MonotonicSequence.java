@@ -16,19 +16,18 @@ public class MonotonicSequence {
 
     public static int findRec(int[] seq) {
       int idx = seq.length - 1;
-      Map<String, Integer> mem = new HashMap<>();
-      return findRec(seq, idx - 1, seq[idx], mem); // can be findRec(seq, idx, seq[idx])
+      int rec = findRec(seq, idx);
+      return rec; // can be findRec(seq, idx, seq[idx])
     }
 
-    private static int findRec(int[] seq, int i, int num, Map<String, Integer> mem) {
-      if(i < 0) return 1;
-      String key = i + "," + num;
-      if(mem.containsKey(key)) return mem.get(key);
-      int count1 = 0;
-      if(seq[i] < num) count1 = 1 + findRec(seq, i - 1, seq[i], mem);
-      int count2 = findRec(seq, i - 1, num, mem);
-      mem.put(key, Math.max(count1, count2));
-      return mem.get(key);
+    private static int findRec(int[] seq, int i) {
+      if(i <= 0) return 1;
+      int count = 1;
+      for(int j = 0; j < i; j++) {
+        int resj = findRec(seq, j);
+        if(seq[i] > seq[j]) count = 1 + resj;
+      }
+      return count;
     }
 
     static public int findLCount(int[] nums) {
