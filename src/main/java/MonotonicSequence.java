@@ -31,12 +31,12 @@ public class MonotonicSequence {
       return mem.get(key);
     }
 
-    static public int findLCount(int[] seq) {
-      int[] count = new int[seq.length];
+    static public int findLCount(int[] nums) {
+      int[] count = new int[nums.length];
       Arrays.fill(count, 1);
-      for(int i = 1; i < seq.length; i++) {
+      for(int i = 1; i < nums.length; i++) {
         for(int j = 0; j < i; j++) {
-          if(seq[j] < seq[i]) count[i] = Math.max(count[i], count[j] + 1);
+          if(nums[j] < nums[i]) count[i] = Math.max(count[i], count[j] + 1);
         }
       }
       return count[count.length - 1];
