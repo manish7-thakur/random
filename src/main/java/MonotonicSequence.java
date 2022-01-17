@@ -13,16 +13,6 @@ Longest monotonic increasing subsequence
   return len [n]
 */
 public class MonotonicSequence {
-    public static int find(int[] seq) {
-      int[] res = new int[seq.length];
-      Arrays.fill(res, 1);
-      for(int i = 1; i < seq.length; i++) {
-        for(int j = 0; j < i; j++) {
-          if(seq[j] < seq[i]) res[i] = Math.max(res[i], res[j] + 1);
-        }
-      }
-      return res[seq.length - 1];
-    }
 
     public static int findRec(int[] seq) {
       int idx = seq.length - 1;
@@ -39,6 +29,17 @@ public class MonotonicSequence {
       int count2 = findRec(seq, i - 1, num, mem);
       mem.put(key, Math.max(count1, count2));
       return mem.get(key);
+    }
+
+    static public int findLCount(int[] seq) {
+      int[] count = new int[seq.length];
+      Arrays.fill(count, 1);
+      for(int i = 1; i < seq.length; i++) {
+        for(int j = 0; j < i; j++) {
+          if(seq[j] < seq[i]) count[i] = Math.max(count[i], count[j] + 1);
+        }
+      }
+      return count[count.length - 1];
     }
 
     static public int minFlipsMonoIncr(String s) {
