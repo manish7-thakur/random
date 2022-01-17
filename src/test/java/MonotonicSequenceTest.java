@@ -6,9 +6,14 @@ import java.util.List;
 public class MonotonicSequenceTest {
     @Test
     public void testLongestMonotonicSequence() {
-        int[] seq = new int[]{5, 4};
+        int[] seq = new int[]{0};
         int actual = MonotonicSequence.findLCount(seq);
         int expected = 1;
+        Assert.assertEquals(expected, actual);
+
+        seq = new int[]{5, 4};
+        actual = MonotonicSequence.findLCount(seq);
+        expected = 1;
         Assert.assertEquals(expected, actual);
 
         seq = new int[]{4, 5};
@@ -29,6 +34,11 @@ public class MonotonicSequenceTest {
         seq = new int[]{1, 3, 2, 3, 5};
         actual = MonotonicSequence.findLCount(seq);
         expected = 4;
+        Assert.assertEquals(expected, actual);
+
+        seq = new int[]{1, 3, 6, 7, 9, 4, 10, 5, 6};
+        actual = MonotonicSequence.findLCount(seq);
+        expected = 6;
         Assert.assertEquals(expected, actual);
 
         seq = new int[]{2, 2, 1, 2, 5, 3, 4, 6};

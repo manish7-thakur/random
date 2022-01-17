@@ -10,7 +10,7 @@ Longest monotonic increasing subsequence
       end if
     end for
   end for
-  return len [n]
+  return Max(len [1...n])
 */
 public class MonotonicSequence {
 
@@ -33,13 +33,15 @@ public class MonotonicSequence {
 
     static public int findLCount(int[] nums) {
       int[] count = new int[nums.length];
+      int res = 1;
       Arrays.fill(count, 1);
       for(int i = 1; i < nums.length; i++) {
         for(int j = 0; j < i; j++) {
           if(nums[j] < nums[i]) count[i] = Math.max(count[i], count[j] + 1);
         }
+        res = Math.max(res, count[i]);
       }
-      return count[count.length - 1];
+      return res;
     }
 
     static public int minFlipsMonoIncr(String s) {
