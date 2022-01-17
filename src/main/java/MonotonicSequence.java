@@ -26,16 +26,19 @@ public class MonotonicSequence {
 
     public static int findRec(int[] seq) {
       int idx = seq.length - 1;
-      return findRec(seq, idx - 1, seq[idx]); // can be findRec(seq, idx, seq[idx])
+      Map<String, Integer> mem = new HashMap<>();
+      return findRec(seq, idx - 1, seq[idx], mem); // can be findRec(seq, idx, seq[idx])
     }
 
-
-    private static int findRec(int[] seq, int i, int num) {
+    private static int findRec(int[] seq, int i, int num, Map<String, Integer> mem) {
       if(i < 0) return 1;
+      String key = i + "," + num;
+      if(mem.containsKey(key)) return mem.get(key);
       int count1 = 0;
-      if(seq[i] < num) count1 = 1 + findRec(seq, i - 1, seq[i]);
-      int count2 = findRec(seq, i - 1, num);
-      return Math.max(count1, count2);
+      if(seq[i] < num) count1 = 1 + findRec(seq, i - 1, seq[i], mem);
+      int count2 = findRec(seq, i - 1, num, mem);
+      mem.put(key, Math.max(count1, count2));
+      return mem.get(key);
     }
 
     static public int minFlipsMonoIncr(String s) {
