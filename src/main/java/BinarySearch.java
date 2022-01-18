@@ -32,7 +32,7 @@ public class BinarySearch {
       int l = 1;
       int h = n;
       while(l < h) {
-        int m = (l + h) / 2;
+        int m = (int)(((double)h + l) / 2);
         if(isBadVersion(m, bad)) h = m;
         else l = m + 1;
       }

@@ -58,5 +58,9 @@ public class BinarySearchTest {
       actual = BinarySearch.firstBadVersion(5, 3);
       expected = 3;
       assertEquals(expected, actual);
+
+      actual = BinarySearch.firstBadVersion(2126753390, 1702766719);
+      expected = 1702766719;
+      assertEquals(expected, actual);
     }
 }
