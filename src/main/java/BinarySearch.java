@@ -28,4 +28,17 @@ public class BinarySearch {
         }
         return -1;
     }
+    static int firstBadVersion(int n, int bad) {
+      int l = 1;
+      int h = n;
+      while(l < h) {
+        int m = (l + h) / 2;
+        if(isBadVersion(m, bad)) h = m;
+        else l = m + 1;
+      }
+      return h;
+    }
+    static boolean isBadVersion(int n, int bad) {
+      return n >= bad;
+    }
 }
