@@ -29,8 +29,7 @@ public class BinarySearch {
         return -1;
     }
     static int firstBadVersion(int n, int bad) {
-      int l = 1;
-      int h = n;
+      int l = 1, h = n;
       while(l < h) {
         int m = (int)(((double)h + l) / 2); // can be l + (h-l) / 2;
         if(isBadVersion(m, bad)) h = m;
