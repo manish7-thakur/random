@@ -14,22 +14,6 @@ Longest monotonic increasing subsequence
 */
 public class MonotonicSequence {
 
-    public static int findRec(int[] seq) {
-      int idx = seq.length - 1;
-      int rec = findRec(seq, idx);
-      return rec; // can be findRec(seq, idx, seq[idx])
-    }
-
-    private static int findRec(int[] seq, int i) {
-      if(i <= 0) return 1;
-      int count = 1;
-      for(int j = 0; j < i; j++) {
-        int resj = findRec(seq, j);
-        if(seq[i] > seq[j]) count = 1 + resj;
-      }
-      return count;
-    }
-
     static public int findLCount(int[] nums) {
       int[] count = new int[nums.length];
       int res = 1;
