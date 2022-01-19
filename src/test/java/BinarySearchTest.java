@@ -63,4 +63,34 @@ public class BinarySearchTest {
       expected = 1702766719;
       assertEquals(expected, actual);
     }
+    @Test
+    public void findInsertPostion() {
+      int actual = BinarySearch.searchInsert(new int[]{1}, 0);
+      int expected = 0;
+      assertEquals(expected, actual);
+
+      actual = BinarySearch.searchInsert(new int[]{1, 5}, 2);
+      expected = 1;
+      assertEquals(expected, actual);
+
+      actual = BinarySearch.searchInsert(new int[]{1, 2, 5}, 5);
+      expected = 2;
+      assertEquals(expected, actual);
+
+      actual = BinarySearch.searchInsert(new int[]{1, 2, 5}, 1);
+      expected = 0;
+      assertEquals(expected, actual);
+
+      actual = BinarySearch.searchInsert(new int[]{1, 2, 5}, 3);
+      expected = 2;
+      assertEquals(expected, actual);
+
+      actual = BinarySearch.searchInsert(new int[]{1, 2, 5, 6, 9}, 7);
+      expected = 4;
+      assertEquals(expected, actual);
+
+      actual = BinarySearch.searchInsert(new int[]{1, 2, 5, 6, 16, 21, 29, 34, 48, 54, 62, 72, 82, 91}, 71);
+      expected = 11;
+      assertEquals(expected, actual);
+    }
 }
