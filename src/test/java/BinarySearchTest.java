@@ -85,6 +85,10 @@ public class BinarySearchTest {
       expected = 2;
       assertEquals(expected, actual);
 
+      actual = BinarySearch.searchInsert(new int[]{1, 3, 5, 6}, 2);
+      expected = 1;
+      assertEquals(expected, actual);
+
       actual = BinarySearch.searchInsert(new int[]{1, 2, 5, 6, 9}, 7);
       expected = 4;
       assertEquals(expected, actual);
