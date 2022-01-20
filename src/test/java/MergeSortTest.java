@@ -49,4 +49,14 @@ public class MergeSortTest {
         expected = new int[]{1, 2, 2, 3, 4, 6, 23, 32, 32, 36, 42, 52, 53, 256, 432};
         Assert.assertArrayEquals(expected, actual);
     }
+    @Test
+    public void squareSortedArray() {
+      int[] actual = MergeSort.sortedSquares(new int[]{1});
+      int[] expected = new int[]{1};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = MergeSort.sortedSquares(new int[]{-2});
+      expected = new int[]{4};
+      Assert.assertArrayEquals(expected, actual);
+    }
 }
