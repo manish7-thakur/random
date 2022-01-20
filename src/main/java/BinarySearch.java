@@ -42,14 +42,13 @@ public class BinarySearch {
     }
 
     static public int searchInsert(int[] nums, int target) {
-      int l = 0, h = nums.length - 1;
+      int l = 0, h = nums.length;
       while(l < h) {
         int mid = (l + h) / 2;
         if(nums[mid] == target) return mid;
         else if(nums[mid] < target) l = mid + 1;
-        else h = mid - 1;
+        else h = mid;
       }
-      if(target > nums[l]) return l + 1;
       return l;
     }
 }
