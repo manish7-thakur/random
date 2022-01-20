@@ -63,10 +63,12 @@ public class MergeSort {
       while(j >= 0) {
         res[r] = nums[j] * nums[j];
         j--;
+        r++;
       }
       while(i < nums.length) {
         res[r] = nums[i] * nums[i];
         i++;
+        r++;
       }
       return res;
     }
