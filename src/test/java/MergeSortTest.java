@@ -74,5 +74,17 @@ public class MergeSortTest {
       actual = MergeSort.sortedSquares(new int[]{-20, -10, -1, 20, 30});
       expected = new int[]{1, 100, 400, 400, 900};
       Assert.assertArrayEquals(expected, actual);
+
+      actual = MergeSort.sortedSquares(new int[]{-4, -1, 0, 3, 10});
+      expected = new int[]{0, 1, 9, 16, 100};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = MergeSort.sortedSquares(new int[]{-7, -3, 2, 3, 11});
+      expected = new int[]{4, 9, 9, 49, 121};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = MergeSort.sortedSquares(new int[]{-7, -4, -3, -2, -1});
+      expected = new int[]{1, 4, 9, 16, 49};
+      Assert.assertArrayEquals(expected, actual);
     }
 }
