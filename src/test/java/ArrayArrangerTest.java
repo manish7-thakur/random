@@ -40,4 +40,82 @@ public class ArrayArrangerTest {
         expected = new int[]{5, 6, 3, 4, 1, 2};
         Assert.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void rotateArraySpecifiedTimes() {
+      int[] actual = new int[]{1};
+      ArrayArranger.rotate(actual, 0);
+      int[] expected = new int[]{1};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = new int[]{2};
+      ArrayArranger.rotate(actual, 1);
+      expected = new int[]{2};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = new int[]{2};
+      ArrayArranger.rotate(actual, 2);
+      expected = new int[]{2};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = new int[]{2, 1};
+      ArrayArranger.rotate(actual, 1);
+      expected = new int[]{1, 2};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = new int[]{2, 1};
+      ArrayArranger.rotate(actual, 2);
+      expected = new int[]{2, 1};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = new int[]{2, 1, 3};
+      ArrayArranger.rotate(actual, 1);
+      expected = new int[]{3, 2, 1};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = new int[]{2, 1, 3};
+      ArrayArranger.rotate(actual, 2);
+      expected = new int[]{1, 3, 2};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = new int[]{2, 1, 3};
+      ArrayArranger.rotate(actual, 3);
+      expected = new int[]{2, 1, 3};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = new int[]{2, 1, 3};
+      ArrayArranger.rotate(actual, 4);
+      expected = new int[]{3, 2, 1};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = new int[]{2, 1, 3, 5};
+      ArrayArranger.rotate(actual, 4);
+      expected = new int[]{2, 1, 3, 5};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = new int[]{2, 1, 3, 5};
+      ArrayArranger.rotate(actual, 3);
+      expected = new int[]{1, 3, 5, 2};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = new int[]{2, 1, 3, 5};
+      ArrayArranger.rotate(actual, 6);
+      expected = new int[]{3, 5, 2, 1};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = new int[]{-1, -100, 3, 99};
+      ArrayArranger.rotate(actual, 6);
+      expected = new int[]{3, 99, -1, -100};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = new int[]{2, 1, 3, 5, 8};
+      ArrayArranger.rotate(actual, 4);
+      expected = new int[]{1, 3, 5, 8, 2};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = new int[]{1, 2, 3, 4, 5, 6, 7};
+      ArrayArranger.rotate(actual, 3);
+      expected = new int[]{5, 6, 7, 1, 2, 3, 4};
+      Assert.assertArrayEquals(expected, actual);
+    }
 }
