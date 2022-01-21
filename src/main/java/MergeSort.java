@@ -43,40 +43,19 @@ public class MergeSort {
     }
 
     static public int[] sortedSquares(int[] nums) {
+      int end = nums.length - 1;
       int[] res = new int[nums.length];
-      int i = firstPositive(nums);
-      int j = i - 1, r = 0;
-      while(j >= 0 && i < nums.length) {
-        int numI = nums[i] * nums[i];
-        int numJ = nums[j] * nums[j];
-        if(numI < numJ) {
-          res[r] = numI;
-          i++;
+      int l = 0, r = end, ri = end;
+      while(l <= r) {
+        if(Math.abs(nums[l]) > nums[r]) {
+          res[ri] = nums[l] * nums[l];
+          l++;
         } else {
-          res[r] = numJ;
-          j--;
+          res[ri] = nums[r] * nums[r];
+          r--;
         }
-        r++;
-      }
-      while(j >= 0) {
-        res[r] = nums[j] * nums[j];
-        j--;
-        r++;
-      }
-      while(i < nums.length) {
-        res[r] = nums[i] * nums[i];
-        i++;
-        r++;
+        ri--;
       }
       return res;
-    }
-    static public int firstPositive(int[] nums) {
-      int l = 0, h = nums.length;
-      while(l < h) {
-        int mid = (l + h) / 2;
-        if(nums[mid] < 0) l = mid + 1;
-        else h = mid;
-      }
-      return l;
     }
 }

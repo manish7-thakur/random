@@ -49,36 +49,6 @@ public class MergeSortTest {
         expected = new int[]{1, 2, 2, 3, 4, 6, 23, 32, 32, 36, 42, 52, 53, 256, 432};
         Assert.assertArrayEquals(expected, actual);
     }
-    @Test
-    public void findFirstPositiveIndex() {
-      int actual = MergeSort.firstPositive(new int[]{1});
-      int expected = 0;
-      Assert.assertEquals(expected, actual);
-
-      actual = MergeSort.firstPositive(new int[]{0});
-      expected = 0;
-      Assert.assertEquals(expected, actual);
-
-      actual = MergeSort.firstPositive(new int[]{-2, 0});
-      expected = 1;
-      Assert.assertEquals(expected, actual);
-
-      actual = MergeSort.firstPositive(new int[]{-2, -1, 2});
-      expected = 2;
-      Assert.assertEquals(expected, actual);
-
-      actual = MergeSort.firstPositive(new int[]{-3, -2, -1, 1});
-      expected = 3;
-      Assert.assertEquals(expected, actual);
-
-      actual = MergeSort.firstPositive(new int[]{-3, -2, -1});
-      expected = 3;
-      Assert.assertEquals(expected, actual);
-
-      actual = MergeSort.firstPositive(new int[]{-4, -3, -2, -1});
-      expected = 4;
-      Assert.assertEquals(expected, actual);
-    }
 
     @Test
     public void squareSortedArray() {
