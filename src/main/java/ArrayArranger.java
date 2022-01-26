@@ -26,27 +26,17 @@ public class ArrayArranger {
     }
 
     public static void rotate(int[] nums, int k) {
-      k = k % nums.length;
-      if(k == 0) return;
-      int h = nums.length - (k + 1);
-      int l = 0, m = h + 1;
-      while(l < h) {
-        swap(nums, l, h);
-        l++;
-        h--;
-      }
-      h = nums.length - 1;
-      while(m < h) {
-        swap(nums, m, h);
-        m++;
-        h--;
-      }
-      l = 0;
-      h = nums.length - 1;
-      while(l < h) {
-        swap(nums, l, h);
-        l++;
-        h--;
+       k = k % nums.length;
+       int m = nums.length - (k + 1);
+       reverse(nums, 0, m);
+       reverse(nums, m + 1, nums.length - 1);
+       reverse(nums, 0, nums.length - 1);
+    }
+    static void reverse(int[] nums, int start, int end) {
+      while(start < end) {
+        swap(nums, start, end);
+        start++;
+        end--;
       }
     }
 }
