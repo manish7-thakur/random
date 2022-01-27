@@ -124,6 +124,10 @@ public class ArrayArrangerTest {
       int expected = -1;
       Assert.assertEquals(expected, actual);
 
+      actual = ArrayArranger.maxSubArray(new int[]{4});
+      expected = 4;
+      Assert.assertEquals(expected, actual);
+
       actual = ArrayArranger.maxSubArray(new int[]{-2, -1});
       expected = -1;
       Assert.assertEquals(expected, actual);
@@ -138,6 +142,14 @@ public class ArrayArrangerTest {
 
       actual = ArrayArranger.maxSubArray(new int[]{-2, 3, -1, 2});
       expected = 4;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxSubArray(new int[]{5, 4, -1, 7, 8});
+      expected = 23;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4});
+      expected = 6;
       Assert.assertEquals(expected, actual);
     }
 }
