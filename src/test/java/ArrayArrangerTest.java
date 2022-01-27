@@ -118,4 +118,22 @@ public class ArrayArrangerTest {
       expected = new int[]{5, 6, 7, 1, 2, 3, 4};
       Assert.assertArrayEquals(expected, actual);
     }
+    @Test
+    public void findMaxSubArraySum() {
+      int actual = ArrayArranger.maxSubArray(new int[]{-1});
+      int expected = -1;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxSubArray(new int[]{-2, -1});
+      expected = -1;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxSubArray(new int[]{-2, -1, 0});
+      expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxSubArray(new int[]{-2, -1, 1, 2});
+      expected = 3;
+      Assert.assertEquals(expected, actual);
+    }
 }

@@ -39,4 +39,15 @@ public class ArrayArranger {
         end--;
       }
     }
+    static public int maxSubArray(int[] nums) {
+      int currSum = nums[0];
+      int res = currSum;
+
+      for(int i = 1; i < nums.length; i++) {
+        currSum += nums[i];
+        if(nums[i] > currSum) currSum = nums[i];
+        if(currSum > res) res = currSum;
+      }
+      return res;
+    }
 }
