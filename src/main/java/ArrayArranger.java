@@ -50,20 +50,20 @@ public class ArrayArranger {
       }
       return res;
     }
-    static public void merge(int[] a, int m, int[] b, int n) {
+    static public void merge(int[] nums1, int m, int[] nums2, int n) {
       int i = m - 1, j = n - 1, k = m + n - 1;
       while(i >= 0 && j >= 0) {
-        if(a[i] > b[j]) {
-          a[k] = a[i];
+        if(nums1[i] > nums2[j]) {
+          nums1[k] = nums1[i];
           i--;
         } else {
-          a[k] = b[j];
+          nums1[k] = nums2[j];
           j--;
         }
         k--;
       }
       while(j >= 0) {
-        a[k] = b[j];
+        nums1[k] = nums2[j];
         k--;
         j--;
       }

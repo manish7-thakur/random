@@ -165,7 +165,7 @@ public class ArrayArrangerTest {
       Assert.assertEquals(expected, actual);
     }
     @Test
-    public void inplaceMerge() {
+    public void inplaceMergeSecondArrayToFirst() {
       int[] actual = new int[]{1};
       int[] b = new int[0];
       int[] expected = new int[]{1};
