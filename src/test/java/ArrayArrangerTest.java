@@ -190,6 +190,12 @@ public class ArrayArrangerTest {
       ArrayArranger.merge(actual, 2, b, b.length);
       Assert.assertArrayEquals(expected, actual);
 
+      actual = new int[]{2, 3, 0, 0};
+      b = new int[]{0 , 1};
+      expected = new int[]{0, 1, 2, 3};
+      ArrayArranger.merge(actual, 2, b, b.length);
+      Assert.assertArrayEquals(expected, actual);
+
       actual = new int[]{2, 6, 0, 0, 0, 0};
       b = new int[]{0, 2, 3, 5};
       expected = new int[]{0, 2, 2, 3, 5, 6};
