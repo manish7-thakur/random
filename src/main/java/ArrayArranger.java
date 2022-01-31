@@ -50,4 +50,12 @@ public class ArrayArranger {
       }
       return res;
     }
+    static public void merge(int[] a, int m, int[] b, int n) {
+      int i = 0, j = 0;
+      while(j < n) {
+        a[i] = b[j];
+        i++;
+        j++;
+      }
+    }
 }

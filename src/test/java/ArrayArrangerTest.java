@@ -164,4 +164,18 @@ public class ArrayArrangerTest {
       expected = 6;
       Assert.assertEquals(expected, actual);
     }
+    @Test
+    public void inplaceMerge() {
+      int[] actual = new int[]{1};
+      int[] b = new int[0];
+      int[] expected = new int[]{1};
+      ArrayArranger.merge(actual, actual.length, b, b.length);
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = new int[1];
+      b = new int[]{1};
+      expected = new int[]{1};
+      ArrayArranger.merge(actual, actual.length, b, b.length);
+      Assert.assertArrayEquals(expected, actual);
+    }
 }
