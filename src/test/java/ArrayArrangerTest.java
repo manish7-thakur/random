@@ -169,13 +169,21 @@ public class ArrayArrangerTest {
       int[] actual = new int[]{1};
       int[] b = new int[0];
       int[] expected = new int[]{1};
-      ArrayArranger.merge(actual, actual.length, b, b.length);
+      ArrayArranger.merge(actual, 1, b, b.length);
       Assert.assertArrayEquals(expected, actual);
 
       actual = new int[1];
       b = new int[]{1};
       expected = new int[]{1};
-      ArrayArranger.merge(actual, actual.length, b, b.length);
+      ArrayArranger.merge(actual, 1, b, b.length);
       Assert.assertArrayEquals(expected, actual);
+
+      actual = new int[1]{0, 2, 0};
+      b = new int[]{1};
+      expected = new int[]{0, 1, 2};
+      ArrayArranger.merge(actual, 2, b, b.length);
+      Assert.assertArrayEquals(expected, actual);
+
+
     }
 }
