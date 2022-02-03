@@ -4,6 +4,37 @@ import java.util.Arrays;
 
 public class MaxStockProfitFinderTest {
     @Test
+    public void findMaxProfit() {
+      int actual = ArrayArranger.maxProfit(new int[]{2});
+      int expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxProfit(new int[]{1, 2});
+      expected = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxProfit(new int[]{3, 2, 4});
+      expected = 2;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxProfit(new int[]{3, 2, 4, 1, 5});
+      expected = 4;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxProfit(new int[]{3, 2, 4, 0, 1});
+      expected = 2;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxProfit(new int[]{7, 1, 5, 3, 6, 4});
+      expected = 5;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxProfit(new int[]{7, 6, 4, 3, 1});
+      expected = 0;
+      Assert.assertEquals(expected, actual);
+    }
+    
+    @Test
     public void findmaxProfitFrom2Transactions() {
        int actual = MaxStockProfitFinder.maxProfit(new int[]{1});
        int expected = 0;

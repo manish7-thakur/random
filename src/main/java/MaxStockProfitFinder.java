@@ -2,6 +2,16 @@ import java.util.*;
 
 public class MaxStockProfitFinder {
     static public int maxProfit(int[] prices) {
+      int res = 0;
+      int min = prices[0];
+      for(int i = 1; i < prices.length; i++) {
+        int curr = prices[i] - min;
+        if(curr > res) res = curr;
+        if(prices[i] < min) min = prices[i];
+      }
+      return res;
+    }
+    static public int maxProfit(int[] prices) {
       int[] profits = new int[prices.length];
       int maxProfit = 0, maxLeftProfit = 0, maxRightProfit = 0;
       int min = prices[0];
