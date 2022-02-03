@@ -86,4 +86,15 @@ public class ArrayArranger {
         }));
       return interList;
     }
+
+    static public int maxProfit(int[] prices) {
+      int res = 0;
+      int min = prices[0];
+      for(int i = 1; i < prices.length; i++) {
+        int curr = prices[i] - min;
+        if(curr > res) res = curr;
+        if(prices[i] < min) min = prices[i];
+      }
+      return res;
+    }
 }
