@@ -91,27 +91,18 @@ public class ArrayArranger {
       List<List<Integer>> res = new ArrayList<>();
       int r = 0, c = 0;
 
-      while(r < numRows) {
+      for(int r = 0; r < numRows; r++) {
         List<Integer> curr = new ArrayList<>();
         for(c = 0; c <= r; c++) {
-          curr.add(helper(r, c, res));
+          if(c == 0 || c == r) curr.add(1); // first & last element at each row is always 1
+          else {
+            List<Integer> r1 = res.get(r - 1);
+            curr.add(r1.get(c - 1) + r1.get(c));
+          }
         }
         r++;
         res.add(curr);
       }
-
       return res;
-    }
-    static private int helper(int r, int c, List<List<Integer>> res) {
-      if(r < 0 || c < 0 || c > r) {
-        return 0;
-      }
-      if(r == 0) return 1;
-      List<Integer> r1 = res.get(r - 1);
-      int c1 = 0;
-      if(c - 1 >= 0) c1 = r1.get(c - 1);
-      int c2 = 0;
-      if(c < r1.size()) c2 = r1.get(c);
-      return c1 + c2;
     }
 }
