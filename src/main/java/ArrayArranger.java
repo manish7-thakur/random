@@ -111,7 +111,7 @@ public class ArrayArranger {
       int c1 = 0;
       if(c - 1 >= 0) c1 = r1.get(c - 1);
       int c2 = 0;
-      if(c < r1.size() && c >= 0) c2 = r1.get(c);
+      if(c < r1.size()) c2 = r1.get(c);
       return c1 + c2;
     }
 }
