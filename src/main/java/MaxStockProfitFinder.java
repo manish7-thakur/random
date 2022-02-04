@@ -11,7 +11,7 @@ public class MaxStockProfitFinder {
       }
       return res;
     }
-    static public int maxProfit(int[] prices) {
+    static public int maxProfit2(int[] prices) {
       int[] profits = new int[prices.length];
       int maxProfit = 0, maxLeftProfit = 0, maxRightProfit = 0;
       int min = prices[0];
