@@ -102,4 +102,24 @@ public class ArrayArranger {
       }
       return res;
     }
+    static boolean searchMatrix(int[][] matrix, int target) {
+      int r = 0, c = matrix[0].length - 1;
+      while(r < matrix.length) {
+        int[] row = matrix[r];
+        if(row[c] == target) return true;
+        else if(row[c] > target) return binarySearch(row, target);
+        r++;
+      }
+      return false;
+    }
+    static boolean binarySearch(int[] row, int target) {
+      int l = 0, h = row.length - 1;
+      while(l <= h) {
+        int m = (l + h) / 2;
+        if(target == row[m]) return true;
+        else if(target < row[m]) h = m - 1;
+        else l = m + 1;
+      }
+      return false;
+    }
 }

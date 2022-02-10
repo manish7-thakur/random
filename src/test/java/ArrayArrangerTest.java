@@ -272,4 +272,36 @@ public class ArrayArrangerTest {
       actual = ArrayArranger.generate(30);
       Assert.assertEquals(30, actual.size());
     }
+    @Test
+    public void searchInt2DArray() {
+      boolean actual = ArrayArranger.searchMatrix(new int[][]{{1}}, 1);
+      Assert.assertTrue(actual);
+
+      actual = ArrayArranger.searchMatrix(new int[][]{{1}, {3}}, 2);
+      Assert.assertFalse(actual);
+
+      actual = ArrayArranger.searchMatrix(new int[][]{{1, 5}, {6, 8}}, 6);
+      Assert.assertTrue(actual);
+
+      actual = ArrayArranger.searchMatrix(new int[][]{{1, 5, 8}, {9, 11, 14}, {15, 18, 21}}, 15);
+      Assert.assertTrue(actual);
+
+      actual = ArrayArranger.searchMatrix(new int[][]{{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}}, 30);
+      Assert.assertTrue(actual);
+
+      actual = ArrayArranger.searchMatrix(new int[][]{{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}}, 11);
+      Assert.assertTrue(actual);
+
+      actual = ArrayArranger.searchMatrix(new int[][]{{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}}, 18);
+      Assert.assertFalse(actual);
+
+      actual = ArrayArranger.searchMatrix(new int[][]{{1, 3, 5, 7, 10}, {11, 11, 16, 20, 22}, {23, 30, 34, 60, 62}}, 11);
+      Assert.assertTrue(actual);
+
+      actual = ArrayArranger.searchMatrix(new int[][]{{1, 3, 5, 7, 10}, {11, 11, 16, 20, 22}, {23, 30, 34, 60, 62}}, 1);
+      Assert.assertTrue(actual);
+
+      actual = ArrayArranger.searchMatrix(new int[][]{{1, 3, 5, 7, 10}, {11, 11, 16, 20, 22}, {23, 30, 34, 60, 62}}, 0);
+      Assert.assertFalse(actual);
+    }
 }
