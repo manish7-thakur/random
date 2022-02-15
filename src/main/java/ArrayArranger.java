@@ -126,8 +126,7 @@ public class ArrayArranger {
       int[] map = new int[26];
       for(char c : magazine.toCharArray()) map[c - 'a']++;
       for(char c : ransomNote.toCharArray()) {
-        map[c - 'a']--;
-        if(map[c - 'a'] < 0) return false;
+        if(--map[c - 'a'] < 0) return false;
       }
       return true;
     }
