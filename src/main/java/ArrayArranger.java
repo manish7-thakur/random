@@ -130,4 +130,15 @@ public class ArrayArranger {
       }
       return true;
     }
+    static boolean isAnagram(String s, String t) {
+      Map<Character, Integer> map = new HashMap<>();
+      for(char c : t.toCharArray()) map.merge(c, 1, Integer::sum);
+      for(char c : s.toCharArray()) {
+        int count = map.getOrDefault(c, 0);
+        if(count == 0) return false;
+        if(--count <= 0) map.remove(c);
+        else map.put(c, count);
+      }
+      return map.isEmpty();
+    }
 }

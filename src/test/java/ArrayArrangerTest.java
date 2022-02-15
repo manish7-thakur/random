@@ -318,4 +318,21 @@ public class ArrayArrangerTest {
       actual = ArrayArranger.canConstruct("aa", "aab");
       Assert.assertTrue(actual);
     }
+    @Test
+    public void checkAnagrams() {
+      boolean actual = ArrayArranger.isAnagram("a" , "b");
+      Assert.assertFalse(actual);
+
+      actual = ArrayArranger.isAnagram("a" , "ba");
+      Assert.assertFalse(actual);
+
+      actual = ArrayArranger.isAnagram("ab" , "ba");
+      Assert.assertTrue(actual);
+
+      actual = ArrayArranger.isAnagram("ab" , "baa");
+      Assert.assertFalse(actual);
+
+      actual = ArrayArranger.isAnagram("adjsdjyajab" , "bayjjsjddaa");
+      Assert.assertTrue(actual);
+    }
 }
