@@ -304,4 +304,18 @@ public class ArrayArrangerTest {
       actual = ArrayArranger.searchMatrix(new int[][]{{1, 3, 5, 7, 10}, {11, 11, 16, 20, 22}, {23, 30, 34, 60, 62}}, 0);
       Assert.assertFalse(actual);
     }
+    @Test
+    public void createRansomNoteFromMagazine() {
+      boolean actual = ArrayArranger.canConstruct("a", "b");
+      Assert.assertFalse(actual);
+
+      actual = ArrayArranger.canConstruct("a", "a");
+      Assert.assertTrue(actual);
+
+      actual = ArrayArranger.canConstruct("aa", "ab");
+      Assert.assertFalse(actual);
+
+      actual = ArrayArranger.canConstruct("aa", "aab");
+      Assert.assertTrue(actual);
+    }
 }
