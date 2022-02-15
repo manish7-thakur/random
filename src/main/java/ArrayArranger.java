@@ -131,14 +131,14 @@ public class ArrayArranger {
       return true;
     }
     static boolean isAnagram(String s, String t) {
-      Map<Character, Integer> map = new HashMap<>();
-      for(char c : t.toCharArray()) map.merge(c, 1, Integer::sum);
+      int[] map = new int[26];
+      for(char c : t.toCharArray()) map[c - 'a']++;
       for(char c : s.toCharArray()) {
-        int count = map.getOrDefault(c, 0);
-        if(count == 0) return false;
-        if(--count <= 0) map.remove(c);
-        else map.put(c, count);
+        if(--map[c - 'a'] < 0) return false;
       }
-      return map.isEmpty();
+      for(int i : map) {
+        if(i != 0) return false;
+      }
+      return true;
     }
 }
