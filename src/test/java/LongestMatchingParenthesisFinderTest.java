@@ -27,4 +27,36 @@ public class LongestMatchingParenthesisFinderTest {
 		expected = 4;
 		Assert.assertEquals(expected, actual);
 	}
+	@Test
+	public void validateParenthesis() {
+		boolean actual  = LongestMatchingParenthesisFinder.isValid("(");
+		Assert.assertFalse(actual);
+
+		actual  = LongestMatchingParenthesisFinder.isValid("()");
+		Assert.assertTrue(actual);
+
+		actual  = LongestMatchingParenthesisFinder.isValid(")(");
+		Assert.assertFalse(actual);
+
+		actual  = LongestMatchingParenthesisFinder.isValid("{}");
+		Assert.assertTrue(actual);
+
+		actual  = LongestMatchingParenthesisFinder.isValid("[]");
+		Assert.assertTrue(actual);
+
+		actual  = LongestMatchingParenthesisFinder.isValid("[{}]");
+		Assert.assertTrue(actual);
+
+		actual  = LongestMatchingParenthesisFinder.isValid("[{(})]");
+		Assert.assertFalse(actual);
+
+		actual  = LongestMatchingParenthesisFinder.isValid("[{()]");
+		Assert.assertFalse(actual);
+
+		actual  = LongestMatchingParenthesisFinder.isValid("[{()}]");
+		Assert.assertTrue(actual);
+
+		actual  = LongestMatchingParenthesisFinder.isValid("[]{}()");
+		Assert.assertTrue(actual);
+	}
 }

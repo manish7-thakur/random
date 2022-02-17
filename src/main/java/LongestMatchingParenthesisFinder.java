@@ -18,4 +18,15 @@ public class LongestMatchingParenthesisFinder {
 		}
 		return res;
 	}
+	static public boolean isValid(String s) {
+		Stack<Character> stack = new Stack<>();
+		stack.push('\0');
+		for(int i = 0; i < s.length(); i++) {
+			if(s.charAt(i) == ')' && stack.peek() == '(') stack.pop();
+			else if(s.charAt(i) == '}' && stack.peek() == '{') stack.pop();
+			else if(s.charAt(i) == ']' && stack.peek() == '[') stack.pop();
+			else stack.push(s.charAt(i));
+		}
+		return stack.peek() == '\0';
+	}
 }
