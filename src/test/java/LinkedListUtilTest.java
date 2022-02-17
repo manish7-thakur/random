@@ -64,6 +64,11 @@ public class LinkedListUtilTest {
       Node actual = LinkedListUtil.deleteDuplicates(head);
       Assert.assertNull(actual);
 
+      head = new Node(1, null);
+      actual = LinkedListUtil.deleteDuplicates(head);
+      Assert.assertEquals(1, actual.data);
+      Assert.assertNull(actual.next);
+
       head = new Node(1, new Node(1, null));
       actual = LinkedListUtil.deleteDuplicates(head);
       Assert.assertEquals(1, actual.data);
