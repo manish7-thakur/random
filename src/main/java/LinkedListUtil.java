@@ -29,4 +29,14 @@ public class LinkedListUtil {
         }
         return false;
     }
+    static public Node deleteDuplicates(Node head) {
+      Node curr = head;
+      while(curr != null) {
+        Node traverser = curr;
+        while(traverser != null && traverser.data == curr.data) traverser = traverser.next;
+        curr.next = traverser;
+        curr = traverser;
+      }
+      return head;
+    }
 }

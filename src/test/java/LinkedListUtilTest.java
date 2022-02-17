@@ -58,4 +58,39 @@ public class LinkedListUtilTest {
         actual = LinkedListUtil.containsCycle(head);
         Assert.assertTrue(actual);
     }
+    @Test
+    public void removeDuplicatesFromSortedLinkedList() {
+      Node head = null;
+      Node actual = LinkedListUtil.deleteDuplicates(head);
+      Assert.assertNull(actual);
+
+      head = new Node(1, new Node(1, null));
+      actual = LinkedListUtil.deleteDuplicates(head);
+      Assert.assertEquals(1, actual.data);
+      Assert.assertNull(actual.next);
+
+      head = new Node(1, new Node(1, new Node(1, null)));
+      actual = LinkedListUtil.deleteDuplicates(head);
+      Assert.assertEquals(1, actual.data);
+      Assert.assertNull(actual.next);
+
+      head = new Node(1, new Node(1, new Node(2, null)));
+      actual = LinkedListUtil.deleteDuplicates(head);
+      Assert.assertEquals(1, actual.data);
+      Assert.assertEquals(2, actual.next.data);
+
+      head = new Node(1, new Node(1, new Node(2, new Node(3, new Node(3, null)))));
+      actual = LinkedListUtil.deleteDuplicates(head);
+      Assert.assertEquals(1, actual.data);
+      Assert.assertEquals(2, actual.next.data);
+      Assert.assertEquals(3, actual.next.next.data);
+      Assert.assertNull(actual.next.next.next);
+
+      head = new Node(1, new Node(1, new Node(2, new Node(2, new Node(3, new Node(3, new Node(3, null)))))));
+      actual = LinkedListUtil.deleteDuplicates(head);
+      Assert.assertEquals(1, actual.data);
+      Assert.assertEquals(2, actual.next.data);
+      Assert.assertEquals(3, actual.next.next.data);
+      Assert.assertNull(actual.next.next.next);
+    }
 }
