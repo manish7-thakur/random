@@ -56,4 +56,19 @@ public class LinkedListUtil {
       else traverser.next = list2;
       return head.next;
     }
+    static public Node removeElements(Node head, int val) {
+      Node traverser = head;
+      while(traverser != null && traverser.data == val) traverser = traverser.next;
+      Node res = traverser;
+      Node previous = traverser;
+      while(traverser != null) {
+        if(traverser.data == val) {
+          previous.next = traverser.next;
+        } else {
+          previous = traverser;
+        }
+        traverser = traverser.next;
+      }
+      return res;
+    }
 }
