@@ -39,4 +39,21 @@ public class LinkedListUtil {
       }
       return head;
     }
+    static public Node mergeTwoLists(Node list1, Node list2) {
+      Node traverser = new Node(0, null);
+      Node head = traverser;
+      while(list1 != null && list2 != null) {
+        if(list1.data < list2.data) {
+          traverser.next = list1;
+          list1 = list1.next;
+        } else {
+          traverser.next = list2;
+          list2 = list2.next;
+        }
+        traverser = traverser.next;
+      }
+      if(list1 != null) traverser.next = list1;
+      else traverser.next = list2;
+      return head.next;
+    }
 }

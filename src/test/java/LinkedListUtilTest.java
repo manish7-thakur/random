@@ -109,4 +109,40 @@ public class LinkedListUtilTest {
       Assert.assertEquals(7, actual.next.next.next.next.next.next.data);
       Assert.assertNull(actual.next.next.next.next.next.next.next);
     }
+
+    @Test
+    public void mergeTwoLinkedLists() {
+      Node h1 = null;
+      Node h2 = null;
+      Node actual = LinkedListUtil.mergeTwoLists(h1, h2);
+      Assert.assertNull(actual);
+
+      h1 = null;
+      h2 = new Node(1, null);
+      actual = LinkedListUtil.mergeTwoLists(h1, h2);
+      Assert.assertNotNull(actual);
+      Assert.assertEquals(1, actual.data);
+
+      h1 = new Node(2, null);
+      h2 = null;
+      actual = LinkedListUtil.mergeTwoLists(h1, h2);
+      Assert.assertNotNull(actual);
+      Assert.assertEquals(2, actual.data);
+
+      h1 = new Node(-2, null);
+      h2 = new Node(1, null);
+      actual = LinkedListUtil.mergeTwoLists(h1, h2);
+      Assert.assertNotNull(actual);
+      Assert.assertEquals(-2, actual.data);
+      Assert.assertEquals(1, actual.next.data);
+
+      h1 = new Node(-2, new Node(1, null));
+      h2 = new Node(1, new Node(3, null));
+      actual = LinkedListUtil.mergeTwoLists(h1, h2);
+      Assert.assertNotNull(actual);
+      Assert.assertEquals(-2, actual.data);
+      Assert.assertEquals(1, actual.next.data);
+      Assert.assertEquals(1, actual.next.next.data);
+      Assert.assertEquals(3, actual.next.next.next.data);
+    }
 }
