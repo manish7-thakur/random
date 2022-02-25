@@ -19,6 +19,10 @@ public class MyQueue {
     return s2.pop();
   }
 
+  public int peek() {
+    if(!s2.isEmpty()) return s2.peek();
+  }
+
   public boolean isEmpty() {
     return s1.isEmpty() && s2.isEmpty();
   }

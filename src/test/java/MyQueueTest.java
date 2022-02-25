@@ -20,5 +20,9 @@ public class MyQueueTest {
     q.push(5);
     actual = q.pop();
     Assert.assertEquals(2, actual);
+    q.push(7);
+    q.push(9);
+    actual = q.peek();
+    Assert.assertEquals(7, actual);
   }
 }
