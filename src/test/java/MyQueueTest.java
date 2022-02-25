@@ -14,5 +14,11 @@ public class MyQueueTest {
     actual = q.pop();
     Assert.assertEquals(1, actual);
     Assert.assertFalse(q.isEmpty());
+    q.push(2);
+    actual = q.pop();
+    Assert.assertEquals(3, actual);
+    q.push(5);
+    actual = q.pop();
+    Assert.assertEquals(2, actual);
   }
 }
