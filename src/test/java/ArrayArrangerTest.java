@@ -335,4 +335,23 @@ public class ArrayArrangerTest {
       actual = ArrayArranger.isAnagram("adjsdjyajab" , "bayjjsjddaa");
       Assert.assertTrue(actual);
     }
+
+    @Test
+    public void productOfWholeArrayExceptSelf() {
+      int[] actual = ArrayArranger.productExceptSelf(new int[]{2, 5});
+      int[] expected = new int[]{5, 2};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = ArrayArranger.productExceptSelf(new int[]{2, 3, 5});
+      expected = new int[]{15, 10, 6};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = ArrayArranger.productExceptSelf(new int[]{1, 2, 3, 4});
+      expected = new int[]{24, 12, 8, 6};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = ArrayArranger.productExceptSelf(new int[]{-1, 1, 0, -3, 3});
+      expected = new int[]{0, 0, 9, 0, 0};
+      Assert.assertArrayEquals(expected, actual);
+    }
 }
