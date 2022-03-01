@@ -156,4 +156,18 @@ public class ArrayArranger {
       }
       return res;
     }
+
+    static public int maxProduct(int[] nums) {
+      int res = 0;
+      int pMax = 1;
+      int pMin = 1;
+      for(int i = 0; i < nums.length; i++) {
+        int p1 = nums[i] * pMax;
+        int p2 = nums[i] * pMin;
+        pMax = Math.max(p1, Math.max(nums[i], p2));
+        pMin = Math.min(p1, Math.min(nums[i], p2));
+        res = Math.max(res, pMax);
+      }
+      return res;
+    }
 }

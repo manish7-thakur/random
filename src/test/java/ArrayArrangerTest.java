@@ -354,4 +354,47 @@ public class ArrayArrangerTest {
       expected = new int[]{0, 0, 9, 0, 0};
       Assert.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void maxProductOfSubArray() {
+      int actual = ArrayArranger.maxProduct(new int[]{2});
+      int expected = 2;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxProduct(new int[]{2, 2});
+      expected = 4;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxProduct(new int[]{2, -1, 3});
+      expected = 3;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxProduct(new int[]{2, -1, 3, 2});
+      expected = 6;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxProduct(new int[]{2, -1, -3});
+      expected = 6;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxProduct(new int[]{-2, 0, -3});
+      expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxProduct(new int[]{2, 4, 0, -3});
+      expected = 8;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxProduct(new int[]{-2, 2, 2, -4});
+      expected = 32;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxProduct(new int[]{2, 2, -1, -3, -1});
+      expected = 12;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.maxProduct(new int[]{2, 2, -1, -3, -1, 4, 2});
+      expected = 24;
+      Assert.assertEquals(expected, actual);
+    }
 }
