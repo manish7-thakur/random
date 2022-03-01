@@ -158,7 +158,7 @@ public class ArrayArranger {
     }
 
     static public int maxProduct(int[] nums) {
-      int res = 0;
+      int res = nums[0];
       int pMax = 1;
       int pMin = 1;
       for(int i = 0; i < nums.length; i++) {

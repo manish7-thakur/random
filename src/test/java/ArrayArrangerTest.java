@@ -361,6 +361,10 @@ public class ArrayArrangerTest {
       int expected = 2;
       Assert.assertEquals(expected, actual);
 
+      actual = ArrayArranger.maxProduct(new int[]{-2});
+      expected = -2;
+      Assert.assertEquals(expected, actual);
+
       actual = ArrayArranger.maxProduct(new int[]{2, 2});
       expected = 4;
       Assert.assertEquals(expected, actual);
