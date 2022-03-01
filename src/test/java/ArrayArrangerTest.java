@@ -401,4 +401,34 @@ public class ArrayArrangerTest {
       expected = 24;
       Assert.assertEquals(expected, actual);
     }
+    @Test
+    public void findMinRatatedArray() {
+      int actual = ArrayArranger.findMinInRotatedSortedArray(new int[]{1});
+      int expected = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.findMinInRotatedSortedArray(new int[]{3, 2});
+      expected = 2;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.findMinInRotatedSortedArray(new int[]{3, 1, 2});
+      expected = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.findMinInRotatedSortedArray(new int[]{2, 3, 4, 1});
+      expected = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.findMinInRotatedSortedArray(new int[]{1, 2, 3, 4});
+      expected = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.findMinInRotatedSortedArray(new int[]{4, 5, 0, 2, 3});
+      expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.findMinInRotatedSortedArray(new int[]{6, 7, 8, 9, 1, 2, 3, 4, 5});
+      expected = 1;
+      Assert.assertEquals(expected, actual);
+    }
 }
