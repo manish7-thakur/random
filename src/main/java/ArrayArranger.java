@@ -177,8 +177,7 @@ public class ArrayArranger {
       while(l < h) {
         int m = (l + h) / 2;
         if(nums[m] > nums[h]) l = m + 1;
-        else if(nums[m] < nums[h]) h = m;
-        else h--;
+        else h = m;
       }
       return nums[l];
     }
