@@ -171,9 +171,7 @@ public class ArrayArranger {
       return res;
     }
     static public int findMinInRotatedSortedArray(int[] nums) {
-      return findMinRotated(nums, 0, nums.length - 1);
-    }
-    static public int findMinRotated(int[] nums, int l, int h) {
+      int l = 0, h = nums.length - 1;
       while(l < h) {
         int m = (l + h) / 2;
         if(nums[m] > nums[h]) l = m + 1;
@@ -181,5 +179,4 @@ public class ArrayArranger {
       }
       return nums[l];
     }
-
 }
