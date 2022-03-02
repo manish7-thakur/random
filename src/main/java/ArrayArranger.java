@@ -179,4 +179,19 @@ public class ArrayArranger {
       }
       return nums[l];
     }
+    static public int searchInRotatedSortedArray(int[] nums, int target) {
+      int l = 0, h = nums.length - 1;
+      while(l <= h) {
+        int m = (l + h) / 2;
+        if(nums[m] == target) return m;
+        else if(nums[m] > target) {
+          if(nums[l] <= target) h = m - 1;
+          else l = m + 1;
+        } else {
+          if(nums[h] >= target) l = m + 1;
+          else h = m - 1;
+        }
+      }
+      return -1;
+    }
 }

@@ -431,4 +431,80 @@ public class ArrayArrangerTest {
       expected = 1;
       Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void searchTargetInRotatedSortedArray() {
+      int actual = ArrayArranger.searchInRotatedSortedArray(new int[]{1}, 2);
+      int expected = -1;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{1}, 1);
+      expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{2, 1}, 1);
+      expected = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{3, 1, 2}, 2);
+      expected = 2;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{4, 1, 2, 3}, 4);
+      expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{4, 1, 2, 3}, 2);
+      expected = 2;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{4, 1, 2, 3}, 3);
+      expected = 3;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{3, 4, 5, 1, 2}, 2);
+      expected = 4;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{3, 4, 5, 1, 2}, 3);
+      expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{3, 4, 5, 1, 2}, 4);
+      expected = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{3, 4, 5, 1, 2}, 1);
+      expected = 3;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{5, 1, 2, 3, 4}, 4);
+      expected = 4;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{5, 1, 2, 3, 4}, 5);
+      expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{5, 6, 1, 2, 3, 4}, 2);
+      expected = 3;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{5, 6, 1, 2, 3, 4}, 3);
+      expected = 4;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{5, 6, 7, 1, 2, 3, 4}, 3);
+      expected = 5;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{5, 6, 7, 1, 2, 3, 4}, 7);
+      expected = 2;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{5, 6, 7, 1, 2, 3, 4}, 6);
+      expected = 1;
+      Assert.assertEquals(expected, actual);
+
+    }
 }
