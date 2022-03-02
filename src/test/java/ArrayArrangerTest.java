@@ -466,10 +466,6 @@ public class ArrayArrangerTest {
       expected = 1;
       Assert.assertEquals(expected, actual);
 
-      actual = ArrayArranger.searchInRotatedSortedArray(new int[]{5, 1, 2, 3, 4}, 5);
-      expected = 1;
-      Assert.assertEquals(expected, actual);
-
       actual = ArrayArranger.searchInRotatedSortedArray(new int[]{3, 4, 5, 1, 2}, 2);
       expected = 4;
       Assert.assertEquals(expected, actual);
@@ -521,8 +517,6 @@ public class ArrayArrangerTest {
       actual = ArrayArranger.searchInRotatedSortedArray(new int[]{4, 5, 6, 7, 8, 1, 2, 3}, 8);
       expected = 4;
       Assert.assertEquals(expected, actual);
-
-
 
     }
 }
