@@ -185,10 +185,13 @@ public class ArrayArranger {
         int m = (l + h) / 2;
         if(nums[m] == target) return m;
         else if(nums[m] > target) {
-          if(nums[l] <= target) h = m - 1;
+          if(nums[h] > nums[m] && nums[h] >= target) h = m - 1;
+          else if(nums[h] < nums[m] && nums[h] < target) h = m - 1;
           else l = m + 1;
         } else {
-          if(nums[h] >= target) l = m + 1;
+          if(nums[h] > nums[m] && nums[h] >= target) l = m + 1;
+          else if(nums[h] > nums[m] && nums[h] < target) h = m - 1;
+          else if(nums[l] < nums[m] && nums[l] < target) l = m + 1;
           else h = m - 1;
         }
       }
