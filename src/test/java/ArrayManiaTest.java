@@ -31,4 +31,22 @@ public class ArrayManiaTest {
     expected = List.of(List.of(-2, -1, 3));
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void findMaxAreaOfRectangle() {
+    int actual = ArrayMania.maxArea(new int[]{1, 1});
+    int expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.maxArea(new int[]{2, 3, 0});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.maxArea(new int[]{2, 3, 2, 4});
+    expected = 6;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.maxArea(new int[]{2, 5, 2, 6, 2});
+    expected = 10;
+    Assert.assertEquals(expected, actual);
+  }
 }
