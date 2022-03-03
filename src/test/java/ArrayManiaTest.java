@@ -48,5 +48,9 @@ public class ArrayManiaTest {
     actual = ArrayMania.maxArea(new int[]{2, 5, 2, 6, 2});
     expected = 10;
     Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.maxArea(new int[]{2, 5, 2, 6, 2, 5, 9});
+    expected = 25;
+    Assert.assertEquals(expected, actual);
   }
 }
