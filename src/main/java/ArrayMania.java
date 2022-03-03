@@ -20,12 +20,12 @@ public class ArrayMania {
     }
     return res;
   }
-  static public int maxArea(int[] heights) {
-    int res = 0, i = 0, j = heights.length - 1;
+  static public int maxArea(int[] height) {
+    int res = 0, i = 0, j = height.length - 1;
     while(i < j) {
-      int area = Math.min(heights[i], heights[j]) * (j - i);
+      int area = Math.min(height[i], height[j]) * (j - i);
       if(area > res) res = area;
-      if(heights[i] < heights[j]) i++;
+      if(height[i] < height[j]) i++;
       else j--;
     }
     return res;
