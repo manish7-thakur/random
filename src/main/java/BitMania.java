@@ -12,9 +12,8 @@ public class BitMania {
     int count = 0;
     while(n != 0) {
       if((n & 1) == 1) count++;
-      n = n >>> 1;
+      n = n >>> 1; //right-shift operator that doesn't use the sign bit for filling the trailing position
     }
     return count;
-
   }
 }
