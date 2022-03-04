@@ -23,4 +23,40 @@ public class BitManiaTest {
     expected = 5;
     Assert.assertEquals(expected, actual);
   }
+
+  @Test
+  public void countTheNumberOfOnesInTheBinary() {
+    int actual = BitMania.hammingWeight(0);
+    int expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = BitMania.hammingWeight(1);
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = BitMania.hammingWeight(2);
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = BitMania.hammingWeight(3);
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = BitMania.hammingWeight(23);
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+
+    actual = BitMania.hammingWeight(32);
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = BitMania.hammingWeight(-3); // 11111111111111111111111111111101
+    expected = 31;
+    Assert.assertEquals(expected, actual);
+
+    actual = BitMania.hammingWeight(4096);
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+  }
 }
