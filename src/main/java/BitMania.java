@@ -1,6 +1,6 @@
 public class BitMania {
   static public int getSum(int a, int b) {
-    int sum = 0;
+    int sum = a;
     while(b != 0) {
       sum = a ^ b;
       b = (a & b) << 1;

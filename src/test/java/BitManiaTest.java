@@ -18,5 +18,9 @@ public class BitManiaTest {
     actual = BitMania.getSum(4, 4);
     expected = 8;
     Assert.assertEquals(expected, actual);
+
+    actual = BitMania.getSum(5, 0);
+    expected = 5;
+    Assert.assertEquals(expected, actual);
   }
 }
