@@ -16,4 +16,11 @@ public class BitMania {
     }
     return count;
   }
+  static public int[] countBits(int n) {
+    int[] res = new int[n + 1];
+    for(int i = 1; i < n + 1; i++) {
+      res[i] = i % 2 == 0 ? res[i/2] : res[i/2] + 1;
+    }
+    return res;
+  }
 }

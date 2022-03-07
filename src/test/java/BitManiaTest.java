@@ -57,6 +57,51 @@ public class BitManiaTest {
     actual = BitMania.hammingWeight(4096);
     expected = 1;
     Assert.assertEquals(expected, actual);
+  }
+  @Test
+  public void countBitsUntil() {
+    int[] actual = BitMania.countBits(0);
+    int[] expected = new int[]{0};
+    Assert.assertArrayEquals(expected, actual);
 
+    actual = BitMania.countBits(1);
+    expected = new int[]{0, 1};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = BitMania.countBits(2);
+    expected = new int[]{0, 1, 1};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = BitMania.countBits(3);
+    expected = new int[]{0, 1, 1, 2};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = BitMania.countBits(4);
+    expected = new int[]{0, 1, 1, 2, 1};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = BitMania.countBits(5);
+    expected = new int[]{0, 1, 1, 2, 1, 2};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = BitMania.countBits(6);
+    expected = new int[]{0, 1, 1, 2, 1, 2, 2};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = BitMania.countBits(7);
+    expected = new int[]{0, 1, 1, 2, 1, 2, 2, 3};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = BitMania.countBits(8);
+    expected = new int[]{0, 1, 1, 2, 1, 2, 2, 3, 1};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = BitMania.countBits(9);
+    expected = new int[]{0, 1, 1, 2, 1, 2, 2, 3, 1, 2};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = BitMania.countBits(10);
+    expected = new int[]{0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2};
+    Assert.assertArrayEquals(expected, actual);
   }
 }
