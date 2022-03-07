@@ -104,4 +104,34 @@ public class BitManiaTest {
     expected = new int[]{0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2};
     Assert.assertArrayEquals(expected, actual);
   }
+  @Test
+  public void reverseBitsForInt() {
+    int actual = BitMania.reverseBits(0);
+    int expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = BitMania.reverseBits(1);
+    expected = -2147483648;
+    Assert.assertEquals(expected, actual);
+
+    actual = BitMania.reverseBits(-1);
+    expected = -1;
+    Assert.assertEquals(expected, actual);
+
+    actual = BitMania.reverseBits(2);
+    expected = 1073741824;
+    Assert.assertEquals(expected, actual);
+
+    actual = BitMania.reverseBits(-2);
+    expected = 2147483647;
+    Assert.assertEquals(expected, actual);
+
+    actual = BitMania.reverseBits(-24);
+    expected = 402653183;
+    Assert.assertEquals(expected, actual);
+
+    actual = BitMania.reverseBits(-2147483647);
+    expected = -2147483647;
+    Assert.assertEquals(expected, actual);
+  }
 }
