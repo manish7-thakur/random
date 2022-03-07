@@ -22,5 +22,5 @@ public class BitMania {
       res[i] = i % 2 == 0 ? res[i/2] : res[i/2] + 1;
     }
     return res;
-  }
+  } 
 }

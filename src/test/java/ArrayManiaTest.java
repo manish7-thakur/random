@@ -57,4 +57,42 @@ public class ArrayManiaTest {
     expected = 49;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void missingNumInRangeZeroToN() {
+    int actual = ArrayMania.missingNumber(new int[]{0});
+    int expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.missingNumber(new int[]{1});
+    expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.missingNumber(new int[]{0, 1});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.missingNumber(new int[]{0, 2});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.missingNumber(new int[]{3, 1, 0});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.missingNumber(new int[]{3, 2, 1});
+    expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.missingNumber(new int[]{3, 0, 1, 4});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.missingNumber(new int[]{3, 5, 0, 1, 2});
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.missingNumber(new int[]{9, 6, 4, 2, 3, 5, 7, 0, 1});
+    expected = 8;
+    Assert.assertEquals(expected, actual);
+  }
 }
