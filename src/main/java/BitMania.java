@@ -33,4 +33,13 @@ public class BitMania {
     }
     return res;
   }
+  static int reverseBits2(int n) {
+    int last = 1 << 31;
+    for(int i = 0; i < 32; i++) {
+      int bit = n & 1;
+      n = n >>> 1;
+      if(bit == 1) n = n | last;
+    }
+    return res;
+  }
 }
