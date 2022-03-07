@@ -106,11 +106,11 @@ public class BitManiaTest {
   }
   @Test
   public void reverseBitsForInt() {
-    int actual = BitMania.reverseBits2(0);
+    int actual = BitMania.reverseBits(0);
     int expected = 0;
     Assert.assertEquals(expected, actual);
 
-    actual = BitMania.reverseBits2(1);
+    actual = BitMania.reverseBits(1);
     expected = -2147483648;
     Assert.assertEquals(expected, actual);
 
