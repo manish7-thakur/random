@@ -33,36 +33,40 @@ public class MathematicsTest {
     int expected = 0;
     Assert.assertEquals(expected, actual);
 
-    actual = Mathematics.coinChange(new int[]{2}, 3);
-    expected = -1;
-    Assert.assertEquals(expected, actual);
-
     actual = Mathematics.coinChange(new int[]{1}, 1);
     expected = 1;
     Assert.assertEquals(expected, actual);
 
-    actual = Mathematics.coinChange(new int[]{1, 2}, 2);
-    expected = 1;
-    Assert.assertEquals(expected, actual);
-
-    actual = Mathematics.coinChange(new int[]{1, 2, 4}, 7);
-    expected = 3;
-    Assert.assertEquals(expected, actual);
-
-    actual = Mathematics.coinChange(new int[]{1, 2, 4, 7}, 49);
-    expected = 7;
-    Assert.assertEquals(expected, actual);
-
-    actual = Mathematics.coinChange(new int[]{1, 2, 4, 7}, 51);
-    expected = 8;
-    Assert.assertEquals(expected, actual);
-
-    actual = Mathematics.coinChange(new int[]{9, 13, 6, 2}, 55);
+    actual = Mathematics.coinChange(new int[]{2}, 1);
     expected = -1;
     Assert.assertEquals(expected, actual);
 
-    actual = Mathematics.coinChange(new int[]{9, 13, 3, 2}, 55);
-    expected = 5;
+    actual = Mathematics.coinChange(new int[]{2, 3}, 3);
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = Mathematics.coinChange(new int[]{2, 5, 7}, 3);
+    expected = -1;
+    Assert.assertEquals(expected, actual);
+
+    actual = Mathematics.coinChange(new int[]{2, 5, 7}, 9);
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = Mathematics.coinChange(new int[]{2, 5, 7}, 9);
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = Mathematics.coinChange(new int[]{2, 5, 7, 4, 9}, 9);
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = Mathematics.coinChange(new int[]{2, 5, 7, 4, 9}, 459);
+    expected = 51;
+    Assert.assertEquals(expected, actual);
+
+    actual = Mathematics.coinChange(new int[]{2, 11, 5, 7, 4, 9}, 453);
+    expected = 42;
     Assert.assertEquals(expected, actual);
   }
 }

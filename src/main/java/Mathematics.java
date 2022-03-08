@@ -12,23 +12,27 @@ public class Mathematics {
     mem[n] = count;
     return count;
   }
+
   static int coinChange(int[] coins, int amount) {
-    Arrays.sort(coins);
-    return coinNeeded(coins, coins.length - 1, amount);
+    Map<String, Integer> mem = new HashMap();
+    int val = coinsNeeded(coins, 0, amount, mem);
+    if(val == Integer.MAX_VALUE) return -1;
+    return val;
   }
-  static int coinNeeded(int[] coins, int i, int amount) {
-    if(amount <= 0) return 0;
-    if(i < 0 && amount > 0) return -1;
-    int count = 0;
-    if(coins[i] > amount) {
-      count = coinNeeded(coins, i - 1, amount);
-      if(count == -1) return -1;
-      return count;
+
+  static int coinsNeeded(int[] coins, int start, int amount, Map<String, Integer> mem) {
+    if(amount > 0 && start >= coins.length) return Integer.MAX_VALUE;
+    if(amount == 0) return 0;
+    String key = amount + "," + start;
+    if(mem.containsKey(key)) return mem.get(key);
+    int count1 = Integer.MAX_VALUE;
+    if(coins[start] <= amount) {
+      count1 = coinsNeeded(coins, start, amount - coins[start], mem);
+      if(count1 != Integer.MAX_VALUE) count1 += 1;
     }
-    else {
-      count = coinNeeded(coins, i, amount - coins[i]);
-      if(count == -1) return -1;
-      return 1 + count;
-    }
+    int count2 = coinsNeeded(coins, start + 1, amount, mem);
+    int res = count1 == Integer.MAX_VALUE && count2 == Integer.MAX_VALUE ? Integer.MAX_VALUE : Math.min(count1, count2);
+    mem.put(key, res);
+    return res;
   }
 }
