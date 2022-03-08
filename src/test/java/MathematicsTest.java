@@ -60,5 +60,9 @@ public class MathematicsTest {
     actual = Mathematics.coinChange(new int[]{9, 13, 6, 2}, 55);
     expected = -1;
     Assert.assertEquals(expected, actual);
+
+    actual = Mathematics.coinChange(new int[]{9, 13, 3, 2}, 55);
+    expected = 5;
+    Assert.assertEquals(expected, actual);
   }
 }

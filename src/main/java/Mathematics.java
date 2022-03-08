@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Mathematics {
   static public int climbStairs(int n) {
     int[] mem = new int[n + 1];
@@ -11,6 +13,7 @@ public class Mathematics {
     return count;
   }
   static int coinChange(int[] coins, int amount) {
+    Arrays.sort(coins);
     return coinNeeded(coins, coins.length - 1, amount);
   }
   static int coinNeeded(int[] coins, int i, int amount) {
