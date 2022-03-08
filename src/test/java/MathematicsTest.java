@@ -15,18 +15,6 @@ public class MathematicsTest {
     expected = 3;
     Assert.assertEquals(expected, actual);
 
-    actual = Mathematics.climbStairs(4);
-    expected = 5;
-    Assert.assertEquals(expected, actual);
-
-    actual = Mathematics.climbStairs(5);
-    expected = 8;
-    Assert.assertEquals(expected, actual);
-
-    actual = Mathematics.climbStairs(6);
-    expected = 13;
-    Assert.assertEquals(expected, actual);
-
     actual = Mathematics.climbStairs(7);
     expected = 21;
     Assert.assertEquals(expected, actual);
@@ -37,6 +25,36 @@ public class MathematicsTest {
 
     actual = Mathematics.climbStairs(45);
     expected = 1836311903;
+    Assert.assertEquals(expected, actual);
+  }
+  @Test
+  public void minNumberOfCoins() {
+    int actual = Mathematics.coinChange(new int[]{1}, 0);
+    int expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = Mathematics.coinChange(new int[]{2}, 3);
+    expected = -1;
+    Assert.assertEquals(expected, actual);
+
+    actual = Mathematics.coinChange(new int[]{1}, 1);
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = Mathematics.coinChange(new int[]{1, 2}, 2);
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = Mathematics.coinChange(new int[]{1, 2, 4}, 7);
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = Mathematics.coinChange(new int[]{1, 2, 4, 7}, 49);
+    expected = 7;
+    Assert.assertEquals(expected, actual);
+
+    actual = Mathematics.coinChange(new int[]{1, 2, 4, 7}, 51);
+    expected = 8;
     Assert.assertEquals(expected, actual);
   }
 }
