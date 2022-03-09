@@ -48,4 +48,12 @@ public class DP {
     mem[i][j] = count;
     return count;
   }
+
+  static public boolean wordBreak(String s, List<String> wordDict) {
+    if(s.isEmpty()) return true;
+    for(int i = 1; i <= s.length(); i++) {
+      if(wordDict.contains(s.substring(0, i))) return wordBreak(s.substring(i), wordDict);
+    }
+    return false;
+  }
 }

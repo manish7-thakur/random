@@ -1,4 +1,5 @@
 import org.junit.*;
+import java.util.*;
 
 public class DPTest {
   @Test
@@ -98,5 +99,26 @@ public class DPTest {
     actual = DP.longestCommonSubsequence("wpssddjsywmdfttyetdy", "ptwtssjldiwjhdeyfhshy");
     expected = 8;
     Assert.assertEquals(expected, actual);
+  }
+  @Test
+  public void breakWordToFormDictionary() {
+    boolean actual = DP.wordBreak("k", List.of("r"));
+    Assert.assertFalse(actual);
+
+    actual = DP.wordBreak("kr", List.of("r", "k"));
+    Assert.assertTrue(actual);
+
+    actual = DP.wordBreak("kr", List.of("t", "k"));
+    Assert.assertFalse(actual);
+
+    actual = DP.wordBreak("yousuck", List.of("you", "suck"));
+    Assert.assertTrue(actual);
+
+    actual = DP.wordBreak("yousuckd", List.of("you", "suck"));
+    Assert.assertFalse(actual);
+
+    actual = DP.wordBreak("applepennep", List.of("nep", "pen", "apple"));
+    Assert.assertTrue(actual);
+
   }
 }
