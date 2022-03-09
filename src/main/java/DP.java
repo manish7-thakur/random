@@ -50,14 +50,20 @@ public class DP {
   }
 
   static public boolean wordBreak(String s, List<String> wordDict) {
-    return wordBreakRec(s, new HashSet(wordDict));
+    Map<String, Boolean> mem = new HashMap<>();
+    return wordBreakRec(s, new HashSet(wordDict), mem);
   }
-  static boolean wordBreakRec(String s, Set<String> wordDict) {
+  static boolean wordBreakRec(String s, Set<String> wordDict, Map<String, Boolean> mem) {
     if(s.isEmpty() || wordDict.contains(s)) return true;
+    if(mem.containsKey(s)) return mem.get(s);
     for(int i = 1; i <= s.length(); i++) {
       String substring = s.substring(0, i);
-      if(wordDict.contains(substring) && wordBreakRec(s.substring(i), wordDict)) return true;
+      if(wordDict.contains(substring) && wordBreakRec(s.substring(i), wordDict, mem)) {
+        mem.put(s, true);
+        return true;
+      }
     }
+    mem.put(s, false);
     return false;
   }
 }
