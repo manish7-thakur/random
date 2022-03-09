@@ -53,9 +53,10 @@ public class DP {
     return wordBreakRec(s, new HashSet(wordDict));
   }
   static boolean wordBreakRec(String s, Set<String> wordDict) {
-    if(s.isEmpty()) return true;
+    if(s.isEmpty() || wordDict.contains(s)) return true;
     for(int i = 1; i <= s.length(); i++) {
-      if(wordDict.contains(s.substring(0, i))) return wordBreakRec(s.substring(i), wordDict);
+      String substring = s.substring(0, i);
+      if(wordDict.contains(substring)) return wordBreakRec(s.substring(i), wordDict);
     }
     return false;
   }

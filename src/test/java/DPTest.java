@@ -105,6 +105,12 @@ public class DPTest {
     boolean actual = DP.wordBreak("k", List.of("r"));
     Assert.assertFalse(actual);
 
+    actual = DP.wordBreak("krd", List.of("krd"));
+    Assert.assertTrue(actual);
+
+    actual = DP.wordBreak("aaaaa", List.of("aaa","aa"));
+    Assert.assertTrue(actual);
+
     actual = DP.wordBreak("kr", List.of("r", "k"));
     Assert.assertTrue(actual);
 
