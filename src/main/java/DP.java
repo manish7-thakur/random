@@ -34,4 +34,18 @@ public class DP {
     mem.put(amount, min);
     return min;
   }
+  static public int longestCommonSubsequence(String text1, String text2) {
+    int[][] mem = new int[text1.length()][text2.length()];
+    Arrays.stream(mem).forEach(arr -> Arrays.fill(arr, -1));
+    return lcs(text1, text2, text1.length() - 1, text2.length() - 1, mem);
+  }
+  static public int lcs(String text1, String text2, int i, int j, int[][] mem) {
+    if(i < 0 || j < 0) return 0;
+    if(mem[i][j] != -1) return mem[i][j];
+    int count = 0;
+    if(text1.charAt(i) == text2.charAt(j)) count = 1 + lcs(text1, text2, i - 1, j - 1, mem);
+    else count = Math.max(lcs(text1, text2, i - 1, j, mem), lcs(text1, text2, i, j - 1, mem));
+    mem[i][j] = count;
+    return count;
+  }
 }

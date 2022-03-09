@@ -69,4 +69,34 @@ public class DPTest {
     expected = 42;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void findLongestCommonSubsequence() {
+    int actual = DP.longestCommonSubsequence("w", "p");
+    int expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.longestCommonSubsequence("wp", "p");
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.longestCommonSubsequence("wp", "pw");
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.longestCommonSubsequence("wpt", "ptw");
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.longestCommonSubsequence("wpty", "ptwy");
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.longestCommonSubsequence("wptty", "ptwthy");
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.longestCommonSubsequence("wpssddjsywmdfttyetdy", "ptwtssjldiwjhdeyfhshy");
+    expected = 8;
+    Assert.assertEquals(expected, actual);
+  }
 }
