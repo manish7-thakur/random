@@ -50,8 +50,9 @@ public class DP {
   }
 
   static public boolean wordBreak(String s, List<String> wordDict) {
-    Map<String, Boolean> mem = new HashMap<>();
-    return wordBreakRec(s, new HashSet(wordDict), mem);
+    // Map<String, Boolean> mem = new HashMap<>();
+    Boolean[][] mem = new Boolean[s.length() + 1][s.length() + 1];
+    return wordBreakRec(s, 0, 1, new HashSet(wordDict), mem);
   }
   static boolean wordBreakRec(String s, Set<String> wordDict, Map<String, Boolean> mem) {
     if(s.isEmpty() || wordDict.contains(s)) return true;
@@ -65,5 +66,18 @@ public class DP {
     }
     mem.put(s, false);
     return false;
+  }
+  static boolean wordBreakRec(String s, int i, int j, Set<String> wordDict, Boolean[][] mem) {
+    if((i >= s.length() && j >= s.length()) || wordDict.contains(s)) return true;
+    if(i < s.length() && j > s.length()) return false;
+    if(mem[i][j] != null) return mem[i][j];
+    String substring = s.substring(i, j);
+    if(wordDict.contains(substring) && wordBreakRec(s, j , j + 1, wordDict, mem)) {
+      mem[i][j] = true;
+      return true;
+    }
+    boolean res = wordBreakRec(s, i, j + 1, wordDict, mem);
+    mem[i][j] = res;
+    return res;
   }
 }
