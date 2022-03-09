@@ -50,9 +50,12 @@ public class DP {
   }
 
   static public boolean wordBreak(String s, List<String> wordDict) {
+    return wordBreakRec(s, new HashSet(wordDict));
+  }
+  static boolean wordBreakRec(String s, Set<String> wordDict) {
     if(s.isEmpty()) return true;
     for(int i = 1; i <= s.length(); i++) {
-      if(wordDict.contains(s.substring(0, i))) return wordBreak(s.substring(i), wordDict);
+      if(wordDict.contains(s.substring(0, i))) return wordBreakRec(s.substring(i), wordDict);
     }
     return false;
   }
