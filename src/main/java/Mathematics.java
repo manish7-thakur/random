@@ -20,22 +20,6 @@ public class Mathematics {
     return val;
   }
 
-  // static int coinsNeeded(int[] coins, int start, int amount, Map<String, Integer> mem) {
-  //   if(amount > 0 && start >= coins.length) return Integer.MAX_VALUE;
-  //   if(amount == 0) return 0;
-  //   String key = amount + "," + start;
-  //   if(mem.containsKey(key)) return mem.get(key);
-  //   int count1 = Integer.MAX_VALUE;
-  //   if(coins[start] <= amount) {
-  //     count1 = coinsNeeded(coins, start, amount - coins[start], mem);
-  //     if(count1 != Integer.MAX_VALUE) count1 += 1;
-  //   }
-  //   int count2 = coinsNeeded(coins, start + 1, amount, mem);
-  //   int res = count1 == Integer.MAX_VALUE && count2 == Integer.MAX_VALUE ? Integer.MAX_VALUE : Math.min(count1, count2);
-  //   mem.put(key, res);
-  //   return res;
-  // }
-
   static int coinsNeededL(int[] coins, int amount, Map<Integer, Integer> mem) {
     if(amount <= 0) return 0;
     if(mem.containsKey(amount)) return mem.get(amount);
