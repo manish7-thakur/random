@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Mathematics {
+public class DP {
   static public int climbStairs(int n) {
     int[] mem = new int[n + 1];
     return climb(n, mem);
@@ -25,7 +25,7 @@ public class Mathematics {
     if(mem.containsKey(amount)) return mem.get(amount);
     int min = Integer.MAX_VALUE;
     for(int i = 0; i < coins.length; i++) {
-      if(coins[i] <= amount) {
+      if(coins[i] <= amount) { // this will never let amount go negative and min will remain Integer.MAX_VALUE
         int count = coinsNeededL(coins, amount - coins[i], mem);
         if(count != Integer.MAX_VALUE) count += 1;
         min = Math.min(min, count);
