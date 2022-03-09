@@ -111,22 +111,20 @@ public class DPTest {
     actual = DP.wordBreak("aaaaa", List.of("aaa","aa"));
     Assert.assertTrue(actual);
 
-    actual = DP.wordBreak("kr", List.of("r", "k"));
-    Assert.assertTrue(actual);
-
-    actual = DP.wordBreak("kr", List.of("t", "k"));
-    Assert.assertFalse(actual);
-
     actual = DP.wordBreak("yousuck", List.of("you", "suck"));
     Assert.assertTrue(actual);
 
-    actual = DP.wordBreak("yousuckd", List.of("you", "suck"));
-    Assert.assertFalse(actual);
+    actual = DP.wordBreak("yousuck", List.of("you", "yous", "uck"));
+    Assert.assertTrue(actual);
 
     actual = DP.wordBreak("applepennep", List.of("nep", "pen", "apple"));
     Assert.assertTrue(actual);
 
     actual = DP.wordBreak("pineapplepenapplepineapplepenappleapineapplepenple", List.of("apple", "pen", "applepen",
+    "pine", "p", "i", "n", "a", "e", "l", "ne", "pe", "ple", "en", "app", "pin"));
+    Assert.assertTrue(actual);
+
+    actual = DP.wordBreak("pineainpppineapplelepenlpineaaepplepinpeplineeapplepepinenapnappenpappleplepleleapineappleppinenple", List.of("apple", "pen", "applepen",
     "pine", "p", "i", "n", "a", "e", "l", "ne", "pe", "ple", "en", "app", "pin"));
     Assert.assertTrue(actual);
 

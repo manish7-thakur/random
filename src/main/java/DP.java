@@ -56,7 +56,7 @@ public class DP {
     if(s.isEmpty() || wordDict.contains(s)) return true;
     for(int i = 1; i <= s.length(); i++) {
       String substring = s.substring(0, i);
-      if(wordDict.contains(substring)) return wordBreakRec(s.substring(i), wordDict);
+      if(wordDict.contains(substring) && wordBreakRec(s.substring(i), wordDict)) return true;
     }
     return false;
   }
