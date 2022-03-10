@@ -81,21 +81,26 @@ public class DP {
     return res;
   }
   static public List<List<Integer>> combinationSum(int[] candidates, int target) {
-    List<List<Integer>> res = new ArrayList<>();
-    combinationRec(candidates, target, 0, res, new ArrayList<Integer>());
-    return res;
+    return combinationRec(candidates, target, 0);
   }
-  static void combinationRec(int[] candidates, int target, int start, List<List<Integer>> res, List<Integer> curr) {
-    if(target <= 0) {
-      res.add(new ArrayList(curr));
-      return;
+  static List<List<Integer>> combinationRec(int[] candidates, int target, int start) {
+    if(start >= candidates.length) {
+      return List.of();
     }
+    if(target == 0) {
+      List<Integer> list = new ArrayList<>();
+      return List.of(list);
+    }
+    List<List<Integer>> res = new ArrayList<>();
     for(int i = start; i < candidates.length; i++) {
       if(candidates[i] <= target) {
-        curr.add(candidates[i]);
-        combinationRec(candidates, target - candidates[i], i, res, curr);
-        curr.remove(curr.size() - 1);
+        List<List<Integer>> curr = combinationRec(candidates, target - candidates[i], i);
+        for(List<Integer> list : curr) {
+          list.add(candidates[i]);
+          res.add(list);
+        }
       }
     }
+    return res;
   }
 }
