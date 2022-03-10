@@ -150,8 +150,8 @@ public class DPTest {
     expected = List.of(List.of(2, 3, 9), List.of(2, 3, 3, 3, 3), List.of(2, 2, 2, 2, 3, 3), List.of(2, 2, 7, 3), List.of(7, 7), List.of(2, 2, 2, 2, 2, 2, 2));
     Assert.assertEquals(expected, actual);
 
-    actual = DP.combinationSum(new int[]{9, 3, 7, 14, 2, 5, 13, 8, 17}, 227);
-    Assert.assertEquals(12903062, actual.size());
+    actual = DP.combinationSum(new int[]{9, 3, 7, 14, 2, 5, 13, 8, 17}, 129);
+    Assert.assertEquals(312298, actual.size());
 
   }
 }

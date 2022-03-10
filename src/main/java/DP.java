@@ -84,9 +84,6 @@ public class DP {
     return combinationRec(candidates, target, 0);
   }
   static List<List<Integer>> combinationRec(int[] candidates, int target, int start) {
-    if(start >= candidates.length) {
-      return List.of();
-    }
     if(target == 0) {
       List<Integer> list = new ArrayList<>();
       return List.of(list);
