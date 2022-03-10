@@ -81,6 +81,7 @@ public class DP {
     return res;
   }
   static public List<List<Integer>> combinationSum(int[] candidates, int target) {
+    Map<Integer, List<List<Inetger>>> mem = new HashMap<>();
     return combinationRec(candidates, target, 0);
   }
   static List<List<Integer>> combinationRec(int[] candidates, int target, int start) {
@@ -91,6 +92,7 @@ public class DP {
       List<Integer> list = new ArrayList<>();
       return List.of(list);
     }
+    if(mem.containsKey(target)) return mem.get(target);
     List<List<Integer>> res = new ArrayList<>();
     for(int i = start; i < candidates.length; i++) {
       if(candidates[i] <= target) {
@@ -101,6 +103,7 @@ public class DP {
         }
       }
     }
+    mem.put(target, res);
     return res;
   }
 }
