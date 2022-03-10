@@ -80,4 +80,22 @@ public class DP {
     mem[i][j] = res;
     return res;
   }
+  static public List<List<Integer>> combinationSum(int[] candidates, int target) {
+    List<List<Integer>> res = new ArrayList<>();
+    combinationRec(candidates, target, 0, res, new ArrayList<Integer>());
+    return res;
+  }
+  static void combinationRec(int[] candidates, int target, int start, List<List<Integer>> res, List<Integer> curr) {
+    if(target <= 0) {
+      res.add(new ArrayList(curr));
+      return;
+    }
+    for(int i = start; i < candidates.length; i++) {
+      if(candidates[i] <= target) {
+        curr.add(candidates[i]);
+        combinationRec(candidates, target - candidates[i], i, res, curr);
+        curr.remove(curr.size() - 1);
+      }
+    }
+  }
 }

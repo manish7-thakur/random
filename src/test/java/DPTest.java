@@ -123,9 +123,32 @@ public class DPTest {
     actual = DP.wordBreak("pineapplepenapplepineapplepenappleapineapplepenple", List.of("apple", "pen", "applepen",
     "pine", "p", "i", "n", "a", "e", "l", "ne", "pe", "ple", "en", "app", "pin"));
     Assert.assertTrue(actual);
-    
+
     actual = DP.wordBreak("aaaaaaaaaaaaaaaaaaaaaaaaaaab", List.of("a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"));
     Assert.assertFalse(actual);
+  }
+
+  @Test
+  public void combinationSumFromDistinctNums() {
+    List<List<Integer>> actual = DP.combinationSum(new int[]{2}, 1);
+    List<List<Integer>> expected = List.of();
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.combinationSum(new int[]{1}, 2);
+    expected = List.of(List.of(1, 1));
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.combinationSum(new int[]{2, 1}, 3);
+    expected = List.of(List.of(2, 1), List.of(1, 1, 1));
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.combinationSum(new int[]{2, 1, 4}, 7);
+    expected = List.of(List.of(2, 2, 2, 1), List.of(2, 2, 1, 1, 1), List.of(2, 1, 1, 1, 1, 1), List.of(2, 1, 4), List.of(1, 1, 1, 1, 1, 1, 1), List.of(1, 1, 1, 4));
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.combinationSum(new int[]{9, 3, 7, 2}, 14);
+    expected = List.of(List.of(9, 3, 2), List.of(3, 3, 3, 3, 2), List.of(3, 3, 2, 2, 2, 2), List.of(3, 7, 2, 2), List.of(7, 7), List.of(2, 2, 2, 2, 2, 2, 2));
+    Assert.assertEquals(expected, actual);
 
   }
 }
