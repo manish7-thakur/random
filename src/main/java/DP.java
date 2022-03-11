@@ -100,4 +100,11 @@ public class DP {
     }
     return res;
   }
+  static public int rob(int[] nums) {
+    return robRec(nums, nums.length - 1);
+  }
+  static int robRec(int[] nums, int i) {
+    if(i < 0) return 0;
+    else return Math.max(nums[i] + robRec(nums, i - 2), robRec(nums, i - 1));
+  }
 }

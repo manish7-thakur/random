@@ -152,6 +152,28 @@ public class DPTest {
 
     actual = DP.combinationSum(new int[]{9, 3, 7, 14, 2, 5, 13, 8, 17}, 129);
     Assert.assertEquals(312298, actual.size());
+  }
 
+  @Test
+  public void houseRobberStealingAlternateHouses() {
+    int actual = DP.rob(new int[]{1});
+    int expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.rob(new int[]{1, 2});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.rob(new int[]{1, 1, 1});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.rob(new int[]{1, 2, 3, 1});
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.rob(new int[]{2, 7, 9, 3, 1});
+    expected = 12;
+    Assert.assertEquals(expected, actual);
   }
 }
