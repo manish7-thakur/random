@@ -101,10 +101,14 @@ public class DP {
     return res;
   }
   static public int rob(int[] nums) {
-    return robRec(nums, nums.length - 1);
+    int[] mem = new int[nums.length];
+    Arrays.fill(mem, -1);
+    return robRec(nums, nums.length - 1, mem);
   }
-  static int robRec(int[] nums, int i) {
+  static int robRec(int[] nums, int i, int[] mem) {
     if(i < 0) return 0;
-    else return Math.max(nums[i] + robRec(nums, i - 2), robRec(nums, i - 1));
+    if(mem[i] != -1) return mem[i];
+    mem[i] = Math.max(nums[i] + robRec(nums, i - 2, mem), robRec(nums, i - 1, mem));
+    return mem[i];
   }
 }

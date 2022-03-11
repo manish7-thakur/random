@@ -150,8 +150,8 @@ public class DPTest {
     expected = List.of(List.of(2, 3, 9), List.of(2, 3, 3, 3, 3), List.of(2, 2, 2, 2, 3, 3), List.of(2, 2, 7, 3), List.of(7, 7), List.of(2, 2, 2, 2, 2, 2, 2));
     Assert.assertEquals(expected, actual);
 
-    actual = DP.combinationSum(new int[]{9, 3, 7, 14, 2, 5, 13, 8, 17}, 129);
-    Assert.assertEquals(312298, actual.size());
+    actual = DP.combinationSum(new int[]{9, 3, 7, 14, 2, 5, 13, 8, 17}, 23);
+    Assert.assertEquals(63, actual.size());
   }
 
   @Test
@@ -174,6 +174,14 @@ public class DPTest {
 
     actual = DP.rob(new int[]{2, 7, 9, 3, 1});
     expected = 12;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.rob(new int[]{2, 7, 9, 3, 1, 5, 6, 3, 2, 3, 3, 2, 6, 7, 2, 1, 67, 8, 2, 2, 2, 3, 5, 3, 4, 3, 5, 3, 2, 4, 4, 6, 3, 6, 6, 89, 4, 3, 5, 78, 4, 32, 3, 55, 54});
+    expected = 389;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.rob(new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+    expected = 0;
     Assert.assertEquals(expected, actual);
   }
 }
