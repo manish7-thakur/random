@@ -123,8 +123,7 @@ public class DP {
   static int robCRec(int[] nums, int i, int end, int[] mem) {
     if(i < end) return 0;
     if(mem[i] != -1) return mem[i];
-    int max = Math.max(nums[i] + robCRec(nums, i - 2, end, mem), robCRec(nums, i - 1, end, mem));
-    mem[i] = max;
-    return max;
+    mem[i] = Math.max(nums[i] + robCRec(nums, i - 2, end, mem), robCRec(nums, i - 1, end, mem));
+    return mem[i];
   }
 }
