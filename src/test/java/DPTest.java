@@ -172,6 +172,10 @@ public class DPTest {
     expected = 4;
     Assert.assertEquals(expected, actual);
 
+    actual = DP.rob(new int[]{4, 0, 2, 3, 0});
+    expected = 7;
+    Assert.assertEquals(expected, actual);
+
     actual = DP.rob(new int[]{2, 7, 9, 3, 1});
     expected = 12;
     Assert.assertEquals(expected, actual);
@@ -182,6 +186,52 @@ public class DPTest {
 
     actual = DP.rob(new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
     expected = 0;
+    Assert.assertEquals(expected, actual);
+  }
+  @Test
+  public void houseRobberStealingAleternateHousesCircular() {
+    int actual = DP.robC(new int[]{1});
+    int expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.robC(new int[]{1, 2});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.robC(new int[]{1, 0});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.robC(new int[]{0, 1});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.robC(new int[]{1, 2, 3});
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.robC(new int[]{3, 2, 1, 3});
+    expected = 5;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.robC(new int[]{3, 2, 1, 1, 2});
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.robC(new int[]{4, 0, 2, 3, 0});
+    expected = 7;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.robC(new int[]{0, 1, 2, 2, 1});
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.robC(new int[]{0, 1, 2, 0, 1});
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.robC(new int[]{2, 7, 9, 0, 1, 5, 6, 0, 2, 3, 3, 2, 6, 7, 2, 1, 0, 8, 2, 2, 2, 3, 5, 3, 4, 3, 5, 3, 2, 4, 0, 6, 3, 6, 6, 0, 4, 3, 5, 78, 4, 32, 3, 0, 54});
+    expected = 237;
     Assert.assertEquals(expected, actual);
   }
 }

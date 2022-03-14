@@ -111,4 +111,20 @@ public class DP {
     mem[i] = Math.max(nums[i] + robRec(nums, i - 2, mem), robRec(nums, i - 1, mem));
     return mem[i];
   }
+  static public int robC(int[] nums) {
+    int lastIndex = nums.length - 1;
+    int[] mem = new int[nums.length];
+    Arrays.fill(mem, -1);
+    int lastIncluded = nums[lastIndex] + robCRec(nums, lastIndex - 2, 1, mem);
+    Arrays.fill(mem, -1);
+    int firstIncluded = robCRec(nums, lastIndex - 1, 0, mem);
+    return Math.max(firstIncluded, lastIncluded);
+  }
+  static int robCRec(int[] nums, int i, int end, int[] mem) {
+    if(i < end) return 0;
+    if(mem[i] != -1) return mem[i];
+    int max = Math.max(nums[i] + robCRec(nums, i - 2, end, mem), robCRec(nums, i - 1, end, mem));
+    mem[i] = max;
+    return max;
+  }
 }
