@@ -132,7 +132,7 @@ public class DP {
     return res;
   }
   static int numDecodingsRec(String s, int i, int[] mem) {
-    if(i == s.length()) return 1; // For this type of question when we get to the end of the string it means we had successfull decoding and that represent 1 single way.
+    if(i == s.length()) return 1; // For this type of question when we get to the end of the string it means we had successful decoding and that represent 1 single way.
     if(mem[i] != 0) return mem[i];
     int res = 0;
     if(s.charAt(i) != '0') res += numDecodingsRec(s, i + 1, mem);
