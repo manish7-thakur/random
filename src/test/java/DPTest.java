@@ -263,5 +263,9 @@ public class DPTest {
     actual = DP.numDecodings("192");
     expected = 2;
     Assert.assertEquals(expected, actual);
+
+    actual = DP.numDecodings("1226");
+    expected = 4;
+    Assert.assertEquals(expected, actual);
   }
 }
