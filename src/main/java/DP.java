@@ -140,4 +140,17 @@ public class DP {
     mem[i] = res;
     return res;
   }
+  static public int uniquePaths(int m, int n) {
+    int[][] mem = new int[m + 1][n + 1];
+    return uniquePathsRec(m, n, mem);
+  }
+  static int uniquePathsRec(int m, int n, int[][] mem) {
+    if(m == 1 && n == 1) return 1;
+    if(mem[m][n] != 0) return mem[m][n];
+    int res = 0;
+    if(m > 1) res += uniquePathsRec(m - 1, n, mem);
+    if(n > 1) res += uniquePathsRec(m, n - 1, mem);
+    mem[m][n] = res;
+    return res;
+  }
 }

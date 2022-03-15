@@ -288,4 +288,46 @@ public class DPTest {
     expected = 8847360;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void uniquePathsMatrix() {
+    int actual = DP.uniquePaths(1, 1);
+    int expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.uniquePaths(1, 2);
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.uniquePaths(2, 1);
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.uniquePaths(2, 2);
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.uniquePaths(2, 2);
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.uniquePaths(3, 2);
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.uniquePaths(2, 3);
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.uniquePaths(3, 3);
+    expected = 6;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.uniquePaths(3, 7);
+    expected = 28;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.uniquePaths(15, 20);
+    expected = 818809200;
+    Assert.assertEquals(expected, actual);
+  }
 }
