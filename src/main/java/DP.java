@@ -127,18 +127,21 @@ public class DP {
     return mem[i];
   }
   static public int numDecodings(String s) {
-    int res = numDecodingsRec(s, s.length() - 1);
+    int[] mem = new int[s.length()];
+    int res = numDecodingsRec(s, s.length() - 1, mem);
     return res;
   }
-  static int numDecodingsRec(String s, int i) {
+  static int numDecodingsRec(String s, int i, int[] mem) {
     if(i == 0) {
       if(s.charAt(i) != '0') return 1;
       return 0;
     }
     if(i < 0) return 1;
+    if(mem[i] != 0) return mem[i];
     int res = 0;
-    if(s.charAt(i) != '0') res += numDecodingsRec(s, i - 1);
-    if(i > 0 && s.charAt(i - 1) != '0' && Integer.parseInt(s.substring(i - 1, i + 1)) <= 26) res += numDecodingsRec(s, i - 2);
+    if(s.charAt(i) != '0') res += numDecodingsRec(s, i - 1, mem);
+    if(i > 0 && s.charAt(i - 1) != '0' && Integer.parseInt(s.substring(i - 1, i + 1)) <= 26) res += numDecodingsRec(s, i - 2, mem);
+    mem[i] = res;
     return res;
   }
 }

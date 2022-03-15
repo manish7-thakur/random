@@ -256,6 +256,22 @@ public class DPTest {
     expected = 2;
     Assert.assertEquals(expected, actual);
 
+    actual = DP.numDecodings("101");
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.numDecodings("011");
+    expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.numDecodings("111");
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.numDecodings("0110");
+    expected = 0;
+    Assert.assertEquals(expected, actual);
+
     actual = DP.numDecodings("28");
     expected = 1;
     Assert.assertEquals(expected, actual);
@@ -265,7 +281,11 @@ public class DPTest {
     Assert.assertEquals(expected, actual);
 
     actual = DP.numDecodings("1226");
-    expected = 4;
+    expected = 5;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.numDecodings("1283520461914729346294183812638116264859374525274354242281273353614122326487254624261736272629463226");
+    expected = 8847360;
     Assert.assertEquals(expected, actual);
   }
 }
