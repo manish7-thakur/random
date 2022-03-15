@@ -234,4 +234,34 @@ public class DPTest {
     expected = 237;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void decodeWaysForDigitStringToChars() {
+    int actual = DP.numDecodings("0");
+    int expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.numDecodings("1");
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.numDecodings("01");
+    expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.numDecodings("10");
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.numDecodings("11");
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.numDecodings("28");
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.numDecodings("192");
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+  }
 }

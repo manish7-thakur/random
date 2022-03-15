@@ -126,4 +126,19 @@ public class DP {
     mem[i] = Math.max(nums[i] + robCRec(nums, i - 2, end, mem), robCRec(nums, i - 1, end, mem));
     return mem[i];
   }
+  static public int numDecodings(String s) {
+    int res = numDecodingsRec(s, s.length() - 1);
+    return res;
+  }
+  static int numDecodingsRec(String s, int i) {
+    if(i == 0) {
+      if(s.charAt(i) != '0') return 1;
+      return 0;
+    }
+    if(i < 0) return 1;
+    int res = 0;
+    if(s.charAt(i) != '0') res += numDecodingsRec(s, i - 1);
+    if(i > 0 && s.charAt(i - 1) != '0' && Integer.parseInt(s.substring(i - 1, i + 1)) <= 26) res += numDecodingsRec(s, i - 2);
+    return res;
+  }
 }
