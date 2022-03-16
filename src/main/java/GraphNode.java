@@ -2,17 +2,17 @@ import java.util.*;
 
 public class GraphNode {
   public int val;
-  public List<GraphNode> neighbours;
-  public GraphNode() {
-    val = 0;
-    neighbours = new ArrayList<>();
+  public List<GraphNode> neighbors;
+  public Node() {
+      val = 0;
+      neighbors = new ArrayList<GraphNode>();
   }
-  public GraphNode(int val) {
-    this.val = val;
-    neighbours = new ArrayList<>();
+  public Node(int _val) {
+      val = _val;
+      neighbors = new ArrayList<GraphNode>();
   }
-  public GraphNode(int val, List<GraphNode> neighbours) {
-    this.val = val;
-    this.neighbours = neighbours;
+  public Node(int _val, ArrayList<GraphNode> _neighbors) {
+      val = _val;
+      neighbors = _neighbors;
   }
 }

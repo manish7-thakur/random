@@ -7,10 +7,10 @@ public class Graphs {
   }
   static GraphNode cloneGraphRec(GraphNode node, Map<GraphNode, GraphNode> map) {
     if(map.containsKey(node)) return map.get(node);
-    GraphNode clone = new GraphNode(node.val);
+    GraphNode clone = new GraphNode(node._val);
     map.put(node, clone);
-    List<GraphNode> clonedNeighbours = node.neighbours.stream().map(n -> cloneGraphRec(n , map)).collect(toList());
-    clone.neighbours.addAll(clonedNeighbours);
+    List<GraphNode> cloned_neighbours = node._neighbours.stream().map(n -> cloneGraphRec(n , map)).collect(toList());
+    clone._neighbours.addAll(cloned_neighbours);
     return clone;
   }
 }
