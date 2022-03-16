@@ -355,5 +355,8 @@ public class DPTest {
 
     actual = DP.canJump(new int[]{3, 2, 1, 0, 4});
     Assert.assertFalse(actual);
+
+    actual = DP.canJump(new int[]{3, 2, 1, 0, 4, 2, 5, 7, 3, 2, 5, 2, 4, 2, 3, 4, 3, 0, 5, 3, 0, 3, 3, 0, 3, 6, 3, 0, 3, 5, 0});
+    Assert.assertFalse(actual);
   }
 }
