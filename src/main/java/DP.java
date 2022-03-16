@@ -155,13 +155,20 @@ public class DP {
     return res;
   }
   static public boolean canJump(int[] nums) {
-    return canJumpRec(nums, 0);
+    Boolean[] mem = new Boolean[nums.length];
+    boolean b = canJumpRec(nums, 0, mem);
+    return b;
   }
-  static boolean canJumpRec(int[] nums, int i) {
+  static boolean canJumpRec(int[] nums, int i, Boolean[] mem) {
     if(i >= nums.length - 1) return true;
+    if(mem[i] != null) return mem[i];
     for(int j = 1; j <= nums[i]; j++) {
-      if(canJumpRec(nums,  j + i)) return true;
+      if(canJumpRec(nums,  j + i, mem)) {
+        mem[i] = true;
+        return true;
+      }
     }
+    mem[i] = false;
     return false;
   }
 }
