@@ -154,4 +154,14 @@ public class DP {
     mem[m][n] = res;
     return res;
   }
+  static public boolean canJump(int[] nums) {
+    return canJumpRec(nums, 0);
+  }
+  static boolean canJumpRec(int[] nums, int i) {
+    if(i >= nums.length - 1) return true;
+    for(int j = 1; j <= nums[i]; j++) {
+      if(canJumpRec(nums,  j + i)) return true;
+    }
+    return false;
+  }
 }

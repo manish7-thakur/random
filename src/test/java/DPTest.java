@@ -330,4 +330,30 @@ public class DPTest {
     expected = 818809200;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void jumpUsingNums() {
+    boolean actual = DP.canJump(new int[]{0});
+    Assert.assertTrue(actual);
+
+    actual = DP.canJump(new int[]{0, 1});
+    Assert.assertFalse(actual);
+
+    actual = DP.canJump(new int[]{1, 1});
+    Assert.assertTrue(actual);
+
+    actual = DP.canJump(new int[]{1, 0, 1});
+    Assert.assertFalse(actual);
+
+    actual = DP.canJump(new int[]{1, 2, 1});
+    Assert.assertTrue(actual);
+
+    actual = DP.canJump(new int[]{1, 2, 0, 1});
+    Assert.assertTrue(actual);
+
+    actual = DP.canJump(new int[]{2, 2, 0, 1});
+    Assert.assertTrue(actual);
+
+    actual = DP.canJump(new int[]{3, 2, 1, 0, 4});
+    Assert.assertFalse(actual);
+  }
 }
