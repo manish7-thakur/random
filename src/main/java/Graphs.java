@@ -22,12 +22,13 @@ public class Graphs {
     return true;
   }
   static boolean canFinishRec(int course, Map<Integer, Set<Integer>> map, Set<Integer> visited) {
-    if(visited.contains(course)) return false;
     if(map.get(course) == null) return true;
+    if(visited.contains(course)) return false;
+    visited.add(course);
     for(int c : map.get(course)) {
-      visited.add(course);
       if(!canFinishRec(c, map, visited)) return false;
     }
+    visited.remove(course);
     return true;
   }
 }
