@@ -16,8 +16,9 @@ public class Graphs {
   }
   static public boolean canFinish(int numCourses, int[][] prerequisites) {
     Map<Integer, Set<Integer>> map = Arrays.stream(prerequisites).collect(groupingBy(arr -> arr[0], mapping(arr -> arr[1], toSet())));
+    boolean[] visited = new boolean[numCourses];
     for(int[] p : prerequisites) {
-      if(!canFinishRec(p[0], map, new boolean[numCourses])) return false;
+      if(!canFinishRec(p[0], map, visited)) return false;
     }
     return true;
   }
