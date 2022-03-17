@@ -17,18 +17,18 @@ public class Graphs {
   static public boolean canFinish(int numCourses, int[][] prerequisites) {
     Map<Integer, Set<Integer>> map = Arrays.stream(prerequisites).collect(groupingBy(arr -> arr[0], mapping(arr -> arr[1], toSet())));
     for(int[] p : prerequisites) {
-      if(!canFinishRec(p[0], map, new HashSet<>())) return false;
+      if(!canFinishRec(p[0], map, new boolean[numCourses])) return false;
     }
     return true;
   }
-  static boolean canFinishRec(int course, Map<Integer, Set<Integer>> map, Set<Integer> visited) {
+  static boolean canFinishRec(int course, Map<Integer, Set<Integer>> map, boolean[] visited) {
     if(map.get(course) == null) return true;
-    if(visited.contains(course)) return false;
-    visited.add(course);
+    if(visited[course]) return false;
+    visited[course] = true;
     for(int c : map.get(course)) {
       if(!canFinishRec(c, map, visited)) return false;
     }
-    visited.remove(course);
+    visited[course] = false;
     return true;
   }
 }
