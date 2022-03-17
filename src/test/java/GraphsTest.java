@@ -42,4 +42,18 @@ public class GraphsTest {
     Assert.assertEquals(List.of(1, 3), actual.neighbors.get(0).neighbors.stream().map(n -> n.val).collect(toList()));
     Assert.assertEquals(List.of(1, 2), actual.neighbors.get(1).neighbors.stream().map(n -> n.val).collect(toList()));
   }
+  @Test
+  public void finishCoursesWithGivenPrerequisites() {
+    boolean actual = Graphs.canFinish(2, new int[][]{{1, 0}});
+    Assert.assertTrue(actual);
+
+    actual = Graphs.canFinish(2, new int[][]{{1, 0}, {0, 1}});
+    Assert.assertFalse(actual);
+
+    actual = Graphs.canFinish(3, new int[][]{{1, 0}, {1, 2}, {2, 1}});
+    Assert.assertFalse(actual);
+
+    actual = Graphs.canFinish(3, new int[][]{{1, 0}, {2, 1}, {2, 0}});
+    Assert.assertTrue(actual);
+  }
 }

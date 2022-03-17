@@ -14,4 +14,20 @@ public class Graphs {
     clone.neighbors.addAll(clonedneighbors);
     return clone;
   }
+  static public boolean canFinish(int numCourses, int[][] prerequisites) {
+    Map<Integer, Set<Integer>> map = Arrays.stream(prerequisites).collect(groupingBy(arr -> arr[0], mapping(arr -> arr[1], toSet())));
+    for(int[] p : prerequisites) {
+      if(!canFinishRec(p[0], map, new HashSet<>())) return false;
+    }
+    return true;
+  }
+  static boolean canFinishRec(int course, Map<Integer, Set<Integer>> map, Set<Integer> visited) {
+    if(visited.contains(course)) return false;
+    if(map.get(course) == null) return true;
+    for(int c : map.get(course)) {
+      visited.add(course);
+      if(!canFinishRec(c, map, visited)) return false;
+    }
+    return true;
+  }
 }
