@@ -64,5 +64,8 @@ public class GraphsTest {
 
     actual = Graphs.canFinish(4, new int[][]{{1, 2}, {2, 0}, {3, 2}, {1, 3}, {3, 0}});
     Assert.assertTrue(actual);
+
+    actual = Graphs.canFinish(4, new int[][]{{0, 1}, {2, 1}, {0, 2}, {0, 3}, {3, 1}, {3, 2}});
+    Assert.assertTrue(actual);
   }
 }
