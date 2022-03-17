@@ -55,5 +55,8 @@ public class GraphsTest {
 
     actual = Graphs.canFinish(3, new int[][]{{1, 0}, {2, 1}, {2, 0}});
     Assert.assertTrue(actual);
+
+    actual = Graphs.canFinish(3, new int[][]{{1, 0}, {2, 1}, {2, 0}, {2, 1}});
+    Assert.assertFalse(actual);
   }
 }
