@@ -67,4 +67,29 @@ public class ArrayMania {
   static boolean safe(int[][] heights, int i, int j, int currHeight, boolean[][] visited) {
     return i >= 0 && j >= 0 && i < heights.length && j < heights[0].length && heights[i][j] >= currHeight && !visited[i][j]; //since we are moving from oceans to cells, inverted condition
   }
+
+  static public int numIslands(char[][] grid) {
+    int count = 0;
+    var visited = new boolean[grid.length][grid[0].length];
+    for(int i = 0; i < grid.length; i++) {
+      for(int j = 0; j < grid[0].length; j++) {
+        if(grid[i][j] == '1' && !visited[i][j]) {
+          numIslandsRec(grid, i, j, visited);
+          count++;
+        }
+      }
+    }
+    return count;
+  }
+  static void numIslandsRec(char[][] grid, int i, int j, boolean[][] visited) {
+    if(!safe(grid, i, j, visited)) return;
+    visited[i][j] = true;
+    numIslandsRec(grid, i - 1, j, visited);
+    numIslandsRec(grid, i, j - 1, visited);
+    numIslandsRec(grid, i + 1, j, visited);
+    numIslandsRec(grid, i, j + 1, visited);
+  }
+  static boolean safe(char[][] grid, int i, int j, boolean[][] visited) {
+    return i >= 0 && j >= 0 && i < grid.length && j < grid[0].length && grid[i][j] == '1' && !visited[i][j];
+  }
 }

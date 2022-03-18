@@ -117,4 +117,34 @@ public class ArrayManiaTest {
     expected = List.of(List.of(0, 3), List.of(1, 3), List.of(2, 0), List.of(2, 2), List.of(2, 3), List.of(3, 0), List.of(3, 1));
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void countNumberOfIslands() {
+    var actual = ArrayMania.numIslands(new char[][]{{'0'}});
+    var expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.numIslands(new char[][]{{'1'}});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.numIslands(new char[][]{{'1', '1'}});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.numIslands(new char[][]{{'1', '1', '0', '1'}});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.numIslands(new char[][]{
+      {'1', '0', '0', '1'},
+      {'1', '1', '0', '1'}});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+    actual = ArrayMania.numIslands(new char[][]{
+      {'1', '0', '0', '1'},
+      {'1', '0', '0', '0'},
+      {'1', '1', '0', '1'}});
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+  }
 }
