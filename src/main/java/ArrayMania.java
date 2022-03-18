@@ -65,6 +65,6 @@ public class ArrayMania {
     pacificAtlanticRec(heights, i, j + 1, heights[i][j], visited);
   }
   static boolean safe(int[][] heights, int i, int j, int currHeight, boolean[][] visited) {
-    return i >= 0 && j >= 0 && i < heights.length && j < heights[0].length && heights[i][j] >= currHeight && !visited[i][j];
+    return i >= 0 && j >= 0 && i < heights.length && j < heights[0].length && heights[i][j] >= currHeight && !visited[i][j]; //since we are moving from oceans to cells, inverted condition
   }
 }
