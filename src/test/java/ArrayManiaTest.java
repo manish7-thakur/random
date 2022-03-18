@@ -110,7 +110,11 @@ public class ArrayManiaTest {
     Assert.assertEquals(expected, actual);
 
     actual = ArrayMania.pacificAtlantic(new int[][]{{3, 1, 2}, {3, 2, 2}});
-    expected = List.of(List.of(0, 0), List.of(0, 2), List.of(1, 0), List.of(1, 2));
+    expected = List.of(List.of(0, 0), List.of(0, 2), List.of(1, 0), List.of(1, 1), List.of(1, 2));
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.pacificAtlantic(new int[][]{{3, 4, 1, 2}, {4, 3, 1, 2}, {8, 1, 6, 4}, {7, 9, 4, 3}});
+    expected = List.of(List.of(0, 3), List.of(1, 3), List.of(2, 0), List.of(2, 2), List.of(2, 3), List.of(3, 0), List.of(3, 1));
     Assert.assertEquals(expected, actual);
   }
 }

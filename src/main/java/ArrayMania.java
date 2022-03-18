@@ -37,24 +37,34 @@ public class ArrayMania {
   }
   static public List<List<Integer>> pacificAtlantic(int[][] heights) {
     List<List<Integer>> res = new ArrayList<>();
-    var visited = new boolean[heights.length][heights[0].length];
-    for(int i = 0; i < heights.length; i++) {
-      for (int j = 0; j < heights[0].length; j++) {
-        if(pacificAtlanticRec(heights, i, j, heights[i][j], visited)) res.add(List.of(i, j));
+    int rows = heights.length;
+    int columns = heights[0].length;
+    var pacific = new boolean[rows][columns];
+    var atlantic = new boolean[rows][columns];
+    for(int r = 0; r < rows; r++) {
+        pacificAtlanticRec(heights, r, 0, heights[r][0], pacific);
+        pacificAtlanticRec(heights, r, columns - 1, heights[r][columns - 1], atlantic);
+    }
+    for(int c = 0; c < columns; c++) {
+        pacificAtlanticRec(heights, 0, c, heights[0][c], pacific);
+        pacificAtlanticRec(heights, rows - 1, c, heights[rows - 1][c], atlantic);
+    }
+    for(int r = 0; r < rows; r++) {
+      for(int c = 0; c < columns; c++) {
+        if(pacific[r][c] && atlantic[r][c]) res.add(List.of(r, c));
       }
     }
     return res;
   }
-  static boolean pacificAtlanticRec(int[][] heights, int i, int j, int currHeight, boolean[][] visited) {
-    if(end(heights, i, j)) return true;
-    if(heights[i][j] > currHeight || visited[i][j]) return false;
+  static void pacificAtlanticRec(int[][] heights, int i, int j, int currHeight, boolean[][] visited) {
+    if(!safe(heights, i, j, currHeight, visited)) return;
     visited[i][j] = true;
-    boolean pacific = pacificAtlanticRec(heights, i - 1, j, heights[i][j], visited) || pacificAtlanticRec(heights, i, j - 1, heights[i][j], visited);
-    boolean atlantic = pacificAtlanticRec(heights, i + 1, j, heights[i][j], visited) || pacificAtlanticRec(heights, i, j + 1, heights[i][j], visited);
-    visited[i][j] = false;
-    return pacific && atlantic;
+    pacificAtlanticRec(heights, i - 1, j, heights[i][j], visited);
+    pacificAtlanticRec(heights, i, j - 1, heights[i][j], visited);
+    pacificAtlanticRec(heights, i + 1, j, heights[i][j], visited);
+    pacificAtlanticRec(heights, i, j + 1, heights[i][j], visited);
   }
-  static boolean end(int[][] heights, int i, int j) {
-    return i < 0 || j < 0 || i >= heights.length || j >= heights[0].length;
+  static boolean safe(int[][] heights, int i, int j, int currHeight, boolean[][] visited) {
+    return i >= 0 && j >= 0 && i < heights.length && j < heights[0].length && heights[i][j] >= currHeight && !visited[i][j];
   }
 }
