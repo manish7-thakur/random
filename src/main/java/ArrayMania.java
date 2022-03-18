@@ -35,4 +35,26 @@ public class ArrayMania {
     int sum = Arrays.stream(nums).reduce(0, Integer::sum);
     return total - sum;
   }
+  static public List<List<Integer>> pacificAtlantic(int[][] heights) {
+    List<List<Integer>> res = new ArrayList<>();
+    var visited = new boolean[heights.length][heights[0].length];
+    for(int i = 0; i < heights.length; i++) {
+      for (int j = 0; j < heights[0].length; j++) {
+        if(pacificAtlanticRec(heights, i, j, heights[i][j], visited)) res.add(List.of(i, j));
+      }
+    }
+    return res;
+  }
+  static boolean pacificAtlanticRec(int[][] heights, int i, int j, int currHeight, boolean[][] visited) {
+    if(end(heights, i, j)) return true;
+    if(heights[i][j] > currHeight || visited[i][j]) return false;
+    visited[i][j] = true;
+    boolean pacific = pacificAtlanticRec(heights, i - 1, j, heights[i][j], visited) || pacificAtlanticRec(heights, i, j - 1, heights[i][j], visited);
+    boolean atlantic = pacificAtlanticRec(heights, i + 1, j, heights[i][j], visited) || pacificAtlanticRec(heights, i, j + 1, heights[i][j], visited);
+    visited[i][j] = false;
+    return pacific && atlantic;
+  }
+  static boolean end(int[][] heights, int i, int j) {
+    return i < 0 || j < 0 || i >= heights.length || j >= heights[0].length;
+  }
 }

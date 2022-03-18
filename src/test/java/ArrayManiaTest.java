@@ -95,4 +95,22 @@ public class ArrayManiaTest {
     expected = 8;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void waterFlowToAtlanticAndPacific() {
+    var actual = ArrayMania.pacificAtlantic(new int[][]{{1}});
+    var expected = List.of(List.of(0, 0));
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.pacificAtlantic(new int[][]{{2, 1}, {1, 2}});
+    expected = List.of(List.of(0, 0), List.of(0, 1), List.of(1, 0), List.of(1, 1));
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.pacificAtlantic(new int[][]{{1, 3}, {3, 2}});
+    expected = List.of(List.of(0, 1), List.of(1, 0));
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.pacificAtlantic(new int[][]{{3, 1, 2}, {3, 2, 2}});
+    expected = List.of(List.of(0, 0), List.of(0, 2), List.of(1, 0), List.of(1, 2));
+    Assert.assertEquals(expected, actual);
+  }
 }
