@@ -140,11 +140,20 @@ public class ArrayManiaTest {
       {'1', '1', '0', '1'}});
     expected = 2;
     Assert.assertEquals(expected, actual);
+
     actual = ArrayMania.numIslands(new char[][]{
       {'1', '0', '0', '1'},
       {'1', '0', '0', '0'},
       {'1', '1', '0', '1'}});
     expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.numIslands(new char[][]{
+      {"1","1","1","1","0"},
+      {"1","1","0","1","0"},
+      {"1","1","0","0","0"},
+      {"0","0","0","0","0"}});
+    expected = 1;
     Assert.assertEquals(expected, actual);
   }
 }
