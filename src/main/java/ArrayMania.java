@@ -41,6 +41,7 @@ public class ArrayMania {
     int columns = heights[0].length;
     var pacific = new boolean[rows][columns];
     var atlantic = new boolean[rows][columns];
+    //going from oceans to cells, like flood problem
     for(int r = 0; r < rows; r++) {
         pacificAtlanticRec(heights, r, 0, heights[r][0], pacific);
         pacificAtlanticRec(heights, r, columns - 1, heights[r][columns - 1], atlantic);
