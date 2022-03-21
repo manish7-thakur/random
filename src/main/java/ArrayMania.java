@@ -1,4 +1,5 @@
 import java.util.*;
+import static java.util.stream.Collectors.*;
 
 public class ArrayMania {
   static public List<List<Integer>> threeSum(int[] nums) {
@@ -92,5 +93,21 @@ public class ArrayMania {
   }
   static boolean safe(char[][] grid, int i, int j, boolean[][] visited) {
     return i >= 0 && j >= 0 && i < grid.length && j < grid[0].length && grid[i][j] == '1' && !visited[i][j];
+  }
+  static public int longestConsecutive(int[] nums) {
+    Map<Integer, Integer> mem = new HashMap<>();
+    for(int n : nums) mem.put(n, 0);
+    int res = 0;
+    for(int n: nums) {
+      int curr = longestConsecutiveRec(n, mem);
+      if(curr > res) res = curr;
+    }
+    return res;
+  }
+  static int longestConsecutiveRec(int n, Map<Integer, Integer> mem) {
+    if(!mem.containsKey(n)) return 0;
+    int res = 1 + longestConsecutiveRec(n + 1, mem);
+    mem.put(n, res);
+    return res;
   }
 }

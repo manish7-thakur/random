@@ -151,4 +151,30 @@ public class ArrayManiaTest {
     expected = 3;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void lengthOfLongestConsecutiveSequence() {
+    int actual = ArrayMania.longestConsecutive(new int[] {1});
+    int expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.longestConsecutive(new int[] {1, 5});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.longestConsecutive(new int[] {1, 5, 2});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.longestConsecutive(new int[] {1, 2, 4, 3});
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.longestConsecutive(new int[] {100, 2, 400, 3});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.longestConsecutive(new int[] {100, 2, 400, 3, 402, 401});
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+  }
 }
