@@ -184,5 +184,9 @@ public class ArrayManiaTest {
     actual = ArrayMania.longestConsecutive(new int[] {0, 3, 7, 2, 5, 8, 4, 6, 0, 1, 10, 26, 19, 20, 34, 18, 23, 12, 15, 9, 15, 15, 24, 14, 13, 14, 16, 17, 11, 17, 17});
     expected = 21;
     Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.longestConsecutive(new int[] {0, -3, 7, -2, 5, -8, -4, 6, 0, -1, 10, -7, 19, 20, 34, 18, -6, 12, -15, 9, -15, 15, 24, 14, -13, -14, -16, -17, 11, 17, 17});
+    expected = 5;
+    Assert.assertEquals(expected, actual);
   }
 }
