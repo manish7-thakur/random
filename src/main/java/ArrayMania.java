@@ -102,4 +102,23 @@ public class ArrayMania {
     if(!mem.containsKey(n)) return 0;
     return mem.computeIfAbsent(n, k -> 1 + longestConsecutiveRec(n + 1, mem));
   }
+  static List<List<Integer>> insertInterval(int[][] intervals, int[] newInterval) {
+    List<List<Integer>> res = new ArrayList<>();
+    int i = 0;
+    while(i < intervals.length && newInterval[0] > intervals[i][1]) {
+      res.add(List.of(intervals[i][0], intervals[i][1]));
+      i++;
+    }
+    while(i < intervals.length && newInterval[1] >= intervals[i][1]) {
+      newInterval[0] = Math.min(newInterval[0], intervals[i][0]);
+      newInterval[1] = Math.max(newInterval[1], intervals[i][1]);
+      i++;
+    }
+    res.add(List.of(newInterval[0], newInterval[1]));
+    while(i < intervals.length) {
+      res.add(List.of(intervals[i][0], intervals[i][1]));
+      i++;
+    }
+    return res;
+  }
 }

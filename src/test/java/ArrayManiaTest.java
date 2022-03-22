@@ -193,4 +193,22 @@ public class ArrayManiaTest {
     expected = 8;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void insertAndMergeIntervals() {
+    List<List<Integer>> actual = ArrayMania.insertInterval(new int[][]{{1, 2}}, new int[]{3, 4});
+    List<List<Integer>> expected = List.of(List.of(1, 2), List.of(3, 4));
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.insertInterval(new int[][]{{1, 3}}, new int[]{2, 5});
+    expected = List.of(List.of(1, 5));
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.insertInterval(new int[][]{{1, 3}, {6, 9}}, new int[]{2, 5});
+    expected = List.of(List.of(1, 5), List.of(6, 9));
+    Assert.assertEquals(expected, actual);
+
+    // actual = ArrayMania.insertInterval(new int[][]{{1, 3}, {4, 5}}, new int[]{2, 5});
+    // expected = new int[][]{{1, 5}, {0, 0}, {0, 0}};
+    // Assert.assertEquals(expected, actual);
+  }
 }
