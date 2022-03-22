@@ -100,7 +100,6 @@ public class ArrayMania {
   }
   static int longestConsecutiveRec(int n, Map<Integer, Integer> mem) {
     if(!mem.containsKey(n)) return 0;
-    mem.computeIfAbsent(n, k -> 1 + longestConsecutiveRec(n + 1, mem));
-    return mem.get(n);
+    return mem.computeIfAbsent(n, k -> 1 + longestConsecutiveRec(n + 1, mem));
   }
 }
