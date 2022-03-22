@@ -219,4 +219,46 @@ public class ArrayManiaTest {
     expected = new int[][]{{1, 2}, {3, 10}, {12, 16}};
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void mergeIntervalsWithSorting() {
+    int[][] actual = ArrayMania.merge(new int[][]{{1, 2}, {3, 4}});
+    int[][] expected = new int[][]{{1, 2}, {3, 4}};
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.merge(new int[][]{{1, 3}, {2, 4}});
+    expected = new int[][]{{1, 4}};
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.merge(new int[][]{{1, 2}, {2, 4}});
+    expected = new int[][]{{1, 4}};
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.merge(new int[][]{{1, 2}, {2, 4}, {5, 6}});
+    expected = new int[][]{{1, 4}, {5, 6}};
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.merge(new int[][]{{1, 2}, {5, 6}, {2, 4}});
+    expected = new int[][]{{1, 4}, {5, 6}};
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.merge(new int[][]{{4, 6}, {1, 2}, {2, 4}});
+    expected = new int[][]{{1, 6}};
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.merge(new int[][]{{6, 8}, {7, 9}, {5, 6}});
+    expected = new int[][]{{5, 9}};
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.merge(new int[][]{{6, 8}, {7, 9}, {5, 6}});
+    expected = new int[][]{{5, 9}};
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.merge(new int[][]{{6, 8}, {1, 2}, {7, 9}, {5, 6}, {3, 4}});
+    expected = new int[][]{{1, 2}, {3, 4}, {5, 9}};
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.merge(new int[][]{{6, 8}, {1, 2}, {7, 9}, {2, 3}, {5, 6}, {3, 4}});
+    expected = new int[][]{{1, 4}, {5, 9}};
+    Assert.assertEquals(expected, actual);
+  }
 }
