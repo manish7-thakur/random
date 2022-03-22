@@ -130,10 +130,10 @@ public class ArrayMania {
     Arrays.sort(intervals, Comparator.comparingInt(arr -> arr[0]));
     list.add(intervals[0]);
     for(int i = 1; i < intervals.length; i++) {
-      int[] curr = list.get(list.size() - 1);
-      if(curr[1] >= intervals[i][0]) {
-        curr[0] = Math.min(curr[0], intervals[i][0]);
-        curr[1] = Math.max(curr[1], intervals[i][1]);
+      int[] top = list.get(list.size() - 1);
+      if(top[1] >= intervals[i][0]) {
+        top[0] = Math.min(top[0], intervals[i][0]);
+        top[1] = Math.max(top[1], intervals[i][1]);
       } else list.add(intervals[i]);
     }
     int[][] res = new int[list.size()][2];
