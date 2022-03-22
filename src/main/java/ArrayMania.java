@@ -96,12 +96,7 @@ public class ArrayMania {
   static public int longestConsecutive(int[] nums) {
     Map<Integer, Integer> mem = new HashMap<>();
     for(int n : nums) mem.put(n, null);
-    int res = 0;
-    for(int n: nums) {
-      int curr = longestConsecutiveRec(n, mem);
-      if(curr > res) res = curr;
-    }
-    return res;
+    return Arrays.stream(nums).reduce(0, (r, v) -> Integer.max(r, longestConsecutiveRec(v, mem)));
   }
   static int longestConsecutiveRec(int n, Map<Integer, Integer> mem) {
     if(!mem.containsKey(n)) return 0;
