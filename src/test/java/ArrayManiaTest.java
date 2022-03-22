@@ -207,8 +207,16 @@ public class ArrayManiaTest {
     expected = List.of(List.of(1, 5), List.of(6, 9));
     Assert.assertEquals(expected, actual);
 
-    // actual = ArrayMania.insertInterval(new int[][]{{1, 3}, {4, 5}}, new int[]{2, 5});
-    // expected = new int[][]{{1, 5}, {0, 0}, {0, 0}};
-    // Assert.assertEquals(expected, actual);
+    actual = ArrayMania.insertInterval(new int[][]{{1, 3}, {4, 5}}, new int[]{2, 5});
+    expected = List.of(List.of(1, 5));
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.insertInterval(new int[][]{{1, 2}, {2, 3}}, new int[]{2, 3});
+    expected = List.of(List.of(1, 3));
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.insertInterval(new int[][]{{1,2},{3,5},{6,7},{8,10},{12,16}}, new int[]{4, 8});
+    expected = List.of(List.of(1, 2), List.of(3, 10), List.of(12, 16));
+    Assert.assertEquals(expected, actual);
   }
 }
