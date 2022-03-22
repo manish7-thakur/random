@@ -1,5 +1,5 @@
 import java.util.*;
-
+import static java.util.stream.Collectors.*;
 public class ArrayMania {
   static public List<List<Integer>> threeSum(int[] nums) {
     List<List<Integer>> res = new ArrayList<>();
@@ -119,6 +119,8 @@ public class ArrayMania {
       res.add(List.of(intervals[i][0], intervals[i][1]));
       i++;
     }
-    return res;
+    return res.stream().map(l -> new int[] {l.get(0), l.get(1)}).collect(toArray());
+    // res.toArray(new List<Integer>[0]);
+    // return res;
   }
 }
