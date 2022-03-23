@@ -267,7 +267,7 @@ public class ArrayManiaTest {
     int expected = 0;
     Assert.assertEquals(expected, actual);
 
-    actual = ArrayMania.eraseOverlapIntervals(new int[][]{{2, 2}, {1, 2}});
+    actual = ArrayMania.eraseOverlapIntervals(new int[][]{{2, 3}, {1, 2}});
     expected = 0;
     Assert.assertEquals(expected, actual);
 
@@ -279,9 +279,20 @@ public class ArrayManiaTest {
     expected = 1;
     Assert.assertEquals(expected, actual);
 
-    actual = ArrayMania.eraseOverlapIntervals(new int[][]{{2, 5}, {3, 3}, {1, 2}});
+    actual = ArrayMania.eraseOverlapIntervals(new int[][]{{2, 5}, {3, 4}, {1, 2}});
     expected = 1;
     Assert.assertEquals(expected, actual);
 
+    actual = ArrayMania.eraseOverlapIntervals(new int[][]{{2, 5}, {1, 2}, {3, 4}, {2, 4}, {2, 3}, {3, 5}});
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.eraseOverlapIntervals(new int[][]{{2, 5}, {3, 4}, {1, 2}, {3, 4}, {2, 4}, {2, 3}, {3, 5}});
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.eraseOverlapIntervals(new int[][]{{2, 5}, {1, 6}, {1, 2}, {3, 4}, {2, 4}, {2, 3}, {3, 5}});
+    expected = 4;
+    Assert.assertEquals(expected, actual);
   }
 }
