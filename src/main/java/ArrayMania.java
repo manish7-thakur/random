@@ -149,6 +149,7 @@ public class ArrayMania {
     int[] previous = intervals[0];
     for(int i = 1; i < intervals.length; i++) {
       if(previous[1] > intervals[i][0]) res++;
+      else previous = intervals[i];
     }
     return res;
   }

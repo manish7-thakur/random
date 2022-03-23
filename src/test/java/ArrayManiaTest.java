@@ -279,5 +279,9 @@ public class ArrayManiaTest {
     expected = 1;
     Assert.assertEquals(expected, actual);
 
+    actual = ArrayMania.eraseOverlapIntervals(new int[][]{{2, 5}, {3, 3}, {1, 2}});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
   }
 }
