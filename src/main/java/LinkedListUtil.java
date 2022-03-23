@@ -1,13 +1,13 @@
 public class LinkedListUtil {
     public static Node reverse(Node head) {
-        Node a = null, b = null, c = head;
-        while (c != null) {
-            a = b;
-            b = c;
-            c = c.next;
-            b.next = a;
-        }
-        return b;
+      Node pre = null, mid = null, tra = head;
+      while(tra != null) {
+        pre = mid;
+        mid = tra;
+        tra = tra.next;
+        mid.next = pre;
+      }
+      return mid;
     }
 
     public static boolean containsCycle(Node head) {
