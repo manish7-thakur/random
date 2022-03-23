@@ -144,7 +144,7 @@ public class ArrayMania {
   }
   static public int eraseOverlapIntervals(int[][] intervals) {
     int res = 0;
-    Arrays.sort(intervals, (arr1, arr2) -> Integer.compare(arr1[1], arr2[1]));
+    Arrays.sort(intervals, Comparator.comparingInt(arr -> arr[1]));
     int[] previous = intervals[0];
     for(int i = 1; i < intervals.length; i++) {
       if(previous[1] > intervals[i][0]) res++;
