@@ -11,21 +11,12 @@ public class LinkedListUtil {
     }
 
     public static boolean containsCycle(Node head) {
-        if (head == null) {
-            return false;
-        }
-        Node first = head;
-        Node second = head.next;
-        while (second != null) {
-            if (first == second) {
-                return true;
-            }
+        if (head == null) return false;
+        Node first = head, second = head.next;
+        while (second != null && second.next != null) {
+            if (first == second) return true;
             first = first.next;
-            if (second.next == null) {
-                return false;
-            } else {
-                second = second.next.next;
-            }
+            second = second.next.next;
         }
         return false;
     }
