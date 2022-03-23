@@ -142,4 +142,14 @@ public class ArrayMania {
     }
     return res;
   }
+  static public int eraseOverlapIntervals(int[][] intervals) {
+    int res = 0;
+    Arrays.sort(intervals, (arr1, arr2) -> Integer.compare(arr1[0], arr2[0]) == 0 ? Integer.compare(arr1[1], arr2[1]) : Integer.compare(arr1[0], arr2[0]));
+    System.out.println(Arrays.deepToString(intervals));
+    int[] previous = intervals[0];
+    for(int i = 1; i < intervals.length; i++) {
+      if(previous[1] > intervals[i][0]) res++;
+    }
+    return res;
+  }
 }

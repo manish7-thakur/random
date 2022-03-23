@@ -261,4 +261,23 @@ public class ArrayManiaTest {
     expected = new int[][]{{1, 4}, {5, 9}};
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void minNumberOfOverlappingIntervalsRemoval() {
+    int actual = ArrayMania.eraseOverlapIntervals(new int[][]{{1, 2}});
+    int expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.eraseOverlapIntervals(new int[][]{{2, 2}, {1, 2}});
+    expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.eraseOverlapIntervals(new int[][]{{1, 5}, {1, 2}});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.eraseOverlapIntervals(new int[][]{{1, 5}, {2, 3}, {1, 2}});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+  }
 }
