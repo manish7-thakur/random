@@ -274,5 +274,14 @@ public class LinkedListUtilTest {
       Assert.assertEquals(4, actual.next.next.next.data);
       Assert.assertEquals(3, actual.next.next.next.next.data);
       Assert.assertNull(actual.next.next.next.next.next);
+
+      actual = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5, new Node(6))))));
+      LinkedListUtil.reorderList(actual);
+      Assert.assertEquals(6, actual.next.data);
+      Assert.assertEquals(2, actual.next.next.data);
+      Assert.assertEquals(5, actual.next.next.next.data);
+      Assert.assertEquals(3, actual.next.next.next.next.data);
+      Assert.assertEquals(4, actual.next.next.next.next.next.data);
+      Assert.assertNull(actual.next.next.next.next.next.next);
     }
 }
