@@ -189,4 +189,56 @@ public class LinkedListUtilTest {
       Assert.assertEquals(5, actual.next.next.next.next.data);
       Assert.assertNull(actual.next.next.next.next.next);
     }
+
+    @Test
+    public void removeNthFromLast() {
+      Node actual = LinkedListUtil.removeNthFromEnd(new Node(2), 1);
+      Assert.assertNull(actual);
+
+      actual = LinkedListUtil.removeNthFromEnd(new Node(2, new Node(3)), 2);
+      Assert.assertEquals(3, actual.data);
+
+      actual = LinkedListUtil.removeNthFromEnd(new Node(2, new Node(3)), 1);
+      Assert.assertEquals(2, actual.data);
+      Assert.assertNull(actual.next);
+
+      actual = LinkedListUtil.removeNthFromEnd(new Node(2, new Node(3, new Node(1))), 1);
+      Assert.assertEquals(2, actual.data);
+      Assert.assertEquals(3, actual.next.data);
+      Assert.assertNull(actual.next.next);
+
+      actual = LinkedListUtil.removeNthFromEnd(new Node(2, new Node(3, new Node(1))), 2);
+      Assert.assertEquals(2, actual.data);
+      Assert.assertEquals(1, actual.next.data);
+      Assert.assertNull(actual.next.next);
+
+      actual = LinkedListUtil.removeNthFromEnd(new Node(2, new Node(3, new Node(1))), 3);
+      Assert.assertEquals(3, actual.data);
+      Assert.assertEquals(1, actual.next.data);
+      Assert.assertNull(actual.next.next);
+
+      actual = LinkedListUtil.removeNthFromEnd(new Node(2, new Node(3, new Node(1, new Node(7)))), 4);
+      Assert.assertEquals(3, actual.data);
+      Assert.assertEquals(1, actual.next.data);
+      Assert.assertEquals(7, actual.next.next.data);
+      Assert.assertNull(actual.next.next.next);
+
+      actual = LinkedListUtil.removeNthFromEnd(new Node(2, new Node(3, new Node(1, new Node(7)))), 3);
+      Assert.assertEquals(2, actual.data);
+      Assert.assertEquals(1, actual.next.data);
+      Assert.assertEquals(7, actual.next.next.data);
+      Assert.assertNull(actual.next.next.next);
+
+      actual = LinkedListUtil.removeNthFromEnd(new Node(2, new Node(3, new Node(1, new Node(7)))), 1);
+      Assert.assertEquals(2, actual.data);
+      Assert.assertEquals(3, actual.next.data);
+      Assert.assertEquals(1, actual.next.next.data);
+      Assert.assertNull(actual.next.next.next);
+
+      actual = LinkedListUtil.removeNthFromEnd(new Node(2, new Node(3, new Node(1, new Node(7)))), 2);
+      Assert.assertEquals(2, actual.data);
+      Assert.assertEquals(3, actual.next.data);
+      Assert.assertEquals(7, actual.next.next.data);
+      Assert.assertNull(actual.next.next.next);
+    }
 }

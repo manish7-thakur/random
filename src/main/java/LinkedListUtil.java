@@ -61,4 +61,26 @@ public class LinkedListUtil {
       }
       return res;
     }
+    static public Node removeNthFromEnd(Node head, int n) {
+      Node newHead = new Node(-1);
+      newHead.next = head;
+      Node tra = head;
+      int count = 0;
+      while(tra != null) {
+        count++;
+        tra = tra.next;
+      }
+      int i = count - (n - 1);
+      if(i == 1) {
+        newHead.next = newHead.next.next;
+      } else {
+        tra = head;
+        while(i > 2) {
+          tra = tra.next;
+          i--;
+        }
+        tra.next = tra.next.next;
+      }
+      return newHead.next;
+    }
 }
