@@ -64,19 +64,18 @@ public class LinkedListUtil {
     static public Node removeNthFromEnd(Node head, int n) {
       Node newHead = new Node(-1);
       newHead.next = head;
-      Node tra = head;
       int count = 0;
-      while(tra != null) {
+      while(head != null) {
         count++;
-        tra = tra.next;
+        head = head.next;
       }
       int i = count - n;
-      tra = newHead;
+      head = newHead;
       while(i > 0) {
-        tra = tra.next;
+        head = head.next;
         i--;
       }
-      tra.next = tra.next.next;
+      head.next = head.next.next;
       return newHead.next;
     }
 }
