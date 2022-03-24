@@ -83,8 +83,7 @@ public class LinkedListUtil {
       }
       traverser = head;
       Node last = s.pop();
-      while(traverser != last && traverser.next != last)) {
-        // if(traverser.next == last) break;
+      while(traverser != last && traverser.next != last) {
         Node next = traverser.next;
         traverser.next = last;
         last.next = next;
