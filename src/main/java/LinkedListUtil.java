@@ -70,17 +70,13 @@ public class LinkedListUtil {
         count++;
         tra = tra.next;
       }
-      int i = count - (n - 1);
-      if(i == 1) {
-        newHead.next = newHead.next.next;
-      } else {
-        tra = head;
-        while(i > 2) {
-          tra = tra.next;
-          i--;
-        }
-        tra.next = tra.next.next;
+      int i = count - n;
+      tra = newHead;
+      while(i > 0) {
+        tra = tra.next;
+        i--;
       }
+      tra.next = tra.next.next;
       return newHead.next;
     }
 }
