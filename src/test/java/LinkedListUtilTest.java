@@ -241,4 +241,38 @@ public class LinkedListUtilTest {
       Assert.assertEquals(7, actual.next.next.data);
       Assert.assertNull(actual.next.next.next);
     }
+
+    @Test
+    public void reorderLinkedList() {
+      //reorder in the form of l0 -> ln -> l1 -> ln-1 -> l2 -> ln-2
+      Node actual = new Node(1);
+      LinkedListUtil.reorderList(actual);
+      Assert.assertEquals(1, actual.data);
+
+      actual = new Node(1, new Node(2));
+      LinkedListUtil.reorderList(actual);
+      Assert.assertEquals(1, actual.data);
+      Assert.assertEquals(2, actual.next.data);
+
+      actual = new Node(1, new Node(2, new Node(3)));
+      LinkedListUtil.reorderList(actual);
+      Assert.assertEquals(3, actual.next.data);
+      Assert.assertEquals(2, actual.next.next.data);
+      Assert.assertNull(actual.next.next.next);
+
+      actual = new Node(1, new Node(2, new Node(3, new Node(4))));
+      LinkedListUtil.reorderList(actual);
+      Assert.assertEquals(4, actual.next.data);
+      Assert.assertEquals(2, actual.next.next.data);
+      Assert.assertEquals(3, actual.next.next.next.data);
+      Assert.assertNull(actual.next.next.next.next);
+
+      actual = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5)))));
+      LinkedListUtil.reorderList(actual);
+      Assert.assertEquals(5, actual.next.data);
+      Assert.assertEquals(2, actual.next.next.data);
+      Assert.assertEquals(4, actual.next.next.next.data);
+      Assert.assertEquals(3, actual.next.next.next.next.data);
+      Assert.assertNull(actual.next.next.next.next.next);
+    }
 }

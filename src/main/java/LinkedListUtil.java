@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class LinkedListUtil {
     public static Node reverse(Node head) {
       Node pre = null, mid = null, tra = head;
@@ -71,5 +73,24 @@ public class LinkedListUtil {
       }
       first.next = first.next.next;
       return res.next;
+    }
+    static public void reorderList(Node head) {
+      Node traverser = head;
+      Stack<Node> s = new Stack<>();
+      while(traverser != null) {
+        s.push(traverser);
+        traverser = traverser.next;
+      }
+      traverser = head;
+      Node last = s.pop();
+      while(traverser != last) {
+        if(traverser.next == last) break;
+        Node next = traverser.next;
+        traverser.next = last;
+        last.next = next;
+        traverser = next;
+        last = s.pop();
+      }
+      last.next = null;
     }
 }
