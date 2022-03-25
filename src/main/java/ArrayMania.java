@@ -175,8 +175,10 @@ public class ArrayMania {
   }
   static public List<Integer> spiralOrder(int[][] matrix) {
     List<Integer> list = new ArrayList<>();
+    int total = matrix.length * matrix[0].length;
     int l = 0, r = matrix[0].length - 1, t = 0, b = matrix.length - 1, i = 0, j = 0;
     while(l <= r && t <= b) {
+      if(list.size() == total) break;
       while(j <= r) {
         list.add(matrix[i][j]);
         j++;
@@ -184,6 +186,7 @@ public class ArrayMania {
       j = r;
       i++;
       t++;
+      if(list.size() == total) break;
       while(i <= b) {
         list.add(matrix[i][j]);
         i++;
@@ -191,6 +194,7 @@ public class ArrayMania {
       i = b;
       j--;
       r--;
+      if(list.size() == total) break;
       while(j >= l) {
         list.add(matrix[i][j]);
         j--;
@@ -198,6 +202,7 @@ public class ArrayMania {
       j = l;
       i--;
       b--;
+      if(list.size() == total) break;
       while(i >= t) {
         list.add(matrix[i][j]);
         i--;
