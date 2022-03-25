@@ -165,7 +165,7 @@ public class ArrayMania {
     }
     for(int c = 1; c < matrix[0].length; c++) {
       if(matrix[0][c] == 0) {
-        for(int r = 0; r < matrix.length; r++) matrix[r][c] = 0;
+        for(int r = 1; r < matrix.length; r++) matrix[r][c] = 0;
       }
     }
     for(int r = 0; r < matrix.length; r++) {
