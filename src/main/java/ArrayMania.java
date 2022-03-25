@@ -152,4 +152,23 @@ public class ArrayMania {
     }
     return res;
   }
+  static public void setZeroes(int[][] matrix) {
+    for(int i = 0 ; i < matrix.length; i++) {
+      for(int j = 0; j < matrix[0].length; j++) {
+        if(matrix[i][j] == 0) {
+          matrix[0][j] = 0;
+          matrix[i][0] = 0;
+        }
+      }
+    }
+    for(int c = matrix[0].length - 1; c > 0; c--) {
+      if(matrix[0][c] == 0) {
+        for(int r = 0; r < matrix.length; r++) matrix[r][c] = 0;
+      }
+    }
+    for(int r = matrix.length - 1; r >= 0 ; r--) {
+      if(matrix[r][0] == 0) Arrays.fill(matrix[r], 0);
+
+    }
+  }
 }

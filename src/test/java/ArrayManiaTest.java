@@ -311,4 +311,16 @@ public class ArrayManiaTest {
     expected = 7;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void setEntireColumnAndRowToZeroWithConstantSpace() {
+    int[][] actual = new int[][]{{0}};
+    ArrayMania.setZeroes(actual);
+    int[][] expected = new int[][]{{0}};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[][]{{1, 1}, {1, 0}};
+    ArrayMania.setZeroes(actual);
+    expected = new int[][]{{1, 0}, {0, 0}};
+    Assert.assertArrayEquals(expected, actual);
+  }
 }
