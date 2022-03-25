@@ -381,5 +381,9 @@ public class ArrayManiaTest {
     actual = ArrayMania.spiralOrder(new int[][]{{1, 2, 4, 6, 8, 9}, {2, 1, 4, 8, 9, 5}, {3, 1, 4, 6, 8, 9}, {8, 1, 7, 6, 5, 4}});
     expected = List.of(1, 2, 4, 6, 8, 9, 5, 9, 4, 5, 6, 7, 1, 8, 3, 2, 1, 4, 8, 9, 8, 6, 4, 1);
     Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.spiralOrder(new int[][]{{1, 2, 4, 6, 8, 9}, {2, 1, 4, 8, 9, 5}, {3, 1, 4, 6, 8, 9}, {8, 1, 7, 6, 5, 4}, {5, 1, 8, 4, 6, 9}});
+    expected = List.of(1, 2, 4, 6, 8, 9, 5, 9, 4, 9, 6, 4, 8, 1, 5, 8, 3, 2, 1, 4, 8, 9, 8, 5, 6, 7, 1, 1, 4, 6);
+    Assert.assertEquals(expected, actual);
   }
 }
