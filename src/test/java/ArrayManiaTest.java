@@ -322,5 +322,10 @@ public class ArrayManiaTest {
     ArrayMania.setZeroes(actual);
     expected = new int[][]{{1, 0}, {0, 0}};
     Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[][]{{1, 1, 3}, {3, 1, 0}, {0, 1, 0}};
+    ArrayMania.setZeroes(actual);
+    expected = new int[][]{{0, 1, 0}, {0, 0, 0}, {0 , 0, 0}};
+    Assert.assertArrayEquals(expected, actual);
   }
 }

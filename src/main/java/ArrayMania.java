@@ -153,11 +153,13 @@ public class ArrayMania {
     return res;
   }
   static public void setZeroes(int[][] matrix) {
-    for(int i = 0 ; i < matrix.length; i++) {
-      for(int j = 0; j < matrix[0].length; j++) {
-        if(matrix[i][j] == 0) {
-          matrix[0][j] = 0;
-          matrix[i][0] = 0;
+    boolean firstColumnZero = false;
+    for(int r = 0 ; r < matrix.length; r++) {
+      for(int c = 0; c < matrix[0].length; c++) {
+        if(r > 0 && c == 0 && matrix[r][c] == 0) firstColumnZero = true;
+        else if(matrix[r][c] == 0) {
+          matrix[0][c] = 0;
+          matrix[r][0] = 0;
         }
       }
     }
@@ -168,7 +170,9 @@ public class ArrayMania {
     }
     for(int r = matrix.length - 1; r >= 0 ; r--) {
       if(matrix[r][0] == 0) Arrays.fill(matrix[r], 0);
-
+    }
+    if(firstColumnZero) {
+      for(int r = 0; r < matrix.length; r++) matrix[r][0] = 0;
     }
   }
 }
