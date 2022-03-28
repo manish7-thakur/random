@@ -252,20 +252,12 @@ public class ArrayMania {
     if(si >= word.length()) return true;
     if(!safe(board, i, j, word.charAt(si), visited)) return false;
     visited[i][j] = true;
-      if(search(board, i + 1, j, word, si + 1, visited)) {
-        return true;
-      }
-      if(search(board, i, j + 1, word, si + 1, visited)) {
-        return true;
-      }
-      if(search(board, i - 1, j, word, si + 1, visited)) {
-        return true;
-      }
-      if(search(board, i, j - 1, word, si + 1, visited)) {
-        return true;
-      }
-      visited[i][j] = false;
-      return false;
+      if(search(board, i + 1, j, word, si + 1, visited)
+      || search(board, i, j + 1, word, si + 1, visited)
+      || search(board, i - 1, j, word, si + 1, visited)
+      || search(board, i, j - 1, word, si + 1, visited)) return true;
+    visited[i][j] = false;
+    return false;
   }
   static boolean safe(char[][] board, int i, int j, char c, boolean visited[][]) {
     return i >= 0 && j >= 0 && i < board.length && j < board[0].length && board[i][j] == c && !visited[i][j];

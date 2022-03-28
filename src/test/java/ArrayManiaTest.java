@@ -467,10 +467,16 @@ public class ArrayManiaTest {
     actual = ArrayMania.exists(new char[][]{{'p', 'a', 'r'}, {'e', 'd', 'e'}}, "derd");
     Assert.assertFalse(actual);
 
-    actual = ArrayMania.exists(new char[][]{
-    {'d', 'a', 'r'},
-    {'d', 'p', 'p'},
-    {'r', 'd', 'k'}}, "ddar");
+    actual = ArrayMania.exists(new char[][]{{'d', 'a', 'r'}, {'d', 'p', 'p'}, {'r', 'd', 'k'}}, "ddar");
     Assert.assertTrue(actual);
+
+    actual = ArrayMania.exists(new char[][]{{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}}, "ABCCED");
+    Assert.assertTrue(actual);
+
+    actual = ArrayMania.exists(new char[][]{{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}}, "SEE");
+    Assert.assertTrue(actual);
+
+    actual = ArrayMania.exists(new char[][]{{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}}, "ABCB");
+    Assert.assertFalse(actual);
   }
 }
