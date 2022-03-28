@@ -403,4 +403,27 @@ public class ArrayManiaTest {
     expected = new int[][]{{1, 5, 2}, {2, 6, 8}, {4, 9, 5}};
     Assert.assertArrayEquals(expected, actual);
   }
+
+  @Test
+  public void reverseSingleDimensionArray() {
+    int[] actual = new int[]{1};
+    ArrayMania.reverse(actual);
+    int[] expected = new int[]{1};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{1, 2};
+    ArrayMania.reverse(actual);
+    expected = new int[]{2, 1};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{1, 2, 4};
+    ArrayMania.reverse(actual);
+    expected = new int[]{4, 2, 1};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{8, 1, 2, 4};
+    ArrayMania.reverse(actual);
+    expected = new int[]{4, 2, 1, 8};
+    Assert.assertArrayEquals(expected, actual);
+  }
 }
