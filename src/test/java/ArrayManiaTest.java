@@ -386,4 +386,21 @@ public class ArrayManiaTest {
     expected = List.of(1, 2, 4, 6, 8, 9, 5, 9, 4, 9, 6, 4, 8, 1, 5, 8, 3, 2, 1, 4, 8, 9, 8, 5, 6, 7, 1, 1, 4, 6);
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void transposeSquareMatrix() {
+    int[][] actual = new int[][]{{1}};
+    ArrayMania.transpose(actual);
+    int[][] expected = new int[][]{{1}};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[][]{{1, 2}, {3, 4}};
+    ArrayMania.transpose(actual);
+    expected = new int[][]{{1, 3}, {2, 4}};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[][]{{1, 2, 4}, {5, 6, 9}, {2, 8, 5}};
+    ArrayMania.transpose(actual);
+    expected = new int[][]{{1, 5, 2}, {2, 6, 8}, {4, 9, 5}};
+    Assert.assertArrayEquals(expected, actual);
+  }
 }
