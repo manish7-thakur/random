@@ -253,19 +253,15 @@ public class ArrayMania {
     if(!safe(board, i, j, word.charAt(si), visited)) return false;
     visited[i][j] = true;
       if(search(board, i + 1, j, word, si + 1, visited)) {
-        visited[i][j] = false;
         return true;
       }
       if(search(board, i, j + 1, word, si + 1, visited)) {
-        visited[i][j] = false;
         return true;
       }
       if(search(board, i - 1, j, word, si + 1, visited)) {
-        visited[i][j] = false;
         return true;
       }
       if(search(board, i, j - 1, word, si + 1, visited)) {
-        visited[i][j] = false;
         return true;
       }
       visited[i][j] = false;
