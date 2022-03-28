@@ -426,4 +426,27 @@ public class ArrayManiaTest {
     expected = new int[]{4, 2, 1, 8};
     Assert.assertArrayEquals(expected, actual);
   }
+
+  @Test
+  public void rotateSquareMatrix90Degrees() {
+    int[][] actual = new int[][]{{2}};
+    ArrayMania.rotate(actual);
+    int[][] expected = new int[][]{{2}};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[][]{{2, 4}, {5, 6}};
+    ArrayMania.rotate(actual);
+    expected = new int[][]{{5, 2}, {6, 4}};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[][]{{1,2,3}, {4,5,6}, {7,8,9}};
+    ArrayMania.rotate(actual);
+    expected = new int[][]{{7,4,1}, {8,5,2}, {9,6,3}};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[][]{{5,1,9,11}, {2,4,8,10}, {13,3,6,7}, {15,14,12,16}};
+    ArrayMania.rotate(actual);
+    expected = new int[][]{{15,13,2,5}, {14,3,4,1}, {12,6,8,9}, {16,7,10,11}};
+    Assert.assertArrayEquals(expected, actual);
+  }
 }

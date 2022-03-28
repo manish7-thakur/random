@@ -232,6 +232,10 @@ public class ArrayMania {
       i++;
       j--;
     }
+  }
 
+  static public void rotate(int[][] matrix) {
+    transpose(matrix);
+    Arrays.stream(matrix).forEach(arr -> reverse(arr));
   }
 }
