@@ -238,4 +238,40 @@ public class ArrayMania {
     transpose(matrix);
     Arrays.stream(matrix).forEach(arr -> reverse(arr));
   }
+
+  static public boolean exists(char[][] board, String word) {
+    boolean visited[][] = new boolean[board.length][board[0].length];
+    for(int i = 0; i < board.length; i++) {
+      for(int j = 0; j < board[0].length; j++) {
+        if(board[i][j] == word.charAt(0) && search(board, i, j, word, 0, visited)) return true;
+      }
+    }
+    return false;
+  }
+  static boolean search(char[][] board, int i, int j, String word, int si, boolean visited[][]) {
+    if(si >= word.length()) return true;
+    if(!safe(board, i, j, word.charAt(si), visited)) return false;
+    visited[i][j] = true;
+      if(search(board, i + 1, j, word, si + 1, visited)) {
+        visited[i][j] = false;
+        return true;
+      }
+      if(search(board, i, j + 1, word, si + 1, visited)) {
+        visited[i][j] = false;
+        return true;
+      }
+      if(search(board, i - 1, j, word, si + 1, visited)) {
+        visited[i][j] = false;
+        return true;
+      }
+      if(search(board, i, j - 1, word, si + 1, visited)) {
+        visited[i][j] = false;
+        return true;
+      }
+      visited[i][j] = false;
+      return false;
+  }
+  static boolean safe(char[][] board, int i, int j, char c, boolean visited[][]) {
+    return i >= 0 && j >= 0 && i < board.length && j < board[0].length && board[i][j] == c && !visited[i][j];
+  }
 }

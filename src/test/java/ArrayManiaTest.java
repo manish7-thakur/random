@@ -449,4 +449,28 @@ public class ArrayManiaTest {
     expected = new int[][]{{15,13,2,5}, {14,3,4,1}, {12,6,8,9}, {16,7,10,11}};
     Assert.assertArrayEquals(expected, actual);
   }
+
+  @Test
+  public void searchWordIn2DMatrix() {
+    boolean actual = ArrayMania.exists(new char[][]{{'s'}}, "s");
+    Assert.assertTrue(actual);
+
+    actual = ArrayMania.exists(new char[][]{{'p', 'a'}}, "as");
+    Assert.assertFalse(actual);
+
+    actual = ArrayMania.exists(new char[][]{{'p', 'a'}}, "ap");
+    Assert.assertTrue(actual);
+
+    actual = ArrayMania.exists(new char[][]{{'p', 'a'}, {'c', 'd'}}, "dcp");
+    Assert.assertTrue(actual);
+
+    actual = ArrayMania.exists(new char[][]{{'p', 'a', 'r'}, {'e', 'd', 'e'}}, "derd");
+    Assert.assertFalse(actual);
+
+    actual = ArrayMania.exists(new char[][]{
+    {'d', 'a', 'r'},
+    {'d', 'p', 'p'},
+    {'r', 'd', 'k'}}, "ddar");
+    Assert.assertTrue(actual);
+  }
 }
