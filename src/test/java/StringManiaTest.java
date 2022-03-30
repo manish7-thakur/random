@@ -38,5 +38,9 @@ public class StringManiaTest {
     actual = StringMania.lengthOfLongestSubstring("aababc");
     expected = 3;
     Assert.assertEquals(expected, actual);
+
+    actual = StringMania.lengthOfLongestSubstring("aabaagdradsbvcgsdrvcavcfsrecavdsfdrewvcgsetjtlyobcwvsdaecsbcvcadsecwvcscwdfdsdvacsewcsd");
+    expected = 13;
+    Assert.assertEquals(expected, actual);
   }
 }
