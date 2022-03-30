@@ -2,7 +2,7 @@ import java.util.*;
 
 public class StringMania {
   public static int lengthOfLongestSubstring(String s) {
-    int res = 1, l = 0, r = 0;
+    int res = 0, l = 0, r = 0;
     Map<Character, Integer> map = new HashMap<>();
     while(l < s.length()) {
       int count = map.merge(s.charAt(l), 1, Integer::sum);
