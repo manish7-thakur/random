@@ -12,7 +12,8 @@ public class StringMania {
         r++;
       }
       l++;
-      if(l - r > res) res = l - r;
+      int newlen = l - r;
+      if(newlen > res) res = newlen;
     }
     return res;
   }
