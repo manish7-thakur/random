@@ -130,18 +130,8 @@ public class ArrayArranger {
       }
       return true;
     }
-    static boolean isAnagram(String s, String t) {
-      int[] map = new int[26];
-      for(char c : t.toCharArray()) map[c - 'a']++;
-      for(char c : s.toCharArray()) {
-        if(--map[c - 'a'] < 0) return false;
-      }
-      for(int i : map) {
-        if(i != 0) return false;
-      }
-      return true;
-    }
-    static public int[] productExceptSelf(int[] nums) {
+
+  static public int[] productExceptSelf(int[] nums) {
       int[] res = new int[nums.length];
       int prefix = nums[0];
       res[0] = 1;

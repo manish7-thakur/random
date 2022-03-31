@@ -119,4 +119,22 @@ public class StringManiaTest {
     expected = "sewdar";
     Assert.assertEquals(expected, actual);
   }
+
+  @Test
+  public void checkAnagrams() {
+    boolean actual = StringMania.isAnagram("a" , "b");
+    Assert.assertFalse(actual);
+
+    actual = StringMania.isAnagram("a" , "ba");
+    Assert.assertFalse(actual);
+
+    actual = StringMania.isAnagram("ab" , "ba");
+    Assert.assertTrue(actual);
+
+    actual = StringMania.isAnagram("ab" , "baa");
+    Assert.assertFalse(actual);
+
+    actual = StringMania.isAnagram("adjsdjyajab" , "bayjjsjddaa");
+    Assert.assertTrue(actual);
+  }
 }
