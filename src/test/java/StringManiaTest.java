@@ -53,24 +53,28 @@ public class StringManiaTest {
     expected = 1;
     Assert.assertEquals(expected, actual);
 
-    actual = StringMania.characterReplacement("wp", 1);
+    actual = StringMania.characterReplacement("WP", 1);
     expected = 2;
     Assert.assertEquals(expected, actual);
 
-    actual = StringMania.characterReplacement("wpap", 1);
+    actual = StringMania.characterReplacement("WPAP", 1);
     expected = 3;
     Assert.assertEquals(expected, actual);
 
-    actual = StringMania.characterReplacement("wpaptp", 2);
+    actual = StringMania.characterReplacement("WPAPTP", 2);
     expected = 5;
     Assert.assertEquals(expected, actual);
 
-    actual = StringMania.characterReplacement("wuaptp", 2);
+    actual = StringMania.characterReplacement("WUAPTP", 2);
     expected = 4;
     Assert.assertEquals(expected, actual);
 
-    actual = StringMania.characterReplacement("wpaptpt", 3);
+    actual = StringMania.characterReplacement("WPAPTPT", 3);
     expected = 6;
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.characterReplacement("WPAPTPTWPEK", 5);
+    expected = 9;
     Assert.assertEquals(expected, actual);
   }
 }
