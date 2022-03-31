@@ -43,4 +43,22 @@ public class StringManiaTest {
     expected = 13;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void longestRepeatingCharacterReplacement() {
+    int actual = StringMania.characterReplacement("w", 0);
+    int expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.characterReplacement("wp", 0);
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.characterReplacement("wp", 1);
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.characterReplacement("wpap", 1);
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+  }
 }
