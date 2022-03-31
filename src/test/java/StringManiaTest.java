@@ -152,5 +152,9 @@ public class StringManiaTest {
     actual = StringMania.groupAnagrams(new String[]{"tea", "eat", "pop", "top"});
     expected = List.of(List.of("tea", "eat"), List.of("top"), List.of("pop"));
     Assert.assertEquals(expected, actual);
+
+    actual = StringMania.groupAnagrams(new String[]{"eat","tea","tan","ate","nat","bat"});
+    expected = List.of(List.of("eat", "tea", "ate"), List.of("bat"), List.of("tan", "nat"));
+    Assert.assertEquals(expected, actual);
   }
 }
