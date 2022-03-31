@@ -43,8 +43,8 @@ public class StringMania {
       Integer value = tmap.computeIfPresent(s.charAt(r), (k, v) -> --v);
       if(value != null && value >= 0) count++;
       while(count == t.length()) {
-        int currlen = r - l + 1;
-        if(currlen < res.length() || res.isEmpty()) res = s.substring(l, r + 1);
+        int newlen = r - l + 1;
+        if(newlen < res.length() || res.isEmpty()) res = s.substring(l, r + 1);
         Integer newCount = tmap.computeIfPresent(s.charAt(l), (k, v) -> ++v);
         if(newCount != null && newCount > 0) count--;
         l++;
