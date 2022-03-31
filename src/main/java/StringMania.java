@@ -25,14 +25,12 @@ public class StringMania {
     for(int r = 0; r < s.length(); r++) {
       int count = map.merge(s.charAt(r), 1, Integer::sum);
       if(count > highestFrequency) highestFrequency = count;
-      int otherChars = (r - l + 1) - highestFrequency;
+      int currlen = r - l + 1;
+      int otherChars = currlen - highestFrequency;
       if(otherChars > k) {
         map.compute(s.charAt(l), (c, v) -> --v);
         l++;
-      } else {
-        int newlen = r - l + 1;
-        if(newlen > res) res = newlen;
-      }
+      } else if(currlen > res) res = currlen;
     }
     return res;
   }
