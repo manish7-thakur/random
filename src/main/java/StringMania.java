@@ -3,12 +3,14 @@ import java.util.*;
 public class StringMania {
   public static int lengthOfLongestSubstring(String s) {
     int res = 0, r = 0, l = 0;
-    Map<Character, Integer> map = new HashMap<>();
+    Set<Character> set = new HashSet<>();
     while(r < s.length()) {
-      int count = map.merge(s.charAt(r), 1, Integer::sum);
-      while(count > 1) {
-        map.computeIfPresent(s.charAt(l), (k, v) -> v - 1);
-        if(s.charAt(l) == s.charAt(r)) count--;
+      boolean changed = set.add(s.charAt(r));
+      if(!changed) {
+        while(s.charAt(l) != s.charAt(r)) {
+          set.remove(s.charAt(l));
+          l++;
+        }
         l++;
       }
       r++;
