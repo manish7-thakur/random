@@ -111,6 +111,10 @@ public class StringManiaTest {
     expected = "cda";
     Assert.assertEquals(expected, actual);
 
+    actual = StringMania.minWindow("adobecodebanc", "abc");
+    expected = "banc";
+    Assert.assertEquals(expected, actual);
+
     actual = StringMania.minWindow("addcdaddsgaedsewdardfaesdadsesdfsdea", "rds");
     expected = "sewdar";
     Assert.assertEquals(expected, actual);
