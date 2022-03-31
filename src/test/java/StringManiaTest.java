@@ -98,5 +98,17 @@ public class StringManiaTest {
     actual = StringMania.minWindow("aabc", "ba");
     expected = "ab";
     Assert.assertEquals(expected, actual);
+
+    actual = StringMania.minWindow("aabc", "ba");
+    expected = "ab";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.minWindow("aacbcba", "ab");
+    expected = "ba";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.minWindow("addcdad", "ac");
+    expected = "cda";
+    Assert.assertEquals(expected, actual);
   }
 }
