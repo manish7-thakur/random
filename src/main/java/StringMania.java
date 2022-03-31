@@ -1,4 +1,5 @@
 import java.util.*;
+import static java.util.stream.Collectors.*;
 
 public class StringMania {
   public static int lengthOfLongestSubstring(String s) {
@@ -66,11 +67,13 @@ public class StringMania {
   }
 
   static List<List<String>> groupAnagrams(String[] strs) {
-    Map<String, List<String>> map = new HashMap<>();
-    for(String str: strs) {
-      map.computeIfAbsent(str, k -> new ArrayList<>()).add(str);
-    }
+    Map<String, List<String>> map = Arrays.stream(strs).collect(groupingBy(str -> getKey(str), toList()));
     List<List<String>> res = new ArrayList<>(map.values());
     return res;
+  }
+  static String getKey(String str) {
+    char[] arr = str.toCharArray();
+    Arrays.sort(arr);
+    return new String(arr);
   }
 }
