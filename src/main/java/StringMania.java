@@ -67,9 +67,8 @@ public class StringMania {
   }
 
   static List<List<String>> groupAnagrams(String[] strs) {
-    Map<String, List<String>> map = Arrays.stream(strs).collect(groupingBy(str -> getKey(str), toList()));
-    List<List<String>> res = new ArrayList<>(map.values());
-    return res;
+    Map<String, List<String>> map = Arrays.stream(strs).collect(groupingBy(StringMania::getKey, toList()));
+    return new ArrayList<>(map.values());
   }
   static String getKey(String str) {
     char[] arr = str.toCharArray();
