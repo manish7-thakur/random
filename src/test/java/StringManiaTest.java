@@ -77,4 +77,26 @@ public class StringManiaTest {
     expected = 9;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void minimumWindowSubstringContainingAllChars() {
+    String actual = StringMania.minWindow("b", "a");
+    String expected = "";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.minWindow("a", "a");
+    expected = "a";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.minWindow("a", "aa");
+    expected = "";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.minWindow("abaa", "aa");
+    expected = "aa";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.minWindow("aabc", "ba");
+    expected = "ab";
+    Assert.assertEquals(expected, actual);
+  }
 }

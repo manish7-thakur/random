@@ -34,4 +34,22 @@ public class StringMania {
     }
     return res;
   }
+  public static String minWindow(String s, String t) {
+    String res = "";
+    int l = 0, count = 0;
+    Map<Character, Integer> tmap = new HashMap<>();
+    for(int i = 0; i < t.length(); i++) tmap.merge(t.charAt(i), 1, Integer::sum);
+    for(int r = 0; r < s.length(); r++) {
+      Integer value = tmap.computeIfPresent(s.charAt(r), (k, v) -> --v);
+      if(value != null && value >= 0) count++;
+      while(count == t.length()) {
+        int currlen = r - l + 1;
+        if(currlen < res.length() || res.isEmpty()) res = s.substring(l, r + 1);
+        Integer newCount = tmap.computeIfPresent(s.charAt(l), (k, v) -> ++v);
+        if(newCount != null && newCount > 0) count--;
+        l++;
+      }
+    }
+    return res;
+  }
 }
