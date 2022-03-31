@@ -1,4 +1,5 @@
 import org.junit.*;
+import java.util.*;
 
 public class StringManiaTest {
   @Test
@@ -136,5 +137,12 @@ public class StringManiaTest {
 
     actual = StringMania.isAnagram("adjsdjyajab" , "bayjjsjddaa");
     Assert.assertTrue(actual);
+  }
+
+  @Test
+  public void groupAnagramsInAList() {
+    List<List<String>> actual = StringMania.groupAnagrams(new String[]{""});
+    List<List<String>> expected = List.of(List.of(""));
+    Assert.assertEquals(expected, actual);
   }
 }

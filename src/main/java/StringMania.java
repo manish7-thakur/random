@@ -64,4 +64,13 @@ public class StringMania {
     }
     return true;
   }
+
+  static List<List<String>> groupAnagrams(String[] strs) {
+    Map<String, List<String>> map = new HashMap<>();
+    for(String str: strs) {
+      map.computeIfAbsent(str, k -> new ArrayList<>()).add(str);
+    }
+    List<List<String>> res = new ArrayList<>(map.values());
+    return res;
+  }
 }
