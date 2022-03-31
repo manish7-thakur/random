@@ -110,5 +110,9 @@ public class StringManiaTest {
     actual = StringMania.minWindow("addcdad", "ac");
     expected = "cda";
     Assert.assertEquals(expected, actual);
+
+    actual = StringMania.minWindow("addcdaddsgaedsewdardfaesdadsesdfsdea", "rds");
+    expected = "sewdar";
+    Assert.assertEquals(expected, actual);
   }
 }
