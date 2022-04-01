@@ -165,10 +165,19 @@ public class StringManiaTest {
     actual = StringMania.isPalindrome("ab");
     Assert.assertFalse(actual);
 
+    actual = StringMania.isPalindrome(" ");
+    Assert.assertTrue(actual);
+
     actual = StringMania.isPalindrome("a ");
     Assert.assertTrue(actual);
 
     actual = StringMania.isPalindrome("a b A");
+    Assert.assertTrue(actual);
+
+    actual = StringMania.isPalindrome("a mAn b namA");
+    Assert.assertTrue(actual);
+
+    actual = StringMania.isPalindrome("A man, a plan, a canal: Panama");
     Assert.assertTrue(actual);
   }
 }

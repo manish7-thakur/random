@@ -78,7 +78,7 @@ public class StringMania {
     return new String(arr);
   }
   static boolean isPalindrome(String s) {
-    s = s.replace(" ", "").toLowerCase();
+    s = s.replaceAll("[\\W]+", "").toLowerCase();
     int l = 0, r = s.length() - 1;
     while(l <= r) {
       if(s.charAt(l) != s.charAt(r)) return false;
