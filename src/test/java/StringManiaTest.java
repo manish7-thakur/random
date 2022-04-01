@@ -174,6 +174,9 @@ public class StringManiaTest {
     actual = StringMania.isPalindrome("a b A");
     Assert.assertTrue(actual);
 
+    actual = StringMania.isPalindrome("ab_a");
+    Assert.assertTrue(actual);
+
     actual = StringMania.isPalindrome("a mAn b namA");
     Assert.assertTrue(actual);
 
