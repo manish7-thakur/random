@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.stream.Collectors;
+
 import static java.util.stream.Collectors.*;
 
 public class StringMania {
@@ -74,5 +76,15 @@ public class StringMania {
     char[] arr = str.toCharArray();
     Arrays.sort(arr);
     return new String(arr);
+  }
+  static boolean isPalindrome(String s) {
+    s = s.replace(" ", "").toLowerCase();
+    int l = 0, r = s.length() - 1;
+    while(l <= r) {
+      if(s.charAt(l) != s.charAt(r)) return false;
+      l++;
+      r--;
+    }
+    return true;
   }
 }

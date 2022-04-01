@@ -157,4 +157,18 @@ public class StringManiaTest {
     expected = List.of(List.of("eat", "tea", "ate"), List.of("bat"), List.of("tan", "nat"));
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void checkStringForPlaindrome() {
+    boolean actual = StringMania.isPalindrome("");
+    Assert.assertTrue(actual);
+
+    actual = StringMania.isPalindrome("ab");
+    Assert.assertFalse(actual);
+
+    actual = StringMania.isPalindrome("a ");
+    Assert.assertTrue(actual);
+
+    actual = StringMania.isPalindrome("a b A");
+    Assert.assertTrue(actual);
+  }
 }
