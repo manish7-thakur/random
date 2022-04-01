@@ -92,4 +92,24 @@ public class StringMania {
     }
     return true;
   }
+  static String longestPalindrome(String s) {
+    return longestPalindromeRec(s, 0, s.length() - 1);
+  }
+
+  static String longestPalindromeRec(String s, int l, int h) {
+    if(isPalindrome(s, l, h)) return s.substring(l, h + 1);
+    String s1 = longestPalindromeRec(s, l + 1, h);
+    String s2 = longestPalindromeRec(s, l, h - 1);
+    if(s1.length() > s2.length()) return s1;
+    return s2;
+  }
+  static boolean isPalindrome(String s, int l, int h) {
+    while(l <= h) {
+      if(s.charAt(l) != s.charAt(h)) return false;
+      l++;
+      h--;
+    }
+    return true;
+  }
+
 }

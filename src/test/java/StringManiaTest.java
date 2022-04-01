@@ -183,4 +183,18 @@ public class StringManiaTest {
     actual = StringMania.isPalindrome("A man, a plan, a canal: Panama");
     Assert.assertTrue(actual);
   }
+  @Test
+  public void longestPalindromicSubstring() {
+    String actual = StringMania.longestPalindrome("a");
+    String expected = "a";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.longestPalindrome("ba");
+    expected = "b";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.longestPalindrome("baa");
+    expected = "aa";
+    Assert.assertEquals(expected, actual);
+  }
 }
