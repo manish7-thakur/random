@@ -115,4 +115,22 @@ public class StringMania {
     return true;
   }
 
+  static int countPalindromicSubstrings(String s) {
+    int count = 0;
+    Integer[][] mem = new Integer[s.length()][s.length()];
+    for(int i = 0; i < s.length(); i++) {
+      for(int j = i; j < s.length(); j++) {
+        count += countPalindromicSubstringsRec(s, i, j, mem);
+      }
+    }
+    return count;
+  }
+  static int countPalindromicSubstringsRec(String s, int l, int h, Integer[][] mem) {
+    if(l >= h) return 1;
+    if(mem[l][h] != null) return mem[l][h];
+    int count = s.charAt(l) != s.charAt(h) ? 0 : countPalindromicSubstringsRec(s, l + 1, h - 1, mem);
+    mem[l][h] = count;
+    return count;
+  }
+
 }

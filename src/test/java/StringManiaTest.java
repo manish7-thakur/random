@@ -209,4 +209,34 @@ public class StringManiaTest {
     expected = "sasas";
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void countTotalPalindromicSubstrings() {
+    int actual = StringMania.countPalindromicSubstrings("a");
+    int expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.countPalindromicSubstrings("ba");
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.countPalindromicSubstrings("aa");
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.countPalindromicSubstrings("aaa");
+    expected = 6;
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.countPalindromicSubstrings("aaaa");
+    expected = 10;
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.countPalindromicSubstrings("aabb");
+    expected = 6;
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.countPalindromicSubstrings("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+    expected = 8385;
+    Assert.assertEquals(expected, actual);
+  }
 }
