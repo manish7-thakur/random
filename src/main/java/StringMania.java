@@ -78,7 +78,12 @@ public class StringMania {
     return new String(arr);
   }
   static boolean isPalindrome(String s) {
-    s = s.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
+    StringBuilder b = new StringBuilder(s.length());
+    for(int i = 0; i < s.length(); i++) {
+      char c = s.charAt(i);
+      if(Character.isDigit(c) || Character.isAlphabetic(c)) b.append(Character.toLowerCase(c));
+    }
+    s = b.toString();
     int l = 0, r = s.length() - 1;
     while(l <= r) {
       if(s.charAt(l) != s.charAt(r)) return false;
