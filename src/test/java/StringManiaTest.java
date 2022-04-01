@@ -196,5 +196,9 @@ public class StringManiaTest {
     actual = StringMania.longestPalindrome("baa");
     expected = "aa";
     Assert.assertEquals(expected, actual);
+
+    actual = StringMania.longestPalindrome("ababca");
+    expected = "bab";
+    Assert.assertEquals(expected, actual);
   }
 }
