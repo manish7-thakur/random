@@ -93,15 +93,18 @@ public class StringMania {
     return true;
   }
   static String longestPalindrome(String s) {
-    return longestPalindromeRec(s, 0, s.length() - 1);
+    String[][] mem = new String[s.length()][s.length()];
+    return longestPalindromeRec(s, 0, s.length() - 1, mem);
   }
 
-  static String longestPalindromeRec(String s, int l, int h) {
+  static String longestPalindromeRec(String s, int l, int h, String[][] mem) {
+    if(mem[l][h] != null) return mem[l][h];
     if(isPalindrome(s, l, h)) return s.substring(l, h + 1);
-    String s1 = longestPalindromeRec(s, l + 1, h);
-    String s2 = longestPalindromeRec(s, l, h - 1);
-    if(s1.length() > s2.length()) return s1;
-    return s2;
+    String s1 = longestPalindromeRec(s, l + 1, h, mem);
+    String s2 = longestPalindromeRec(s, l, h - 1, mem);
+    if(s1.length() > s2.length()) mem[l][h] = s1;
+    else mem[l][h] = s2;
+    return mem[l][h];
   }
   static boolean isPalindrome(String s, int l, int h) {
     while(l <= h) {
