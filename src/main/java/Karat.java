@@ -1,5 +1,5 @@
 import java.util.*;
-import java.util.stream.Collectors;
+import static java.util.stream.Collectors.*;
 
 public class Karat {
   static public Map<Integer, List<Integer>> find(int[][] arr) {
@@ -93,13 +93,7 @@ public class Karat {
   }
 
   static public Map<String, List<String>> findCulprits(String[][] badgeTimes) {
-    Map<String, List<String>> map = new HashMap<>();
-    for (String[] badgeTime : badgeTimes) {
-      String name = badgeTime[0];
-      String time = badgeTime[1];
-      map.putIfAbsent(name, new ArrayList<>());
-      map.get(name).add(time);
-    }
+    Map<String, List<String>> map = Arrays.stream(badgeTimes).collect(groupingBy(arr -> arr[0], mapping(arr -> arr[1], toList())));
     Map<String, List<String>> res = new HashMap<>();
     map.forEach((name, list) -> {
       if(list.size() >= 3) {
