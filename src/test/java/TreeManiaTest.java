@@ -101,5 +101,9 @@ public class TreeManiaTest {
     actual  = TreeMania.levelOrder(new TreeNode(2, new TreeNode(3), new TreeNode(4)));
     expected = List.of(List.of(2), List.of(3, 4));
     Assert.assertEquals(expected, actual);
+
+    actual  = TreeMania.levelOrder(new TreeNode(2, new TreeNode(3, new TreeNode(7), new TreeNode(9)), new TreeNode(4, new TreeNode(2), new TreeNode(6))));
+    expected = List.of(List.of(2), List.of(3, 4), List.of(7, 9, 2, 6));
+    Assert.assertEquals(expected, actual);
   }
 }
