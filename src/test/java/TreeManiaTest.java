@@ -1,5 +1,5 @@
 import org.junit.*;
-
+import java.util.*;
 public class TreeManiaTest {
   @Test
   public void depthOfBinaryTree() {
@@ -84,5 +84,22 @@ public class TreeManiaTest {
     Assert.assertEquals(3, actual.right.val);
     Assert.assertEquals(5, actual.right.right.val);
     Assert.assertEquals(4, actual.right.left.val);
+  }
+  @Test
+  public void levelOrderTraversalOfBinaryTree() {
+    var actual  = TreeMania.levelOrder(null);
+    Assert.assertTrue(actual.isEmpty());
+
+    actual  = TreeMania.levelOrder(new TreeNode(2));
+    var expected = List.of(List.of(2));
+    Assert.assertEquals(expected, actual);
+
+    actual  = TreeMania.levelOrder(new TreeNode(2, new TreeNode(3)));
+    expected = List.of(List.of(2), List.of(3));
+    Assert.assertEquals(expected, actual);
+
+    actual  = TreeMania.levelOrder(new TreeNode(2, new TreeNode(3), new TreeNode(4)));
+    expected = List.of(List.of(2), List.of(3, 4));
+    Assert.assertEquals(expected, actual);
   }
 }

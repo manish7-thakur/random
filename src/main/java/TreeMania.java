@@ -1,5 +1,5 @@
 import java.util.*;
-
+import java.util.stream.*;
 public class TreeMania {
   public static int maxDepth(TreeNode root) {
     if(root == null) return 0;
@@ -51,5 +51,23 @@ public class TreeMania {
     root.right = invertTree(root.left);
     root.left = temp;
     return root;
+  }
+  static List<List<Integer>> levelOrder(TreeNode root) {
+    if(root == null) return List.of();
+    var res = new ArrayList<List<Integer>>();
+    var q = new LinkedList<TreeNode>();
+    q.add(root);
+    while(!q.isEmpty()) {
+      var list = new ArrayList<Integer>();
+      int size = q.size();
+      for(int i = 0; i < size; i++) {
+        TreeNode node = q.remove();
+        if(node.left != null) q.add(node.left);
+        if(node.right != null) q.add(node.right);
+        list.add(node.val);
+      }
+      res.add(list);
+    }
+    return res;
   }
 }
