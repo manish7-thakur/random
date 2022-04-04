@@ -21,16 +21,28 @@ public class TreeMania {
     qq.add(q);
     return isQueueElemSame(pq, qq);
   }
+  static boolean comparable(TreeNode p, TreeNode q) {
+    if(p == null && q == null) return true;
+    if(p == null || q == null) return false;
+    if(p.val != q.val) return false;
+    return true;
+  }
   static boolean isQueueElemSame(Queue<TreeNode> pq, Queue<TreeNode> qq) {
     while(!pq.isEmpty() && !qq.isEmpty()) {
       TreeNode p = pq.remove();
       TreeNode q = qq.remove();
       if(p.val != q.val) return false;
-      if(p.left != null) pq.add(p.left);
-      if(q.left != null) qq.add(q.left);
-      if(p.right != null) pq.add(p.right);
-      if(q.right != null) qq.add(q.right);
+      if(!comparable(p.left, q.left)) return false;
+      if(!comparable(p.right, q.right)) return false;
+      if(p.left != null && q.left != null) {
+        pq.add(p.left);
+        qq.add(q.left);
+      }
+      if(p.right != null && q.right != null) {
+        pq.add(p.right);
+        qq.add(q.right);
+      }
     }
-    return pq.isEmpty() && qq.isEmpty();
+    return true;
   }
 }

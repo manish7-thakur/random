@@ -30,6 +30,9 @@ public class TreeManiaTest {
     actual = TreeMania.isSameTreeIter(new TreeNode(2), null);
     Assert.assertFalse(actual);
 
+    actual = TreeMania.isSameTreeIter(new TreeNode(2, new TreeNode(1)), new TreeNode(2, null, new TreeNode(1)));
+    Assert.assertFalse(actual);
+
     actual = TreeMania.isSameTreeIter(new TreeNode(2), new TreeNode(3));
     Assert.assertFalse(actual);
 
