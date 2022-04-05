@@ -82,4 +82,23 @@ public class TreeMania {
     if(root.val != subRoot.val) return false;
     return isSubtreeCheck(root.left, subRoot.left) && isSubtreeCheck(root.right, subRoot.right);
   }
+  static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    var pathP = new ArrayList<TreeNode>();
+    pathToNode(root, p, pathP);
+    var pathQ = new ArrayList<TreeNode>();
+    pathToNode(root, q, pathQ);
+    return pathP.get(0);
+  }
+  static boolean pathToNode(TreeNode root, TreeNode node, List<TreeNode> path) {
+    if(root == null) return false;
+    if(root.val == node.val) {
+      path.add(root);
+      return true;
+    }
+    path.add(root);
+    boolean present = pathToNode(root.left, node, path);
+    if(present) return true;
+    path.remove(path.size() - 1);
+    return pathToNode(root.right, node, path);
+  }
 }

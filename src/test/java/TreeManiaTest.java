@@ -146,6 +146,19 @@ public class TreeManiaTest {
 
     actual = TreeMania.isSubtree(new TreeNode(3, new TreeNode(4, new TreeNode(1)), new TreeNode(5, new TreeNode(2))), new TreeNode(3, new TreeNode(1), new TreeNode(2)));
     Assert.assertFalse(actual);
+  }
+  @Test
+  public void lowestCommonAncestorOfBinaryTree() {
+    var actual = TreeMania.lowestCommonAncestor(new TreeNode(1, new TreeNode(2)), new TreeNode(1), new TreeNode(2));
+    var expected = 1;
+    Assert.assertEquals(expected, actual.val);
 
+    actual = TreeMania.lowestCommonAncestor(new TreeNode(1, null, new TreeNode(2)), new TreeNode(1), new TreeNode(2));
+    expected = 1;
+    Assert.assertEquals(expected, actual.val);
+
+    actual = TreeMania.lowestCommonAncestor(new TreeNode(3, new TreeNode(1), new TreeNode(2)), new TreeNode(1), new TreeNode(2));
+    expected = 3;
+    Assert.assertEquals(expected, actual.val);
   }
 }
