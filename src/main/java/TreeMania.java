@@ -70,12 +70,12 @@ public class TreeMania {
     }
     return res;
   }
-  static boolean isSubtree(TreeNode root, TreeNode subroot) {
-    if(root == null && subroot == null) return true;
-    if(root == null || subroot == null) return false;
-    if(root.val == subroot.val) {
-      if(isSubtree(root.left, subroot.left) && isSubtree(root.right, subroot.right)) return true;
+  static boolean isSubtree(TreeNode root, TreeNode subRoot) {
+    if(root == null && subRoot == null) return true;
+    if(root == null || subRoot == null) return false;
+    if(root.val == subRoot.val) {
+      if(isSubtree(root.left, subRoot.left) && isSubtree(root.right, subRoot.right)) return true;
     }
-    return isSubtree(root.left, subroot) || isSubtree(root.right, subroot);
+    return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
   }
 }
