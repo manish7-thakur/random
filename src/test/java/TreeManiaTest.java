@@ -106,4 +106,27 @@ public class TreeManiaTest {
     expected = List.of(List.of(2), List.of(3, 4), List.of(7, 9, 2, 6));
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void subtreeOfAnotherTree() {
+    boolean actual = TreeMania.isSubtree(null, new TreeNode(1));
+    Assert.assertFalse(actual);
+
+    actual = TreeMania.isSubtree(new TreeNode(1), null);
+    Assert.assertFalse(actual);
+
+    actual = TreeMania.isSubtree(null, null);
+    Assert.assertTrue(actual);
+
+    actual = TreeMania.isSubtree(new TreeNode(1), new TreeNode(2));
+    Assert.assertFalse(actual);
+
+    actual = TreeMania.isSubtree(new TreeNode(2, new TreeNode(1)), new TreeNode(1));
+    Assert.assertTrue(actual);
+
+    actual = TreeMania.isSubtree(new TreeNode(2, new TreeNode(1)), new TreeNode(2));
+    Assert.assertFalse(actual);
+
+    actual = TreeMania.isSubtree(new TreeNode(2, new TreeNode(2)), new TreeNode(2));
+    Assert.assertTrue(actual);
+  }
 }
