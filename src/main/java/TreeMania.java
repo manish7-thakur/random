@@ -73,9 +73,7 @@ public class TreeMania {
   static boolean isSubtree(TreeNode root, TreeNode subRoot) {
     if(root == null && subRoot == null) return true;
     if(root == null || subRoot == null) return false;
-    if(root.val == subRoot.val) {
-      if(isSubtreeCheck(root.left, subRoot.left) && isSubtreeCheck(root.right, subRoot.right)) return true;
-    }
+    if(isSubtreeCheck(root, subRoot)) return true;
     return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
   }
   static boolean isSubtreeCheck(TreeNode root, TreeNode subRoot) {
