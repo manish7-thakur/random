@@ -1,5 +1,7 @@
-import java.util.*;
-import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 public class TreeMania {
   public static int maxDepth(TreeNode root) {
     if(root == null) return 0;
@@ -24,8 +26,7 @@ public class TreeMania {
   static boolean comparable(TreeNode p, TreeNode q) {
     if(p == null && q == null) return true;
     if(p == null || q == null) return false;
-    if(p.val != q.val) return false;
-    return true;
+    return p.val == q.val;
   }
   static boolean isQueueElemSame(Queue<TreeNode> pq, Queue<TreeNode> qq) {
     while(!pq.isEmpty() && !qq.isEmpty()) {
