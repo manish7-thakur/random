@@ -74,8 +74,14 @@ public class TreeMania {
     if(root == null && subRoot == null) return true;
     if(root == null || subRoot == null) return false;
     if(root.val == subRoot.val) {
-      if(isSubtree(root.left, subRoot.left) && isSubtree(root.right, subRoot.right)) return true;
+      if(isSubtreeCheck(root.left, subRoot.left) && isSubtreeCheck(root.right, subRoot.right)) return true;
     }
     return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
+  }
+  static boolean isSubtreeCheck(TreeNode root, TreeNode subRoot) {
+    if(root == null && subRoot == null) return true;
+    if(root == null || subRoot == null) return false;
+    if(root.val != subRoot.val) return false;
+    return isSubtreeCheck(root.left, subRoot.left) && isSubtreeCheck(root.right, subRoot.right);
   }
 }
