@@ -140,5 +140,8 @@ public class TreeManiaTest {
 
     actual = TreeMania.isSubtree(new TreeNode(2, new TreeNode(1, new TreeNode(3, new TreeNode(4)), new TreeNode(3, new TreeNode(4, new TreeNode(2))))), new TreeNode(3, new TreeNode(4)));
     Assert.assertTrue(actual);
+
+    actual = TreeMania.isSubtree(new TreeNode(2, new TreeNode(1, new TreeNode(3, new TreeNode(4, null, new TreeNode(1))), new TreeNode(3, new TreeNode(4, new TreeNode(2))))), new TreeNode(3, new TreeNode(4)));
+    Assert.assertFalse(actual);
   }
 }
