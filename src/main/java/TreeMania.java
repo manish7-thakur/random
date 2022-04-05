@@ -87,18 +87,22 @@ public class TreeMania {
     pathToNode(root, p, pathP);
     var pathQ = new ArrayList<TreeNode>();
     pathToNode(root, q, pathQ);
+    for(int i = 0; i < pathP.size() && i < pathQ.size(); i++) {
+      if(pathP.get(i) != pathQ.get(i)) return pathP.get(i - 1);
+    }
     return pathP.get(0);
   }
   static boolean pathToNode(TreeNode root, TreeNode node, List<TreeNode> path) {
     if(root == null) return false;
+    path.add(root);
     if(root.val == node.val) {
-      path.add(root);
       return true;
     }
-    path.add(root);
     boolean present = pathToNode(root.left, node, path);
     if(present) return true;
+    present = pathToNode(root.right, node, path);
+    if(present) return true;
     path.remove(path.size() - 1);
-    return pathToNode(root.right, node, path);
+    return false;
   }
 }

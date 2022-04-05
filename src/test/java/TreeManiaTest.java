@@ -160,5 +160,9 @@ public class TreeManiaTest {
     actual = TreeMania.lowestCommonAncestor(new TreeNode(3, new TreeNode(1), new TreeNode(2)), new TreeNode(1), new TreeNode(2));
     expected = 3;
     Assert.assertEquals(expected, actual.val);
+
+    actual = TreeMania.lowestCommonAncestor(new TreeNode(7, new TreeNode(4, new TreeNode(3), new TreeNode(2)), new TreeNode(5)), new TreeNode(2), new TreeNode(3));
+    expected = 4;
+    Assert.assertEquals(expected, actual.val);
   }
 }
