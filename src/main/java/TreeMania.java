@@ -96,14 +96,12 @@ public class TreeMania {
   static boolean pathToNode(TreeNode root, TreeNode node, List<TreeNode> path) {
     if(root == null) return false;
     path.add(root);
-    if(root.val == node.val) {
-      return true;
-    }
+    if(root.val == node.val) return true;
     boolean present = pathToNode(root.left, node, path);
     if(present) return true;
     present = pathToNode(root.right, node, path);
     if(present) return true;
     path.remove(path.size() - 1);
-    return false;
+    return present;
   }
 }
