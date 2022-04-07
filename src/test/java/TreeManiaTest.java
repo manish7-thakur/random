@@ -195,4 +195,17 @@ public class TreeManiaTest {
     expected = "3,2,n,n,4,n,6,n,n";
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void deserializeBinaryTree() {
+    TreeNode actual = TreeMania.deserialize("");
+    Assert.assertNull(actual);
+
+    actual = TreeMania.deserialize("23");
+    Assert.assertEquals(23, actual.val);
+
+    actual = TreeMania.deserialize("23,n,n");
+    Assert.assertEquals(23, actual.val);
+    Assert.assertNull(actual.left);
+    Assert.assertNull(actual.right);
+  }
 }
