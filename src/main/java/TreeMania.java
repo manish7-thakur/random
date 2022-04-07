@@ -1,7 +1,10 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.*;
+
 public class TreeMania {
   public static int maxDepth(TreeNode root) {
     if(root == null) return 0;
@@ -141,6 +144,17 @@ public class TreeMania {
         q.add(curr.right);
       }
     }
+    return root;
+  }
+  static TreeNode buildTree(int[] preorder, int[] inorder) {
+    Map<Integer, Integer> map = IntStream.range(0, inorder.length).boxed().collect(toMap(i -> inorder[i], Function.identity()));
+    return buildTreeRec(preorder, 0, preorder.length - 1, 0, map);
+  }
+  static TreeNode buildTreeRec(int[] preorder, int l, int h, int pidx, Map<Integer, Integer> map) {
+    if(l > h) return null;
+    TreeNode root = new TreeNode(preorder[pidx]);
+    root.left = buildTreeRec(preorder, l, map.get(preorder[pidx]) - 1, pidx + 1, map);
+    root.right = buildTreeRec(preorder, map.get(preorder[pidx]) + 1, h, pidx + 1, map);
     return root;
   }
 }

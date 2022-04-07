@@ -235,6 +235,19 @@ public class TreeManiaTest {
     Assert.assertEquals(2, root.right.right.val);
     Assert.assertEquals(7, root.right.right.right.val);
     Assert.assertEquals(3, root.right.right.right.left.val);
+  }
+  @Test
+  public void constructBinaryTreeFromPreAndInorder() {
+    TreeNode actual = TreeMania.buildTree(new int[]{1}, new int[]{1});
+    Assert.assertEquals(1, actual.val);
+
+    actual = TreeMania.buildTree(new int[]{1, 2}, new int[]{2, 1});
+    Assert.assertEquals(1, actual.val);
+    Assert.assertEquals(2, actual.left.val);
+
+    actual = TreeMania.buildTree(new int[]{1, 2}, new int[]{1, 2});
+    Assert.assertEquals(1, actual.val);
+    Assert.assertEquals(2, actual.right.val);
 
   }
 }
