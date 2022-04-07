@@ -109,20 +109,15 @@ public class TreeMania {
     if(root == null) return "";
     StringBuilder b = new StringBuilder();
     Queue<TreeNode> q = new LinkedList<>();
-    b.append(root.val);
     q.add(root);
     while(!q.isEmpty()) {
       var node = q.remove();
-      if(node.left == null) b.append(",n");
-      else {
-        b.append("," + node.left.val);
+      if(node != null) {
+        b.append(node.val);
         q.add(node.left);
-      }
-      if(node.right == null) b.append(",n");
-      else {
-        b.append("," + node.right.val);
         q.add(node.right);
-      }
+      } else b.append("n");
+      if(!q.isEmpty()) b.append(",");
     }
     return b.toString();
   }
