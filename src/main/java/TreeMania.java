@@ -135,7 +135,6 @@ public class TreeMania {
     q.add(root);
     while(!q.isEmpty()) {
       i++;
-      if(i >= nodes.length) break;
       TreeNode curr = q.remove();
       if(!nodes[i].equals("n")) {
         curr.left = new TreeNode(Integer.parseInt(nodes[i]));

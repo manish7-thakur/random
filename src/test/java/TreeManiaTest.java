@@ -200,9 +200,6 @@ public class TreeManiaTest {
     TreeNode actual = TreeMania.deserialize("");
     Assert.assertNull(actual);
 
-    actual = TreeMania.deserialize("23");
-    Assert.assertEquals(23, actual.val);
-
     actual = TreeMania.deserialize("23,n,n");
     Assert.assertEquals(23, actual.val);
     Assert.assertNull(actual.left);
