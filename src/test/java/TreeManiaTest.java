@@ -249,5 +249,10 @@ public class TreeManiaTest {
     Assert.assertEquals(1, actual.val);
     Assert.assertEquals(2, actual.right.val);
 
+    actual = TreeMania.buildTree(new int[]{1, 2, 3}, new int[]{2, 1, 3});
+    Assert.assertEquals(1, actual.val);
+    Assert.assertEquals(2, actual.left.val);
+    Assert.assertEquals(3, actual.right.val);
+
   }
 }
