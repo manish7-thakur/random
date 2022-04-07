@@ -105,4 +105,18 @@ public class TreeMania {
     path.remove(path.size() - 1);
     return present;
   }
+  static String serialize(TreeNode root) {
+    if(root == null) return "";
+    StringBuilder b = new StringBuilder();
+    Queue<TreeNode> q = new LinkedList<>();
+    q.add(root);
+    while(!q.isEmpty()) {
+      var node = q.remove();
+      b.append(node.val);
+      if(node.left == null) b.append(",n"); else q.add(node.left);
+      if(node.right == null) b.append(",n"); else q.add(node.right);
+      if(!q.isEmpty())b.append(",");
+    }
+    return b.toString();
+  }
 }

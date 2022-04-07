@@ -173,4 +173,18 @@ public class TreeManiaTest {
     expected = 8;
     Assert.assertEquals(expected, actual.val);
   }
+  @Test
+  public void serializeBinaryTree() {
+    String actual = TreeMania.serialize(null);
+    String expected = "";
+    Assert.assertEquals(expected, actual);
+
+    actual = TreeMania.serialize(new TreeNode(3));
+    expected = "3,n,n";
+    Assert.assertEquals(expected, actual);
+
+    actual = TreeMania.serialize(new TreeNode(3, null, new TreeNode(2)));
+    expected = "3,n,2,n,n";
+    Assert.assertEquals(expected, actual);
+  }
 }
