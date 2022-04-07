@@ -186,5 +186,9 @@ public class TreeManiaTest {
     actual = TreeMania.serialize(new TreeNode(3, null, new TreeNode(2)));
     expected = "3,n,2,n,n";
     Assert.assertEquals(expected, actual);
+
+    actual = TreeMania.serialize(new TreeNode(3, new TreeNode(2)));
+    expected = "3,2,n,n,n";
+    Assert.assertEquals(expected, actual);
   }
 }
