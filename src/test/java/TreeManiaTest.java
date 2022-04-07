@@ -207,5 +207,22 @@ public class TreeManiaTest {
     Assert.assertEquals(23, actual.val);
     Assert.assertNull(actual.left);
     Assert.assertNull(actual.right);
+
+    actual = TreeMania.deserialize("23,n,24,n,n");
+    Assert.assertEquals(23, actual.val);
+    Assert.assertNull(actual.left);
+    Assert.assertEquals(24, actual.right.val);
+
+    actual = TreeMania.deserialize("23,n,24,n,25,n,n");
+    Assert.assertEquals(23, actual.val);
+    Assert.assertNull(actual.left);
+    Assert.assertEquals(24, actual.right.val);
+    Assert.assertEquals(25, actual.right.right.val);
+
+    actual = TreeMania.deserialize("3,2,n,n,4,n,6,n,n");
+    Assert.assertEquals(3, actual.val);
+    Assert.assertEquals(2, actual.left.val);
+    Assert.assertEquals(4, actual.left.right.val);
+    Assert.assertEquals(6, actual.left.right.right.val);
   }
 }

@@ -127,12 +127,11 @@ public class TreeMania {
     return b.toString();
   }
   static TreeNode deserialize(String data) {
-    TreeNode root = null;
-    if(data.isEmpty()) return root;
+    if(data.isEmpty()) return null;
     String[] nodes = data.split(",");
     Queue<TreeNode> q = new LinkedList<>();
     int i = 0;
-    root = new TreeNode(Integer.parseInt(nodes[i]));
+    TreeNode root = new TreeNode(Integer.parseInt(nodes[i]));
     q.add(root);
     while(!q.isEmpty()) {
       i++;
