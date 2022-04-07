@@ -224,5 +224,20 @@ public class TreeManiaTest {
     Assert.assertEquals(2, actual.left.val);
     Assert.assertEquals(4, actual.left.right.val);
     Assert.assertEquals(6, actual.left.right.right.val);
+
+    TreeNode root = new TreeNode(3, new TreeNode(7, null, new TreeNode(4, null, new TreeNode(7, new TreeNode(5)))), new TreeNode(4, new TreeNode(6, null, new TreeNode(4)), new TreeNode(2, null, new TreeNode(7, new TreeNode(3)))));
+    actual = TreeMania.deserialize(TreeMania.serialize(root));
+    Assert.assertEquals(3, root.val);
+    Assert.assertEquals(7, root.left.val);
+    Assert.assertEquals(4, root.left.right.val);
+    Assert.assertEquals(7, root.left.right.right.val);
+    Assert.assertEquals(5, root.left.right.right.left.val);
+    Assert.assertEquals(4, root.right.val);
+    Assert.assertEquals(6, root.right.left.val);
+    Assert.assertEquals(4, root.right.left.right.val);
+    Assert.assertEquals(2, root.right.right.val);
+    Assert.assertEquals(7, root.right.right.right.val);
+    Assert.assertEquals(3, root.right.right.right.left.val);
+
   }
 }
