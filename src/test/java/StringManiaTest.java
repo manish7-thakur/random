@@ -264,5 +264,21 @@ public class StringManiaTest {
     actual = StringMania.sortChars("234");
     expected = "243";
     Assert.assertEquals(expected, actual);
+
+    actual = StringMania.sortChars("2yW14");
+    expected = "yW241";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.sortChars("X32yWx14");
+    expected = "xyWX2413";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.sortChars("X23W2yWx3Xx141");
+    expected = "xxyWWXX2241133";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.sortChars("X183HudJF823KITh68sdtW225yW44HDx3XWx1471");
+    expected = "xxyWWXX2241133";
+    Assert.assertEquals(expected, actual);
   }
 }
