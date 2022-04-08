@@ -256,5 +256,13 @@ public class StringManiaTest {
     actual = StringMania.sortChars("Bab");
     expected = "abB";
     Assert.assertEquals(expected, actual);
+
+    actual = StringMania.sortChars("21");
+    expected = "21";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.sortChars("234");
+    expected = "243";
+    Assert.assertEquals(expected, actual);
   }
 }

@@ -134,16 +134,24 @@ public class StringMania {
     return count;
   }
   static String sortChars(String s) {
-    Queue<Character> charQueue = new PriorityQueue<>((c1, c2) -> {
+    Queue<Character> charQ = new PriorityQueue<>((c1, c2) -> {
       if(Character.isLowerCase(c1) && !Character.isLowerCase(c2)) return -1;
       if(!Character.isLowerCase(c1) && Character.isLowerCase(c2)) return 1;
       return c1 - c2;
     });
+    Queue<Integer> digitQ = new PriorityQueue<>((d1, d2) -> {
+      if(d1 % 2 == 0 && d2 % 2 != 0) return -1;
+      if(d1 % 2 != 0 && d2 %2 == 0) return 1;
+      return  d1 - d2;
+    });
     for(int i = 0; i < s.length(); i++) {
-      charQueue.add(s.charAt(i));
+      char c = s.charAt(i);
+      if(Character.isDigit(c)) digitQ.add(Character.getNumericValue(c));
+      else charQ.add(c);
     }
     StringBuilder b = new StringBuilder();
-    while(!charQueue.isEmpty()) b.append(charQueue.remove());
+    while(!charQ.isEmpty()) b.append(charQ.remove());
+    while(!digitQ.isEmpty()) b.append(digitQ.remove());
     return b.toString();
   }
 
