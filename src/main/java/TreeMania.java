@@ -148,13 +148,13 @@ public class TreeMania {
   }
   static TreeNode buildTree(int[] preorder, int[] inorder) {
     Map<Integer, Integer> map = IntStream.range(0, inorder.length).boxed().collect(toMap(i -> inorder[i], Function.identity()));
-    return buildTreeRec(preorder, 0, preorder.length - 1, 0, map);
+    return buildTreeRec(preorder, 0, preorder.length - 1, map, 0);
   }
-  static TreeNode buildTreeRec(int[] preorder, int l, int h, int pidx, Map<Integer, Integer> map) {
+  static TreeNode buildTreeRec(int[] preorder, int l, int h, Map<Integer, Integer> map, int start) {
     if(l > h) return null;
-    TreeNode root = new TreeNode(preorder[pidx]);
-    root.left = buildTreeRec(preorder, l, map.get(preorder[pidx]) - 1, pidx + 1, map);
-    root.right = buildTreeRec(preorder, map.get(preorder[pidx]) + 1, h, pidx + 1, map);
+    int data = preorder[start];
+    TreeNode root = new TreeNode(data);
+    root.right = buildTreeRec(preorder, map.get(data) + 1, h, map, start + 1);
     return root;
   }
 }
