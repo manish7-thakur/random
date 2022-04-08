@@ -239,4 +239,22 @@ public class StringManiaTest {
     expected = 8385;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void sortSmallCaseAheadUpperCaseAheadEvenDigitsAheadOddDigits() {
+    String actual = StringMania.sortChars("aA");
+    String expected = "aA";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.sortChars("Aa");
+    expected = "aA";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.sortChars("ba");
+    expected = "ab";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.sortChars("Bab");
+    expected = "abB";
+    Assert.assertEquals(expected, actual);
+  }
 }
