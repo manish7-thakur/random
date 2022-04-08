@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -147,15 +148,16 @@ public class TreeMania {
     return root;
   }
   static TreeNode buildTree(int[] preorder, int[] inorder) {
+    AtomicInteger pidx = new AtomicInteger(0);
     Map<Integer, Integer> map = IntStream.range(0, inorder.length).boxed().collect(toMap(i -> inorder[i], Function.identity()));
-    return buildTreeRec(preorder, 0, preorder.length - 1, map, 0);
+    return buildTreeRec(preorder, 0, preorder.length - 1, map, pidx);
   }
-  static TreeNode buildTreeRec(int[] preorder, int l, int h, Map<Integer, Integer> map, int start) {
+  static TreeNode buildTreeRec(int[] preorder, int l, int h, Map<Integer, Integer> map, AtomicInteger start) {
     if(l > h) return null;
-    int data = preorder[start];
+    int data = preorder[start.getAndIncrement()];
     TreeNode root = new TreeNode(data);
-    root.right = buildTreeRec(preorder, map.get(data) + 1, h, map, start + 1);
-    root.left = buildTreeRec(preorder, l, map.get(data) - 1, map, start + 1);
+    root.left = buildTreeRec(preorder, l, map.get(data) - 1, map, start);
+    root.right = buildTreeRec(preorder, map.get(data) + 1, h, map, start);
     return root;
   }
 }
