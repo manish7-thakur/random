@@ -160,4 +160,13 @@ public class TreeMania {
     root.right = buildTreeRec(preorder, map.get(data) + 1, h, map, start);
     return root;
   }
+  static boolean isValidBST(TreeNode root) {
+    return isValidBSTRec(root, null, null);
+  }
+  static boolean isValidBSTRec(TreeNode curr, TreeNode min, TreeNode max) {
+    if(curr == null) return true;
+    if(max != null && curr.val >= max.val) return false;
+    if(min != null && curr.val <= min.val) return false;
+    return isValidBSTRec(curr.left, min, curr) && isValidBSTRec(curr.right, curr, max);
+  }
 }

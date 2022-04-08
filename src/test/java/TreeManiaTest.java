@@ -268,4 +268,19 @@ public class TreeManiaTest {
     Assert.assertEquals(15, actual.right.left.val);
     Assert.assertEquals(7, actual.right.right.val);
   }
+
+  @Test
+  public void validateBinarySearchTree() {
+    boolean actual = TreeMania.isValidBST(null);
+    Assert.assertTrue(actual);
+
+    actual = TreeMania.isValidBST(new TreeNode(2));
+    Assert.assertTrue(actual);
+
+    actual = TreeMania.isValidBST(new TreeNode(5, new TreeNode(6)));
+    Assert.assertFalse(actual);
+
+    actual = TreeMania.isValidBST(new TreeNode(5, null, new TreeNode(4)));
+    Assert.assertFalse(actual);
+  }
 }
