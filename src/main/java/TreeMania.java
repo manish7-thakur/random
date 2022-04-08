@@ -155,6 +155,7 @@ public class TreeMania {
     int data = preorder[start];
     TreeNode root = new TreeNode(data);
     root.right = buildTreeRec(preorder, map.get(data) + 1, h, map, start + 1);
+    root.left = buildTreeRec(preorder, l, map.get(data) - 1, map, start + 1);
     return root;
   }
 }
