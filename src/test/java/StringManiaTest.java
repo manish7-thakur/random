@@ -278,7 +278,7 @@ public class StringManiaTest {
     Assert.assertEquals(expected, actual);
 
     actual = StringMania.sortChars("X183HudJF823KITh68sdtW225yW44HDx3XWx1471");
-    expected = "xxyWWXX2241133";
+    expected = "ddhstuxxyDFHHIJKTWWWXX222444688811133357";
     Assert.assertEquals(expected, actual);
   }
 }
