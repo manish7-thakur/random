@@ -282,5 +282,17 @@ public class TreeManiaTest {
 
     actual = TreeMania.isValidBST(new TreeNode(5, null, new TreeNode(4)));
     Assert.assertFalse(actual);
+
+    actual = TreeMania.isValidBST(new TreeNode(5, new TreeNode(3, null, new TreeNode(6))));
+    Assert.assertFalse(actual);
+
+    actual = TreeMania.isValidBST(new TreeNode(3, null, new TreeNode(6, new TreeNode(2))));
+    Assert.assertFalse(actual);
+
+    actual = TreeMania.isValidBST(new TreeNode(4, new TreeNode(2, null, new TreeNode(5))));
+    Assert.assertFalse(actual);
+
+    actual = TreeMania.isValidBST(new TreeNode(8, new TreeNode(6, new TreeNode(5), new TreeNode(7)), new TreeNode(13, new TreeNode(12), new TreeNode(14))));
+    Assert.assertTrue(actual);
   }
 }
