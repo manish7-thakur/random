@@ -169,4 +169,17 @@ public class TreeMania {
     if(min != null && curr.val <= min.val) return false;
     return isValidBSTRec(curr.left, min, curr) && isValidBSTRec(curr.right, curr, max);
   }
+  static int kthSmallest(TreeNode root, int k) {
+    AtomicInteger count = new AtomicInteger();
+    return kthSmallestRec(root, k, count);
+  }
+  static int kthSmallestRec(TreeNode root, int k, AtomicInteger count) {
+    if(root == null) return -1;
+    int found = kthSmallestRec(root.left, k, count);
+    if(found != -1) return found;
+    if(k == count.incrementAndGet()) return root.val;
+    found = kthSmallestRec(root.right, k, count);
+    if(found != -1) return found;
+    return -1;
+  }
 }

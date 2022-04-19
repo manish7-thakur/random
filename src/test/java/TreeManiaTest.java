@@ -295,4 +295,18 @@ public class TreeManiaTest {
     actual = TreeMania.isValidBST(new TreeNode(8, new TreeNode(6, new TreeNode(5), new TreeNode(7)), new TreeNode(13, new TreeNode(12), new TreeNode(14))));
     Assert.assertTrue(actual);
   }
+  @Test
+  public void findKthSmallestElementInBST() {
+    int actual = TreeMania.kthSmallest(null, 4);
+    int expected = -1;
+    Assert.assertEquals(expected, actual);
+
+    actual = TreeMania.kthSmallest(new TreeNode(3), 1);
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = TreeMania.kthSmallest(new TreeNode(3, new TreeNode(2)), 1);
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+  }
 }
