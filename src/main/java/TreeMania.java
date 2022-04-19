@@ -178,8 +178,6 @@ public class TreeMania {
     int found = kthSmallestRec(root.left, k, count);
     if(found != -1) return found;
     if(k == count.incrementAndGet()) return root.val;
-    found = kthSmallestRec(root.right, k, count);
-    if(found != -1) return found;
-    return -1;
+    return kthSmallestRec(root.right, k, count);
   }
 }
