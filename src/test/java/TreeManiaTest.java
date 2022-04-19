@@ -308,5 +308,13 @@ public class TreeManiaTest {
     actual = TreeMania.kthSmallest(new TreeNode(3, new TreeNode(2)), 1);
     expected = 2;
     Assert.assertEquals(expected, actual);
+
+    actual = TreeMania.kthSmallest(new TreeNode(3, new TreeNode(2)), 3);
+    expected = -1;
+    Assert.assertEquals(expected, actual);
+
+    actual = TreeMania.kthSmallest(new TreeNode(3, new TreeNode(2), new TreeNode(7, new TreeNode(6))), 4);
+    expected = 7;
+    Assert.assertEquals(expected, actual);
   }
 }
