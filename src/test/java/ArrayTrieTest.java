@@ -16,5 +16,7 @@ public class ArrayTrieTest {
     Assert.assertFalse(t.search("sdf"));
     Assert.assertTrue(t.startsWith("sdf"));
     Assert.assertFalse(t.startsWith("sdpp"));
+    t.insert("sdfrjsyasjdnhadnasjdhasdasgrt");
+    Assert.assertTrue(t.startsWith("sdfrjsyasjdnhadnasjdhasdasgrt"));
   }
 }
