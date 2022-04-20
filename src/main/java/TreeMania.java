@@ -182,22 +182,11 @@ public class TreeMania {
   }
 
   static TreeNode lcsBST(TreeNode root, TreeNode p, TreeNode q) {
-    List<TreeNode> pathP = new ArrayList<>();
-    lcsBSTRec(root, p, pathP);
-    List<TreeNode> pathQ = new ArrayList<>();
-    lcsBSTRec(root, q, pathQ);
-    int i = 0;
-    for(i = 0; i < pathP.size() && i < pathQ.size(); i++) {
-      if(pathP.get(i) != pathQ.get(i)) return pathP.get(i - 1);
-    }
-    return pathP.get(i - 1);
-  }
-  static void lcsBSTRec(TreeNode root, TreeNode node, List<TreeNode> list) {
     while(root != null) {
-      list.add(root);
-      if(node.val == root.val) return;
-      if(node.val < root.val) root = root.left;
-      else root = root.right;
+      if(p.val < root.val && q.val < root.val) root = root.left;
+      else if(p.val > root.val && q.val > root.val) root = root.right;
+      else return root;
     }
+    return root;
   }
 }
