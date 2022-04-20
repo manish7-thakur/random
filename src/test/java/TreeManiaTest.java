@@ -338,5 +338,9 @@ public class TreeManiaTest {
     actual = TreeMania.lcsBST(new TreeNode(8, new TreeNode(4, null, new TreeNode(7)), new TreeNode(12, new TreeNode(9))), 9, 7);
     expected = 8;
     Assert.assertEquals(expected, actual);
+
+    actual = TreeMania.lcsBST(new TreeNode(8, null, new TreeNode(9, null, new TreeNode(11, null, new TreeNode(13)))), 9, 13);
+    expected = 9;
+    Assert.assertEquals(expected, actual);
   }
 }
