@@ -1,49 +1,36 @@
 public class ArrayTrie {
   class TrieNode {
-    char c;
-    TrieNode[] children = new TrieNode[26];
-    boolean endOfWord;
-
-    TrieNode getChild(char c) {
-      return children[c - 'a'];
-    }
-    void addChild(char c) {
-      children[c - 'a'] = new TrieNode(c);
-    }
+    private TrieNode[] nodes = new TrieNode[26];
+    private boolean endOfWord;
     public TrieNode(char c) {
-      this.c  = c;
-      this.children = new TrieNode[26];
-    }
-  }
 
-  private TrieNode root;
-  public ArrayTrie() {
-    root = new TrieNode('\0');
+    }
+    public TrieNode addChild(char c) {
+      TrieNode t = new TrieNode(c);
+      nodes[c - 'a'] = t;
+      return t;
+    }
+    public TrieNode getChild(char c) {
+      return nodes[c - 'a'];
+    }
+    public void setEndOfWord(boolean endOfWord) {
+      this.endOfWord = endOfWord;
+    }
+
   }
+  private TrieNode root = new TrieNode(' ');
 
   public void insert(String word) {
-    TrieNode current = root;
-    for(char c : word.toCharArray()) {
-      if(current.getChild(c) == null) current.addChild(c);
-      current = current.getChild(c);
-    }
-    current.endOfWord = true;
-  }
-  public boolean search(String word) {
-    TrieNode current = root;
-    for(char c : word.toCharArray()) {
-      current = current.getChild(c);
-      if(current == null) return false;
-    }
-    return current.endOfWord;
+    TrieNode curr = root;
+    curr = curr.addChild(word.charAt(0));
+    curr.setEndOfWord(true);
   }
 
-  public boolean startsWith(String prefix) {
-    TrieNode current = root;
-    for(char c : prefix.toCharArray()) {
-      current = current.getChild(c);
-      if(current == null) return false;
+  public boolean search(String word) {
+    TrieNode curr = root;
+    for(int i = 0; i < word.length(); i++) {
+      curr = curr.getChild(word.charAt(i));
     }
-    return true;
+    return curr.endOfWord;
   }
 }
