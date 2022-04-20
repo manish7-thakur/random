@@ -26,7 +26,6 @@ public class ArrayTrie {
   public void insert(String word) {
     TrieNode curr = root;
     for(int i = 0; i < word.length(); i++) {
-      TrieNode child = curr.getChild(word.charAt(i));
       if(curr.getChild(word.charAt(i)) == null) curr.addChild(word.charAt(i));
       curr = curr.getChild(word.charAt(i));
     }
