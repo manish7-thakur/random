@@ -38,4 +38,13 @@ public class ArrayTrie {
     }
     return curr.endOfWord;
   }
+
+  public boolean startsWith(String prefix) {
+    TrieNode curr = root;
+    for(int i = 0; i < prefix.length(); i++) {
+      curr = curr.getChild(prefix.charAt(i));
+      if(curr == null) return false;
+    }
+    return true;
+  }
 }
