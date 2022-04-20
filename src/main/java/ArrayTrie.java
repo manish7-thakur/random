@@ -1,31 +1,34 @@
 public class ArrayTrie {
   class TrieNode {
-    private TrieNode[] nodes = new TrieNode[26];
+    private char node;
+    private TrieNode[] children;
     private boolean endOfWord;
-    public TrieNode(char c) {
 
+    public TrieNode(char c) {
+      this.node = c;
+      children = new TrieNode[26];
     }
-    public TrieNode addChild(char c) {
-      TrieNode t = new TrieNode(c);
-      nodes[c - 'a'] = t;
-      return t;
+    public void addChild(char c) {
+      children[c - 'a'] = new TrieNode(c);
     }
     public TrieNode getChild(char c) {
-      return nodes[c - 'a'];
+      return children[c - 'a'];
     }
     public void setEndOfWord(boolean endOfWord) {
       this.endOfWord = endOfWord;
     }
-
   }
-  private TrieNode root = new TrieNode(' ');
+  private TrieNode root;
+  public ArrayTrie() {
+    root = new TrieNode('\0');
+  }
 
   public void insert(String word) {
     TrieNode curr = root;
     for(int i = 0; i < word.length(); i++) {
       TrieNode child = curr.getChild(word.charAt(i));
-      if(child == null) child = curr.addChild(word.charAt(i));
-      curr = child;
+      if(curr.getChild(word.charAt(i)) == null) curr.addChild(word.charAt(i));
+      curr = curr.getChild(word.charAt(i));
     }
     curr.setEndOfWord(true);
   }
