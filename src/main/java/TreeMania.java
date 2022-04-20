@@ -180,4 +180,24 @@ public class TreeMania {
     if(k == count.incrementAndGet()) return root.val;
     return kthSmallestRec(root.right, k, count);
   }
+
+  static int lcsBST(TreeNode root, int p, int q) {
+    List<Integer> pathP = new ArrayList<>();
+    lcsBSTRec(root, p, pathP);
+    List<Integer> pathQ = new ArrayList<>();
+    lcsBSTRec(root, q, pathQ);
+    int i = 0;
+    for(i = 0; i < pathP.size() && i < pathQ.size(); i++) {
+      if(pathP.get(i) != pathQ.get(i)) return pathP.get(i - 1);
+    }
+    return pathP.get(i - 1);
+  }
+  static void lcsBSTRec(TreeNode root, int elem, List<Integer> list) {
+    while(root != null) {
+      list.add(root.val);
+      if(elem == root.val) return;
+      if(elem < root.val) root = root.left;
+      else root = root.right;
+    }
+  }
 }

@@ -325,4 +325,18 @@ public class TreeManiaTest {
     expected = 9;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void lowestCommonAncestorOfBST() {
+    int actual = TreeMania.lcsBST(new TreeNode(1, null, new TreeNode(2)), 1, 2);
+    int expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = TreeMania.lcsBST(new TreeNode(2, new TreeNode(1)), 1, 2);
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = TreeMania.lcsBST(new TreeNode(8, new TreeNode(4, null, new TreeNode(7)), new TreeNode(12, new TreeNode(9))), 9, 7);
+    expected = 8;
+    Assert.assertEquals(expected, actual);
+  }
 }
