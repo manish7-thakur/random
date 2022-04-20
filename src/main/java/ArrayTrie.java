@@ -22,7 +22,11 @@ public class ArrayTrie {
 
   public void insert(String word) {
     TrieNode curr = root;
-    curr = curr.addChild(word.charAt(0));
+    for(int i = 0; i < word.length(); i++) {
+      TrieNode child = curr.getChild(word.charAt(i));
+      if(child == null) child = curr.addChild(word.charAt(i));
+      curr = child;
+    }
     curr.setEndOfWord(true);
   }
 
@@ -30,6 +34,7 @@ public class ArrayTrie {
     TrieNode curr = root;
     for(int i = 0; i < word.length(); i++) {
       curr = curr.getChild(word.charAt(i));
+      if(curr == null) return false;
     }
     return curr.endOfWord;
   }
