@@ -181,10 +181,10 @@ public class TreeMania {
     return kthSmallestRec(root.right, k, count);
   }
 
-  static int lcsBST(TreeNode root, int p, int q) {
-    List<Integer> pathP = new ArrayList<>();
+  static TreeNode lcsBST(TreeNode root, TreeNode p, TreeNode q) {
+    List<TreeNode> pathP = new ArrayList<>();
     lcsBSTRec(root, p, pathP);
-    List<Integer> pathQ = new ArrayList<>();
+    List<TreeNode> pathQ = new ArrayList<>();
     lcsBSTRec(root, q, pathQ);
     int i = 0;
     for(i = 0; i < pathP.size() && i < pathQ.size(); i++) {
@@ -192,11 +192,11 @@ public class TreeMania {
     }
     return pathP.get(i - 1);
   }
-  static void lcsBSTRec(TreeNode root, int elem, List<Integer> list) {
+  static void lcsBSTRec(TreeNode root, TreeNode node, List<TreeNode> list) {
     while(root != null) {
-      list.add(root.val);
-      if(elem == root.val) return;
-      if(elem < root.val) root = root.left;
+      list.add(root);
+      if(node.val == root.val) return;
+      if(node.val < root.val) root = root.left;
       else root = root.right;
     }
   }
