@@ -9,5 +9,8 @@ public class ArrayTrieTest {
     Assert.assertFalse(t.search("a"));
     t.insert("ss");
     Assert.assertTrue(t.search("ss"));
+    Assert.assertFalse(t.search("ssa"));
+    t.insert("ssa");
+    Assert.assertTrue(t.search("ssa"));
   }
 }
