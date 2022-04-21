@@ -264,10 +264,13 @@ public class ArrayMania {
     return i >= 0 && j >= 0 && i < board.length && j < board[0].length && board[i][j] == c && !visited[i][j];
   }
   static int[] topKFrequent(int[] nums, int k) {
-    Map<Integer, Integer> map = Arrays.stream(nums).boxed().collect(groupingBy(Function.identity(), collectingAndThen(counting(), Long::intValue))); // collector on right side of any func
+    Map<Integer, Integer> map = Arrays.stream(nums).boxed().collect(groupingBy(Function.identity(), collectingAndThen(counting(), Long::intValue)));
     record Pair(int val, int occ){}
-    Queue<Pair> q = new PriorityQueue<>((p1, p2) -> p2.occ - p1.occ);
-    map.forEach((key, v) -> q.add(new Pair(key, v)));
+    Queue<Pair> q = new PriorityQueue<>((p1, p2) -> p1.occ - p2.occ);
+    map.forEach((key, v) -> {
+      q.add(new Pair(key, v));
+      if(q.size() > k) q.remove();
+    });
     int[] res = new int[k];
     for(int i = 0; i < k; i++) res[i] = q.remove().val;
     return res;
