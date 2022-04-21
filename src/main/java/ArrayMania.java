@@ -266,7 +266,7 @@ public class ArrayMania {
   static int[] topKFrequent(int[] nums, int k) {
     Map<Integer, Integer> map = Arrays.stream(nums).boxed().collect(groupingBy(Function.identity(), collectingAndThen(counting(), Long::intValue)));
     record Pair(int val, int occ){}
-    Queue<Pair> q = new PriorityQueue<>((p1, p2) -> p1.occ - p2.occ);
+    Queue<Pair> q = new PriorityQueue<>(Comparator.comparingInt(p -> p.occ));
     map.forEach((key, v) -> {
       q.add(new Pair(key, v));
       if(q.size() > k) q.remove();
