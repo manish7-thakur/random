@@ -1,6 +1,8 @@
 import java.util.*;
 import static java.util.stream.Collectors.*;
 import java.util.function.*;
+import java.util.stream.Collectors;
+
 public class ArrayMania {
   static public List<List<Integer>> threeSum(int[] nums) {
     List<List<Integer>> res = new ArrayList<>();
@@ -263,25 +265,21 @@ public class ArrayMania {
   static boolean safe(char[][] board, int i, int j, char c, boolean visited[][]) {
     return i >= 0 && j >= 0 && i < board.length && j < board[0].length && board[i][j] == c && !visited[i][j];
   }
+  static record Pair(int val, int occ){}
   static int[] topKFrequent(int[] nums, int k) {
     Map<Integer, Integer> map = Arrays.stream(nums).boxed().collect(groupingBy(Function.identity(), collectingAndThen(counting(), Long::intValue)));
-    record Pair(int val, int occ){}
-    Queue<Pair> q = new PriorityQueue<>(Comparator.comparingInt(p -> p.occ));
-    map.forEach((key, v) -> {
-      q.add(new Pair(key, v));
-      if(q.size() > k) q.remove();
-    });
+    Pair[] pairs = map.entrySet().stream().map(e -> new Pair(e.getKey(), e.getValue())).toArray(Pair[]::new);
+    arrangePairs(pairs, k, 0, pairs.length - 1);
     int[] res = new int[k];
-    for(int i = 0; i < k; i++) res[i] = q.remove().val;
+    for(int i = 0; i < k; i++) res[i] = pairs[i].val;
     return res;
   }
-  static record Pair(int val, int occ){}
-  static void arrangePairs(int[] pairs, int k, int l, int h) {
+  static void arrangePairs(Pair[] pairs, int k, int l, int h) {
     if(l > h) return;
-    int p = pairs[l];
+    int p = pairs[l].occ;
     int pos = l;
     for(int i = l + 1; i <= h; i++) {
-      if(pairs[i] > p) {
+      if(pairs[i].occ > p) {
         pos++;
         swap(pairs, i, pos);
       }
@@ -290,8 +288,8 @@ public class ArrayMania {
     if(pos > k) arrangePairs(pairs, k, l, pos - 1);
     else if (pos < k) arrangePairs(pairs, k, pos + 1, h);
   }
-  static void swap(int[] pairs, int i, int j) {
-    int p = pairs[i];
+  static void swap(Pair[] pairs, int i, int j) {
+    Pair p = pairs[i];
     pairs[i] = pairs[j];
     pairs[j] = p;
   }
