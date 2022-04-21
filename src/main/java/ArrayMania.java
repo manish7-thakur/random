@@ -279,16 +279,16 @@ public class ArrayMania {
   static void arrangePairs(int[] pairs, int k, int l, int h) {
     if(l > h) return;
     int p = pairs[l];
-    int j = l;
-    for(int i = j + 1; i <= h; i++) {
+    int pos = l;
+    for(int i = l + 1; i <= h; i++) {
       if(pairs[i] > p) {
-        j++;
-        swap(pairs, i, j);
+        pos++;
+        swap(pairs, i, pos);
       }
     }
-    swap(pairs, l, j);
-    if(j > k) arrangePairs(pairs, k, l, j - 1);
-    else if (j < k) arrangePairs(pairs, k, j + 1, h);
+    swap(pairs, l, pos);
+    if(pos > k) arrangePairs(pairs, k, l, pos - 1);
+    else if (pos < k) arrangePairs(pairs, k, pos + 1, h);
   }
   static void swap(int[] pairs, int i, int j) {
     int p = pairs[i];
