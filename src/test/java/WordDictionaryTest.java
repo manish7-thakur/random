@@ -4,15 +4,15 @@ public class WordDictionaryTest {
   @Test
   public void searchWord() {
     var dictionary = new WordDictionary();
-    dictionary.insert("ba");
+    dictionary.addWord("ba");
     Assert.assertTrue(dictionary.search(".a"));
     Assert.assertTrue(dictionary.search("b."));
     Assert.assertFalse(dictionary.search("bc"));
     Assert.assertFalse(dictionary.search(".b"));
     Assert.assertFalse(dictionary.search("ba."));
-    dictionary.insert("bac");
+    dictionary.addWord("bac");
     Assert.assertTrue(dictionary.search("ba."));
-    dictionary.insert("stgksf");
+    dictionary.addWord("stgksf");
     Assert.assertTrue(dictionary.search("stgks."));
     Assert.assertFalse(dictionary.search("stgs.f"));
     Assert.assertTrue(dictionary.search(".t.k.f"));

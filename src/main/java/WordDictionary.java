@@ -26,7 +26,7 @@ public class WordDictionary {
     root = new TrieNode('\0');
   }
 
-  public void insert(String word) {
+  public void addWord(String word) {
     TrieNode curr = root;
     for(int i = 0; i < word.length(); i++) {
       if(curr.getChild(word.charAt(i)) == null) curr.addChild(word.charAt(i));
