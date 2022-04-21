@@ -38,16 +38,16 @@ public class WordDictionary {
   public boolean search(String word) {
     return startRec(word, 0, root);
   }
-  static boolean startRec(String word, int start, TrieNode node) {
+  static boolean startRec(String word, int start, TrieNode curr) {
     for(int i = start; i < word.length(); i++) {
       if(word.charAt(i) == '.') {
-        for(TrieNode n : node.getChildren()) {
+        for(TrieNode n : curr.getChildren()) {
           if(n != null && startRec(word, i + 1, n)) return true;
-          node = n;
+          curr = n;
         }
-      } else node = node.getChild(word.charAt(i));
-      if(node == null) return false;
+      } else curr = curr.getChild(word.charAt(i));
+      if(curr == null) return false;
     }
-    return node.endOfWord;
+    return curr.endOfWord;
   }
 }
