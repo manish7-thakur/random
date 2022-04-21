@@ -501,4 +501,31 @@ public class ArrayManiaTest {
     expected = new int[]{2, 1};
     Assert.assertArrayEquals(expected, actual);
   }
+  @Test
+  public void topKMostFrequentPairs() {
+    int[] actual = new int[]{2};
+    ArrayMania.arrangePairs(actual, 1, 0, 0);
+    int[] expected = new int[]{2};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{1, 2};
+    ArrayMania.arrangePairs(actual, 1, 0, 1);
+    expected = new int[]{2, 1};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{2, 3, 1};
+    ArrayMania.arrangePairs(actual, 1, 0, 2);
+    expected = new int[]{3, 2, 1};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{2, 3, 1};
+    ArrayMania.arrangePairs(actual, 2, 0, 2);
+    expected = new int[]{3, 2, 1};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{3, 2, 4, 1};
+    ArrayMania.arrangePairs(actual, 1, 0, 3);
+    expected = new int[]{4, 3, 2, 1};
+    Assert.assertArrayEquals(expected, actual);
+  }
 }

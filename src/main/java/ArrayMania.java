@@ -275,4 +275,25 @@ public class ArrayMania {
     for(int i = 0; i < k; i++) res[i] = q.remove().val;
     return res;
   }
+  static record Pair(int val, int occ){}
+  static void arrangePairs(int[] pairs, int k, int l, int h) {
+    if(l > h) return;
+    int p = pairs[l];
+    int j = l;
+    for(int i = j + 1; i <= h; i++) {
+      if(pairs[i] > p) {
+        j++;
+        swap(pairs, i, j);
+      }
+    }
+    swap(pairs, l, j);
+    if(j == k) return;
+    else if(j > k) arrangePairs(pairs, k, l, j - 1);
+    else arrangePairs(pairs, k, j + 1, h);
+  }
+  static void swap(int[] pairs, int i, int j) {
+    int p = pairs[i];
+    pairs[i] = pairs[j];
+    pairs[j] = p;
+  }
 }
