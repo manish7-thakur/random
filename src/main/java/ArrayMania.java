@@ -1,5 +1,6 @@
 import java.util.*;
 import static java.util.stream.Collectors.*;
+import java.util.function.*;
 public class ArrayMania {
   static public List<List<Integer>> threeSum(int[] nums) {
     List<List<Integer>> res = new ArrayList<>();
@@ -261,5 +262,14 @@ public class ArrayMania {
   }
   static boolean safe(char[][] board, int i, int j, char c, boolean visited[][]) {
     return i >= 0 && j >= 0 && i < board.length && j < board[0].length && board[i][j] == c && !visited[i][j];
+  }
+  static int[] topKFrequent(int[] nums, int k) {
+    Map<Integer, Integer> map = Arrays.stream(nums).boxed().collect(groupingBy(Function.identity(), collectingAndThen(counting(), Long::intValue))); // collector on right side of any func
+    record Pair(int val, int occ){}
+    Queue<Pair> q = new PriorityQueue<>((p1, p2) -> p2.occ - p1.occ);
+    map.forEach((key, v) -> q.add(new Pair(key, v)));
+    int[] res = new int[k];
+    for(int i = 0; i < k; i++) res[i] = q.remove().val;
+    return res;
   }
 }
