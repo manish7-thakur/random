@@ -19,5 +19,6 @@ public class WordDictionaryTest {
     Assert.assertTrue(dictionary.search("s....f"));
     Assert.assertFalse(dictionary.search("s...f"));
     Assert.assertTrue(dictionary.search("..g.s."));
+    Assert.assertTrue(dictionary.search("......"));
   }
 }
