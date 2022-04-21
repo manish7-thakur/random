@@ -527,5 +527,10 @@ public class ArrayManiaTest {
     ArrayMania.arrangePairs(actual, 1, 0, 3);
     expected = new int[]{4, 3, 2, 1};
     Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{1, 2, 3, 4};
+    ArrayMania.arrangePairs(actual, 1, 0, 3);
+    expected = new int[]{4, 3, 2, 1};
+    Assert.assertArrayEquals(expected, actual);
   }
 }

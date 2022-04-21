@@ -287,9 +287,8 @@ public class ArrayMania {
       }
     }
     swap(pairs, l, j);
-    if(j == k) return;
-    else if(j > k) arrangePairs(pairs, k, l, j - 1);
-    else arrangePairs(pairs, k, j + 1, h);
+    if(j > k) arrangePairs(pairs, k, l, j - 1);
+    else if (j < k) arrangePairs(pairs, k, j + 1, h);
   }
   static void swap(int[] pairs, int i, int j) {
     int p = pairs[i];
