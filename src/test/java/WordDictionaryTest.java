@@ -8,5 +8,7 @@ public class WordDictionaryTest {
     Assert.assertTrue(dictionary.search(".a"));
     Assert.assertTrue(dictionary.search("b."));
     Assert.assertFalse(dictionary.search("bc"));
+    Assert.assertFalse(dictionary.search(".b"));
+    Assert.assertFalse(dictionary.search("ba."));
   }
 }
