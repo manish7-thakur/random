@@ -36,13 +36,13 @@ public class WordDictionary {
   }
 
   public boolean search(String word) {
-    return startRec(word, 0, root);
+    return searchRec(word, 0, root);
   }
-  static boolean startRec(String word, int start, TrieNode curr) {
+  static boolean searchRec(String word, int start, TrieNode curr) {
     for(int i = start; i < word.length(); i++) {
       if(word.charAt(i) == '.') {
         for(TrieNode n : curr.getChildren()) {
-          if(n != null && startRec(word, i + 1, n)) return true;
+          if(n != null && searchRec(word, i + 1, n)) return true;
           curr = n;
         }
       } else curr = curr.getChild(word.charAt(i));
