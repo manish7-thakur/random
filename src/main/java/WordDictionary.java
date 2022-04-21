@@ -42,7 +42,8 @@ public class WordDictionary {
     for(int i = start; i < word.length(); i++) {
       if(word.charAt(i) == '.') {
         for(TrieNode n : node.getChildren()) {
-          if(startRec(word, i + 1, n)) return true;
+          if(n != null && startRec(word, i + 1, n)) return true;
+          node = n;
         }
       } else node = node.getChild(word.charAt(i));
       if(node == null) return false;
