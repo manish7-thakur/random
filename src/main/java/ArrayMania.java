@@ -303,10 +303,12 @@ public class ArrayMania {
     if(idx >= word.length()) return true;
     if(!safe1(board, i, j, word.charAt(idx), visited)) return false;
     visited[i][j] = true;
-    if(searchRec(board, word, i + 1, j, idx + 1, visited)) return true;
-    if(searchRec(board, word, i, j + 1, idx + 1, visited)) return true;
-    if(searchRec(board, word, i - 1, j, idx + 1, visited)) return true;
-    return searchRec(board, word, i, j - 1, idx + 1, visited);
+    if(searchRec(board, word, i + 1, j, idx + 1, visited)
+    || searchRec(board, word, i, j + 1, idx + 1, visited)
+    || searchRec(board, word, i - 1, j, idx + 1, visited)
+    || searchRec(board, word, i, j - 1, idx + 1, visited)) return true;
+    visited[i][j] = false;
+    return false;
   }
   static boolean safe1(char[][] board, int i, int j, char c, boolean[][] visited) {
     return i >= 0 && j >= 0 && i < board.length && j < board[0].length && board[i][j] == c && !visited[i][j];
