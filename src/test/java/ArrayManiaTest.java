@@ -479,28 +479,28 @@ public class ArrayManiaTest {
     actual = ArrayMania.exists(new char[][]{{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}}, "ABCB");
     Assert.assertFalse(actual);
   }
-  // @Test
-  // public void topKMostFrequentElements() {
-  //   int[] actual = ArrayMania.topKFrequent(new int[] {1}, 1);
-  //   int[] expected = new int[]{1};
-  //   Assert.assertArrayEquals(expected, actual);
-  //
-  //   actual = ArrayMania.topKFrequent(new int[] {1, 2, 2}, 1);
-  //   expected = new int[]{2};
-  //   Assert.assertArrayEquals(expected, actual);
-  //
-  //   actual = ArrayMania.topKFrequent(new int[] {1, 2, 2}, 2);
-  //   expected = new int[]{2, 1};
-  //   Assert.assertArrayEquals(expected, actual);
-  //
-  //   actual = ArrayMania.topKFrequent(new int[] {2, 2, 3, 3, 4, 1}, 2);
-  //   expected = new int[]{3, 2};
-  //   Assert.assertArrayEquals(expected, actual);
-  //
-  //   actual = ArrayMania.topKFrequent(new int[] {1, 1, 1, 2, 2, 3}, 2);
-  //   expected = new int[]{1, 2};
-  //   Assert.assertArrayEquals(expected, actual);
-  // }
+  @Test
+  public void topKMostFrequentElements() {
+    int[] actual = ArrayMania.topKFrequent(new int[] {1}, 1);
+    int[] expected = new int[]{1};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = ArrayMania.topKFrequent(new int[] {1, 2, 2}, 1);
+    expected = new int[]{2};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = ArrayMania.topKFrequent(new int[] {1, 2, 2}, 2);
+    expected = new int[]{2, 1};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = ArrayMania.topKFrequent(new int[] {2, 2, 3, 3, 4, 1}, 2);
+    expected = new int[]{3, 2};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = ArrayMania.topKFrequent(new int[] {1, 1, 1, 2, 2, 3}, 2);
+    expected = new int[]{1, 2};
+    Assert.assertArrayEquals(expected, actual);
+  }
   @Test
   public void topKMostFrequentPairs() {
     ArrayMania.Pair[] pairs = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 2)};
