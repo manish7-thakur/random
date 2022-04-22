@@ -504,25 +504,25 @@ public class ArrayManiaTest {
   @Test
   public void topKMostFrequentPairs() {
     ArrayMania.Pair[] pairs = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 2)};
-    int actual  = ArrayMania.arrangePairs(pairs, 0, 0);
+    int actual  = ArrayMania.partition(pairs, 0, 0);
     int expected = 0;
     Assert.assertEquals(expected, actual);
     Assert.assertArrayEquals(new ArrayMania.Pair[]{new ArrayMania.Pair(0, 2)}, pairs);
 
     pairs = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 1), new ArrayMania.Pair(0, 2)};
-    actual  = ArrayMania.arrangePairs(pairs, 0, 1);
+    actual  = ArrayMania.partition(pairs, 0, 1);
     expected = 1;
     Assert.assertEquals(expected, actual);
     Assert.assertArrayEquals(new ArrayMania.Pair[]{new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 1)}, pairs);
 
     pairs = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 3), new ArrayMania.Pair(0, 4)};
-    actual  = ArrayMania.arrangePairs(pairs, 0, 2);
+    actual  = ArrayMania.partition(pairs, 0, 2);
     expected = 2;
     Assert.assertEquals(expected, actual);
     Assert.assertArrayEquals(new ArrayMania.Pair[]{new ArrayMania.Pair(0, 4), new ArrayMania.Pair(0, 3), new ArrayMania.Pair(0, 2)}, pairs);
 
     pairs = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 1), new ArrayMania.Pair(0, 4)};
-    actual  = ArrayMania.arrangePairs(pairs, 0, 2);
+    actual  = ArrayMania.partition(pairs, 0, 2);
     expected = 1;
     Assert.assertEquals(expected, actual);
     Assert.assertArrayEquals(new ArrayMania.Pair[]{new ArrayMania.Pair(0, 4), new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 1)}, pairs);
