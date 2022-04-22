@@ -299,6 +299,21 @@ public class ArrayMania {
     pairs[i] = pairs[j];
     pairs[j] = p;
   }
+  static List<String> findWords(char[][] board, String[] words) {
+    boolean[][] visited = new boolean[board.length][board[0].length];
+    List<String> res = new ArrayList<>();
+    for(String word : words) {
+      char c = word.charAt(0);
+      for(int i = 0; i < board.length; i++) {
+        for(int j = 0; j < board[0].length; j++) {
+          if(board[i][j] == c && searchRec(board, word, i, j, 0, visited)) {
+            res.add(word);
+          }
+        }
+      }
+    }
+    return res;
+  }
   static boolean searchRec(char[][] board, String word, int i, int j, int idx, boolean[][] visited) {
     if(idx >= word.length()) return true;
     if(!safe1(board, i, j, word.charAt(idx), visited)) return false;
@@ -306,7 +321,10 @@ public class ArrayMania {
     if(searchRec(board, word, i + 1, j, idx + 1, visited)
     || searchRec(board, word, i, j + 1, idx + 1, visited)
     || searchRec(board, word, i - 1, j, idx + 1, visited)
-    || searchRec(board, word, i, j - 1, idx + 1, visited)) return true;
+    || searchRec(board, word, i, j - 1, idx + 1, visited)) {
+      visited[i][j] = false;
+      return true;
+    }
     visited[i][j] = false;
     return false;
   }

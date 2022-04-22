@@ -528,7 +528,7 @@ public class ArrayManiaTest {
     Assert.assertArrayEquals(new ArrayMania.Pair[]{new ArrayMania.Pair(0, 4), new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 1)}, pairs);
   }
   @Test
-  public void searchAllWordsInTheBoard() {
+  public void searchWordInTheBoard() {
     boolean actual = ArrayMania.searchRec(new char[][]{{'a'}}, "a", 0, 0, 0, new boolean[][]{{false}});
     Assert.assertTrue(actual);
 
@@ -545,5 +545,19 @@ public class ArrayManiaTest {
       {'e', 'c', 'e'},
       {'p', 'c', 'b'}}, "bccet", 2, 2, 0, new boolean[][]{{false, false, false}, {false, false, false}, {false, false, false}});
     Assert.assertTrue(actual);
+  }
+  @Test
+  public void searchAllWordsInTheBoard() {
+    List<String> actual = ArrayMania.findWords(new char[][]{{'a'}}, new String[]{"a"});
+    List<String> expected = List.of("a");
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.findWords(new char[][]{{'a', 'a'}, {'c', 'b'}}, new String[]{"ab", "bb"});
+    expected = List.of("ab");
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.findWords(new char[][]{{'a', 'a'}, {'c', 'b'}}, new String[]{"ab", "bc"});
+    expected = List.of("ab", "bc");
+    Assert.assertEquals(expected, actual);
   }
 }
