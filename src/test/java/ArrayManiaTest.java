@@ -529,10 +529,15 @@ public class ArrayManiaTest {
   }
   @Test
   public void searchAllWordsInTheBoard() {
-    boolean actual = ArrayMania.searchRec(new char[][]{{'a'}}, "a", 0, 0, 0);
+    boolean actual = ArrayMania.searchRec(new char[][]{{'a'}}, "a", 0, 0, 0, new boolean[][]{{false}});
     Assert.assertTrue(actual);
 
-    actual = ArrayMania.searchRec(new char[][]{{'a', 'c'}, {'b', 'b'}}, "bb", 1, 0, 0);
+    actual = ArrayMania.searchRec(new char[][]{{'a', 'c'}, {'b', 'b'}}, "bb", 1, 0, 0, new boolean[][]{{false, false}, {false, false}});
     Assert.assertTrue(actual);
+
+    actual = ArrayMania.searchRec(new char[][]{
+      {'a', 'c', 't'},
+      {'b', 'c', 'c'}}, "cbc", 1, 1, 0, new boolean[][]{{false, false, false}, {false, false, false}});
+    Assert.assertFalse(actual);
   }
 }

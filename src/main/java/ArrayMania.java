@@ -299,15 +299,16 @@ public class ArrayMania {
     pairs[i] = pairs[j];
     pairs[j] = p;
   }
-  static boolean searchRec(char[][] board, String word, int i, int j, int idx) {
+  static boolean searchRec(char[][] board, String word, int i, int j, int idx, boolean[][] visited) {
     if(idx >= word.length()) return true;
-    if(!safe(board, i, j, word.charAt(idx))) return false;
-    if(searchRec(board, word, i + 1, j, idx + 1)) return true;
-    if(searchRec(board, word, i, j + 1, idx + 1)) return true;
-    if(searchRec(board, word, i - 1, j, idx + 1)) return true;
-    return searchRec(board, word, i, j - 1, idx + 1);
+    if(!safe1(board, i, j, word.charAt(idx), visited)) return false;
+    visited[i][j] = true;
+    if(searchRec(board, word, i + 1, j, idx + 1, visited)) return true;
+    if(searchRec(board, word, i, j + 1, idx + 1, visited)) return true;
+    if(searchRec(board, word, i - 1, j, idx + 1, visited)) return true;
+    return searchRec(board, word, i, j - 1, idx + 1, visited);
   }
-  static boolean safe(char[][] board, int i, int j, char c) {
-    return i >= 0 && j >= 0 && i < board.length && j < board[0].length && board[i][j] == c;
+  static boolean safe1(char[][] board, int i, int j, char c, boolean[][] visited) {
+    return i >= 0 && j >= 0 && i < board.length && j < board[0].length && board[i][j] == c && !visited[i][j];
   }
 }
