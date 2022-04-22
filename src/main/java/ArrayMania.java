@@ -269,24 +269,22 @@ public class ArrayMania {
   static int[] topKFrequent(int[] nums, int k) {
     Map<Integer, Integer> map = Arrays.stream(nums).boxed().collect(groupingBy(Function.identity(), collectingAndThen(counting(), Long::intValue)));
     Pair[] pairs = map.entrySet().stream().map(e -> new Pair(e.getKey(), e.getValue())).toArray(Pair[]::new);
-    arrangePairs(pairs, k, 0, pairs.length - 1);
+    // arrangePairs(pairs, k, 0, pairs.length - 1);
     int[] res = new int[k];
     for(int i = 0; i < k; i++) res[i] = pairs[i].val;
     return res;
   }
-  static void arrangePairs(Pair[] pairs, int k, int l, int h) {
-    if(l > h) return;
-    int p = pairs[l].occ;
+  static int arrangePairs(Pair[] pairs, int l, int h) {
     int pos = l;
+    int pivot = pairs[l].occ;
     for(int i = l + 1; i <= h; i++) {
-      if(pairs[i].occ > p) {
+      if(pairs[i].occ > pivot) {
         pos++;
         swap(pairs, i, pos);
       }
     }
     swap(pairs, l, pos);
-    if(pos > k) arrangePairs(pairs, k, l, pos - 1);
-    else if (pos < k) arrangePairs(pairs, k, pos + 1, h);
+    return pos;
   }
   static void swap(Pair[] pairs, int i, int j) {
     Pair p = pairs[i];

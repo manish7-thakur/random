@@ -479,63 +479,52 @@ public class ArrayManiaTest {
     actual = ArrayMania.exists(new char[][]{{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}}, "ABCB");
     Assert.assertFalse(actual);
   }
-  @Test
-  public void topKMostFrequentElements() {
-    int[] actual = ArrayMania.topKFrequent(new int[] {1}, 1);
-    int[] expected = new int[]{1};
-    Assert.assertArrayEquals(expected, actual);
-
-    actual = ArrayMania.topKFrequent(new int[] {1, 2, 2}, 1);
-    expected = new int[]{2};
-    Assert.assertArrayEquals(expected, actual);
-
-    actual = ArrayMania.topKFrequent(new int[] {1, 2, 2}, 2);
-    expected = new int[]{2, 1};
-    Assert.assertArrayEquals(expected, actual);
-
-    actual = ArrayMania.topKFrequent(new int[] {2, 2, 3, 3, 4, 1}, 2);
-    expected = new int[]{3, 2};
-    Assert.assertArrayEquals(expected, actual);
-
-    actual = ArrayMania.topKFrequent(new int[] {1, 1, 1, 2, 2, 3}, 2);
-    expected = new int[]{1, 2};
-    Assert.assertArrayEquals(expected, actual);
-  }
+  // @Test
+  // public void topKMostFrequentElements() {
+  //   int[] actual = ArrayMania.topKFrequent(new int[] {1}, 1);
+  //   int[] expected = new int[]{1};
+  //   Assert.assertArrayEquals(expected, actual);
+  //
+  //   actual = ArrayMania.topKFrequent(new int[] {1, 2, 2}, 1);
+  //   expected = new int[]{2};
+  //   Assert.assertArrayEquals(expected, actual);
+  //
+  //   actual = ArrayMania.topKFrequent(new int[] {1, 2, 2}, 2);
+  //   expected = new int[]{2, 1};
+  //   Assert.assertArrayEquals(expected, actual);
+  //
+  //   actual = ArrayMania.topKFrequent(new int[] {2, 2, 3, 3, 4, 1}, 2);
+  //   expected = new int[]{3, 2};
+  //   Assert.assertArrayEquals(expected, actual);
+  //
+  //   actual = ArrayMania.topKFrequent(new int[] {1, 1, 1, 2, 2, 3}, 2);
+  //   expected = new int[]{1, 2};
+  //   Assert.assertArrayEquals(expected, actual);
+  // }
   @Test
   public void topKMostFrequentPairs() {
-    ArrayMania.Pair[] actual = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 2)};
-    ArrayMania.arrangePairs(actual, 1, 0, 0);
-    ArrayMania.Pair[] expected = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 2)};
-    Assert.assertArrayEquals(expected, actual);
+    ArrayMania.Pair[] pairs = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 2)};
+    int actual  = ArrayMania.arrangePairs(pairs, 0, 0);
+    int expected = 0;
+    Assert.assertEquals(expected, actual);
+    Assert.assertArrayEquals(new ArrayMania.Pair[]{new ArrayMania.Pair(0, 2)}, pairs);
 
-    actual = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 1), new ArrayMania.Pair(0, 2)};
-    ArrayMania.arrangePairs(actual, 1, 0, 1);
-    expected = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 1)};
-    Assert.assertArrayEquals(expected, actual);
+    pairs = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 1), new ArrayMania.Pair(0, 2)};
+    actual  = ArrayMania.arrangePairs(pairs, 0, 1);
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+    Assert.assertArrayEquals(new ArrayMania.Pair[]{new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 1)}, pairs);
 
-    actual = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 3), new ArrayMania.Pair(0, 1)};
-    ArrayMania.arrangePairs(actual, 1, 0, 2);
-    expected = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 3), new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 1)};
-    Assert.assertArrayEquals(expected, actual);
+    pairs = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 3), new ArrayMania.Pair(0, 4)};
+    actual  = ArrayMania.arrangePairs(pairs, 0, 2);
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+    Assert.assertArrayEquals(new ArrayMania.Pair[]{new ArrayMania.Pair(0, 4), new ArrayMania.Pair(0, 3), new ArrayMania.Pair(0, 2)}, pairs);
 
-    actual = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 3), new ArrayMania.Pair(0, 1)};
-    ArrayMania.arrangePairs(actual, 2, 0, 2);
-    expected = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 3), new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 1)};
-    Assert.assertArrayEquals(expected, actual);
-
-    actual = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 3), new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 4), new ArrayMania.Pair(0, 1)};
-    ArrayMania.arrangePairs(actual, 1, 0, 3);
-    expected = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 4), new ArrayMania.Pair(0, 3), new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 1)};
-    Assert.assertArrayEquals(expected, actual);
-
-    actual = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 1), new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 3), new ArrayMania.Pair(0, 4)};
-    ArrayMania.arrangePairs(actual, 1, 0, 3);
-    expected = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 4), new ArrayMania.Pair(0, 3), new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 1)};
-    Assert.assertArrayEquals(expected, actual);
-
-    actual = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 5), new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 6), new ArrayMania.Pair(0, 4)};
-    ArrayMania.arrangePairs(actual, 2, 0, 3);
-    expected = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 6), new ArrayMania.Pair(0, 5), new ArrayMania.Pair(0, 4), new ArrayMania.Pair(0, 2)};
-    Assert.assertArrayEquals(expected, actual);
+    pairs = new ArrayMania.Pair[]{new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 1), new ArrayMania.Pair(0, 4)};
+    actual  = ArrayMania.arrangePairs(pairs, 0, 2);
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+    Assert.assertArrayEquals(new ArrayMania.Pair[]{new ArrayMania.Pair(0, 4), new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 1)}, pairs);
   }
 }
