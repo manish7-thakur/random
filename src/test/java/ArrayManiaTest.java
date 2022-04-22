@@ -527,4 +527,12 @@ public class ArrayManiaTest {
     Assert.assertEquals(expected, actual);
     Assert.assertArrayEquals(new ArrayMania.Pair[]{new ArrayMania.Pair(0, 4), new ArrayMania.Pair(0, 2), new ArrayMania.Pair(0, 1)}, pairs);
   }
+  @Test
+  public void searchAllWordsInTheBoard() {
+    boolean actual = ArrayMania.searchRec(new char[][]{{'a'}}, "a", 0, 0, 0);
+    Assert.assertTrue(actual);
+
+    actual = ArrayMania.searchRec(new char[][]{{'a', 'c'}, {'b', 'b'}}, "bb", 1, 0, 0);
+    Assert.assertTrue(actual);
+  }
 }
