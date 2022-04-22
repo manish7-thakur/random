@@ -559,5 +559,19 @@ public class ArrayManiaTest {
     actual = ArrayMania.findWords(new char[][]{{'a', 'a'}, {'c', 'b'}}, new String[]{"ab", "bc"});
     expected = List.of("ab", "bc");
     Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.findWords(new char[][]{
+      {'a', 'a', 'n'},
+      {'c', 'b', 'j'},
+      {'v', 'b', 'k'}}, new String[]{"vbba", "jbbvcb", "kbbc", "cban", "acbn", "vcbc"});
+    expected = List.of("vbba", "kbbc", "cban");
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania.findWords(new char[][]{
+      {'a', 'a', 'n'},
+      {'a', 'b', 'j'},
+      {'v', 'b', 'f'}}, new String[]{"vbba", "jbbvcb", "kbbc", "abbf", "acbn", "vcbc"});
+    expected = List.of("vbba", "abbf");
+    Assert.assertEquals(expected, actual);
   }
 }

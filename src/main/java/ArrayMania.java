@@ -304,12 +304,16 @@ public class ArrayMania {
     List<String> res = new ArrayList<>();
     for(String word : words) {
       char c = word.charAt(0);
+      boolean broken = false;
       for(int i = 0; i < board.length; i++) {
         for(int j = 0; j < board[0].length; j++) {
           if(board[i][j] == c && searchRec(board, word, i, j, 0, visited)) {
             res.add(word);
+            broken = true;
+            break;
           }
         }
+        if(broken) break;
       }
     }
     return res;
