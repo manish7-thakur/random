@@ -274,7 +274,7 @@ public class ArrayMania {
     for(int i = 0; i < k; i++) res[i] = pairs[i].val;
     return res;
   }
-  static int arrangePairs(Pair[] pairs, int l, int h) {
+  static int partition(Pair[] pairs, int l, int h) {
     int pos = l;
     int pivot = pairs[l].occ;
     for(int i = l + 1; i <= h; i++) {
