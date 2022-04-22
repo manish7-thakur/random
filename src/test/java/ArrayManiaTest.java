@@ -539,5 +539,11 @@ public class ArrayManiaTest {
       {'a', 'c', 't'},
       {'b', 'c', 'c'}}, "cbc", 1, 1, 0, new boolean[][]{{false, false, false}, {false, false, false}});
     Assert.assertFalse(actual);
+
+    actual = ArrayMania.searchRec(new char[][]{
+      {'a', 'c', 't'},
+      {'e', 'c', 'e'},
+      {'p', 'c', 'b'}}, "bccet", 2, 2, 0, new boolean[][]{{false, false, false}, {false, false, false}, {false, false, false}});
+    Assert.assertTrue(actual);
   }
 }
