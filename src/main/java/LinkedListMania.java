@@ -97,8 +97,10 @@ public class LinkedListMania {
       Node res = traverser;
       Queue<Node> q = new PriorityQueue<>(Comparator.comparingInt(n -> n.val));
       for(Node n : lists) {
-        q.add(n);
-        n = n.next;
+        if(n != null) {
+          q.add(n);
+          n = n.next;
+        }
       }
       while(!q.isEmpty()) {
         Node curr = q.remove();
