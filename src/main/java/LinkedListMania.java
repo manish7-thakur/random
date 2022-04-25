@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LinkedListUtil {
+public class LinkedListMania {
     public static Node reverse(Node head) {
       Node pre = null, mid = null, tra = head;
       while(tra != null) {
