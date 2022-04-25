@@ -100,10 +100,12 @@ public class LinkedListMania {
         q.add(n);
         n = n.next;
       }
-      if(!q.isEmpty()) traverser.next = q.remove();
-      traverser = traverser.next;
       while(!q.isEmpty()) {
-        traverser.next = q.remove();
+        Node curr = q.remove();
+        traverser.next = curr;
+        curr = curr.next;
+        if(curr != null) q.add(curr);
+        traverser = traverser.next;
       }
       return res.next;
     }

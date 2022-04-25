@@ -292,5 +292,10 @@ public class LinkedListManiaTest {
       actual = LinkedListMania.mergeKLists(new Node[]{new Node(2), new Node(1)});
       Assert.assertEquals(1, actual.val);
       Assert.assertEquals(2, actual.next.val);
+
+      actual = LinkedListMania.mergeKLists(new Node[]{new Node(2), new Node(1, new Node(4))});
+      Assert.assertEquals(1, actual.val);
+      Assert.assertEquals(2, actual.next.val);
+      Assert.assertEquals(4, actual.next.next.val);
     }
 }
