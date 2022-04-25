@@ -26,7 +26,7 @@ public class LinkedListMania {
       Node curr = head, traverser;
       while(curr != null) {
         traverser = curr.next;
-        while(traverser != null && traverser.data == curr.data) traverser = traverser.next;
+        while(traverser != null && traverser.val == curr.val) traverser = traverser.next;
         curr.next = traverser;
         curr = traverser;
       }
@@ -36,7 +36,7 @@ public class LinkedListMania {
       Node traverser = new Node(0, null);
       Node head = traverser;
       while(list1 != null && list2 != null) {
-        if(list1.data < list2.data) {
+        if(list1.val < list2.val) {
           traverser.next = list1;
           list1 = list1.next;
         } else {
@@ -51,10 +51,10 @@ public class LinkedListMania {
     }
     static public Node removeElements(Node head, int val) {
       Node traverser = head;
-      while(traverser != null && traverser.data == val) traverser = traverser.next;
+      while(traverser != null && traverser.val == val) traverser = traverser.next;
       Node res = traverser, previous = traverser;
       while(traverser != null) {
-        if(traverser.data == val) {
+        if(traverser.val == val) {
           previous.next = traverser.next;
         } else {
           previous = traverser;
@@ -91,5 +91,15 @@ public class LinkedListMania {
         last = s.pop();
       }
       last.next = null;
+    }
+    static Node mergeKLists(Node[] lists) {
+      Node res = new Node(0);
+      Queue<Node> q = new PriorityQueue<>(Comparator.comparingInt(n -> n.val));
+      for(Node n : lists) {
+        q.add(n);
+        n = n.next;
+      }
+      while(!q.isEmpty()) res.next = q.remove();
+      return res.next;
     }
 }
