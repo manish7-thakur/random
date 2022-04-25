@@ -93,13 +93,18 @@ public class LinkedListMania {
       last.next = null;
     }
     static Node mergeKLists(Node[] lists) {
-      Node res = new Node(0);
+      Node traverser = new Node(0);
+      Node res = traverser;
       Queue<Node> q = new PriorityQueue<>(Comparator.comparingInt(n -> n.val));
       for(Node n : lists) {
         q.add(n);
         n = n.next;
       }
-      while(!q.isEmpty()) res.next = q.remove();
+      if(!q.isEmpty()) traverser.next = q.remove();
+      traverser = traverser.next;
+      while(!q.isEmpty()) {
+        traverser.next = q.remove();
+      }
       return res.next;
     }
 }
