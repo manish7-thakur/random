@@ -19,6 +19,21 @@ public class ImagesArranger {
       return ext;
     }
   }
+  static String arrangeImages(String images) {
+    var map = createInfo(images);
+    assignSeq(map);
+    String[] imgStr = images.split("\n");
+    StringBuilder b = new StringBuilder();
+    for(String str: imgStr) {
+      String[] imgInfo = str.split(",");
+      String city = imgInfo[1].trim();
+      LocalDateTime dateTime = LocalDateTime.parse(imgInfo[2].trim().replace(' ', 'T'));
+      String seq = map.get(city).get(dateTime).getSeq();
+      b.append(city + seq + imgInfo[0].substring(imgInfo[0].indexOf(".")));
+      b.append('\n');
+    }
+    return b.toString();
+  }
   static Map<String, Map<LocalDateTime, ImageInfo>> createInfo(String images) {
     String[] imgStr = images.split("\n");
     Map<String, Map<LocalDateTime, ImageInfo>> map = new HashMap<>();
