@@ -6,26 +6,25 @@ public class ImagesArrangerTest {
   @Test
   public void sequenceImages() {
     LocalDateTime d1 = LocalDateTime.parse("2014-03-01T23:11:34");
-    var actual = Map.of("warsaw", Map.of(d1, new ImagesArranger.ImageInfo(".jpg", "")));
+    Map<LocalDateTime, String> v1 = new HashMap<>(Map.of(d1, ""));
+    var actual = Map.of("warsaw", v1);
     ImagesArranger.assignSeq(actual);
-    var expected = Map.of("warsaw", Map.of(d1, new ImagesArranger.ImageInfo(".jpg", "1")));
-    Assert.assertEquals("1", actual.get("warsaw").get(d1).getSeq());
+    var expected = Map.of("warsaw", Map.of(d1, "1"));
+    Assert.assertEquals("1", actual.get("warsaw").get(d1));
 
-    var iMap = Map.of(LocalDateTime.now(), new ImagesArranger.ImageInfo(".png", ""), LocalDateTime.now(), new ImagesArranger.ImageInfo(".jpg", ""), LocalDateTime.now(), new ImagesArranger.ImageInfo(".jpg", ""),
-    LocalDateTime.now(), new ImagesArranger.ImageInfo(".jpg", ""), LocalDateTime.now(), new ImagesArranger.ImageInfo(".jpg", ""), LocalDateTime.now(), new ImagesArranger.ImageInfo(".png", ""), LocalDateTime.now(), new ImagesArranger.ImageInfo(".jpg", ""),
-    LocalDateTime.now(), new ImagesArranger.ImageInfo(".png", ""), LocalDateTime.now(), new ImagesArranger.ImageInfo(".png", ""), LocalDateTime.now(), new ImagesArranger.ImageInfo(".jpg", ""));
-    actual = Map.of("warsaw", iMap);
-    ImagesArranger.assignSeq(actual);
-    expected = Map.of("warsaw", Map.of(d1, new ImagesArranger.ImageInfo(".jpg", "1")));
-    List<String> str = iMap.entrySet().stream().map(info -> info.getValue().getSeq()).toList();
-    Assert.assertEquals(List.of("01", "02", "03", "04", "05", "06", "07", "08", "09", "10"), str);
+    var iMap = Map.of(LocalDateTime.now(), "", LocalDateTime.now(), "", LocalDateTime.now(), "",
+    LocalDateTime.now(), "", LocalDateTime.now(), "", LocalDateTime.now(), "", LocalDateTime.now(), "",
+    LocalDateTime.now(), "", LocalDateTime.now(), "", LocalDateTime.now(), "");
+    v1 = new HashMap<>(iMap);
+    ImagesArranger.assignSeq(Map.of("warsaw", v1));
+    var res = v1.entrySet().stream().map(info -> info.getValue()).toList();
+    Assert.assertEquals(List.of("01", "02", "03", "04", "05", "06", "07", "08", "09", "10"), res);
   }
   @Test
   public void createImageInfos() {
     String images = "photo.jpg, Warsaw, 2013-09-05 14:08:15\njohn.png, London, 2015-06-20 15:13:22";
     var actual = ImagesArranger.createInfo(images);
-    Assert.assertEquals(".jpg", actual.get("Warsaw").get(LocalDateTime.parse("2013-09-05T14:08:15")).getExt());
-    Assert.assertEquals(".png", actual.get("London").get(LocalDateTime.parse("2015-06-20T15:13:22")).getExt());
+    Assert.assertEquals(Map.of("Warsaw", Map.of(LocalDateTime.parse("2013-09-05T14:08:15"), ""), "London", Map.of(LocalDateTime.parse("2015-06-20T15:13:22"), "")), actual);
   }
 
   @Test
