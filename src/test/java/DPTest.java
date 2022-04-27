@@ -391,5 +391,9 @@ public class DPTest {
     actual = DP.longestCommonSubstring(new String[] {"/py.com", "/bb.com", "/ac.com", "/cy.com"}, new String[]{"/bb.com", "/ac.com", "/cy.com", "/bb.com", "/ac.com", "/py.com", "/cy.com"});
     expected = 3;
     Assert.assertEquals(expected, actual);
+
+    actual = DP.longestCommonSubstring(new String[] {"w", "r", "t", "s", "t", "s", "t", "h", "t", "h", "y", "w", "g", "w", "r"}, new String[]{"t", "f", "s", "t", "h", "r", "t", "s", "t", "h", "y", "w", "g", "k", "h", "y", "w", "g", "k"});
+    expected = 5;
+    Assert.assertEquals(expected, actual);
   }
 }
