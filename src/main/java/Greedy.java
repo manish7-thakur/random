@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Greedy {
   /**
   Max work time of any worker.
@@ -8,8 +10,10 @@ public class Greedy {
   w2 - 7 4 -> 11
   */
   static int maxWorkTime(int[] jobs, int k) {
+    Arrays.sort(jobs);
     int[] workers = new int[k];
-    for(int job: jobs) {
+    for(int j = jobs.length - 1; j >= 0; j--) {
+      int job = jobs[j];
       int i = getFreeWorker(workers);
       workers[i] += job;
     }
