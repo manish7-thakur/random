@@ -18,5 +18,13 @@ public class GreedyTest {
     actual = Greedy.maxWorkTime(new int[]{2, 1, 3}, 2);
     expected = 3;
     Assert.assertEquals(expected, actual);
+
+    actual = Greedy.maxWorkTime(new int[]{2, 1, 3, 4, 7}, 2);
+    expected = 9;
+    Assert.assertEquals(expected, actual);
+
+    actual = Greedy.maxWorkTime(new int[]{2, 1, 8, 4, 7}, 2);
+    expected = 11;
+    Assert.assertEquals(expected, actual);
   }
 }
