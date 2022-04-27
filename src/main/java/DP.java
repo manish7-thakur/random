@@ -172,13 +172,16 @@ public class DP {
     return false;
   }
   static int longestCommonSubstring(String[] s1, String[] s2) {
-    return lcsRec(s1, s2, s1.length - 1, s2.length - 1);
+    Integer[][] mem = new Integer[s1.length][s2.length];
+    return lcsRec(s1, s2, s1.length - 1, s2.length - 1, mem);
   }
-  static int lcsRec(String[] s1, String[] s2, int i, int j) {
+  static int lcsRec(String[] s1, String[] s2, int i, int j, Integer[][] mem) {
     if(i < 0 || j < 0) return 0;
+    if(mem[i][j] != null) return mem[i][j];
     int max = 0;
     if(s1[i].equals(s2[j])) max = longestCount(s1, s2, i, j);
-    return Math.max(max, Math.max(lcsRec(s1, s2, i - 1, j), lcsRec(s1, s2, i, j - 1)));
+    mem[i][j] = Math.max(max, Math.max(lcsRec(s1, s2, i - 1, j, mem), lcsRec(s1, s2, i, j - 1, mem)));
+    return mem[i][j];
   }
   static int longestCount(String[] s1, String[] s2, int i, int j) {
     int count = 0;
