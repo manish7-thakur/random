@@ -171,4 +171,12 @@ public class DP {
     mem[i] = false;
     return false;
   }
+  static int longestCommonSubstring(String[] s1, String[] s2) {
+    return lcsRec(s1, s2, s1.length - 1, s2.length - 1);
+  }
+  static int lcsRec(String[] s1, String[] s2, int i, int j) {
+    if(i < 0 || j < 0) return 0;
+    if(s1[i].equals(s2[j])) return 1 + lcsRec(s1, s2, i - 1, j - 1);
+    return Math.max(lcsRec(s1, s2, i - 1, j), lcsRec(s1, s2, i, j - 1));
+  }
 }

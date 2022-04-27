@@ -362,4 +362,18 @@ public class DPTest {
     actual = DP.canJump(new int[]{1, 3, 0, 0, 3, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 3, 0, 0, 3, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 3, 0, 0, 3, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 3, 0, 0, 3, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 3, 0, 0, 3, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 3, 0, 0, 3, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 3, 0, 0, 3, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1});
     Assert.assertFalse(actual);
   }
+  @Test
+  public void longestOverlappingBrowsingHistory() {
+    int actual = DP.longestCommonSubstring(new String[] {}, new String[]{});
+    int expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.longestCommonSubstring(new String[] {"/cy.com"}, new String[]{"/cy.com"});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP.longestCommonSubstring(new String[] {"/cy.com", "/ac.com"}, new String[]{"/py.com", "/cy.com"});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+  }
 }
