@@ -176,7 +176,13 @@ public class DP {
   }
   static int lcsRec(String[] s1, String[] s2, int i, int j) {
     if(i < 0 || j < 0) return 0;
-    if(s1[i].equals(s2[j])) return 1 + lcsRec(s1, s2, i - 1, j - 1);
-    return Math.max(lcsRec(s1, s2, i - 1, j), lcsRec(s1, s2, i, j - 1));
+    int max = 0;
+    if(s1[i].equals(s2[j])) max = longestCount(s1, s2, i, j);
+    return Math.max(max, Math.max(lcsRec(s1, s2, i - 1, j), lcsRec(s1, s2, i, j - 1)));
+  }
+  static int longestCount(String[] s1, String[] s2, int i, int j) {
+    int count = 0;
+    while(i >= 0 && j >= 0 && s1[i--].equals(s2[j--])) count++;
+    return count;
   }
 }
