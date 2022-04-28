@@ -364,36 +364,36 @@ public class DPTest {
   }
   @Test
   public void longestOverlappingBrowsingHistory() {
-    int actual = DP.longestCommonSubstring(new String[] {}, new String[]{});
-    int expected = 0;
+    String actual = DP.longestCommonSubstring(new String[] {}, new String[]{});
+    String expected = "";
     Assert.assertEquals(expected, actual);
 
     actual = DP.longestCommonSubstring(new String[] {"/cy.com"}, new String[]{"/cy.com"});
-    expected = 1;
+    expected = "/cy.com";
     Assert.assertEquals(expected, actual);
 
     actual = DP.longestCommonSubstring(new String[] {"/cy.com", "/ac.com"}, new String[]{"/py.com", "/cy.com"});
-    expected = 1;
+    expected = "/cy.com";
     Assert.assertEquals(expected, actual);
 
     actual = DP.longestCommonSubstring(new String[] {"/py.com", "/cy.com", "/ac.com"}, new String[]{"/py.com", "/cy.com"});
-    expected = 2;
+    expected = "/py.com/cy.com";
     Assert.assertEquals(expected, actual);
 
     actual = DP.longestCommonSubstring(new String[] {"/py.com", "/bb.com", "/ac.com", "/cy.com"}, new String[]{"/py.com", "/cy.com"});
-    expected = 1;
+    expected = "/py.com";
     Assert.assertEquals(expected, actual);
 
     actual = DP.longestCommonSubstring(new String[] {"/py.com", "/bb.com", "/ac.com", "/cy.com"}, new String[]{"/bb.com", "/ac.com", "/py.com", "/cy.com"});
-    expected = 2;
+    expected = "/bb.com/ac.com";
     Assert.assertEquals(expected, actual);
 
     actual = DP.longestCommonSubstring(new String[] {"/py.com", "/bb.com", "/ac.com", "/cy.com"}, new String[]{"/bb.com", "/ac.com", "/cy.com", "/bb.com", "/ac.com", "/py.com", "/cy.com"});
-    expected = 3;
+    expected = "/bb.com/ac.com/cy.com";
     Assert.assertEquals(expected, actual);
 
     actual = DP.longestCommonSubstring(new String[] {"w", "r", "t", "s", "t", "s", "t", "h", "t", "h", "y", "w", "g", "w", "r"}, new String[]{"t", "f", "s", "t", "h", "r", "t", "s", "t", "h", "y", "w", "g", "k", "h", "y", "w", "g", "k"});
-    expected = 5;
+    expected = "thywg";
     Assert.assertEquals(expected, actual);
   }
 }

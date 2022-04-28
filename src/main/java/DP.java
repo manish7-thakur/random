@@ -171,21 +171,31 @@ public class DP {
     mem[i] = false;
     return false;
   }
-  static int longestCommonSubstring(String[] s1, String[] s2) {
-    Integer[][] mem = new Integer[s1.length][s2.length];
+  static String longestCommonSubstring(String[] s1, String[] s2) {
+    String[][] mem = new String[s1.length][s2.length];
     return lcsRec(s1, s2, s1.length - 1, s2.length - 1, mem);
   }
-  static int lcsRec(String[] s1, String[] s2, int i, int j, Integer[][] mem) {
-    if(i < 0 || j < 0) return 0;
+  static String lcsRec(String[] s1, String[] s2, int i, int j, String[][] mem) {
+    if(i < 0 || j < 0) return "";
     if(mem[i][j] != null) return mem[i][j];
-    int max = 0;
-    if(s1[i].equals(s2[j])) max = longestCount(s1, s2, i, j);
-    mem[i][j] = Math.max(max, Math.max(lcsRec(s1, s2, i - 1, j, mem), lcsRec(s1, s2, i, j - 1, mem)));
+    String max1 = "";
+    if(s1[i].equals(s2[j])) max1 = longestString(s1, s2, i, j);
+    String max2 = lcsRec(s1, s2, i - 1, j, mem);
+    String max3 = lcsRec(s1, s2, i, j - 1, mem);
+    if(max1.length() > max2.length() && max1.length() > max3.length()) mem[i][j] = max1;
+    else if(max2.length() > max1.length() && max2.length() > max3.length()) mem[i][j] = max2;
+    else mem[i][j] = max3;
     return mem[i][j];
   }
-  static int longestCount(String[] s1, String[] s2, int i, int j) {
-    int count = 0;
-    while(i >= 0 && j >= 0 && s1[i--].equals(s2[j--])) count++;
-    return count;
+  static String longestString(String[] s1, String[] s2, int i, int j) {
+    int end = i;
+    while(i >= 0 && j >= 0 && s1[i].equals(s2[j])) {
+      i--;
+      j--;
+    }
+    StringBuilder b = new StringBuilder();
+    ++i;
+    while(i <= end) b.append(s1[i++]);
+    return b.toString();
   }
 }
