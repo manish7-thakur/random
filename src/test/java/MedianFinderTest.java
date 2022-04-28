@@ -11,5 +11,9 @@ public class MedianFinderTest {
     Assert.assertEquals(2, finder.findMedian(), 0.1);
     finder.addNum(8);
     Assert.assertEquals(3.5, finder.findMedian(), 0.1);
+    finder.addNum(-4);
+    Assert.assertEquals(2, finder.findMedian(), 0.1);
+    finder.addNum(0);
+    Assert.assertEquals(1.5, finder.findMedian(), 0.1);
   }
 }

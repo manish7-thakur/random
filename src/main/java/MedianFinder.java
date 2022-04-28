@@ -19,5 +19,5 @@ public class MedianFinder {
     if(minQ.size() > maxQ.size()) return minQ.peek();
     return (minQ.peek() + maxQ.peek()) / 2.0;
   }
-
+  
 }
