@@ -10,7 +10,8 @@ public class MedianFinder {
   }
 
   public void addNum(int num) {
-    maxQ.add(num);
+    minQ.add(num);
+    maxQ.add(minQ.remove());
     if(maxQ.size() > minQ.size()) minQ.add(maxQ.remove());
   }
 
