@@ -14,8 +14,8 @@ public class Greedy {
     int max = 0;
     Queue<Integer> workersQ = new PriorityQueue<>();
     for(int i = 0; i < k; i++) workersQ.add(0);
-    for(int j = jobs.length - 1; j >= 0; j--) {
-      int job = jobs[j];
+    for(int i = jobs.length - 1; i >= 0; i--) {
+      int job = jobs[i];
       int jobTime = workersQ.remove();
       jobTime += job;
       if(jobTime > max) max = jobTime;
