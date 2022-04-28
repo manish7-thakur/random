@@ -178,7 +178,7 @@ public class DP {
     AtomicInteger start = new AtomicInteger(0);
     AtomicInteger end = new AtomicInteger(-1);
     lcsRec(s1, s2, s1.length - 1, s2.length - 1, mem, start, end);
-    while(end.get() >= 0 && start.get() <= end.get()) b.append(s1[start.getAndIncrement()]);
+    while(start.get() <= end.get()) b.append(s1[start.getAndIncrement()]);
     return b.toString();
   }
   static int lcsRec(String[] s1, String[] s2, int i, int j, Integer[][] mem, AtomicInteger start, AtomicInteger end) {
@@ -204,14 +204,10 @@ public class DP {
     else return max3;
   }
   static int longestMatch(String[] s1, String[] s2, int i, int j) {
-    int end = i;
     while(i >= 0 && j >= 0 && s1[i].equals(s2[j])) {
       i--;
       j--;
     }
     return i + 1;
-    // StringBuilder b = new StringBuilder();
-    // for(i = i + 1; i <= end; i++) b.append(s1[i]);
-    // return b.toString();
   }
 }
