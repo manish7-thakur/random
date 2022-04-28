@@ -194,11 +194,7 @@ public class DP {
       j--;
     }
     StringBuilder b = new StringBuilder();
-    ++i;
-    while(i <= end) {
-      b.append(s1[i]);
-      i++;
-    }
+    for(i = i + 1; i <= end; i++) b.append(s1[i]);
     return b.toString();
   }
 }
