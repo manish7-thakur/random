@@ -11,30 +11,16 @@ public class Greedy {
   */
   static int maxWorkTime(int[] jobs, int k) {
     Arrays.sort(jobs);
-    int[] workers = new int[k];
+    int max = 0;
+    Queue<Integer> workersQ = new PriorityQueue<>();
+    for(int i = 0; i < k; i++) workersQ.add(0);
     for(int j = jobs.length - 1; j >= 0; j--) {
       int job = jobs[j];
-      int i = getFreeWorker(workers);
-      workers[i] += job;
+      int i = workersQ.remove();
+      i += job;
+      if(i > max) max = i;
+      workersQ.add(i);
     }
-    return maxWork(workers);
-  }
-  static int getFreeWorker(int[] workers) {
-    int idx = 0;
-    int work = workers[idx];
-    for(int i = 1; i < workers.length; i++) {
-      if(workers[i] < work) {
-        idx = i;
-        work = workers[i];
-      }
-    }
-    return idx;
-  }
-  static int maxWork(int[] workers) {
-    int maxWork = workers[0];
-    for(int i = 1; i < workers.length; i++) {
-      if(workers[i] > maxWork) maxWork = workers[i];
-    }
-    return maxWork;
+    return max;
   }
 }
