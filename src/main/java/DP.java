@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.concurrent.atomic.*;
 
 public class DP {
   static public int climbStairs(int n) {
@@ -172,32 +173,45 @@ public class DP {
     return false;
   }
   static String longestCommonSubstring(String[] s1, String[] s2) {
-    String[][] mem = new String[s1.length][s2.length];
-    return lcsRec(s1, s2, s1.length - 1, s2.length - 1, mem);
+    Integer[][] mem = new Integer[s1.length][s2.length];
+    StringBuilder b = new StringBuilder();
+    AtomicInteger start = new AtomicInteger(0);
+    AtomicInteger end = new AtomicInteger(-1);
+    lcsRec(s1, s2, s1.length - 1, s2.length - 1, mem, start, end);
+    while(end.get() >= 0 && start.get() <= end.get()) b.append(s1[start.getAndIncrement()]);
+    return b.toString();
   }
-  static String lcsRec(String[] s1, String[] s2, int i, int j, String[][] mem) {
-    if(i < 0 || j < 0) return "";
+  static int lcsRec(String[] s1, String[] s2, int i, int j, Integer[][] mem, AtomicInteger start, AtomicInteger end) {
+    if(i < 0 || j < 0) return 0;
     if(mem[i][j] != null) return mem[i][j];
-    String max1 = "";
-    if(s1[i].equals(s2[j])) max1 = longestMatch(s1, s2, i, j);
-    String max2 = lcsRec(s1, s2, i - 1, j, mem);
-    String max3 = lcsRec(s1, s2, i, j - 1, mem);
+    int max1 = 0;
+    if(s1[i].equals(s2[j])) {
+      int begin = longestMatch(s1, s2, i, j);
+      max1 = i - begin;
+      if(max1 > end.get() - start.get()) {
+        start.set(begin);
+        end.set(i);
+      }
+    }
+    int max2 = lcsRec(s1, s2, i - 1, j, mem, start, end);
+    int max3 = lcsRec(s1, s2, i, j - 1, mem, start, end);
     mem[i][j] = longestString(max1, max2, max3);
     return mem[i][j];
   }
-  static String longestString(String max1, String max2, String max3) {
-    if(max1.length() > max2.length() && max1.length() > max3.length()) return max1;
-    else if(max2.length() > max1.length() && max2.length() > max3.length()) return max2;
+  static int longestString(Integer max1, Integer max2, Integer max3) {
+    if(max1 > max2 && max1 > max3) return max1;
+    else if(max2 > max1 && max2 > max3) return max2;
     else return max3;
   }
-  static String longestMatch(String[] s1, String[] s2, int i, int j) {
+  static int longestMatch(String[] s1, String[] s2, int i, int j) {
     int end = i;
     while(i >= 0 && j >= 0 && s1[i].equals(s2[j])) {
       i--;
       j--;
     }
-    StringBuilder b = new StringBuilder();
-    for(i = i + 1; i <= end; i++) b.append(s1[i]);
-    return b.toString();
+    return i + 1;
+    // StringBuilder b = new StringBuilder();
+    // for(i = i + 1; i <= end; i++) b.append(s1[i]);
+    // return b.toString();
   }
 }
