@@ -188,10 +188,7 @@ public class DP {
     if(i < 0 || j < 0) return new IndexPair(0, -1);
     if(mem[i][j] != null) return mem[i][j];
     IndexPair max1 = new IndexPair(0, -1);
-    if(s1[i].equals(s2[j])) {
-      int begin = longestMatch(s1, s2, i, j);
-      max1 = new IndexPair(begin, i);
-    }
+    if(s1[i].equals(s2[j])) max1 = new IndexPair(startIdx(s1, s2, i, j), i);
     IndexPair max2 = lcsRec(s1, s2, i - 1, j, mem);
     IndexPair max3 = lcsRec(s1, s2, i, j - 1, mem);
     mem[i][j] = longestString(max1, max2, max3);
@@ -202,7 +199,7 @@ public class DP {
     else if(max2.getLength() > max1.getLength() && max2.getLength() > max3.getLength()) return max2;
     else return max3;
   }
-  static int longestMatch(String[] s1, String[] s2, int i, int j) {
+  static int startIdx(String[] s1, String[] s2, int i, int j) {
     while(i >= 0 && j >= 0 && s1[i].equals(s2[j])) {
       i--;
       j--;
