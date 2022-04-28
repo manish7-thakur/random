@@ -1,8 +1,7 @@
 import java.util.*;
 
 public class MedianFinder {
-  Queue<Integer> minQ;
-  Queue<Integer> maxQ;
+  private Queue<Integer> minQ, maxQ;
 
   public MedianFinder() {
     minQ = new PriorityQueue<>();
