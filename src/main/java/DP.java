@@ -195,7 +195,10 @@ public class DP {
     }
     StringBuilder b = new StringBuilder();
     ++i;
-    while(i <= end) b.append(s1[i++]);
+    while(i <= end) {
+      b.append(s1[i]);
+      i++;
+    }
     return b.toString();
   }
 }
