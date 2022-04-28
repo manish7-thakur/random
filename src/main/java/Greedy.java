@@ -16,10 +16,10 @@ public class Greedy {
     for(int i = 0; i < k; i++) workersQ.add(0);
     for(int j = jobs.length - 1; j >= 0; j--) {
       int job = jobs[j];
-      int i = workersQ.remove();
-      i += job;
-      if(i > max) max = i;
-      workersQ.add(i);
+      int jobTime = workersQ.remove();
+      jobTime += job;
+      if(jobTime > max) max = jobTime;
+      workersQ.add(jobTime);
     }
     return max;
   }
