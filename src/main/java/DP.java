@@ -179,15 +179,18 @@ public class DP {
     if(i < 0 || j < 0) return "";
     if(mem[i][j] != null) return mem[i][j];
     String max1 = "";
-    if(s1[i].equals(s2[j])) max1 = longestString(s1, s2, i, j);
+    if(s1[i].equals(s2[j])) max1 = longestMatch(s1, s2, i, j);
     String max2 = lcsRec(s1, s2, i - 1, j, mem);
     String max3 = lcsRec(s1, s2, i, j - 1, mem);
-    if(max1.length() > max2.length() && max1.length() > max3.length()) mem[i][j] = max1;
-    else if(max2.length() > max1.length() && max2.length() > max3.length()) mem[i][j] = max2;
-    else mem[i][j] = max3;
+    mem[i][j] = longestString(max1, max2, max3);
     return mem[i][j];
   }
-  static String longestString(String[] s1, String[] s2, int i, int j) {
+  static String longestString(String max1, String max2, String max3) {
+    if(max1.length() > max2.length() && max1.length() > max3.length()) return max1;
+    else if(max2.length() > max1.length() && max2.length() > max3.length()) return max2;
+    else return max3;
+  }
+  static String longestMatch(String[] s1, String[] s2, int i, int j) {
     int end = i;
     while(i >= 0 && j >= 0 && s1[i].equals(s2[j])) {
       i--;
