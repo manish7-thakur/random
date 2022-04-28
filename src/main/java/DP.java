@@ -172,35 +172,34 @@ public class DP {
     mem[i] = false;
     return false;
   }
+  record IndexPair(int i, int j) {
+    int getLength() {
+      return j - i;
+    }
+  }
   static String longestCommonSubstring(String[] s1, String[] s2) {
-    Integer[][] mem = new Integer[s1.length][s2.length];
+    IndexPair[][] mem = new IndexPair[s1.length][s2.length];
     StringBuilder b = new StringBuilder();
-    AtomicInteger start = new AtomicInteger(0);
-    AtomicInteger end = new AtomicInteger(-1);
-    lcsRec(s1, s2, s1.length - 1, s2.length - 1, mem, start, end);
-    while(start.get() <= end.get()) b.append(s1[start.getAndIncrement()]);
+    IndexPair p = lcsRec(s1, s2, s1.length - 1, s2.length - 1, mem);
+    for(int i = p.i; i <= p.j; i++) b.append(s1[i]);
     return b.toString();
   }
-  static int lcsRec(String[] s1, String[] s2, int i, int j, Integer[][] mem, AtomicInteger start, AtomicInteger end) {
-    if(i < 0 || j < 0) return 0;
+  static IndexPair lcsRec(String[] s1, String[] s2, int i, int j, IndexPair[][] mem) {
+    if(i < 0 || j < 0) return new IndexPair(0, -1);
     if(mem[i][j] != null) return mem[i][j];
-    int max1 = 0;
+    IndexPair max1 = new IndexPair(0, -1);
     if(s1[i].equals(s2[j])) {
       int begin = longestMatch(s1, s2, i, j);
-      max1 = i - begin;
-      if(max1 > end.get() - start.get()) {
-        start.set(begin);
-        end.set(i);
-      }
+      max1 = new IndexPair(begin, i);
     }
-    int max2 = lcsRec(s1, s2, i - 1, j, mem, start, end);
-    int max3 = lcsRec(s1, s2, i, j - 1, mem, start, end);
+    IndexPair max2 = lcsRec(s1, s2, i - 1, j, mem);
+    IndexPair max3 = lcsRec(s1, s2, i, j - 1, mem);
     mem[i][j] = longestString(max1, max2, max3);
     return mem[i][j];
   }
-  static int longestString(Integer max1, Integer max2, Integer max3) {
-    if(max1 > max2 && max1 > max3) return max1;
-    else if(max2 > max1 && max2 > max3) return max2;
+  static IndexPair longestString(IndexPair max1, IndexPair max2, IndexPair max3) {
+    if(max1.getLength() > max2.getLength() && max1.getLength() > max3.getLength()) return max1;
+    else if(max2.getLength() > max1.getLength() && max2.getLength() > max3.getLength()) return max2;
     else return max3;
   }
   static int longestMatch(String[] s1, String[] s2, int i, int j) {
