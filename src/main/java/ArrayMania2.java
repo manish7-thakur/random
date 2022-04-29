@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.function.Function;
+import static java.util.stream.Collectors.*;
 
 public class ArrayMania2 {
   /**
@@ -186,14 +188,19 @@ public class ArrayMania2 {
     }
     static int[] frequencySort(int[] nums) {
       record Pair(int val, int occ){}
-      Queue<Pair> queue = new PriorityQueue<>((p1, p2) -> p2.val - p1.val);
-      for(int num : nums) {
-        queue.add(new Pair(num, 1));
-      }
+      Map<Integer, Integer> map = Arrays.stream(nums).boxed().collect(groupingBy(Function.identity(), collectingAndThen(counting(), Long::intValue)));
+      Queue<Pair> queue = new PriorityQueue<>((p1, p2) -> {
+        if(p1.occ != p2.occ) return p1.occ - p2.occ;
+        return p2.val - p1.val;
+      });
+      map.forEach((k, v) -> queue.add(new Pair(k, v)));
       int idx = 0;
       while(!queue.isEmpty()) {
-        nums[idx] = queue.remove().val;
-        idx++;
+        Pair p = queue.remove();
+        for(int i = 0; i < p.occ; i++) {
+          nums[idx] = p.val;
+          idx++;
+        }
       }
       return nums;
     }

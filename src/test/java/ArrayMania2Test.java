@@ -511,5 +511,9 @@ public class ArrayMania2Test {
       actual = ArrayMania2.frequencySort(new int[]{1, 2});
       expected = new int[]{2, 1};
       Assert.assertArrayEquals(expected, actual);
+
+      actual = ArrayMania2.frequencySort(new int[]{3, 4, 4});
+      expected = new int[]{3, 4, 4};
+      Assert.assertArrayEquals(expected, actual);
     }
 }
