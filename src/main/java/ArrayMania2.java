@@ -184,4 +184,17 @@ public class ArrayMania2 {
       }
       return -1;
     }
+    static int[] frequencySort(int[] nums) {
+      record Pair(int val, int occ){}
+      Queue<Pair> queue = new PriorityQueue<>((p1, p2) -> p2.val - p1.val);
+      for(int num : nums) {
+        queue.add(new Pair(num, 1));
+      }
+      int idx = 0;
+      while(!queue.isEmpty()) {
+        nums[idx] = queue.remove().val;
+        idx++;
+      }
+      return nums;
+    }
 }

@@ -502,4 +502,14 @@ public class ArrayMania2Test {
       Assert.assertEquals(expected, actual);
 
     }
+    @Test
+    public void sortArrayByFrequencyThenDescendingValue() {
+      int[] actual = ArrayMania2.frequencySort(new int[]{1});
+      int[] expected = new int[]{1};
+      Assert.assertArrayEquals(expected, actual);
+
+      actual = ArrayMania2.frequencySort(new int[]{1, 2});
+      expected = new int[]{2, 1};
+      Assert.assertArrayEquals(expected, actual);
+    }
 }
