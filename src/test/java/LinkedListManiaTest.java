@@ -318,5 +318,13 @@ public class LinkedListManiaTest {
       actual = LinkedListMania.addTwoNumbers(new ListNode(5), new ListNode(5));
       Assert.assertEquals(0, actual.val);
       Assert.assertEquals(1, actual.next.val);
+
+      actual = LinkedListMania.addTwoNumbers(new ListNode(2, new ListNode(5)), new ListNode(5));
+      Assert.assertEquals(7, actual.val);
+      Assert.assertEquals(5, actual.next.val);
+
+      actual = LinkedListMania.addTwoNumbers(new ListNode(2), new ListNode(7, new ListNode(5)));
+      Assert.assertEquals(9, actual.val);
+      Assert.assertEquals(5, actual.next.val);
     }
 }

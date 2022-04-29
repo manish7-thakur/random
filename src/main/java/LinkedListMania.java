@@ -124,6 +124,22 @@ public class LinkedListMania {
         l2 = l2.next;
         traverser = traverser.next;
       }
+      while(l1 != null) {
+        int sum = l1.val + carry;
+        carry = sum / 10;
+        sum = sum % 10;
+        traverser.next = new ListNode(sum);
+        l1 = l1.next;
+        traverser = traverser.next;
+      }
+      while(l2 != null) {
+        int sum = l2.val + carry;
+        carry = sum / 10;
+        sum = sum % 10;
+        traverser.next = new ListNode(sum);
+        l2 = l2.next;
+        traverser = traverser.next;
+      }
       if(carry > 0) traverser.next = new ListNode(carry);
       return res.next;
     }
