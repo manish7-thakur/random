@@ -1,39 +1,39 @@
 public class ReverseKNodeGroup {
     static class Pair {
-        private Node head;
-        private Node mid;
-        private Node traverser;
+        private ListNode head;
+        private ListNode mid;
+        private ListNode traverser;
 
-        public Pair(Node head, Node mid, Node traverser) {
+        public Pair(ListNode head, ListNode mid, ListNode traverser) {
             this.head = head;
             this.mid = mid;
             this.traverser = traverser;
         }
 
-        public Node getHead() {
+        public ListNode getHead() {
             return head;
         }
 
-        public Node getMid() {
+        public ListNode getMid() {
             return mid;
         }
 
-        public Node getTraverser() {
+        public ListNode getTraverser() {
             return traverser;
         }
     }
 
-    static Node reverse(Node head, int k) {
-        Node start = head;
+    static ListNode reverse(ListNode head, int k) {
+        ListNode start = head;
         int count = 0;
         while (start != null) {
             count++;
             start = start.next;
         }
         int groups = count / k;
-        Node newHead = head;
-        Node previousHead = head;
-        Node traverser = head;
+        ListNode newHead = head;
+        ListNode previousHead = head;
+        ListNode traverser = head;
 
         if (groups > 0) {
             Pair p = reverseNodesBy(traverser, k);
@@ -53,10 +53,10 @@ public class ReverseKNodeGroup {
         return newHead;
     }
 
-    private static Pair reverseNodesBy(Node head, int count) {
-        Node start = null;
-        Node mid = null;
-        Node traverser = head;
+    private static Pair reverseNodesBy(ListNode head, int count) {
+        ListNode start = null;
+        ListNode mid = null;
+        ListNode traverser = head;
 
         while (count > 0) {
             start = mid;
