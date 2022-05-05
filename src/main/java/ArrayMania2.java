@@ -205,13 +205,16 @@ public class ArrayMania2 {
       return nums;
     }
     static int uniquePathsWithObstacles(int[][] obstacleGrid) {
-      return uniquePathsWithObstacles(obstacleGrid, obstacleGrid.length - 1, obstacleGrid[0].length - 1);
+      Integer[][] mem = new Integer[obstacleGrid.length][obstacleGrid[0].length];
+      return uniquePathsWithObstacles(obstacleGrid, obstacleGrid.length - 1, obstacleGrid[0].length - 1, mem);
     }
-    static int uniquePathsWithObstacles(int[][] obstacleGrid, int i, int j) {
+    static int uniquePathsWithObstacles(int[][] obstacleGrid, int i, int j, Integer[][] mem) {
       if(i == 0 && j == 0) return 1;
+      if(mem[i][j] != null) return mem[i][j];
       int paths = 0;
-      if(i > 0 && obstacleGrid[i][j] != 1) paths += uniquePathsWithObstacles(obstacleGrid, i - 1, j);
-      if(j > 0 && obstacleGrid[i][j] != 1) paths += uniquePathsWithObstacles(obstacleGrid, i, j - 1);
+      if(i > 0 && obstacleGrid[i][j] != 1) paths += uniquePathsWithObstacles(obstacleGrid, i - 1, j, mem);
+      if(j > 0 && obstacleGrid[i][j] != 1) paths += uniquePathsWithObstacles(obstacleGrid, i, j - 1, mem);
+      mem[i][j] = paths;
       return paths;
     }
 }
