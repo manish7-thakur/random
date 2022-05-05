@@ -210,8 +210,8 @@ public class ArrayMania2 {
     static int uniquePathsWithObstacles(int[][] obstacleGrid, int i, int j) {
       if(i == 0 && j == 0) return 1;
       int paths = 0;
-      if(i > 0) paths += uniquePathsWithObstacles(obstacleGrid, i - 1, j);
-      if(j > 0) paths += uniquePathsWithObstacles(obstacleGrid, i, j - 1);
+      if(i > 0 && obstacleGrid[i][j] != 1) paths += uniquePathsWithObstacles(obstacleGrid, i - 1, j);
+      if(j > 0 && obstacleGrid[i][j] != 1) paths += uniquePathsWithObstacles(obstacleGrid, i, j - 1);
       return paths;
     }
 }

@@ -533,5 +533,29 @@ public class ArrayMania2Test {
       actual = ArrayMania2.uniquePathsWithObstacles(new int[][]{{0, 0}, {0, 0}});
       expected  = 2;
       Assert.assertEquals(expected, actual);
+
+      actual = ArrayMania2.uniquePathsWithObstacles(new int[][]{{0, 1}, {0, 0}});
+      expected  = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayMania2.uniquePathsWithObstacles(new int[][]{{0, 0}, {1, 0}});
+      expected  = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayMania2.uniquePathsWithObstacles(new int[][]{{0, 1}, {1, 0}});
+      expected  = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayMania2.uniquePathsWithObstacles(new int[][]{{0, 0, 0},{0, 1, 0},{0, 0, 0}});
+      expected  = 2;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayMania2.uniquePathsWithObstacles(new int[][]{{0, 0, 0},{0, 1, 0},{0, 1, 0}});
+      expected  = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayMania2.uniquePathsWithObstacles(new int[][]{{0, 1, 0},{0, 1, 0},{0, 1, 0}});
+      expected  = 0;
+      Assert.assertEquals(expected, actual);
     }
 }
