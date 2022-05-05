@@ -530,6 +530,10 @@ public class ArrayMania2Test {
       int expected  = 1;
       Assert.assertEquals(expected, actual);
 
+      actual = ArrayMania2.uniquePathsWithObstacles(new int[][]{{1}});
+      expected  = 0;
+      Assert.assertEquals(expected, actual);
+
       actual = ArrayMania2.uniquePathsWithObstacles(new int[][]{{0, 0}, {0, 0}});
       expected  = 2;
       Assert.assertEquals(expected, actual);

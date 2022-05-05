@@ -209,7 +209,10 @@ public class ArrayMania2 {
       return uniquePathsWithObstacles(obstacleGrid, obstacleGrid.length - 1, obstacleGrid[0].length - 1, mem);
     }
     static int uniquePathsWithObstacles(int[][] obstacleGrid, int i, int j, Integer[][] mem) {
-      if(i == 0 && j == 0) return 1;
+      if(i == 0 && j == 0) {
+        if(obstacleGrid[i][j] == 1) return 0;
+        return 1;
+      }
       if(mem[i][j] != null) return mem[i][j];
       int paths = 0;
       if(i > 0 && obstacleGrid[i][j] != 1) paths += uniquePathsWithObstacles(obstacleGrid, i - 1, j, mem);
