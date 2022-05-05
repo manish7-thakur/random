@@ -524,4 +524,14 @@ public class ArrayMania2Test {
       expected = new int[]{5, -1, 4, 4, -6, -6, 1, 1, 1};
       Assert.assertArrayEquals(expected, actual);
     }
+    @Test
+    public void uniquePathsWithObstacles() {
+      int actual = ArrayMania2.uniquePathsWithObstacles(new int[][]{{0}});
+      int expected  = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayMania2.uniquePathsWithObstacles(new int[][]{{0, 0}, {0, 0}});
+      expected  = 2;
+      Assert.assertEquals(expected, actual);
+    }
 }
