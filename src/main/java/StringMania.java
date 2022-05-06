@@ -155,4 +155,22 @@ public class StringMania {
     return b.toString();
   }
 
+  static String removeDuplicates(String s, int k) {
+    int curr = 1;
+    Stack<Character> stack = new Stack<>();
+    for(int i = 0; i < s.length(); i++) {
+      if(!stack.isEmpty() && stack.peek() == s.charAt(i)) {
+        curr++;
+      }
+      stack.push(s.charAt(i));
+      if(curr == k) {
+        while(!stack.isEmpty() && curr > 0) stack.pop();
+        curr = 1;
+      }
+    }
+    StringBuilder b = new StringBuilder();
+    while(!stack.isEmpty()) b.append(stack.pop());
+    return b.toString();
+  }
+
 }

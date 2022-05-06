@@ -281,4 +281,14 @@ public class StringManiaTest {
     expected = "ddhstuxxyDFHHIJKTWWWXX222444688811133357";
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void removeAdjacentDuplicates() {
+    String actual = StringMania.removeDuplicates("a", 2);
+    String expected = "a";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.removeDuplicates("aab", 2);
+    expected = "b";
+    Assert.assertEquals(expected, actual);
+  }
 }
