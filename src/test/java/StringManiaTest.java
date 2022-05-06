@@ -291,8 +291,28 @@ public class StringManiaTest {
     expected = "b";
     Assert.assertEquals(expected, actual);
 
+    actual = StringMania.removeDuplicates("abcd", 2);
+    expected = "abcd";
+    Assert.assertEquals(expected, actual);
+
     actual = StringMania.removeDuplicates("aa", 2);
     expected = "";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.removeDuplicates("abbac", 2);
+    expected = "c";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.removeDuplicates("rcabbace", 2);
+    expected = "re";
+    Assert.assertEquals(expected, actual);
+    
+    actual = StringMania.removeDuplicates("deeedbbcccbdaa", 3);
+    expected = "aa";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.removeDuplicates("pbbcggttciiippooaais", 2);
+    expected = "ps";
     Assert.assertEquals(expected, actual);
   }
 }

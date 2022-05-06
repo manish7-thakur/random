@@ -157,20 +157,23 @@ public class StringMania {
 
   static String removeDuplicates(String s, int k) {
     int curr = 1;
-    Stack<Character> stack = new Stack<>();
+    record Pair(char c, int occ){}
+    Stack<Pair> stack = new Stack<>();
     for(int i = 0; i < s.length(); i++) {
-      if(!stack.isEmpty() && stack.peek() == s.charAt(i)) {
-        curr++;
-      }
-      stack.push(s.charAt(i));
-      if(curr == k) {
-        while(!stack.isEmpty() && curr > 0) stack.pop();
-        curr = 1;
-      }
+      if(!stack.isEmpty() && stack.peek().c == s.charAt(i)) {
+        Pair p = stack.pop();
+        stack.push(new Pair(p.c, p.occ + 1));
+      } else stack.push(new Pair(s.charAt(i), 1));
+      if(stack.peek().occ == k) stack.pop();
     }
     StringBuilder b = new StringBuilder();
-    while(!stack.isEmpty()) b.append(stack.pop());
-    return b.toString();
+    while(!stack.isEmpty()) {
+      Pair p = stack.pop();
+      for(int i = 0; i < p.occ; i++) {
+        b.append(p.c);
+      }
+    }
+    return b.reverse().toString();
   }
 
 }
