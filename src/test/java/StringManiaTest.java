@@ -290,5 +290,9 @@ public class StringManiaTest {
     actual = StringMania.removeDuplicates("aab", 2);
     expected = "b";
     Assert.assertEquals(expected, actual);
+
+    actual = StringMania.removeDuplicates("aa", 2);
+    expected = "";
+    Assert.assertEquals(expected, actual);
   }
 }
