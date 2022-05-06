@@ -220,4 +220,22 @@ public class ArrayMania2 {
       mem[i][j] = paths;
       return paths;
     }
+    static List<List<Integer>> subsets(int[] nums) {
+      List<List<Integer>> res = new ArrayList<>();
+      for(int i = 0; i <= nums.length; i++) {
+        subsetsRec(nums, 0, new ArrayList<Integer>(), i, res);
+      }
+      return res;
+    }
+    static void subsetsRec(int[] nums, int start, List<Integer> curr, int len, List<List<Integer>> res) {
+      if(curr.size() == len) {
+        res.add(new ArrayList(curr));
+        return;
+      }
+      for(int i = start; i < nums.length; i++) {
+        curr.add(nums[i]);
+        subsetsRec(nums, i + 1, curr, len, res);
+        curr.remove(curr.size() - 1);
+      }
+    }
 }

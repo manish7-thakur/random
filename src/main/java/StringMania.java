@@ -156,7 +156,6 @@ public class StringMania {
   }
 
   static String removeDuplicates(String s, int k) {
-    int curr = 1;
     record Pair(char c, int occ){}
     Stack<Pair> stack = new Stack<>();
     for(int i = 0; i < s.length(); i++) {

@@ -573,4 +573,15 @@ public class ArrayMania2Test {
       expected  = 100096486;
       Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void generateAllSubsets() {
+      List<List<Integer>> actual = ArrayMania2.subsets(new int[]{1});
+      List<List<Integer>> expected = List.of(List.of(), List.of(1));
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayMania2.subsets(new int[]{1, 2});
+      expected = List.of(List.of(), List.of(1), List.of(2), List.of(1, 2));
+      Assert.assertEquals(expected, actual);
+    }
 }
