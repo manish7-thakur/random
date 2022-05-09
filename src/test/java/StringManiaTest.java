@@ -318,7 +318,7 @@ public class StringManiaTest {
   @Test
   public void letterCombinationsOfGivenDigits() {
     List<String> actual = StringMania.letterCombinations("");
-    List<String> expected = List.of("");
+    List<String> expected = List.of();
     Assert.assertEquals(expected, actual);
 
     actual = StringMania.letterCombinations("2");
