@@ -342,4 +342,12 @@ public class LinkedListManiaTest {
       Assert.assertEquals(0, actual.next.next.next.next.next.next.val);
       Assert.assertEquals(1, actual.next.next.next.next.next.next.next.val);
     }
+    @Test
+    public void rotateLinkedListToTheRight() {
+      ListNode actual = LinkedListMania.rotate(null, 1);
+      Assert.assertNull(actual);
+
+      ListNode actual = LinkedListMania.rotate(new ListNode(2), 1);
+      Assert.assertEquals(2, actual.val);
+    }
 }

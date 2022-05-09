@@ -143,4 +143,8 @@ public class LinkedListMania {
       if(carry > 0) traverser.next = new ListNode(carry);
       return res.next;
     }
+    static ListNode rotate(ListNode head, int k) {
+      ListNode traverser = head;
+      return head;
+    }
 }
