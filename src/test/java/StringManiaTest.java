@@ -306,13 +306,31 @@ public class StringManiaTest {
     actual = StringMania.removeDuplicates("rcabbace", 2);
     expected = "re";
     Assert.assertEquals(expected, actual);
-    
+
     actual = StringMania.removeDuplicates("deeedbbcccbdaa", 3);
     expected = "aa";
     Assert.assertEquals(expected, actual);
 
     actual = StringMania.removeDuplicates("pbbcggttciiippooaais", 2);
     expected = "ps";
+    Assert.assertEquals(expected, actual);
+  }
+  @Test
+  public void letterCombinationsOfGivenDigits() {
+    List<String> actual = StringMania.letterCombinations("");
+    List<String> expected = List.of("");
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.letterCombinations("2");
+    expected = List.of("a", "b", "c");
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.letterCombinations("23");
+    expected = List.of("ad","ae","af","bd","be","bf","cd","ce","cf");
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.letterCombinations("345");
+    expected = List.of("dgj", "dgk", "dgl", "dhj", "dhk", "dhl", "dij", "dik", "dil", "egj", "egk", "egl", "ehj", "ehk", "ehl", "eij", "eik", "eil", "fgj", "fgk", "fgl", "fhj", "fhk", "fhl", "fij", "fik", "fil");
     Assert.assertEquals(expected, actual);
   }
 }

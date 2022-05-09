@@ -175,4 +175,23 @@ public class StringMania {
     return b.reverse().toString();
   }
 
+  static List<String> letterCombinations(String digits) {
+    List<String> res = new ArrayList<>();
+    Map<Character, String> map = Map.of('2', "abc", '3', "def", '4', "ghi", '5', "jkl", '6', "mno", '7', "pqrs", '8', "tuv", '9', "wxyz");
+    combRec(digits, 0, "",res, map);
+    return res;
+  }
+  static void combRec(String digits, int start, String curr, List<String> res, Map<Character, String> map) {
+    if(curr.length() == digits.length()) {
+      res.add(curr);
+      return;
+    }
+    for(int i = start; i < digits.length(); i++) {
+      String letters = map.get(digits.charAt(i));
+      for(int j = 0; j < letters.length(); j++) {
+        combRec(digits, i + 1, curr + letters.charAt(j), res, map);
+      }
+    }
+  }
+
 }
