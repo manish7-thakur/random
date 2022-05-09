@@ -145,7 +145,15 @@ public class LinkedListMania {
     }
     static ListNode rotate(ListNode head, int k) {
       if(head == null) return head;
+      int count = 0;
       ListNode follower = head, traverser = head;
+      while(traverser != null) {
+        count++;
+        traverser = traverser.next;
+      }
+      k = k % count;
+      if(k == 0) return head;
+      traverser = head;
       while(k-- > 0) traverser = traverser.next;
       while(traverser.next != null) {
         follower = follower.next;
