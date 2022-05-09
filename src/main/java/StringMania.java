@@ -168,9 +168,7 @@ public class StringMania {
     StringBuilder b = new StringBuilder();
     while(!stack.isEmpty()) {
       Pair p = stack.pop();
-      for(int i = 0; i < p.occ; i++) {
-        b.append(p.c);
-      }
+      b.append(String.valueOf(p.c).repeat(p.occ));
     }
     return b.reverse().toString();
   }
