@@ -347,7 +347,31 @@ public class LinkedListManiaTest {
       ListNode actual = LinkedListMania.rotate(null, 1);
       Assert.assertNull(actual);
 
-      ListNode actual = LinkedListMania.rotate(new ListNode(2), 1);
+      // actual = LinkedListMania.rotate(new ListNode(2), 1);
+      // Assert.assertEquals(2, actual.val);
+
+      actual = LinkedListMania.rotate(new ListNode(2, new ListNode(3)), 1);
+      Assert.assertEquals(3, actual.val);
+      Assert.assertEquals(2, actual.next.val);
+      Assert.assertNull(actual.next.next);
+
+      actual = LinkedListMania.rotate(new ListNode(2, new ListNode(3, new ListNode(0))), 1);
+      Assert.assertEquals(0, actual.val);
+      Assert.assertEquals(2, actual.next.val);
+      Assert.assertEquals(3, actual.next.next.val);
+      Assert.assertNull(actual.next.next.next);
+
+      actual = LinkedListMania.rotate(new ListNode(2, new ListNode(3, new ListNode(0))), 2);
+      Assert.assertEquals(3, actual.val);
+      Assert.assertEquals(0, actual.next.val);
+      Assert.assertEquals(2, actual.next.next.val);
+      Assert.assertNull(actual.next.next.next);
+
+      actual = LinkedListMania.rotate(new ListNode(6, new ListNode(2, new ListNode(3, new ListNode(0)))), 3);
       Assert.assertEquals(2, actual.val);
+      Assert.assertEquals(3, actual.next.val);
+      Assert.assertEquals(0, actual.next.next.val);
+      Assert.assertEquals(6, actual.next.next.next.val);
+      Assert.assertNull(actual.next.next.next.next);
     }
 }

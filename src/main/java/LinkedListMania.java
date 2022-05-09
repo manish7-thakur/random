@@ -144,7 +144,16 @@ public class LinkedListMania {
       return res.next;
     }
     static ListNode rotate(ListNode head, int k) {
-      ListNode traverser = head;
+      if(head == null) return head;
+      ListNode follower = head, traverser = head;
+      while(k-- > 0) traverser = traverser.next;
+      while(traverser.next != null) {
+        follower = follower.next;
+        traverser = traverser.next;
+      }
+      traverser.next = head;
+      head = follower.next;
+      follower.next = null;
       return head;
     }
 }
