@@ -241,7 +241,7 @@ public class ArrayMania2 {
     static List<List<Integer>> combinationSum3(int k, int n) {
       List<List<Integer>> res = new ArrayList<>();
       List<Integer> curr = new ArrayList<>();
-      combinationRec(k, n, 9, res, curr);
+      combinationRecLoop(k, n, 1, res, curr);
       return res;
     }
     static void combinationRec(int k, int n, int num, List<List<Integer>> res, List<Integer> curr) {
@@ -256,6 +256,20 @@ public class ArrayMania2 {
         curr.remove(curr.size() - 1);
       }
       combinationRec(k, n, num - 1, res, curr);
+    }
+
+    static void combinationRecLoop(int k, int n, int start, List<List<Integer>> res, List<Integer> curr) {
+      if(k == 0 && n == 0) {
+        res.add(new ArrayList<>(curr));
+        return;
+      }
+      for(int i = start; i < 10; i++) {
+        if(i <= n) {
+          curr.add(i);
+          combinationRecLoop(k - 1, n - i, i + 1, res, curr);
+          curr.remove(curr.size() - 1);
+        }
+      }
     }
 
 }

@@ -595,7 +595,7 @@ public class ArrayMania2Test {
       Assert.assertEquals(expected, actual);
 
       actual = ArrayMania2.combinationSum3(2, 3);
-      expected = List.of(List.of(2, 1));
+      expected = List.of(List.of(1, 2));
       Assert.assertEquals(expected, actual);
 
       actual = ArrayMania2.combinationSum3(3, 5);
@@ -603,15 +603,15 @@ public class ArrayMania2Test {
       Assert.assertEquals(expected, actual);
 
       actual = ArrayMania2.combinationSum3(3, 7);
-      expected = List.of(List.of(4, 2, 1));
+      expected = List.of(List.of(1, 2, 4));
       Assert.assertEquals(expected, actual);
 
       actual = ArrayMania2.combinationSum3(2, 8);
-      expected = List.of(List.of(7, 1), List.of(6, 2), List.of(5, 3));
+      expected = List.of(List.of(1, 7), List.of(2, 6), List.of(3, 5));
       Assert.assertEquals(expected, actual);
 
       actual = ArrayMania2.combinationSum3(3, 9);
-      expected = List.of(List.of(6, 2, 1), List.of(5, 3, 1), List.of(4, 3, 2));
+      expected = List.of(List.of(1, 2, 6), List.of(1, 3, 5), List.of(2, 3, 4));
       Assert.assertEquals(expected, actual);
 
       actual = ArrayMania2.combinationSum3(4, 1);
