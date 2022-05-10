@@ -229,7 +229,7 @@ public class ArrayMania2 {
     }
     static void subsetsRec(int[] nums, int start, List<Integer> curr, int len, List<List<Integer>> res) {
       if(curr.size() == len) {
-        res.add(new ArrayList(curr));
+        res.add(new ArrayList<>(curr));
         return;
       }
       for(int i = start; i < nums.length; i++) {
