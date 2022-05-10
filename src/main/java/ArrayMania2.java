@@ -222,14 +222,15 @@ public class ArrayMania2 {
     }
     static List<List<Integer>> subsets(int[] nums) {
       List<List<Integer>> res = new ArrayList<>();
+      ArrayList<Integer> curr = new ArrayList<>();
       for(int i = 0; i <= nums.length; i++) {
-        subsetsRec(nums, 0, new ArrayList<Integer>(), i, res);
+        subsetsRec(nums, 0, curr, i, res);
       }
       return res;
     }
     static void subsetsRec(int[] nums, int start, List<Integer> curr, int len, List<List<Integer>> res) {
       if(curr.size() == len) {
-        res.add(new ArrayList(curr));
+        res.add(new ArrayList<>(curr));
         return;
       }
       for(int i = start; i < nums.length; i++) {
