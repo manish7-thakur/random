@@ -255,7 +255,7 @@ public class ArrayMania2 {
         combinationRec(k - 1, n - num, num - 1, res, curr);
         curr.remove(curr.size() - 1);
       }
-      combinationRec(k, n, num - 1, res, curr);
+      combinationRec(k, n, num - 1, res, curr); //this creates loop
     }
 
     static void combinationRecLoop(int k, int n, int start, List<List<Integer>> res, List<Integer> curr) {
