@@ -246,7 +246,7 @@ public class ArrayMania2 {
     }
     static void combinationRec(int k, int n, int num, List<List<Integer>> res, List<Integer> curr) {
       if(n == 0 && k == 0) {
-        res.add(new ArrayList(curr));
+        res.add(new ArrayList<>(curr));
         return;
       }
       if(k <= 0 || num < 1) return;
