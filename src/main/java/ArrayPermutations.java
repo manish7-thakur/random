@@ -17,7 +17,7 @@ public class ArrayPermutations {
         }
         per[p] = arr[i];
         find(arr, per, i + 1, p + 1, l, permutations);
-        find(arr, per, i + 1, p, l, permutations);
+        find(arr, per, i + 1, p, l, permutations); //this creates loop, in the method with loop this doesn't exist
     }
 
     static void find(char[] arr, String str, int start, int l, ArrayList<String> permutations) {

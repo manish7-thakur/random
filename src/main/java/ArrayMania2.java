@@ -263,6 +263,7 @@ public class ArrayMania2 {
         res.add(new ArrayList<>(curr));
         return;
       }
+      if(k < 0) return;
       for(int i = start; i < 10; i++) {
         if(i <= n) {
           curr.add(i);
