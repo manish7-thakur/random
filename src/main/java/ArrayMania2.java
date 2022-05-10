@@ -272,5 +272,27 @@ public class ArrayMania2 {
         }
       }
     }
+    static List<List<Integer>> subsetsWithDup(int[] nums) {
+      List<List<Integer>> res = new ArrayList<>();
+      List<Integer> curr = new ArrayList<>();
+      Arrays.sort(nums);
+      for(int i = 0; i <= nums.length; i++) {
+        subsetsWithDupRec(nums, 0, i, res, curr);
+      }
+      return res;
+    }
+    static void subsetsWithDupRec(int[] nums, int start, int len, List<List<Integer>> res, List<Integer> curr) {
+      if(curr.size() == len) {
+        res.add(new ArrayList<>(curr));
+        return;
+      }
+      for(int i = start; i < nums.length; i++) {
+          if(i == start || nums[i] != nums[i - 1]) {
+          curr.add(nums[i]);
+          subsetsWithDupRec(nums, i + 1, len, res, curr);
+          curr.remove(curr.size() - 1);
+        }
+      }
+    }
 
 }

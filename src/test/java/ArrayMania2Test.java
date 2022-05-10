@@ -618,4 +618,18 @@ public class ArrayMania2Test {
       expected = List.of();
       Assert.assertEquals(expected, actual);
     }
+    @Test
+    public void generateAllSubsetsWithDuplicates() {
+      List<List<Integer>> actual = ArrayMania2.subsetsWithDup(new int[]{1});
+      List<List<Integer>> expected = List.of(List.of(), List.of(1));
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayMania2.subsetsWithDup(new int[]{2, 2});
+      expected = List.of(List.of(), List.of(2), List.of(2, 2));
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayMania2.subsetsWithDup(new int[]{2, 1, 2});
+      expected = List.of(List.of(), List.of(1), List.of(2), List.of(1, 2), List.of(2, 2), List.of(1, 2, 2));
+      Assert.assertEquals(expected, actual);
+    }
 }
