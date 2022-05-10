@@ -287,7 +287,7 @@ public class ArrayMania2 {
         return;
       }
       for(int i = start; i < nums.length; i++) {
-          if(i == start || nums[i] != nums[i - 1]) {
+          if(i == start || nums[i] != nums[i - 1]) { //can be written as if(i != start && nums[i] == nums[i-1]) continue;
           curr.add(nums[i]);
           subsetsWithDupRec(nums, i + 1, len, res, curr);
           curr.remove(curr.size() - 1);
