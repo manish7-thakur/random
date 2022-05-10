@@ -588,4 +588,34 @@ public class ArrayMania2Test {
       expected = List.of(List.of(), List.of(1), List.of(2), List.of(3), List.of(1, 2), List.of(1, 3), List.of(2, 3), List.of(1, 2, 3));
       Assert.assertEquals(expected, actual);
     }
+    @Test
+    public void combinationSumWithKNumbers() {
+      List<List<Integer>> actual = ArrayMania2.combinationSum3(2, 1);
+      List<List<Integer>> expected = List.of();
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayMania2.combinationSum3(2, 3);
+      expected = List.of(List.of(2, 1));
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayMania2.combinationSum3(3, 5);
+      expected = List.of();
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayMania2.combinationSum3(3, 7);
+      expected = List.of(List.of(4, 2, 1));
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayMania2.combinationSum3(2, 8);
+      expected = List.of(List.of(7, 1), List.of(6, 2), List.of(5, 3));
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayMania2.combinationSum3(3, 9);
+      expected = List.of(List.of(6, 2, 1), List.of(5, 3, 1), List.of(4, 3, 2));
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayMania2.combinationSum3(4, 1);
+      expected = List.of();
+      Assert.assertEquals(expected, actual);
+    }
 }
