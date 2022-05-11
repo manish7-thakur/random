@@ -104,11 +104,11 @@ public class Karat {
     return res;
   }
   static String findEmbeddedWord(String[] words, String str) {
-    Map<Character, Integer> map = str.chars().mapToObj(c -> (char) c).collect(groupingBy(Function.identity(), collectingAndThen(counting(), Long::intValue)));
-    for(String word : words) {
+    Map<Character, Integer> map = str.chars().mapToObj(c -> (char) c).collect(groupingBy(Function.identity(), collectingAndThen(counting(), Long::intValue))); //O(S)
+    for(String word : words) { //O(W)
       boolean found = true;
       Map<Character, Integer> curr = new HashMap<>(map);
-      for(int i = 0; i < word.length(); i++) {
+      for(int i = 0; i < word.length(); i++) { //O(S)
         char c = word.charAt(i);
         Integer count = curr.computeIfPresent(c, (k, v) -> --v < 0 ? null : v);
         if(count == null) {
