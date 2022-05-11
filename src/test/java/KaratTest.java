@@ -112,5 +112,19 @@ public class KaratTest {
     actual = Karat.findEmbeddedWord(new String[]{"qw", "ff", "df"}, "fd");
     expected = "df";
     Assert.assertEquals(expected, actual);
+
+    actual = Karat.findEmbeddedWord(new String[]{"cat", "baby", "dog", "bird", "car", "ax"}, "bbabylkkj");
+    expected = "baby";
+    Assert.assertEquals(expected, actual);
+
+    actual = Karat.findEmbeddedWord(new String[]{"cat", "baby", "dog", "bird", "car", "ax"}, "ccc");
+    Assert.assertNull(actual);
+
+    actual = Karat.findEmbeddedWord(new String[]{"cat", "baby", "dog", "bird", "car", "ax"}, "baykkjl");
+    Assert.assertNull(actual);
+
+    actual = Karat.findEmbeddedWord(new String[]{"cat", "baby", "dog", "bird", "car", "ax"}, "breadmaking");
+    expected = "bird";
+    Assert.assertEquals(expected, actual);
   }
 }
