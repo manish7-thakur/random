@@ -110,8 +110,8 @@ public class Karat {
       Map<Character, Integer> curr = new HashMap<>(map);
       for(int i = 0; i < word.length(); i++) {
         char c = word.charAt(i);
-        Integer count = curr.computeIfPresent(c, (k, v) -> --v);
-        if(count == null || count < 0) {
+        Integer count = curr.computeIfPresent(c, (k, v) -> --v < 0 ? null : v);
+        if(count == null) {
           found = false;
           break;
         }
