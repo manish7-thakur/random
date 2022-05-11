@@ -1,5 +1,6 @@
 import java.util.*;
 import static java.util.stream.Collectors.*;
+import java.util.function.*;
 
 public class Karat {
   static public Map<Integer, List<Integer>> find(int[][] arr) {
@@ -101,5 +102,22 @@ public class Karat {
         if(overlapTimes.size() >= 3) res.put(name, overlapTimes);
       }});
     return res;
+  }
+  static String findEmbeddedWord(String[] words, String str) {
+    Map<Character, Integer> map = str.chars().mapToObj(c -> (char) c).collect(groupingBy(Function.identity(), collectingAndThen(counting(), Long::intValue)));
+    for(String word : words) {
+      boolean found = true;
+      Map<Character, Integer> curr = new HashMap<>(map);
+      for(int i = 0; i < word.length(); i++) {
+        char c = word.charAt(i);
+        Integer count = curr.computeIfPresent(c, (k, v) -> --v);
+        if(count == null || count < 0) {
+          found = false;
+          break;
+        }
+      }
+      if(found) return word;
+    }
+    return null;
   }
 }

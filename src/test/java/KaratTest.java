@@ -97,4 +97,20 @@ public class KaratTest {
     Map<String, List<String>> expected = Map.of("Paul", List.of("1315", "1355", "1405"), "Jose", List.of("830", "835", "855", "915", "930"), "Zhang", List.of("100", "109", "110"), "Amos", List.of("500", "503", "504"));
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void findFirstWordContainedInScrambledString() {
+    String actual = Karat.findEmbeddedWord(new String[]{"qw"}, "df");
+    Assert.assertNull(actual);
+
+    actual = Karat.findEmbeddedWord(new String[]{"qw", "fd"}, "df");
+    String expected = "fd";
+    Assert.assertEquals(expected, actual);
+
+    actual = Karat.findEmbeddedWord(new String[]{"qw", "ff"}, "fd");
+    Assert.assertNull(actual);
+
+    actual = Karat.findEmbeddedWord(new String[]{"qw", "ff", "df"}, "fd");
+    expected = "df";
+    Assert.assertEquals(expected, actual);
+  }
 }
