@@ -49,33 +49,33 @@ public class KaratTest {
 
   @Test
   public void findOverlappingTimes() {
-    List<String> actual = Karat.findOverlapTimings(new ArrayList(List.of("1355", "1405","1315", "1416")));
+    List<String> actual = Karat.findOverlapTimings(new ArrayList(List.of(1355, 1405,1315, 1416)));
     List<String> expected = List.of("1315", "1355", "1405");
     Assert.assertEquals(expected, actual);
 
-    actual = Karat.findOverlapTimings(new ArrayList(List.of("800", "950", "850","900")));
+    actual = Karat.findOverlapTimings(new ArrayList(List.of(800, 950, 850,900)));
     Assert.assertEquals(0, actual.size());
 
-    actual = Karat.findOverlapTimings(new ArrayList(List.of("830", "855", "940", "1615", "1645","1630", "930", "915", "835")));
+    actual = Karat.findOverlapTimings(new ArrayList(List.of(830, 855, 940, 1615, 1645,1630, 930, 915, 835)));
     expected = List.of("830", "835", "855", "915", "930");
     Assert.assertEquals(expected, actual);
 
-    actual = Karat.findOverlapTimings(new ArrayList(List.of("830", "855", "940", "1615", "1645","1630", "930", "915", "835")));
+    actual = Karat.findOverlapTimings(new ArrayList(List.of(830, 855, 940, 1615, 1645,1630, 930, 915, 835)));
     expected = List.of("830", "835", "855", "915", "930");
     Assert.assertEquals(expected, actual);
 
-    actual = Karat.findOverlapTimings(new ArrayList(List.of("730", "830", "855", "940", "1615", "1645","1630", "930", "915", "835")));
+    actual = Karat.findOverlapTimings(new ArrayList(List.of(730, 830, 855, 940, 1615, 1645,1630, 930, 915, 835)));
     expected = List.of("830", "835", "855", "915", "930");
     Assert.assertEquals(expected, actual);
 
-    actual = Karat.findOverlapTimings(new ArrayList(List.of("1", "110", "109", "10")));
+    actual = Karat.findOverlapTimings(new ArrayList(List.of(100, 110, 109)));
     expected = List.of("100", "109", "110");
     Assert.assertEquals(expected, actual);
 
-    actual = Karat.findOverlapTimings(new ArrayList(List.of("100", "200", "300", "700")));
+    actual = Karat.findOverlapTimings(new ArrayList(List.of(100, 200, 300, 700)));
     Assert.assertEquals(0, actual.size());
 
-    actual = Karat.findOverlapTimings(new ArrayList(List.of("1", "20", "2", "3", "0", "33", "503", "400", "500", "601", "602", "504")));
+    actual = Karat.findOverlapTimings(new ArrayList(List.of(100, 200, 300, 330, 503, 400, 500, 601, 602, 504)));
     expected = List.of("500", "503", "504");
     Assert.assertEquals(expected, actual);
   }

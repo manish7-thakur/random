@@ -75,12 +75,7 @@ public class Karat {
 
   }
 
-  static List<String> findOverlapTimings(List<String> times) {
-    List<Integer> list = new ArrayList<>();
-    for(String s: times) {
-      if(s.length() < 3) s = s + "00";
-      list.add(Integer.parseInt(s));
-    }
+  static List<String> findOverlapTimings(List<Integer> list) {
     Collections.sort(list);
     int l = 0, r = l + 1;
     while(r < list.size()) {
@@ -94,7 +89,7 @@ public class Karat {
   }
 
   static public Map<String, List<String>> findCulprits(String[][] badgeTimes) {
-    Map<String, List<String>> map = Arrays.stream(badgeTimes).collect(groupingBy(arr -> arr[0], mapping(arr -> arr[1], toList())));
+    Map<String, List<Integer>> map = Arrays.stream(badgeTimes).collect(groupingBy(arr -> arr[0], mapping(arr -> arr[1].length() < 3 ? Integer.parseInt(arr[1] + "00") : Integer.parseInt(arr[1]), toList())));
     Map<String, List<String>> res = new HashMap<>();
     map.forEach((name, list) -> {
       if(list.size() >= 3) {
