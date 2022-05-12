@@ -165,8 +165,7 @@ public class LinkedListMania {
       return head;
     }
     static int detectCycle(ListNode head) {
-      ListNode first = head, second = head;
-      ListNode junction = null;
+      ListNode first = head, second = head, junction = null;
       while(second != null && second.next != null) {
         first = first.next;
         second = second.next.next;
