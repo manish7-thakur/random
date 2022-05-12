@@ -171,12 +171,12 @@ public class LinkedListMania {
         second = second.next.next;
         if(first == second) {
           junction = first;
+          first = head;
           break;
         }
       }
       if(junction == null) return -1;
       int res = 0;
-      first = head;
       while(first != junction) {
         first = first.next;
         res++;
