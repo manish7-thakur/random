@@ -422,5 +422,17 @@ public class LinkedListManiaTest {
       fourth.next = third;
       actual = LinkedListMania.detectCycle(head);
       Assert.assertEquals(third, actual);
+
+      fourth.next = second;
+      actual = LinkedListMania.detectCycle(head);
+      Assert.assertEquals(second, actual);
+
+      fourth.next = head;
+      actual = LinkedListMania.detectCycle(head);
+      Assert.assertEquals(head, actual);
+
+      fourth.next = fourth;
+      actual = LinkedListMania.detectCycle(head);
+      Assert.assertEquals(fourth, actual);
     }
 }

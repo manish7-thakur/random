@@ -166,11 +166,21 @@ public class LinkedListMania {
     }
     static ListNode detectCycle(ListNode head) {
       ListNode first = head, second = head;
+      boolean loopFound = false;
       while(second != null && second.next != null) {
         first = first.next;
         second = second.next.next;
-        if(first == second) return first;
+        if(first == second) {
+          first = head;
+          loopFound = true;
+          break;
+        }
       }
-      return null;
+      if(!loopFound) return null;
+      while(first != second) {
+        first = first.next;
+        second = second.next;
+      }
+      return first;
     }
 }
