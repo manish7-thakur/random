@@ -14,11 +14,11 @@ public class LinkedListMania {
 
     public static boolean containsCycle(ListNode head) {
         if (head == null) return false;
-        ListNode first = head, second = head.next;
+        ListNode first = head, second = head;
         while (second != null && second.next != null) {
-            if (first == second) return true;
             first = first.next;
             second = second.next.next;
+          if (first == second) return true;
         }
         return false;
     }
@@ -165,13 +165,13 @@ public class LinkedListMania {
       return head;
     }
     static int detectCycle(ListNode head) {
-      ListNode first = head, second = head.next;
+      ListNode first = head, second = head;
       ListNode junction = null;
       while(second != null && second.next != null) {
         first = first.next;
         second = second.next.next;
         if(first == second) {
-          junction = first.next;
+          junction = first;
           break;
         }
       }

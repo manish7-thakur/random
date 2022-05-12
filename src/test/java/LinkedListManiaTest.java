@@ -33,6 +33,12 @@ public class LinkedListManiaTest {
         actual = LinkedListMania.containsCycle(head);
         Assert.assertFalse(actual);
 
+        ListNode second = new ListNode(5);
+        head = new ListNode(1, second);
+        second.next = head;
+        actual = LinkedListMania.containsCycle(head);
+        Assert.assertTrue(actual);
+
         head = new ListNode(2, new ListNode(3, null));
         actual = LinkedListMania.containsCycle(head);
         Assert.assertFalse(actual);
@@ -401,8 +407,8 @@ public class LinkedListManiaTest {
       Assert.assertEquals(expected, actual);
 
       ListNode second = new ListNode(5);
+      head = new ListNode(1, second);
       second.next = head;
-      head.next = new ListNode(1, second);
       actual = LinkedListMania.detectCycle(head);
       expected = 0;
       Assert.assertEquals(expected, actual);
