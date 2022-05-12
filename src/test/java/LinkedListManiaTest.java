@@ -388,4 +388,38 @@ public class LinkedListManiaTest {
       Assert.assertEquals(3, actual.next.next.next.val);
       Assert.assertNull(actual.next.next.next.next);
     }
+    @Test
+    public void findPositionOfCycle() {
+      ListNode head = new ListNode(1);
+      int actual = LinkedListMania.detectCycle(head);
+      int expected = -1;
+      Assert.assertEquals(expected, actual);
+
+      head.next = head;
+      actual = LinkedListMania.detectCycle(head);
+      expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      ListNode second = new ListNode(5);
+      second.next = head;
+      head.next = new ListNode(1, second);
+      actual = LinkedListMania.detectCycle(head);
+      expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      second = new ListNode(5, new ListNode(2));
+      head = new ListNode(1, second);
+      actual = LinkedListMania.detectCycle(head);
+      expected = -1;
+      Assert.assertEquals(expected, actual);
+
+      ListNode fourth = new ListNode(4);
+      ListNode third = new ListNode(2, fourth);
+      second = new ListNode(5, third);
+      head = new ListNode(1, second);
+      fourth.next = third;
+      actual = LinkedListMania.detectCycle(head);
+      expected = 2;
+      Assert.assertEquals(expected, actual);
+    }
 }
