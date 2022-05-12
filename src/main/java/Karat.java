@@ -107,7 +107,7 @@ public class Karat {
     Map<Character, Integer> map = str.chars().mapToObj(c -> (char) c).collect(groupingBy(Function.identity(), collectingAndThen(counting(), Long::intValue))); //O(S)
     for(String word : words) { //O(W)
       boolean found = true;
-      Map<Character, Integer> curr = new HashMap<>(map);
+      Map<Character, Integer> curr = new HashMap<>(map); // O(S)
       for(int i = 0; i < word.length(); i++) { //O(S)
         char c = word.charAt(i);
         Integer count = curr.computeIfPresent(c, (k, v) -> --v < 0 ? null : v);
