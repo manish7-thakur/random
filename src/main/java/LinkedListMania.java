@@ -164,23 +164,13 @@ public class LinkedListMania {
       follower.next = null;
       return head;
     }
-    static int detectCycle(ListNode head) {
-      ListNode first = head, second = head, junction = null;
+    static ListNode detectCycle(ListNode head) {
+      ListNode first = head, second = head;
       while(second != null && second.next != null) {
         first = first.next;
         second = second.next.next;
-        if(first == second) {
-          junction = first;
-          first = head;
-          break;
-        }
+        if(first == second) return first;
       }
-      if(junction == null) return -1;
-      int res = 0;
-      while(first != junction) {
-        first = first.next;
-        res++;
-      }
-      return res;
+      return null;
     }
 }
