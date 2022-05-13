@@ -16,7 +16,7 @@ public class ArrayMania3 {
     for(int n : nums) {
       if(num1 == n) c1++;
       else if(num2 == n) c2++;
-      if(c1 == 0) {
+      else if(c1 == 0) {
         num1 = n;
         c1++;
       }
