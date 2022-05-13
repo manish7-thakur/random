@@ -39,6 +39,10 @@ public class ArrayMania3Test {
     expected = List.of();
     Assert.assertEquals(expected, actual);
 
+    actual = ArrayMania3.majorityElement3(new int[]{0, 0, 0});
+    expected = List.of(0);
+    Assert.assertEquals(expected, actual);
+
     actual = ArrayMania3.majorityElement3(new int[]{2, 1, 2});
     expected = List.of(2);
     Assert.assertEquals(expected, actual);
