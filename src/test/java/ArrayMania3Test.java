@@ -24,4 +24,11 @@ public class ArrayMania3Test {
     Assert.assertEquals(expected, actual);
   }
 
+  @Test
+  public void findOneThirdMajorityElement() {
+    List<Integer> actual = ArrayMania3.majorityElement3(new int[]{1});
+    List<Integer> expected = List.of(1);
+    Assert.assertEquals(expected, actual);
+  }
+
 }

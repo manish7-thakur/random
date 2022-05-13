@@ -8,4 +8,9 @@ public class ArrayMania3 {
     }
     return res;
   }
+  static int majorityElement(int[] nums) {
+    List<Integer> res = new ArrayList<>();
+    res.add(nums[0]);
+    return res;
+  }
 }
