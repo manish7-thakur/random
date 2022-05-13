@@ -12,7 +12,7 @@ public class ArrayMania3 {
   }
   static List<Integer> majorityElement3(int[] nums) {
     List<Integer> res = new ArrayList<>();
-    int num1 = 0, num2 = -1, c1 = 0, c2 = 0;
+    int num1 = 0, num2 = 0, c1 = 0, c2 = 0;
     for(int n : nums) {
       if(num1 == n) c1++;
       else if(num2 == n) c2++;
@@ -33,7 +33,7 @@ public class ArrayMania3 {
     c2 = 0;
     for(int n : nums) {
       if(num1 == n) c1++;
-      if(num2 == n) c2++;
+      else if(num2 == n) c2++;
     }
     if(c1 > majMark) res.add(num1);
     if(c2 > majMark) res.add(num2);
