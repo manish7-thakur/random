@@ -19,8 +19,8 @@ public class ArrayMania3Test {
     expected = 1;
     Assert.assertEquals(expected, actual);
 
-    actual = ArrayMania3.majorityElement(new int[]{4, 4, 3, 4, 3});
-    expected = 4;
+    actual = ArrayMania3.majorityElement(new int[]{4, 3, 4, 3, 3});
+    expected = 3;
     Assert.assertEquals(expected, actual);
   }
 
