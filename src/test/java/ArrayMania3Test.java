@@ -67,5 +67,23 @@ public class ArrayMania3Test {
     expected = List.of(2);
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void fourSumFrom4Arrays() {
+    int actual = ArrayMania3.fourSumCount(new int[]{-2}, new int[]{0}, new int[]{2}, new int[]{0});
+    int expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.fourSumCount(new int[]{-2, 1}, new int[]{1, 0}, new int[]{1, 0}, new int[]{0, 3});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.fourSumCount(new int[]{-2, 1}, new int[]{1, 0}, new int[]{1, 2}, new int[]{0, -3});
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.fourSumCount(new int[]{-2, 1, 2}, new int[]{1, 0, -2}, new int[]{1, 2, 0}, new int[]{0, -3, 1});
+    expected = 11;
+    Assert.assertEquals(expected, actual);
+  }
 
 }

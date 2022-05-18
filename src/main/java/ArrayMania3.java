@@ -39,4 +39,15 @@ public class ArrayMania3 {
     if(c2 > majMark) res.add(num2);
     return res;
   }
+  static int fourSumCount(int[] nums1, int[] nums2, int[] nums3, int[] nums4) {
+    int count = 0;
+    Map<Integer, Integer> map = new HashMap<>();
+    for(int i : nums1) {
+      for(int j: nums2) map.merge(i + j, 1, Integer::sum);
+    }
+    for(int i : nums3) {
+      for(int j : nums4) count += map.getOrDefault(-(i + j), 0);
+    }
+    return count;
+  }
 }
