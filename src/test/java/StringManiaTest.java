@@ -367,8 +367,8 @@ public class StringManiaTest {
     expected = List.of(6);
     Assert.assertEquals(expected, actual);
 
-    actual = StringMania.findAnagrams("aaa", "aa");
-    expected = List.of(0, 1);
+    actual = StringMania.findAnagrams("aa", "aaa");
+    expected = List.of();
     Assert.assertEquals(expected, actual);
   }
 }
