@@ -338,5 +338,25 @@ public class StringManiaTest {
     List<Integer> actual = StringMania.findAnagrams("a", "a");
     List<Integer> expected = List.of(0);
     Assert.assertEquals(expected, actual);
+
+    actual = StringMania.findAnagrams("ab", "ba");
+    expected = List.of(0);
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.findAnagrams("cab", "ba");
+    expected = List.of(1);
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.findAnagrams("acab", "ba");
+    expected = List.of(2);
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.findAnagrams("aabbc", "bab");
+    expected = List.of(1);
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.findAnagrams("abac", "ba");
+    expected = List.of(0, 1);
+    Assert.assertEquals(expected, actual);
   }
 }
