@@ -85,5 +85,33 @@ public class ArrayMania3Test {
     expected = 11;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void findEelmentsThatOccuredTwice() {
+    List<Integer> actual = ArrayMania3.findDuplicates(new int[]{1});
+    List<Integer> expected = List.of();
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.findDuplicates(new int[]{1, 1});
+    expected = List.of(1);
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.findDuplicates(new int[]{2, 1, 2});
+    expected = List.of(2);
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.findDuplicates(new int[]{2, 1, 2, 1});
+    expected = List.of(2, 1);
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.findDuplicates(new int[]{2, 5, 1, 5, 2});
+    expected = List.of(5, 2);
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.findDuplicates(new int[]{2, 3, 1, 8, 9, 4, 5, 9, 7, 6});
+    expected = List.of(9);
+    Assert.assertEquals(expected, actual);
+
+  }
+
 
 }

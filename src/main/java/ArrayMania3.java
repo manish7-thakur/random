@@ -50,4 +50,14 @@ public class ArrayMania3 {
     }
     return count;
   }
+  static List<Integer> findDuplicates(int[] nums) {
+    List<Integer> res = new ArrayList<>();
+    for(int i = 0; i < nums.length; i++) {
+      int curr = Math.abs(nums[i]);
+      int pos = curr - 1;
+      if(nums[pos] < 0) res.add(curr);
+      else nums[pos] = -nums[pos];
+    }
+    return res;
+  }
 }
