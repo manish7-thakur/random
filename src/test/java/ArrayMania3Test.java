@@ -110,8 +110,5 @@ public class ArrayMania3Test {
     actual = ArrayMania3.findDuplicates(new int[]{2, 3, 1, 8, 9, 4, 5, 9, 7, 6});
     expected = List.of(9);
     Assert.assertEquals(expected, actual);
-
   }
-
-
 }
