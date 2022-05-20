@@ -133,6 +133,8 @@ public class Karat {
         endPointsPath.put(origin, endPoints);
       }
     });
+    midPoints.forEach(p -> endPointsPath.remove(p));
+    endPointsPath.remove(midPoints);
     return endPointsPath;
   }
   static void buildEndPoints(String point, Map<String, Set<String>> pathMap, Set<String> endPoints, Set<String> midPoints) {

@@ -171,5 +171,9 @@ K     G
     actual = Karat.findEndPoint(new String[][]{{"A", "B"}, {"A", "C"}, {"B", "K"}, {"C", "K"}, {"E", "L"}, {"F", "G"}, {"J", "M"}, {"E", "F"}, {"G", "H"}, {"G", "I"}, {"C", "G"}});
     expected = Map.of("A", Set.of("H", "I", "K"), "E", Set.of("H", "L", "I"), "J", Set.of("M"));
     Assert.assertEquals(expected, actual);
+
+    actual = Karat.findEndPoint(new String[][]{{"B", "A"}, {"A", "F"}});
+    expected = Map.of("B", Set.of("F"));
+    Assert.assertEquals(expected, actual);
   }
 }
