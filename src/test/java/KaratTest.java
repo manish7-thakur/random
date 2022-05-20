@@ -141,4 +141,35 @@ public class KaratTest {
     expected = List.of("Bolt");
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void findAllStartLocationsWithEndLocations() {
+    /*
+    A       E      J       Key:  [Origins]
+  / \      / \      \             \
+B   C     F   L      M            [Destinations]
+\ /  \  /
+K     G
+     / \
+    H   I
+    */
+    Map<String, Set<String>> actual = Karat.findEndPoint(new String[][]{{"J", "M"}});
+    Map<String, Set<String>> expected = Map.of("J", Set.of("M"));
+    Assert.assertEquals(expected, actual);
+
+    actual = Karat.findEndPoint(new String[][]{{"E", "F"}, {"E", "L"}});
+    expected = Map.of("E", Set.of("F", "L"));
+    Assert.assertEquals(expected, actual);
+
+    actual = Karat.findEndPoint(new String[][]{{"E", "F"}, {"E", "L"}, {"F", "G"}, {"G", "H"}, {"G", "I"}});
+    expected = Map.of("E", Set.of("H", "L", "I"));
+    Assert.assertEquals(expected, actual);
+
+    actual = Karat.findEndPoint(new String[][]{{"A", "B"}, {"A", "C"}, {"B", "K"}, {"C", "K"}, {"C", "G"}, {"G", "H"}, {"G", "I"}});
+    expected = Map.of("A", Set.of("H", "I", "K"));
+    Assert.assertEquals(expected, actual);
+
+    actual = Karat.findEndPoint(new String[][]{{"A", "B"}, {"A", "C"}, {"B", "K"}, {"C", "K"}, {"E", "L"}, {"F", "G"}, {"J", "M"}, {"E", "F"}, {"G", "H"}, {"G", "I"}, {"C", "G"}});
+    expected = Map.of("A", Set.of("H", "I", "K"), "E", Set.of("H", "L", "I"), "J", Set.of("M"));
+    Assert.assertEquals(expected, actual);
+  }
 }

@@ -122,4 +122,27 @@ public class Karat {
     map.forEach((robot, partsSet) -> {if(reqPartsSet.equals(partsSet)) res.add(robot);}); //O(N) * O(S), Search is O(1) for set
     return res;
   }
+  static Map<String, Set<String>> findEndPoint(String[][] paths) {
+    Map<String, Set<String>> pathMap = Arrays.stream(paths).collect(groupingBy(path -> path[0], mapping(path -> path[1], toSet())));
+    Map<String, Set<String>> endPointsPath = new HashMap<>();
+    Set<String> midPoints = new HashSet<>();
+    pathMap.forEach((origin, destSet) -> {
+      if(!midPoints.contains(origin)) {
+        Set<String> endPoints = new HashSet();
+        buildEndPoints(origin, pathMap, endPoints, midPoints);
+        endPointsPath.put(origin, endPoints);
+      }
+    });
+    return endPointsPath;
+  }
+  static void buildEndPoints(String point, Map<String, Set<String>> pathMap, Set<String> endPoints, Set<String> midPoints) {
+    if(!pathMap.containsKey(point)) {
+      endPoints.add(point);
+      return;
+    }
+    pathMap.get(point).forEach(next -> {
+      midPoints.add(next);
+      buildEndPoints(next, pathMap, endPoints, midPoints);
+    });
+  }
 }
