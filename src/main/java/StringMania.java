@@ -192,20 +192,4 @@ public class StringMania {
       }
     }
   }
-  static List<Integer> findAnagrams(String s, String p) {
-    Map<Character, Integer> map = new HashMap<>();
-    List<Integer> res = new ArrayList<>();
-    for(int i = 0; i < p.length(); i++) map.merge(p.charAt(i), 1, Integer::sum);
-    Map<Character, Integer> currMap = new HashMap<>(map);
-    for(int l = 0; l < s.length(); l++) {
-      currMap = new HashMap<>(map);
-      for(int r = l; r < s.length(); r++) {
-        char c = s.charAt(r);
-        if(!currMap.containsKey(c)) break;
-        currMap.computeIfPresent(c, (k, v) -> --v == 0 ? null : v);
-        if(currMap.isEmpty()) res.add(l);
-      }
-    }
-    return res;
-  }
 }

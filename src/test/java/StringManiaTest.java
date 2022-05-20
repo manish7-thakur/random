@@ -333,42 +333,4 @@ public class StringManiaTest {
     expected = List.of("dgj", "dgk", "dgl", "dhj", "dhk", "dhl", "dij", "dik", "dil", "egj", "egk", "egl", "ehj", "ehk", "ehl", "eij", "eik", "eil", "fgj", "fgk", "fgl", "fhj", "fhk", "fhl", "fij", "fik", "fil");
     Assert.assertEquals(expected, actual);
   }
-  @Test
-  public void findAnagramsIndexes() {
-    List<Integer> actual = StringMania.findAnagrams("a", "a");
-    List<Integer> expected = List.of(0);
-    Assert.assertEquals(expected, actual);
-
-    actual = StringMania.findAnagrams("ab", "ba");
-    expected = List.of(0);
-    Assert.assertEquals(expected, actual);
-
-    actual = StringMania.findAnagrams("cab", "ba");
-    expected = List.of(1);
-    Assert.assertEquals(expected, actual);
-
-    actual = StringMania.findAnagrams("acab", "ba");
-    expected = List.of(2);
-    Assert.assertEquals(expected, actual);
-
-    actual = StringMania.findAnagrams("aabbc", "bab");
-    expected = List.of(1);
-    Assert.assertEquals(expected, actual);
-
-    actual = StringMania.findAnagrams("abac", "ba");
-    expected = List.of(0, 1);
-    Assert.assertEquals(expected, actual);
-
-    actual = StringMania.findAnagrams("abbac", "ba");
-    expected = List.of(0, 2);
-    Assert.assertEquals(expected, actual);
-
-    actual = StringMania.findAnagrams("cabsbzacbcba", "bacc");
-    expected = List.of(6);
-    Assert.assertEquals(expected, actual);
-
-    actual = StringMania.findAnagrams("aa", "aaa");
-    expected = List.of();
-    Assert.assertEquals(expected, actual);
-  }
 }
