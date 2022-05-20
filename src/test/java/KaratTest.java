@@ -127,4 +127,14 @@ public class KaratTest {
     expected = "bird";
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void findRobotsThatCanBeCreatedFromParts() {
+    List<String> actual = Karat.getRobots(new String[]{"Rust_sensors", "Bolt_speaker"}, "speaker,sensors");
+    List<String> expected = List.of();
+    Assert.assertEquals(expected, actual);
+
+    actual = Karat.getRobots(new String[]{"Rust_sensors", "Bolt_speaker", "Rust_speaker"}, "speaker,sensors");
+    expected = List.of("Rust");
+    Assert.assertEquals(expected, actual);
+  }
 }

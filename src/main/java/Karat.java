@@ -115,4 +115,11 @@ public class Karat {
     }
     return null;
   }
+  static List<String> getRobots(String[] allParts, String requiredParts) {
+    List<String> res = new ArrayList<>();
+    Set<String> reqPartsSet = Set.of(requiredParts.split(","));
+    Map<String, Set<String>> map = Arrays.stream(allParts).collect(groupingBy(str -> str.split("_")[0], mapping(str -> str.split("_")[1], toSet())));
+    map.forEach((robot, partsSet) -> {if(partsSet.equals(reqPartsSet)) res.add(robot);});
+    return res;
+  }
 }
