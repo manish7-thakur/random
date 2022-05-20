@@ -136,5 +136,9 @@ public class KaratTest {
     actual = Karat.getRobots(new String[]{"Rust_sensors", "Bolt_speaker", "Rust_speaker"}, "speaker,sensors");
     expected = List.of("Rust");
     Assert.assertEquals(expected, actual);
+
+    actual = Karat.getRobots(new String[]{"Rust_sensors", "Bolt_speaker", "Rust_speaker", "Rust_case", "Rust_claw", "Bolt_wheels", "Bolt_sensors", "Dustie_arms"}, "speaker,sensors,wheels");
+    expected = List.of("Bolt");
+    Assert.assertEquals(expected, actual);
   }
 }
