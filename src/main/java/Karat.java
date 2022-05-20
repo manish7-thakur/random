@@ -128,7 +128,7 @@ public class Karat {
     Set<String> midPoints = new HashSet<>();
     pathMap.forEach((origin, destSet) -> {
       if(!midPoints.contains(origin)) {
-        Set<String> endPoints = new HashSet();
+        Set<String> endPoints = new HashSet<>();
         buildEndPoints(origin, pathMap, endPoints, midPoints);
         endPointsPath.put(origin, endPoints);
       }
