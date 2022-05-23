@@ -125,25 +125,21 @@ public class Karat {
   static Map<String, Set<String>> findEndPoint(String[][] paths) {
     Map<String, Set<String>> pathMap = Arrays.stream(paths).collect(groupingBy(path -> path[0], mapping(path -> path[1], toSet())));
     Map<String, Set<String>> res = new HashMap<>();
-    Set<String> midPoints = new HashSet<>();
+    Set<String> midPoints = pathMap.values().stream().flatMap(Set::stream).collect(toSet());
     pathMap.forEach((origin, destSet) -> {
       if(!midPoints.contains(origin)) {
         Set<String> endPoints = new HashSet<>();
-        buildEndPoints(origin, pathMap, endPoints, midPoints);
+        buildEndPoints(origin, pathMap, endPoints);
         res.put(origin, endPoints);
       }
     });
-    midPoints.forEach(res::remove);
     return res;
   }
-  static void buildEndPoints(String point, Map<String, Set<String>> pathMap, Set<String> endPoints, Set<String> midPoints) {
+  static void buildEndPoints(String point, Map<String, Set<String>> pathMap, Set<String> endPoints) {
     if(!pathMap.containsKey(point)) {
       endPoints.add(point);
       return;
     }
-    pathMap.get(point).forEach(next -> {
-      midPoints.add(next);
-      buildEndPoints(next, pathMap, endPoints, midPoints);
-    });
+    pathMap.get(point).forEach(next -> {buildEndPoints(next, pathMap, endPoints);});
   }
 }
