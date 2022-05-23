@@ -343,6 +343,10 @@ public class StringManiaTest {
     expected = List.of(1);
     Assert.assertEquals(expected, actual);
 
+    actual = StringMania.findAnagrams("aa", "aaa");
+    expected = List.of();
+    Assert.assertEquals(expected, actual);
+
     actual = StringMania.findAnagrams("aca", "a");
     expected = List.of(0, 2);
     Assert.assertEquals(expected, actual);
@@ -357,6 +361,10 @@ public class StringManiaTest {
 
     actual = StringMania.findAnagrams("abaab", "abb");
     expected = List.of();
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.findAnagrams("bababbab", "abb");
+    expected = List.of(0, 2, 3, 4, 5);
     Assert.assertEquals(expected, actual);
   }
 }
