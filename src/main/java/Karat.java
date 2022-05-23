@@ -140,6 +140,6 @@ public class Karat {
       endPoints.add(point);
       return;
     }
-    pathMap.get(point).forEach(next -> {buildEndPoints(next, pathMap, endPoints);});
+    pathMap.get(point).forEach(next -> buildEndPoints(next, pathMap, endPoints));
   }
 }
