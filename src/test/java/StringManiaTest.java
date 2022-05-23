@@ -354,5 +354,9 @@ public class StringManiaTest {
     actual = StringMania.findAnagrams("abca", "ca");
     expected = List.of(2);
     Assert.assertEquals(expected, actual);
+
+    actual = StringMania.findAnagrams("abaab", "abb");
+    expected = List.of();
+    Assert.assertEquals(expected, actual);
   }
 }

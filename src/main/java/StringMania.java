@@ -201,8 +201,11 @@ public class StringMania {
     for(int r = 0; r < s.length(); r++) {
       char c = s.charAt(r);
       if(map.containsKey(c)) {
-        if(currMap.getOrDefault(c, 0) < map.get(c)) currMap.merge(c, 1, Integer::sum);
-        else l++;
+        currMap.merge(c, 1, Integer::sum);
+        while(currMap.get(c) > map.get(c)) {
+          currMap.computeIfPresent(s.charAt(l), (k, v) -> --v == 0 ? null : v);
+          l++;
+        }
       } else {
         currMap.clear();
         l = r + 1;
