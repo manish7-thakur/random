@@ -1,5 +1,6 @@
 import java.io.CharConversionException;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
@@ -217,5 +218,18 @@ public class StringMania {
       }
     }
     return res;
+  }
+  static String frequencySort(String s) {
+    Map<Character, Integer> map = new HashMap<>();
+    for(int i = 0; i < s.length(); i++) map.merge(s.charAt(i), 1, Integer::sum);
+    record Pair(char c, int occ){};
+    Queue<Pair> queue = new PriorityQueue<>((p1, p2) -> p2.occ - p1.occ);
+    map.forEach((ch, occ) -> queue.add(new Pair(ch, occ)));
+    StringBuilder b = new StringBuilder();
+    while(!queue.isEmpty()) {
+      Pair p = queue.remove();
+      b.append(String.valueOf(p.c).repeat(p.occ));
+    }
+    return b.toString();
   }
 }

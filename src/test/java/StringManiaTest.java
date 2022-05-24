@@ -379,4 +379,22 @@ public class StringManiaTest {
     expected = List.of(0, 10001);
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void sortCharsByFrequency() {
+    String actual = StringMania.frequencySort("a");
+    String expected = "a";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.frequencySort("baa");
+    expected = "aab";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.frequencySort("ba");
+    expected = "ab";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania.frequencySort("bcabc");
+    expected = "bbcca";
+    Assert.assertEquals(expected, actual);
+  }
 }
