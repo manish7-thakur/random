@@ -396,5 +396,9 @@ public class StringManiaTest {
     actual = StringMania.frequencySort("bcabc");
     expected = "bbcca";
     Assert.assertEquals(expected, actual);
+
+    actual = StringMania.frequencySort("Aabb");
+    expected = "bbaA";
+    Assert.assertEquals(expected, actual);
   }
 }
