@@ -140,5 +140,16 @@ public class ArrayMania3Test {
     actual = ArrayMania3.findSubsequences(new int[]{2, 2, 3});
     expected = List.of(List.of(2, 2), List.of(2, 2, 3), List.of(2, 3));
     Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.findSubsequences(new int[]{1, 2, 1});
+    expected = List.of( List.of(1, 1), List.of(1, 2));
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.findSubsequences(new int[]{1, 2, 1, 1});
+    expected = List.of(List.of(1, 1, 1), List.of(1, 1), List.of(1, 2));
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.findSubsequences(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 1, 1, 1, 1});
+    Assert.assertEquals(1018, actual.size());
   }
 }
