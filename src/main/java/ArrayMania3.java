@@ -70,7 +70,7 @@ public class ArrayMania3 {
       res.add(new ArrayList<>(curr));
     }
     for(int i = start; i < nums.length; i++) {
-      if(curr.isEmpty() || nums[i] > curr.get(curr.size() - 1)) curr.add(nums[i]);
+      if(curr.isEmpty() || nums[i] >= curr.get(curr.size() - 1)) curr.add(nums[i]);
       findSubsequencesRec(nums, i + 1, res, curr);
       if(!curr.isEmpty()) curr.remove(curr.size() - 1);
     }
