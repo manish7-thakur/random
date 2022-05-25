@@ -67,7 +67,7 @@ public class ArrayMania3 {
   }
   static void findSubsequencesRec(int[] nums, int start, List<List<Integer>> res, List<Integer> curr) {
     if(curr.size() > 1) {
-      res.add(new ArrayList<Integer>(curr));
+      res.add(new ArrayList<>(curr));
     }
     for(int i = start; i < nums.length; i++) {
       if(curr.isEmpty() || nums[i] > curr.get(curr.size() - 1)) curr.add(nums[i]);
