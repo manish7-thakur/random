@@ -61,18 +61,17 @@ public class ArrayMania3 {
     return res;
   }
   static List<List<Integer>> findSubsequences(int[] nums) {
-    List<List<Integer>> res = new ArrayList();
-    for(int i = 2; i <= nums.length; i++) findSubsequencesRec(nums, 0, res, new ArrayList<>(), i);
-    return res;
+    Set<List<Integer>> res = new HashSet<>();
+    findSubsequencesRec(nums, 0, res, new ArrayList<>());
+    return new ArrayList<>(res);
   }
-  static void findSubsequencesRec(int[] nums, int start, List<List<Integer>> res, List<Integer> curr, int size) {
-    if(curr.size() == size) {
+  static void findSubsequencesRec(int[] nums, int start, Set<List<Integer>> res, List<Integer> curr) {
+    if(curr.size() > 1) {
       res.add(new ArrayList<>(curr));
-      return;
     }
     for(int i = start; i < nums.length; i++) {
       if(curr.isEmpty() || nums[i] >= curr.get(curr.size() - 1)) curr.add(nums[i]);
-      findSubsequencesRec(nums, i + 1, res, curr, size);
+      findSubsequencesRec(nums, i + 1, res, curr);
       if(!curr.isEmpty()) curr.remove(curr.size() - 1);
     }
   }
