@@ -151,5 +151,8 @@ public class ArrayMania3Test {
 
     actual = ArrayMania3.findSubsequences(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 1, 1, 1, 1});
     Assert.assertEquals(1018, actual.size());
+
+    actual = ArrayMania3.findSubsequences(new int[]{10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10});
+    Assert.assertEquals(14, actual.size());
   }
 }
