@@ -120,5 +120,9 @@ public class ArrayMania3Test {
     actual = ArrayMania3.findSubsequences(new int[]{1, 2});
     expected = List.of(List.of(1, 2));
     Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.findSubsequences(new int[]{2, 1});
+    expected = List.of();
+    Assert.assertEquals(expected, actual);
   }
 }
