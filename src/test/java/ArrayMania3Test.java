@@ -111,4 +111,14 @@ public class ArrayMania3Test {
     expected = List.of(9);
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void increasingSubsequencesWithAtleastTwoElements() {
+    List<List<Integer>> actual = ArrayMania3.findSubsequences(new int[]{1});
+    List<List<Integer>> expected = List.of();
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.findSubsequences(new int[]{1, 2});
+    expected = List.of(List.of(1, 2));
+    Assert.assertEquals(expected, actual);
+  }
 }
