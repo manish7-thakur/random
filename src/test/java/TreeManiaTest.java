@@ -343,4 +343,40 @@ public class TreeManiaTest {
     expected = 9;
     Assert.assertEquals(expected, actual.val);
   }
+  @Test
+  public void mostFrequentSubtreeSum() {
+    List<Integer> actual = TreeMania.findFrequentTreeSum(new TreeNode(1));
+    List<Integer> expected = List.of(1);
+    Assert.assertEquals(expected, actual);
+
+    // actual = TreeMania.findFrequentTreeSum(new TreeNode(2, 1));
+    // expected = List.of(1, 2);
+    // Assert.assertEquals(expected, actual);
+  }
+  @Test
+  public void populateSubtreeSumInMap() {
+    Map<Integer, Integer> actual = new HashMap<>();
+    TreeMania.populateOcc(null, actual);
+    Map<Integer, Integer> expected = Map.of();
+    Assert.assertEquals(expected, actual);
+
+    TreeMania.populateOcc(new TreeNode(1), actual);
+    expected = Map.of(1, 1);
+    Assert.assertEquals(expected, actual);
+
+    actual.clear();
+    TreeMania.populateOcc(new TreeNode(5, new TreeNode(2)), actual);
+    expected = Map.of(2, 1, 7, 1);
+    Assert.assertEquals(expected, actual);
+
+    actual.clear();
+    TreeMania.populateOcc(new TreeNode(5, new TreeNode(2), new TreeNode(-3)), actual);
+    expected = Map.of(-3, 1, 2, 1, 4, 1);
+    Assert.assertEquals(expected, actual);
+
+    actual.clear();
+    TreeMania.populateOcc(new TreeNode(5, new TreeNode(2, new TreeNode(-1)), new TreeNode(-3, new TreeNode(2), new TreeNode(6))), actual);
+    expected = Map.of(-1, 1, 2, 1, 6, 1, 1, 1, 5, 1, 11, 1);
+    Assert.assertEquals(expected, actual);
+  }
 }

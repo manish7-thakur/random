@@ -189,4 +189,17 @@ public class TreeMania {
     }
     return root;
   }
+  static List<Integer> findFrequentTreeSum(TreeNode root) {
+    List<Integer> res = new ArrayList<>();
+    Map<Integer, Integer> map = new HashMap<>();
+    populateOcc(root, map);
+    res.add(root.val);
+    return res;
+  }
+  static int populateOcc(TreeNode root, Map<Integer, Integer> map) {
+    if(root == null) return 0;
+    int sum = root.val + populateOcc(root.right, map) + populateOcc(root.left, map);
+    map.merge(sum, 1, Integer::sum);
+    return sum;
+  }
 }
