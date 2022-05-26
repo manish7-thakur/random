@@ -192,22 +192,17 @@ public class TreeMania {
   static int[] findFrequentTreeSum(TreeNode root) {
     List<Integer> res = new ArrayList<>();
     Map<Integer, Integer> map = new HashMap<>();
-    populateOcc(root, map);
-    record Pair(int num, int occ){};
-    Queue<Pair> queue = new PriorityQueue<>((p1, p2) -> p2.occ - p1.occ);
-    map.forEach((num, occ) -> queue.add(new Pair(num, occ)));
-    int topOcc = queue.peek().occ;
-    while(!queue.isEmpty()) {
-      Pair p = queue.remove();
-      if(p.occ == topOcc) res.add(p.num);
-      else break;
-    }
+    AtomicInteger maxOcc = new AtomicInteger();
+    populateOcc(root, map, maxOcc);
+    map.forEach((num, occ) -> {
+      if(occ == maxOcc.intValue()) res.add(num);
+    });
     return res.stream().mapToInt(Integer::intValue).toArray();
   }
-  static int populateOcc(TreeNode root, Map<Integer, Integer> map) {
+  static int populateOcc(TreeNode root, Map<Integer, Integer> map, AtomicInteger maxOcc) {
     if(root == null) return 0;
-    int sum = root.val + populateOcc(root.right, map) + populateOcc(root.left, map);
-    map.merge(sum, 1, Integer::sum);
+    int sum = root.val + populateOcc(root.right, map, maxOcc) + populateOcc(root.left, map, maxOcc);
+    maxOcc.set(Math.max(maxOcc.intValue(), map.merge(sum, 1, Integer::sum)));
     return sum;
   }
 }

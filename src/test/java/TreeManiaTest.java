@@ -1,5 +1,6 @@
 import org.junit.*;
 import java.util.*;
+import java.util.concurrent.atomic.*;
 public class TreeManiaTest {
   @Test
   public void depthOfBinaryTree() {
@@ -358,7 +359,7 @@ public class TreeManiaTest {
     Assert.assertArrayEquals(expected, actual);
 
     actual = TreeMania.findFrequentTreeSum(new TreeNode(5, new TreeNode(2), new TreeNode(-3)));
-    expected = new int[]{2, 4, -3};
+    expected = new int[]{2, -3, 4};
     Assert.assertArrayEquals(expected, actual);
 
     actual = TreeMania.findFrequentTreeSum(new TreeNode(5, new TreeNode(2), new TreeNode(-5)));
@@ -372,26 +373,26 @@ public class TreeManiaTest {
   @Test
   public void populateSubtreeSumInMap() {
     Map<Integer, Integer> actual = new HashMap<>();
-    TreeMania.populateOcc(null, actual);
+    TreeMania.populateOcc(null, actual, new AtomicInteger());
     Map<Integer, Integer> expected = Map.of();
     Assert.assertEquals(expected, actual);
 
-    TreeMania.populateOcc(new TreeNode(1), actual);
+    TreeMania.populateOcc(new TreeNode(1), actual, new AtomicInteger());
     expected = Map.of(1, 1);
     Assert.assertEquals(expected, actual);
 
     actual.clear();
-    TreeMania.populateOcc(new TreeNode(5, new TreeNode(2)), actual);
+    TreeMania.populateOcc(new TreeNode(5, new TreeNode(2)), actual, new AtomicInteger());
     expected = Map.of(2, 1, 7, 1);
     Assert.assertEquals(expected, actual);
 
     actual.clear();
-    TreeMania.populateOcc(new TreeNode(5, new TreeNode(2), new TreeNode(-3)), actual);
+    TreeMania.populateOcc(new TreeNode(5, new TreeNode(2), new TreeNode(-3)), actual, new AtomicInteger());
     expected = Map.of(-3, 1, 2, 1, 4, 1);
     Assert.assertEquals(expected, actual);
 
     actual.clear();
-    TreeMania.populateOcc(new TreeNode(5, new TreeNode(2, new TreeNode(-1)), new TreeNode(-3, new TreeNode(2), new TreeNode(6))), actual);
+    TreeMania.populateOcc(new TreeNode(5, new TreeNode(2, new TreeNode(-1)), new TreeNode(-3, new TreeNode(2), new TreeNode(6))), actual, new AtomicInteger());
     expected = Map.of(-1, 1, 2, 1, 6, 1, 1, 1, 5, 1, 11, 1);
     Assert.assertEquals(expected, actual);
   }
