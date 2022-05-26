@@ -190,7 +190,6 @@ public class TreeMania {
     return root;
   }
   static int[] findFrequentTreeSum(TreeNode root) {
-    List<Integer> res = new ArrayList<>();
     Map<Integer, Integer> map = new HashMap<>();
     AtomicInteger maxOcc = new AtomicInteger();
     populateOcc(root, map, maxOcc);
