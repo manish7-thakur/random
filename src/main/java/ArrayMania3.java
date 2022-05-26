@@ -74,7 +74,7 @@ public class ArrayMania3 {
       if(curr.isEmpty() || nums[i] >= curr.get(curr.size() - 1)) {
         curr.add(nums[i]);
         findSubsequencesRec(nums, i + 1, res, curr);
-        curr.remove(curr.size() - 1); // add & remove should come together in an if block or for-loop block
+        curr.remove(curr.size() - 1); // add & remove should come together in an if block or for-loop block, try putting it outside if block
       }
     }
   }
