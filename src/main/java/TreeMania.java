@@ -189,7 +189,7 @@ public class TreeMania {
     }
     return root;
   }
-  static List<Integer> findFrequentTreeSum(TreeNode root) {
+  static int[] findFrequentTreeSum(TreeNode root) {
     List<Integer> res = new ArrayList<>();
     Map<Integer, Integer> map = new HashMap<>();
     populateOcc(root, map);
@@ -202,7 +202,7 @@ public class TreeMania {
       if(p.occ == topOcc) res.add(p.num);
       else break;
     }
-    return res;
+    return res.stream().mapToInt(Integer::intValue).toArray();
   }
   static int populateOcc(TreeNode root, Map<Integer, Integer> map) {
     if(root == null) return 0;

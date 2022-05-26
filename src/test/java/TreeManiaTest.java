@@ -345,29 +345,29 @@ public class TreeManiaTest {
   }
   @Test
   public void mostFrequentSubtreeSum() {
-    List<Integer> actual = TreeMania.findFrequentTreeSum(new TreeNode(1));
-    List<Integer> expected = List.of(1);
-    Assert.assertEquals(expected, actual);
+    int[] actual = TreeMania.findFrequentTreeSum(new TreeNode(1));
+    int[] expected = new int[]{1};
+    Assert.assertArrayEquals(expected, actual);
 
     actual = TreeMania.findFrequentTreeSum(new TreeNode(2, new TreeNode(1)));
-    expected = List.of(1, 3);
-    Assert.assertEquals(expected, actual);
+    expected = new int[]{1, 3};
+    Assert.assertArrayEquals(expected, actual);
 
     actual = TreeMania.findFrequentTreeSum(new TreeNode(2, new TreeNode(1), new TreeNode(-2)));
-    expected = List.of(1);
-    Assert.assertEquals(expected, actual);
+    expected = new int[]{1};
+    Assert.assertArrayEquals(expected, actual);
 
     actual = TreeMania.findFrequentTreeSum(new TreeNode(5, new TreeNode(2), new TreeNode(-3)));
-    expected = List.of(2, 4, -3);
-    Assert.assertEquals(expected, actual);
+    expected = new int[]{2, 4, -3};
+    Assert.assertArrayEquals(expected, actual);
 
     actual = TreeMania.findFrequentTreeSum(new TreeNode(5, new TreeNode(2), new TreeNode(-5)));
-    expected = List.of(2);
-    Assert.assertEquals(expected, actual);
+    expected = new int[]{2};
+    Assert.assertArrayEquals(expected, actual);
 
     actual = TreeMania.findFrequentTreeSum(new TreeNode(4, new TreeNode(-2, new TreeNode(1)), new TreeNode(-5, new TreeNode(3), new TreeNode(2))));
-    expected = List.of(3);
-    Assert.assertEquals(expected, actual);
+    expected = new int[]{3};
+    Assert.assertArrayEquals(expected, actual);
   }
   @Test
   public void populateSubtreeSumInMap() {
