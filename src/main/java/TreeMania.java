@@ -194,8 +194,9 @@ public class TreeMania {
     Map<Integer, Integer> map = new HashMap<>();
     AtomicInteger maxOcc = new AtomicInteger();
     populateOcc(root, map, maxOcc);
+    int top = maxOcc.intValue();
     map.forEach((num, occ) -> {
-      if(occ == maxOcc.intValue()) res.add(num);
+      if(occ == top) res.add(num);
     });
     return res.stream().mapToInt(Integer::intValue).toArray();
   }
