@@ -195,7 +195,7 @@ public class TreeMania {
     AtomicInteger maxOcc = new AtomicInteger();
     populateOcc(root, map, maxOcc);
     int top = maxOcc.intValue();
-    return map.entrySet().stream().filter(en -> en.getValue() == top).mapToInt(en -> en.getKey()).toArray();
+    return map.entrySet().stream().filter(en -> en.getValue() == top).mapToInt(Map.Entry::getKey).toArray();
   }
   static int populateOcc(TreeNode root, Map<Integer, Integer> map, AtomicInteger maxOcc) {
     if(root == null) return 0;
