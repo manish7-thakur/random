@@ -193,7 +193,15 @@ public class TreeMania {
     List<Integer> res = new ArrayList<>();
     Map<Integer, Integer> map = new HashMap<>();
     populateOcc(root, map);
-    res.add(root.val);
+    record Pair(int num, int occ){};
+    Queue<Pair> queue = new PriorityQueue<>((p1, p2) -> p2.occ - p1.occ);
+    map.forEach((num, occ) -> queue.add(new Pair(num, occ)));
+    int topOcc = queue.peek().occ;
+    while(!queue.isEmpty()) {
+      Pair p = queue.remove();
+      if(p.occ == topOcc) res.add(p.num);
+      else break;
+    }
     return res;
   }
   static int populateOcc(TreeNode root, Map<Integer, Integer> map) {
