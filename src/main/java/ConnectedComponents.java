@@ -6,7 +6,6 @@ public class ConnectedComponents {
     List<List<String>> res = new ArrayList<>();
     Set<String> visited = new HashSet<>();
     for(List<String> account : accounts) {
-      String name = account.get(0);
       String firstEmail = account.get(1);
       for(int i = 2; i < account.size(); i++) {
         String next = account.get(i);
