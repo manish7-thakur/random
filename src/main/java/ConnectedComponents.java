@@ -21,6 +21,7 @@ public class ConnectedComponents {
         String name = account.get(0);
         merged.add(name);
         mergeAll(firstEmail, merged, map, visited);
+        Collections.sort(merged.subList(1, merged.size()));
         res.add(merged);
       }
     }
@@ -30,6 +31,6 @@ public class ConnectedComponents {
     if(visited.contains(email)) return;
     visited.add(email);
     merged.add(email);
-    map.get(email).forEach(e -> mergeAll(e, merged, map, visited));
+    map.getOrDefault(email, List.of()).forEach(e -> mergeAll(e, merged, map, visited));
   }
 }
