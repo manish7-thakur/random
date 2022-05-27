@@ -9,8 +9,10 @@ public class ConnectedComponents {
       String firstEmail = account.get(1);
       for(int i = 2; i < account.size(); i++) {
         String next = account.get(i);
-        map.merge(firstEmail, new ArrayList<>(), (o, n) -> o).add(next);
-        map.merge(next, new ArrayList<>(), (o, n) -> o).add(firstEmail);
+        map.compute(firstEmail, (k, v) -> v == null ? new ArrayList<>() : v).add(next);
+//        map.merge(firstEmail, new ArrayList<>(), (o, n) -> o).add(next);
+        map.compute(next, (k, v) -> v == null ? new ArrayList<>() : v).add(firstEmail);
+        // map.merge(next, new ArrayList<>(), (o, n) -> o).add(firstEmail);
       }
     }
     for(List<String> account : accounts) {
