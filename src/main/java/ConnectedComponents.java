@@ -9,8 +9,8 @@ public class ConnectedComponents {
       String firstEmail = account.get(1);
       for(int i = 2; i < account.size(); i++) {
         String next = account.get(i);
-        map.compute(firstEmail, (k, v) -> v == null ? new ArrayList<>() : v).add(next);
-        map.compute(next, (k, v) -> v == null ? new ArrayList<>() : v).add(firstEmail);
+        map.computeIfAbsent(firstEmail, k -> new ArrayList<>()).add(next);
+        map.computeIfAbsent(next, k -> new ArrayList<>()).add(firstEmail);
       }
     }
     for(List<String> account : accounts) {
