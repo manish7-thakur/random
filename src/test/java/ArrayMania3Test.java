@@ -155,4 +155,31 @@ public class ArrayMania3Test {
     actual = ArrayMania3.findSubsequences(new int[]{10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10});
     Assert.assertEquals(14, actual.size());
   }
+  @Test
+  public void sortThreeColors() {
+    int[] actual = new int[]{0};
+    ArrayMania3.sortColors(actual);
+    int[] expected = new int[]{0};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{1, 0};
+    ArrayMania3.sortColors(actual);
+    expected = new int[]{0, 1};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{1, 0, 1};
+    ArrayMania3.sortColors(actual);
+    expected = new int[]{0, 1, 1};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{0, 2, 0};
+    ArrayMania3.sortColors(actual);
+    expected = new int[]{0, 0, 2};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{0, 2, 1, 1};
+    ArrayMania3.sortColors(actual);
+    expected = new int[]{0, 1, 1, 2};
+    Assert.assertArrayEquals(expected, actual);
+  }
 }
