@@ -11,7 +11,11 @@ public class DP2 {
     String key = getKey(i, sum);
     if(mem.containsKey(key)) return mem.get(key);
     if(sum == 0) return true;
-    boolean res = canPartitionRec(nums, sum - nums[i], i - 1, mem) || canPartitionRec(nums, sum, i - 1, mem);
+    boolean res = false;
+    if(nums[i] <= sum) {
+      res = canPartitionRec(nums, sum - nums[i], i - 1, mem);
+    }
+    res = res || canPartitionRec(nums, sum, i - 1, mem);
     mem.put(key, res);
     return res;
   }
