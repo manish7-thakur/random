@@ -1,6 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 import java.util.*;
+import java.util.concurrent.atomic.*;
 
 public class BinaryTreeTest {
     @Test
@@ -192,25 +193,38 @@ public class BinaryTreeTest {
     }
     @Test
     public void findMinimumHeightTrees() {
-      List<Integer> actual = BinaryTree.minHeightTrees(1, new int[]{{0, 1}});
-      List<Intger> expected = List.of(0, 1);
+      List<Integer> actual = BinaryTree.minHeightTrees(2, new int[][]{{0, 1}});
+      List<Integer> expected = List.of(0, 1);
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTree.minHeightTrees(3, new int[][]{{0, 1}, {1, 2}});
+      expected = List.of(1);
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTree.minHeightTrees(6, new int[][]{{0, 3}, {1, 3}, {3, 2}, {4, 3}, {5, 4}});
+      expected = List.of(3, 4);
+      Assert.assertEquals(expected, actual);
     }
     @Test
     public void maxHeightForTree() {
-      int actual = BinaryTree.maxHeight(0, Map.of());
-      int expected = 0;
+      Set<Integer> visited = new HashSet<>();
+      int actual = BinaryTree.maxHeight(0, Map.of(0, List.of(0)), visited);
+      int expected = 1;
       Assert.assertEquals(expected, actual);
 
-      actual = BinaryTree.maxHeight(0, Map.of(0, List.of(1)));
-      expected = 1;
-      Assert.assertEquals(expected, actual);
-
-      actual = BinaryTree.maxHeight(0, Map.of(0, List.of(1), 1, List.of(2)));
+      visited.clear();
+      actual = BinaryTree.maxHeight(0, Map.of(0, List.of(1), 1, List.of(0)), visited);
       expected = 2;
       Assert.assertEquals(expected, actual);
 
-      actual = BinaryTree.maxHeight(0, Map.of(0, List.of(1), 1, List.of(2, 3), 3, List.of(4)));
+      visited.clear();
+      actual = BinaryTree.maxHeight(0, Map.of(0, List.of(1), 1, List.of(2), 2, List.of(1)), visited);
       expected = 3;
+      Assert.assertEquals(expected, actual);
+
+      visited.clear();
+      actual = BinaryTree.maxHeight(0, Map.of(0, List.of(1), 1, List.of(2, 3), 3, List.of(4), 2, List.of(1), 4, List.of(3)), visited);
+      expected = 4;
       Assert.assertEquals(expected, actual);
     }
 }

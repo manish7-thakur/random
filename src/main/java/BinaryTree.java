@@ -1,4 +1,6 @@
 import java.util.*;
+import static java.util.stream.Collectors.*;
+import java.util.concurrent.atomic.*;
 
 public class BinaryTree {
     public static void invert(TreeNode root) {
@@ -125,12 +127,28 @@ public class BinaryTree {
     }
 
     static List<Integer> minHeightTrees(int n, int[][] edges) {
-      Map<Integer, List<Integer>> map = Arrays.stream(edges).collect(groupingBy(arr -> arr[0], toList()));
+      Map<Integer, List<Integer>> map = new HashMap<>();
+      Set<Integer> visited = new HashSet<>();
+      for(int[] arr: edges) {
+        map.computeIfAbsent(arr[0], k -> new ArrayList<Integer>()).add(arr[1]);
+        map.computeIfAbsent(arr[1], k -> new ArrayList<Integer>()).add(arr[0]);
+      }
+      Map<Integer, Integer> heightMap = new HashMap<>();
+      int min = Integer.MAX_VALUE;
+      for(int i = 0; i < n; i++) {
+        int max = maxHeight(i, map, visited);
+        if(max < min) min = max;
+        heightMap.put(i, max);
+        visited.clear();
+      }
+      int finalMin = min;
+      return heightMap.entrySet().stream().filter(e -> e.getValue() == finalMin).map(e -> e.getKey()).toList();
     }
 
-    static int maxHeight(int n, Map<Integer, List<Integer>> map) {
-      if(!map.containsKey(n)) return 0;
-      int max = map.get(n).stream().mapToInt(v -> 1 + maxHeight(v, map)).max().getAsInt();
+    static int maxHeight(int n, Map<Integer, List<Integer>> map, Set<Integer> visited) {
+      if(visited.contains(n)) return 0;
+      visited.add(n);
+      int max = map.get(n).stream().mapToInt(v -> 1 + maxHeight(v, map, visited)).max().getAsInt();
       return max;
     }
 }
