@@ -139,9 +139,9 @@ public class BinaryTree {
         if(v.size() == 1) leaves.add(k);
       });
       int remainingNodes = n;
-      List<Integer> newLeaves = new ArrayList<>();
       while(remainingNodes > 2) {
         remainingNodes -= leaves.size();
+        List<Integer> newLeaves = new ArrayList<>();
         leaves.forEach(leaf -> {
           int neighbour = map.get(leaf).iterator().next();
           map.get(neighbour).remove(leaf);
@@ -149,7 +149,6 @@ public class BinaryTree {
         });
         leaves.clear();
         leaves.addAll(newLeaves);
-        newLeaves.clear();
       }
       return leaves;
     }
