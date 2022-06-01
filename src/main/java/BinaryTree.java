@@ -128,6 +128,9 @@ public class BinaryTree {
 
     static List<Integer> minHeightTrees(int n, int[][] edges) {
       Map<Integer, List<Integer>> map = new HashMap<>();
+      for(int i = 0; i < n; i++) {
+        map.put(i, new ArrayList<>());
+      }
       Set<Integer> visited = new HashSet<>();
       for(int[] arr: edges) {
         map.computeIfAbsent(arr[0], k -> new ArrayList<>()).add(arr[1]);
@@ -148,7 +151,7 @@ public class BinaryTree {
     static int maxHeight(int n, Map<Integer, List<Integer>> map, Set<Integer> visited) {
       if(visited.contains(n)) return 0;
       visited.add(n);
-      int max = map.get(n).stream().mapToInt(v -> 1 + maxHeight(v, map, visited)).max().getAsInt();
+      int max = map.get(n).stream().mapToInt(v -> 1 + maxHeight(v, map, visited)).max().orElse(Integer.MAX_VALUE);
       return max;
     }
 }

@@ -193,8 +193,12 @@ public class BinaryTreeTest {
     }
     @Test
     public void findMinimumHeightTrees() {
-      List<Integer> actual = BinaryTree.minHeightTrees(2, new int[][]{{0, 1}});
-      List<Integer> expected = List.of(0, 1);
+      List<Integer> actual = BinaryTree.minHeightTrees(1, new int[][]{});
+      List<Integer> expected = List.of(0);
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTree.minHeightTrees(2, new int[][]{{0, 1}});
+      expected = List.of(0, 1);
       Assert.assertEquals(expected, actual);
 
       actual = BinaryTree.minHeightTrees(3, new int[][]{{0, 1}, {1, 2}});
