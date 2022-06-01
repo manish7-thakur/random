@@ -124,6 +124,10 @@ public class BinaryTree {
       return stack.isEmpty();
     }
 
+    static List<Integer> minHeightTrees(int n, int[][] edges) {
+      Map<Integer, List<Integer>> map = Arrays.stream(edges).collect(groupingBy(arr -> arr[0], toList()));
+    }
+
     static int maxHeight(int n, Map<Integer, List<Integer>> map) {
       if(!map.containsKey(n)) return 0;
       int max = map.get(n).stream().mapToInt(v -> 1 + maxHeight(v, map)).max().getAsInt();
