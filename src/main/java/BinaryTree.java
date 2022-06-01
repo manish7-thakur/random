@@ -1,6 +1,7 @@
 import java.util.*;
 import static java.util.stream.Collectors.*;
 import java.util.concurrent.atomic.*;
+import java.util.stream.IntStream;
 
 public class BinaryTree {
     public static void invert(TreeNode root) {
@@ -128,24 +129,28 @@ public class BinaryTree {
 
     static List<Integer> minHeightTrees(int n, int[][] edges) {
       Map<Integer, List<Integer>> map = new HashMap<>();
-      for(int i = 0; i < n; i++) {
-        map.put(i, new ArrayList<>());
-      }
-      Set<Integer> visited = new HashSet<>();
+      if(n < 2) return List.of(0);
       for(int[] arr: edges) {
         map.computeIfAbsent(arr[0], k -> new ArrayList<>()).add(arr[1]);
         map.computeIfAbsent(arr[1], k -> new ArrayList<>()).add(arr[0]);
       }
-      Map<Integer, Integer> heightMap = new HashMap<>();
-      int min = Integer.MAX_VALUE;
-      for(int i = 0; i < n; i++) {
-        int max = maxHeight(i, map, visited);
-        if(max < min) min = max;
-        heightMap.put(i, max);
-        visited.clear();
+      List<Integer> leaves = new ArrayList<>();
+      map.forEach((k, v) -> {
+        if(v.size() == 1) leaves.add(k);
+      });
+      int remainingNodes = n;
+      while(remainingNodes > 2) {
+        remainingNodes -= leaves.size();
+        List<Integer> newLeaves = new ArrayList<>();
+        leaves.forEach(leaf -> {
+          int neighbour = map.get(leaf).get(0);
+          map.get(neighbour).remove(leaf);
+          if(map.get(neighbour).size() == 1) newLeaves.add(neighbour);
+        });
+        leaves.clear();
+        leaves.addAll(newLeaves);
       }
-      int finalMin = min;
-      return heightMap.entrySet().stream().filter(e -> e.getValue() == finalMin).map(Map.Entry::getKey).toList();
+      return leaves;
     }
 
     static int maxHeight(int n, Map<Integer, List<Integer>> map, Set<Integer> visited) {
