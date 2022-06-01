@@ -190,4 +190,27 @@ public class BinaryTreeTest {
       treeStr = "9,3,4,#,#,1,#,#,2,#,6,#,#";
       Assert.assertTrue(BinaryTree.isValidSerialization(treeStr));
     }
+    // @Test
+    // public void findMinimumHeightTrees() {
+    //   List<Integer> actual = BinaryTree.minHeightTrees(1, new int[]{{0, 1}});
+    //   List<Intger> expected = List.of(0, 1);
+    // }
+    @Test
+    public void maxHeightForTree() {
+      int actual = BinaryTree.maxHeight(0, Map.of());
+      int expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTree.maxHeight(0, Map.of(0, List.of(1)));
+      expected = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTree.maxHeight(0, Map.of(0, List.of(1), 1, List.of(2)));
+      expected = 2;
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTree.maxHeight(0, Map.of(0, List.of(1), 1, List.of(2, 3), 3, List.of(4)));
+      expected = 3;
+      Assert.assertEquals(expected, actual);
+    }
 }

@@ -105,7 +105,6 @@ public class BinaryTree {
       return null;
     }
 
-
     static public boolean isValidSerialization(String preorder) {
       if(preorder.equals("#")) return true;
       Stack<Boolean> stack = new Stack<>();
@@ -123,5 +122,11 @@ public class BinaryTree {
         if(!items[i].equals("#")) stack.push(false);
       }
       return stack.isEmpty();
+    }
+
+    static int maxHeight(int n, Map<Integer, List<Integer>> map) {
+      if(!map.containsKey(n)) return 0;
+      int max = map.get(n).stream().mapToInt(v -> 1 + maxHeight(v, map)).max().getAsInt();
+      return max;
     }
 }
