@@ -33,13 +33,19 @@ public class MatrixManiaTest {
     expected = new int[][]{{1, 0, 1}, {1, 0, 1}, {0, 1, 0}};
     Assert.assertArrayEquals(expected, actual);
 
-    actual = new int[][]{
-      {1, 1, 0},
-      {1, 1, 1}};
+    actual = new int[][]{{1, 1, 0}, {1, 1, 1}};
     MatrixMania.nearestZeroCell(actual);
-    expected = new int[][]{
-      {2, 1, 0},
-      {3, 2, 1}};
+    expected = new int[][]{{2, 1, 0}, {3, 2, 1}};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[][]{{1,1,0,0,1,0,0,1,1,0},{1,0,0,1,0,1,1,1,1,1},{1,1,1,0,0,1,1,1,1,0}};
+    MatrixMania.nearestZeroCell(actual);
+    expected = new int[][]{{2,1,0,0,1,0,0,1,1,0},{1,0,0,1,0,1,1,2,2,1},{2,1,1,0,0,1,2,2,1,0}};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[][]{{1,1,0,0,1,0,0,1,1,0},{1,0,0,1,0,1,1,1,1,1},{1,1,1,0,0,1,1,1,1,0},{0,1,1,1,0,1,1,1,1,1},{0,0,1,1,1,1,1,1,1,0},{1,1,1,1,1,1,0,1,1,1},{0,1,1,1,1,1,1,0,0,1},{1,1,1,1,1,0,0,1,1,1},{0,1,0,1,1,0,1,1,1,1},{1,1,1,0,1,0,1,1,1,1}};
+    MatrixMania.nearestZeroCell(actual);
+    expected = new int[][]{{2,1,0,0,1,0,0,1,1,0},{1,0,0,1,0,1,1,2,2,1},{1,1,1,0,0,1,2,2,1,0},{0,1,2,1,0,1,2,3,2,1},{0,0,1,2,1,2,1,2,1,0},{1,1,2,3,2,1,0,1,1,1},{0,1,2,3,2,1,1,0,0,1},{1,2,1,2,1,0,0,1,1,2},{0,1,0,1,1,0,1,2,2,3},{1,2,1,0,1,0,1,2,3,4}};
     Assert.assertArrayEquals(expected, actual);
   }
 }
