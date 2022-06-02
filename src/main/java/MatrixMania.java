@@ -11,7 +11,7 @@ public class MatrixMania {
       for(int i = 0; i < mat.length; i++) {
         for(int j = 0; j < mat[0].length; j++) {
           int min = getMin(mat, i, j);
-          if(min != Integer.MAX_VALUE && min + 1 < mat[i][j]) {
+          if(min != Integer.MAX_VALUE && 1 + min < mat[i][j]) {
             goAgain = true;
             mat[i][j] = 1 + min;
           }
