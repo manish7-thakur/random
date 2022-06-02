@@ -17,6 +17,7 @@ public class MatrixMania {
     int min2 = Math.min(nearestZeroCellRec(mat, i + 1, j, visited), nearestZeroCellRec(mat, i, j + 1, visited));
     int min = Math.min(min1, min2);
     mat[i][j] = 1 + min;
+    visited[i][j] = false;
     return mat[i][j];
   }
   static boolean safe(int[][] mat, int i, int j, boolean[][] visited) {

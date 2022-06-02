@@ -32,5 +32,14 @@ public class MatrixManiaTest {
     MatrixMania.nearestZeroCell(actual);
     expected = new int[][]{{1, 0, 1}, {1, 0, 1}, {0, 1, 0}};
     Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[][]{
+      {1, 1, 0},
+      {1, 1, 1}};
+    MatrixMania.nearestZeroCell(actual);
+    expected = new int[][]{
+      {2, 1, 0},
+      {3, 2, 1}};
+    Assert.assertArrayEquals(expected, actual);
   }
 }
