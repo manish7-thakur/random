@@ -48,4 +48,19 @@ public class MatrixManiaTest {
     expected = new int[][]{{2,1,0,0,1,0,0,1,1,0},{1,0,0,1,0,1,1,2,2,1},{1,1,1,0,0,1,2,2,1,0},{0,1,2,1,0,1,2,3,2,1},{0,0,1,2,1,2,1,2,1,0},{1,1,2,3,2,1,0,1,1,1},{0,1,2,3,2,1,1,0,0,1},{1,2,1,2,1,0,0,1,1,2},{0,1,0,1,1,0,1,2,2,3},{1,2,1,0,1,0,1,2,3,4}};
     Assert.assertArrayEquals(expected, actual);
   }
+  @Test
+  public void findKClosestPointToOrigin() {
+    int[][] actual = MatrixMania.kClosest(new int[][]{{1, 0}, {0, 1}}, 1);
+    int[][] expected = new int[][]{{1, 0}};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = MatrixMania.kClosest(new int[][]{{1, 3}, {-2, 2}}, 1);
+    expected = new int[][]{{-2, 2}};
+    Assert.assertArrayEquals(expected, actual);
+
+
+    actual = MatrixMania.kClosest(new int[][]{{3, 3}, {5, -1}, {-2, 4}}, 2);
+    expected = new int[][]{{3, 3}, {-2, 4}};
+    Assert.assertArrayEquals(expected, actual);
+  }
 }

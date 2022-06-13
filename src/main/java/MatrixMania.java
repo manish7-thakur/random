@@ -33,4 +33,8 @@ public class MatrixMania {
     }
     return mat;
   }
+  static int[][] kClosest(int[][] points, int k) {
+    Arrays.sort(points, Comparator.comparingInt(arr -> arr[0] * arr[0] + arr[1] * arr[1]));
+    return Arrays.stream(points).limit(k).toArray(int[][]::new);
+  }
 }
