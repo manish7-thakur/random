@@ -33,8 +33,34 @@ public class MatrixMania {
     }
     return mat;
   }
+
   static int[][] kClosest(int[][] points, int k) {
-    Arrays.sort(points, Comparator.comparingInt(arr -> arr[0] * arr[0] + arr[1] * arr[1]));
+    int l = 0, h = points.length - 1;
+    while(true) {
+      int pos = partition(points, l, h);
+      if(pos == k) break;
+      else if(pos < k) l = pos + 1;
+      else h = pos - 1;
+    }
     return Arrays.stream(points).limit(k).toArray(int[][]::new);
+  }
+
+  static int partition(int[][] points, int l, int h) {
+    int pivot = points[l][0] * points[l][0] + points[l][1] * points[l][1];
+    int pos = l;
+    for(int i = l + 1; i <= h; i++) {
+      if(points[i][0] * points[i][0] + points[i][1] * points[i][1] < pivot) {
+        pos++;
+        swap(points, i, pos);
+      }
+    }
+    swap(points, l, pos);
+    return pos;
+  }
+  
+  static void swap(int[][] points, int i, int j) {
+    int[] temp = points[i];
+    points[i] = points[j];
+    points[j] = temp;
   }
 }
