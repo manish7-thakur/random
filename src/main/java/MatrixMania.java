@@ -38,7 +38,7 @@ public class MatrixMania {
     int l = 0, h = points.length - 1;
     while(true) {
       int pos = partition(points, l, h);
-      if(pos == k) break;
+      if(pos == k - 1) break;
       else if(pos < k) l = pos + 1;
       else h = pos - 1;
     }
@@ -57,7 +57,7 @@ public class MatrixMania {
     swap(points, l, pos);
     return pos;
   }
-  
+
   static void swap(int[][] points, int i, int j) {
     int[] temp = points[i];
     points[i] = points[j];

@@ -54,6 +54,10 @@ public class MatrixManiaTest {
     int[][] expected = new int[][]{{1, 0}};
     Assert.assertArrayEquals(expected, actual);
 
+    actual = MatrixMania.kClosest(new int[][]{{1, 0}, {0, 1}}, 2);
+    expected = new int[][]{{1, 0}, {0, 1}};
+    Assert.assertArrayEquals(expected, actual);
+
     actual = MatrixMania.kClosest(new int[][]{{1, 3}, {-2, 2}}, 1);
     expected = new int[][]{{-2, 2}};
     Assert.assertArrayEquals(expected, actual);
