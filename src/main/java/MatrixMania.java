@@ -35,11 +35,11 @@ public class MatrixMania {
   }
 
   static int[][] kClosest(int[][] points, int k) {
-    int l = 0, h = points.length - 1;
-    while(true) {
+    int l = 0, h = points.length - 1, n = k - 1;
+    while(l < h) {
       int pos = partition(points, l, h);
-      if(pos == k - 1) break;
-      else if(pos < k) l = pos + 1;
+      if(pos == n) break;
+      else if(pos < n) l = pos + 1;
       else h = pos - 1;
     }
     return Arrays.stream(points).limit(k).toArray(int[][]::new);
