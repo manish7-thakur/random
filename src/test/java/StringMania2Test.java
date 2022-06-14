@@ -72,5 +72,13 @@ public class StringMania2Test {
     actual = StringMania2.evaluateRPN(new String[]{"5", "-2", "-", "7", "/"});
     expected = 1;
     Assert.assertEquals(expected, actual);
+
+    actual = StringMania2.evaluateRPN(new String[]{"4", "13", "5", "/", "+"});
+    expected = 6;
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania2.evaluateRPN(new String[]{"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"});
+    expected = 22;
+    Assert.assertEquals(expected, actual);
   }
 }
