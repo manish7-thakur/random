@@ -51,4 +51,26 @@ public class StringMania2Test {
     expected = 0;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void evaluateReversePolishNotation() {
+    int actual = StringMania2.evaluateRPN(new String[]{"5"});
+    int expected = 5;
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania2.evaluateRPN(new String[]{"5", "-2", "/"});
+    expected = -2;
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania2.evaluateRPN(new String[]{"5", "-2", "/", "-20", "+"});
+    expected = -22;
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania2.evaluateRPN(new String[]{"5", "-2", "/", "-20", "+", "0", "*"});
+    expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania2.evaluateRPN(new String[]{"5", "-2", "-", "7", "/"});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+  }
 }

@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class StringMania2 {
   static int atoi(String s) {
     int res = 0, sign = 1, index = 0;
@@ -20,5 +22,38 @@ public class StringMania2 {
       index++;
     }
     return res * sign;
+  }
+  static int evaluateRPN(String[] tokens) {
+    Stack<Integer> stack = new Stack<>();
+    for(String token : tokens) {
+      switch(token) {
+        case "/" : {
+          int op2 = stack.pop();
+          int op1 = stack.pop();
+          stack.push(op1 / op2);
+        }
+        break;
+        case "+" : {
+          int op2 = stack.pop();
+          int op1 = stack.pop();
+          stack.push(op1 + op2);
+        }
+        break;
+        case "*" : {
+          int op2 = stack.pop();
+          int op1 = stack.pop();
+          stack.push(op1 * op2);
+        }
+        break;
+        case "-" : {
+          int op2 = stack.pop();
+          int op1 = stack.pop();
+          stack.push(op1 - op2);
+        }
+        break;
+        default: stack.push(Integer.parseInt(token));
+      }
+    }
+    return stack.pop();
   }
 }
