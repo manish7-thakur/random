@@ -79,6 +79,18 @@ public class MatrixMania {
         grid[i][j + 1] = 2;
         queue.add(new Pair(i, j + 1));
       }
+      if(j - 1 >= 0 && grid[i][j - 1] == 1) {
+        grid[i][j - 1] = 2;
+        queue.add(new Pair(i, j - 1));
+      }
+      if(i + 1 < grid.length && grid[i + 1][j] == 1) {
+        grid[i + 1][j] = 2;
+        queue.add(new Pair(i + 1, j));
+      }
+      if(i - 1 >= 0 && grid[i - 1][j] == 1) {
+        grid[i - 1][j] = 2;
+        queue.add(new Pair(i - 1, j));
+      }
       count++;
     }
     return count > 0 ? count - 1 : count;
