@@ -73,26 +73,40 @@ public class MatrixMania {
       }
     }
     while(!queue.isEmpty()) {
-      Pair p = queue.remove();
-      int i = p.i, j = p.j;
-      if(j + 1 < grid[0].length && grid[i][j + 1] == 1) {
-        grid[i][j + 1] = 2;
-        queue.add(new Pair(i, j + 1));
-      }
-      if(j - 1 >= 0 && grid[i][j - 1] == 1) {
-        grid[i][j - 1] = 2;
-        queue.add(new Pair(i, j - 1));
-      }
-      if(i + 1 < grid.length && grid[i + 1][j] == 1) {
-        grid[i + 1][j] = 2;
-        queue.add(new Pair(i + 1, j));
-      }
-      if(i - 1 >= 0 && grid[i - 1][j] == 1) {
-        grid[i - 1][j] = 2;
-        queue.add(new Pair(i - 1, j));
+      int size = queue.size();
+      while(size > 0) {
+        Pair p = queue.remove();
+        int i = p.i, j = p.j;
+        if(j + 1 < grid[0].length && grid[i][j + 1] == 1) {
+          grid[i][j + 1] = 2;
+          queue.add(new Pair(i, j + 1));
+        }
+        if(j - 1 >= 0 && grid[i][j - 1] == 1) {
+          grid[i][j - 1] = 2;
+          queue.add(new Pair(i, j - 1));
+        }
+        if(i + 1 < grid.length && grid[i + 1][j] == 1) {
+          grid[i + 1][j] = 2;
+          queue.add(new Pair(i + 1, j));
+        }
+        if(i - 1 >= 0 && grid[i - 1][j] == 1) {
+          grid[i - 1][j] = 2;
+          queue.add(new Pair(i - 1, j));
+        }
+        size--;
       }
       count++;
     }
+    boolean allRotted = true;
+    for(int i = 0; i < grid.length; i++) {
+      for(int j = 0; j < grid[0].length; j++) {
+        if(grid[i][j] == 1) {
+          allRotted = false;
+          break;
+        }
+      }
+    }
+    if(!allRotted) return -1;
     return count > 0 ? count - 1 : count;
   }
 }
