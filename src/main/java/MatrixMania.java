@@ -63,4 +63,24 @@ public class MatrixMania {
     points[i] = points[j];
     points[j] = temp;
   }
+  static int orangesRotting(int[][] grid) {
+    record Pair(int i, int j){};
+    int count = 0;
+    Queue<Pair> queue = new LinkedList<>();
+    for(int i = 0; i < grid.length; i++) {
+      for(int j = 0; j < grid[0].length; j++) {
+        if(grid[i][j] == 2) queue.add(new Pair(i, j));
+      }
+    }
+    while(!queue.isEmpty()) {
+      Pair p = queue.remove();
+      int i = p.i, j = p.j;
+      if(j + 1 < grid[0].length && grid[i][j + 1] == 1) {
+        grid[i][j + 1] = 2;
+        queue.add(new Pair(i, j + 1));
+      }
+      count++;
+    }
+    return count > 0 ? count - 1 : count;
+  }
 }

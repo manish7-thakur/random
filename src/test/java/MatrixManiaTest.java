@@ -70,4 +70,14 @@ public class MatrixManiaTest {
     expected = new int[][]{{2, 3}, {3, 3}, {-3, 4}, {5, -1}};
     Assert.assertArrayEquals(expected, actual);
   }
+  @Test
+  public void timeToRotAllOranges() {
+    int actual = MatrixMania.orangesRotting(new int[][]{{0}});
+    int expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = MatrixMania.orangesRotting(new int[][]{{0, 2, 1}});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+  }
 }
