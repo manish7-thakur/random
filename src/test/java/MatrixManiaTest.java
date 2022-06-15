@@ -111,7 +111,5 @@ public class MatrixManiaTest {
     actual = MatrixMania.orangesRotting(new int[][]{{2,1,1},{0,1,1},{1,0,1}});
     expected = -1;
     Assert.assertEquals(expected, actual);
-
-
   }
 }

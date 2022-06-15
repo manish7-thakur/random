@@ -97,16 +97,11 @@ public class MatrixMania {
       }
       count++;
     }
-    boolean allRotted = true;
     for(int i = 0; i < grid.length; i++) {
       for(int j = 0; j < grid[0].length; j++) {
-        if(grid[i][j] == 1) {
-          allRotted = false;
-          break;
-        }
+        if(grid[i][j] == 1) return -1;
       }
     }
-    if(!allRotted) return -1;
     return count > 0 ? count - 1 : count;
   }
 }
