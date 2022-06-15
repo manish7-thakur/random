@@ -76,6 +76,10 @@ public class MatrixManiaTest {
     int expected = 0;
     Assert.assertEquals(expected, actual);
 
+    actual = MatrixMania.orangesRotting(new int[][]{{0, 2}});
+    expected = 0;
+    Assert.assertEquals(expected, actual);
+
     actual = MatrixMania.orangesRotting(new int[][]{{0, 2, 1}});
     expected = 1;
     Assert.assertEquals(expected, actual);
@@ -103,5 +107,11 @@ public class MatrixManiaTest {
     actual = MatrixMania.orangesRotting(new int[][]{{2,1,1},{1,1,0},{0,1,1}});
     expected = 4;
     Assert.assertEquals(expected, actual);
+
+    actual = MatrixMania.orangesRotting(new int[][]{{2,1,1},{0,1,1},{1,0,1}});
+    expected = -1;
+    Assert.assertEquals(expected, actual);
+
+
   }
 }
