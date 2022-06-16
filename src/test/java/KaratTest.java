@@ -185,5 +185,13 @@ K     G
     actual = Karat.findMismatched(new String[][]{{"paul", "exit"}});
     expected = List.of(Set.of(),  Set.of("paul"));
     Assert.assertEquals(expected, actual);
+
+    actual = Karat.findMismatched(new String[][]{{"paul", "enter"}, {"paul", "exit"}});
+    expected = List.of(Set.of(),  Set.of());
+    Assert.assertEquals(expected, actual);
+
+    actual = Karat.findMismatched(new String[][]{{"paul", "enter"}, {"paul", "enter"}, {"paul", "exit"}});
+    expected = List.of(Set.of("paul"),  Set.of());
+    Assert.assertEquals(expected, actual);
   }
 }

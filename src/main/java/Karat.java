@@ -145,15 +145,17 @@ public class Karat {
   static List<Set<String>> findMismatched(String[][] badges) {
     Set<String> entries = new HashSet<>();
     Set<String> exits = new HashSet<>();
+    Set<String> entryCulprits = new HashSet<>();
     Arrays.stream(badges).forEach(arr -> {
       String name = arr[0];
       String log = arr[1];
       if(log.equals("enter")) {
-        entries.add(name);
+        if(!entries.add(name)) entryCulprits.add(name);
       } else {
         if(!entries.remove(name)) exits.add(name);
       }
     });
-    return List.of(entries, exits);
+    entryCulprits.addAll(entries);
+    return List.of(entryCulprits, exits);
   }
 }
