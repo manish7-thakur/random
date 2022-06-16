@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class ArrayPermutations {
     static ArrayList<String> permute(char[] arr, int l) {
@@ -44,5 +44,32 @@ public class ArrayPermutations {
         for (int i = 0; i < arr.length; i++) {
             generateAll(arr, curr + arr[i], res);
         }
+    }
+    static List<List<Integer>> permute(int[] nums) {
+      return permuteRec(nums, 0);
+    }
+    static List<List<Integer>> permuteRec(int[] nums, int start) {
+      if(nums.length - 1 == start) {
+        var list = new ArrayList<Integer>();
+        list.add(nums[start]);
+        return List.of(list);
+      }
+      var res = new ArrayList<List<Integer>>();
+      for(int i = start; i < nums.length; i++) {
+        int b = nums[i];
+        swap(nums, start, i);
+        var permutes = permuteRec(nums, start + 1);
+        for(List<Integer> list: permutes) {
+          list.add(b);
+          res.add(list);
+        }
+        swap(nums, start, i);
+      }
+      return res;
+    }
+    static void swap(int[] nums, int i, int j) {
+      int temp = nums[i];
+      nums[i] = nums[j];
+      nums[j] = temp;
     }
 }

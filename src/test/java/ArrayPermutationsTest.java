@@ -39,4 +39,23 @@ public class ArrayPermutationsTest {
         expected = Arrays.asList("aaa", "aab", "aac", "aba", "abb", "abc", "aca", "acb", "acc", "baa", "bab", "bac", "bba", "bbb", "bbc", "bca", "bcb", "bcc", "caa", "cab", "cac", "cba", "cbb", "cbc", "cca", "ccb", "ccc");
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void generateArrayPermutations() {
+      var actual = ArrayPermutations.permute(new int[]{2});
+      var expected = List.of(List.of(2));
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayPermutations.permute(new int[]{2, 1});
+      expected = List.of(List.of(1, 2), List.of(2, 1));
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayPermutations.permute(new int[]{1, 2, 3});
+      expected = List.of(List.of(3, 2, 1), List.of(2, 3, 1), List.of(3, 1, 2), List.of(1, 3, 2), List.of(1, 2, 3), List.of(2, 1, 3));
+      Assert.assertEquals(expected, actual);
+
+      actual = ArrayPermutations.permute(new int[]{4, 1, 2, 3});
+      expected = List.of(List.of(3, 2, 1, 4), List.of(2, 3, 1, 4), List.of(3, 1, 2, 4), List.of(1, 3, 2, 4), List.of(1, 2, 3, 4), List.of(2, 1, 3, 4), List.of(3, 2, 4, 1), List.of(2, 3, 4, 1), List.of(3, 4, 2, 1), List.of(4, 3, 2, 1), List.of(4, 2, 3, 1), List.of(2, 4, 3, 1), List.of(3, 4, 1, 2), List.of(4, 3, 1, 2), List.of(3, 1, 4, 2), List.of(1, 3, 4, 2), List.of(1, 4, 3, 2), List.of(4, 1, 3, 2), List.of(4, 2, 1, 3), List.of(2, 4, 1, 3), List.of(4, 1, 2, 3), List.of(1, 4, 2, 3), List.of(1, 2, 4, 3), List.of(2, 1, 4, 3));
+      Assert.assertEquals(expected, actual);
+    }
 }
