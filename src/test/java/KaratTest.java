@@ -176,4 +176,14 @@ K     G
     expected = Map.of("B", Set.of("F"));
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void findCulpritsWithMismatchedEntryExit() {
+    var actual = Karat.findMismatched(new String[][]{{"martha", "enter"}});
+    var expected = List.of(Set.of("martha"),  Set.of());
+    Assert.assertEquals(expected, actual);
+
+    actual = Karat.findMismatched(new String[][]{{"paul", "exit"}});
+    expected = List.of(Set.of(),  Set.of("paul"));
+    Assert.assertEquals(expected, actual);
+  }
 }

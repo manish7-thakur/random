@@ -142,4 +142,18 @@ public class Karat {
     }
     pathMap.get(point).forEach(next -> buildEndPoints(next, pathMap, endPoints));
   }
+  static List<Set<String>> findMismatched(String[][] badges) {
+    Set<String> entries = new HashSet<>();
+    Set<String> exits = new HashSet<>();
+    Arrays.stream(badges).forEach(arr -> {
+      String name = arr[0];
+      String log = arr[1];
+      if(log.equals("enter")) {
+        entries.add(name);
+      } else {
+        if(!entries.remove(name)) exits.add(name);
+      }
+    });
+    return List.of(entries, exits);
+  }
 }
