@@ -49,7 +49,7 @@ public class ArrayPermutations {
       return permuteRec(nums, 0);
     }
     static List<List<Integer>> permuteRec(int[] nums, int start) {
-      if(nums.length - 1 == start) {
+      if(start == nums.length - 1) {
         var list = new ArrayList<Integer>();
         list.add(nums[start]);
         return List.of(list);
