@@ -193,5 +193,25 @@ K     G
     actual = Karat.findMismatched(new String[][]{{"paul", "enter"}, {"paul", "enter"}, {"paul", "exit"}});
     expected = List.of(Set.of("paul"),  Set.of());
     Assert.assertEquals(expected, actual);
+
+    actual = Karat.findMismatched(new String[][]{{"martha", "enter"}, {"martha", "exit"}, {"martha", "exit"}});
+    expected = List.of(Set.of(),  Set.of("martha"));
+    Assert.assertEquals(expected, actual);
+
+    actual = Karat.findMismatched(new String[][]{{"martha", "enter"}, {"martha", "enter"}, {"martha", "exit"}, {"martha", "exit"}});
+    expected = List.of(Set.of("martha"),  Set.of("martha"));
+    Assert.assertEquals(expected, actual);
+
+    actual = Karat.findMismatched(new String[][]{{"martha", "enter"}, {"martha", "exit"}, {"martha", "exit"}, {"martha", "enter"}});
+    expected = List.of(Set.of("martha"),  Set.of("martha"));
+    Assert.assertEquals(expected, actual);
+
+    actual = Karat.findMismatched(new String[][]{{"paul", "enter"}, {"paul", "exit"}, {"paul", "exit"}, {"paul", "enter"}, {"martha", "enter"}, {"martha", "exit"}});
+    expected = List.of(Set.of("paul"),  Set.of("paul"));
+    Assert.assertEquals(expected, actual);
+
+    actual = Karat.findMismatched(new String[][]{{"martha", "exit"},{"paul", "enter"},{"martha", "enter"},{"martha", "exit"},{"jennifer", "enter"},{"paul", "enter"},{"curtis", "exit"},{"curtis", "enter"},{"paul", "exit"},{"martha", "enter"},{"martha", "exit"},{"jennifer", "exit"},{"paul", "enter"},{"paul", "enter"},{"martha", "exit"}});
+    expected = List.of(Set.of("curtis", "paul"),  Set.of("martha", "curtis"));
+    Assert.assertEquals(expected, actual);
   }
 }
