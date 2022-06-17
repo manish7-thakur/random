@@ -101,8 +101,10 @@ public class ArrayMania3 {
   static boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
     TreeSet<Integer> treeSet = new TreeSet<>();
     for(int i = 0; i < nums.length; i++) {
+      //e.g nums[i] is positive -> Math.abs(nums[i] - x) = t -> x = nums[i] - t;
+      //nums[i] is negative -> -nums[i] - x = t -> -nums[i] - t = x -> x = Math.abs(-(nums[i] + t))
       int from = nums[i] - t;
-      int to = nums[i] + t + 1;
+      int to = nums[i] + t + 1; // +1 as last range is exclusive
       if(treeSet.subSet(from, to).size() > 0) return true;
       treeSet.add(nums[i]);
       if(treeSet.size() > k) treeSet.remove(nums[i - k]);
