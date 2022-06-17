@@ -190,6 +190,9 @@ public class ArrayMania3Test {
     actual = ArrayMania3.containsNearbyAlmostDuplicate(new int[]{1, 2}, 1, 1);
     Assert.assertTrue(actual);
 
+    actual = ArrayMania3.containsNearbyAlmostDuplicate(new int[]{1, -2}, 1, 1);
+    Assert.assertFalse(actual);
+
     actual = ArrayMania3.containsNearbyAlmostDuplicate(new int[]{2, 1}, 1, 1);
     Assert.assertTrue(actual);
 
