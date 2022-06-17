@@ -106,9 +106,6 @@ public class ArrayMania3 {
       if(treeSet.subSet(from, to).size() > 0) return true;
       treeSet.add(nums[i]);
       if(treeSet.size() > k) treeSet.remove(nums[i - k]);
-      // for(int j = i + 1; j <= i + k && j < nums.length; j++) {
-      //   if(Math.abs(nums[i] - nums[j]) <= t) return true;
-      // }
     }
     return false;
   }
