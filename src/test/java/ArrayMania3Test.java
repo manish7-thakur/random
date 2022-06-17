@@ -182,4 +182,21 @@ public class ArrayMania3Test {
     expected = new int[]{0, 1, 1, 2};
     Assert.assertArrayEquals(expected, actual);
   }
+  @Test
+  public void nearByDuplicate() {
+    boolean actual = ArrayMania3.containsNearbyAlmostDuplicate(new int[] {1}, 0, 0);
+    Assert.assertFalse(actual);
+
+    actual = ArrayMania3.containsNearbyAlmostDuplicate(new int[]{1, 2}, 1, 1);
+    Assert.assertTrue(actual);
+
+    actual = ArrayMania3.containsNearbyAlmostDuplicate(new int[]{2, 1}, 1, 1);
+    Assert.assertTrue(actual);
+
+    actual = ArrayMania3.containsNearbyAlmostDuplicate(new int[]{-2, 0, 3, 4}, 2, 3);
+    Assert.assertTrue(actual);
+
+    actual = ArrayMania3.containsNearbyAlmostDuplicate(new int[]{-2, 2, 6, 1}, 1, 3);
+    Assert.assertFalse(actual);
+  }
 }
