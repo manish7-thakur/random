@@ -99,15 +99,20 @@ public class ArrayMania3 {
     nums[l] = temp;
   }
   static boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
-    TreeSet<Integer> treeSet = new TreeSet<>();
+    TreeSet<Long> treeSet = new TreeSet<>();
     for(int i = 0; i < nums.length; i++) {
       //e.g nums[i] is positive -> Math.abs(nums[i] - x) = t -> x = nums[i] - t;
       //nums[i] is negative -> -nums[i] - x = t -> -nums[i] - t = x -> x = Math.abs(-(nums[i] + t))
-      int from = nums[i] - t;
-      int to = nums[i] + t + 1; // +1 as last range is exclusive
-      if(treeSet.subSet(from, to).size() > 0) return true;
-      treeSet.add(nums[i]);
-      if(treeSet.size() > k) treeSet.remove(nums[i - k]);
+      // int from = nums[i] - t;
+      // int to = nums[i] + t + 1; // +1 as last range is exclusive
+      // if(treeSet.subSet(from, to).size() > 0) return true;
+      Long value = (long)nums[i];
+      Long floor = treeSet.floor(value);
+      if(floor != null && value - floor <= t) return true;
+      Long ceiling = treeSet.ceiling(value);
+      if(ceiling != null && ceiling - value <= t) return true;
+      treeSet.add(value);
+      if(treeSet.size() > k) treeSet.remove((long)nums[i - k]);
     }
     return false;
   }
