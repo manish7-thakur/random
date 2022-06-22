@@ -215,5 +215,25 @@ public class ArrayMania3Test {
     actual = ArrayMania3.removeDuplicates(new int[]{1, 2});
     expected = 2;
     Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.removeDuplicates(new int[]{1, 2, 2});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.removeDuplicates(new int[]{1, 1, 1, 2, 2, 3});
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.removeDuplicates(new int[]{1, 1, 1, 2, 2, 3, 5, 6, 6, 6});
+    expected = 5;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.removeDuplicates(new int[]{-1, -1, 0, 1, 1, 2, 2, 3, 5, 6, 6, 6});
+    expected = 7;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.removeDuplicates(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9});
+    expected = 9;
+    Assert.assertEquals(expected, actual);
   }
 }
