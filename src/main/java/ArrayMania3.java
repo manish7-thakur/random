@@ -111,4 +111,14 @@ public class ArrayMania3 {
     }
     return false;
   }
+  static int removeDuplicates(int[] nums) {
+    int pos = 0;
+    for(int i = 1; i < nums.length; i++) {
+      if(nums[pos] != nums[i]) {
+        pos++;
+        nums[pos] = nums[i];
+      }
+    }
+    return pos + 1;
+  }
 }

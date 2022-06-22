@@ -202,4 +202,18 @@ public class ArrayMania3Test {
     actual = ArrayMania3.containsNearbyAlmostDuplicate(new int[]{-2, 2, 6, 1}, 1, 3);
     Assert.assertFalse(actual);
   }
+  @Test
+  public void removeDuplicatesInPlace() {
+    int actual = ArrayMania3.removeDuplicates(new int[]{1});
+    int expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.removeDuplicates(new int[]{1, 1});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.removeDuplicates(new int[]{1, 2});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+  }
 }
