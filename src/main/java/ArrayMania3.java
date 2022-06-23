@@ -139,7 +139,7 @@ public class ArrayMania3 {
     int count = 0, sum = 0, l = 0;
     for(int r = 0; r < nums.length; r++) {
       sum += nums[r];
-      if(sum > k) {
+      while(sum > k) {
         sum -= nums[l];
         l++;
       }
