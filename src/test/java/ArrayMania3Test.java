@@ -249,6 +249,18 @@ public class ArrayMania3Test {
     actual = ArrayMania3.dailyTemperatures(new int[]{23, 22, 25});
     expected = new int[]{2, 1, 0};
     Assert.assertArrayEquals(expected, actual);
+
+    actual = ArrayMania3.dailyTemperatures(new int[]{21, 22, 20, 19});
+    expected = new int[]{1, 0, 0, 0};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = ArrayMania3.dailyTemperatures(new int[]{21, 22, 23, 24});
+    expected = new int[]{1, 1, 1, 0};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = ArrayMania3.dailyTemperatures(new int[]{73,74, 75, 71, 69, 72, 76, 73});
+    expected = new int[]{1, 1, 4, 2, 1, 1, 0, 0};
+    Assert.assertArrayEquals(expected, actual);
   }
 
 }
