@@ -302,4 +302,27 @@ public class ArrayMania3Test {
     Assert.assertEquals(expected, actual);
   }
 
+  @Test
+  public void peakFinderBinarySearch() {
+    int actual = ArrayMania3.findPeakElement(new int[] {1});
+    int expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.findPeakElement(new int[] {1, 2});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.findPeakElement(new int[] {2, 1});
+    expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.findPeakElement(new int[] {2, 1, 3});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.findPeakElement(new int[] {2, 3, 1, 2});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+  }
+
 }
