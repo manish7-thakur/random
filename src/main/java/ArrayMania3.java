@@ -134,29 +134,16 @@ public class ArrayMania3 {
     }
     return res;
   }
-//1, -2, -1
+  // No fucking idea how did we come to this solution
   static int subarraySum(int[] nums, int k) {
-    int count = 0, sum = 0, l = 0;
-    if(k > 0) {
-      for(int r = 0; r < nums.length; r++) {
-        sum += nums[r];
-        while(l < r && sum > k) {
-          sum -= nums[l];
-          l++;
-        }
-        if(sum == k) count++;
-      }
-    } else {
-      for(int r = 0; r < nums.length; r++) {
-        sum += nums[r];
-        while(l < r && sum < k) {
-          sum += nums[l];
-          l++;
-        }
-        if(sum == k) count++;
-      }
+    int count = 0, sum = 0;
+    Map<Integer, Integer> map = new HashMap<>();
+    map.put(0, 1);
+    for(int n : nums) {
+      sum += n;
+      count += map.getOrDefault(sum - k, 0);
+      map.merge(sum, 1, Integer::sum);
     }
-
     return count;
   }
 }
