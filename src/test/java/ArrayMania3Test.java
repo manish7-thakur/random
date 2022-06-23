@@ -323,6 +323,10 @@ public class ArrayMania3Test {
     actual = ArrayMania3.findPeakElement(new int[] {2, 3, 1, 2});
     expected = 1;
     Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.findPeakElement(new int[] {2, 3, 1, 2, 0});
+    expected = 3;
+    Assert.assertEquals(expected, actual);
   }
 
 }
