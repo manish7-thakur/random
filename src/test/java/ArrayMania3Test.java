@@ -296,6 +296,10 @@ public class ArrayMania3Test {
     actual = ArrayMania3.subarraySum(new int[]{1, -2, -1}, -1);
     expected = 2;
     Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.subarraySum(new int[]{-2, 1, 1, -1, 1}, 0);
+    expected = 3;
+    Assert.assertEquals(expected, actual);
   }
 
 }
