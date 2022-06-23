@@ -124,14 +124,13 @@ public class ArrayMania3 {
 
   static int[] dailyTemperatures(int[] temperatures) {
     int[] res = new int[temperatures.length];
-    record Pair(int idx, int val){};
-    Stack<Pair> stack = new Stack<>();
+    Stack<Integer> stack = new Stack<>();
     for(int i = 0 ; i < temperatures.length; i++) {
-      while(!stack.isEmpty() && stack.peek().val < temperatures[i]) {
-        Pair p = stack.pop();
-        res[p.idx] = i - p.idx;
+      while(!stack.isEmpty() && temperatures[stack.peek()] < temperatures[i]) {
+        int idx = stack.pop();
+        res[idx] = i - idx;
       }
-      stack.push(new Pair(i, temperatures[i]));
+      stack.push(i);
     }
     return res;
   }
