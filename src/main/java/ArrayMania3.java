@@ -121,4 +121,18 @@ public class ArrayMania3 {
     }
     return pos + 1;
   }
+
+  static int[] dailyTemperatures(int[] temparatures) {
+    int[] res = new int[temparatures.length];
+    record Pair(int idx, int val){};
+    Stack<Pair> stack = new Stack<>();
+    for(int i = 0 ; i < temparatures.length; i++) {
+      while(!stack.isEmpty() && stack.peek().val < temparatures[i]) {
+        Pair p = stack.pop();
+        res[p.idx] = i - p.idx;
+      }
+      stack.push(new Pair(i, temparatures[i]));
+    }
+    return res;
+  }
 }
