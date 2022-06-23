@@ -267,4 +267,23 @@ public class ArrayMania3Test {
     Assert.assertArrayEquals(expected, actual);
   }
 
+  @Test
+  public void countSubarraysWithSum() {
+    int actual = ArrayMania3.subarraySum(new int[]{1}, 1);
+    int expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.subarraySum(new int[]{1, 1}, 1);
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.subarraySum(new int[]{1, 2, 1, 2}, 1);
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.subarraySum(new int[]{1, 2, 1, 2, 1}, 3);
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+  }
+
 }

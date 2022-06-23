@@ -134,4 +134,17 @@ public class ArrayMania3 {
     }
     return res;
   }
+
+  static int subarraySum(int[] nums, int k) {
+    int count = 0, sum = 0, l = 0;
+    for(int r = 0; r < nums.length; r++) {
+      sum += nums[r];
+      if(sum > k) {
+        sum -= nums[l];
+        l++;
+      }
+      if(sum == k) count++;
+    }
+    return count;
+  }
 }
