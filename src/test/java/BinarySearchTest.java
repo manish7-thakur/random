@@ -132,7 +132,7 @@ public class BinarySearchTest {
       expected = new int[]{1, 3};
       assertArrayEquals(expected, actual);
 
-      actual = BinarySearch.searchRange(new int[]{2, 2, 2, 4, 4, 9}, 4);
+      actual = BinarySearch.searchRange(new int[]{2, 2, 2, 4, 4, 9}, 9);
       expected = new int[]{5, 5};
       assertArrayEquals(expected, actual);
     }
