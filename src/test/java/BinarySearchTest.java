@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertArrayEquals;
 
 public class BinarySearchTest {
     @Test
@@ -104,5 +105,31 @@ public class BinarySearchTest {
       actual = BinarySearch.searchInsert(new int[]{1, 2, 5, 6, 16, 21, 29, 34, 48, 54, 62, 72, 82, 91}, 71);
       expected = 11;
       assertEquals(expected, actual);
+    }
+    @Test
+    public void firstAndLastPosInSortedArray() {
+      int[] actual = BinarySearch.searchRange(new int[]{}, 2);
+      int[] expected = new int[]{-1, -1};
+      assertArrayEquals(expected, actual);
+
+      actual = BinarySearch.searchRange(new int[]{1}, 1);
+      expected = new int[]{0, 0};
+      assertArrayEquals(expected, actual);
+
+      actual = BinarySearch.searchRange(new int[]{1}, 2);
+      expected = new int[]{-1, -1};
+      assertArrayEquals(expected, actual);
+
+      actual = BinarySearch.searchRange(new int[]{1, 2}, 2);
+      expected = new int[]{1, 1};
+      assertArrayEquals(expected, actual);
+
+      actual = BinarySearch.searchRange(new int[]{1, 2, 2}, 2);
+      expected = new int[]{1, 2};
+      assertArrayEquals(expected, actual);
+
+      actual = BinarySearch.searchRange(new int[]{2, 4, 4, 4, 9}, 4);
+      expected = new int[]{1, 3};
+      assertArrayEquals(expected, actual);
     }
 }
