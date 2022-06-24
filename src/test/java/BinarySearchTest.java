@@ -135,5 +135,9 @@ public class BinarySearchTest {
       actual = BinarySearch.searchRange(new int[]{2, 2, 2, 4, 4, 9}, 9);
       expected = new int[]{5, 5};
       assertArrayEquals(expected, actual);
+
+      actual = BinarySearch.searchRange(new int[]{1, 2, 2, 4, 4, 9}, 1);
+      expected = new int[]{0, 0};
+      assertArrayEquals(expected, actual);
     }
 }
