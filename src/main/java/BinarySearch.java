@@ -78,19 +78,17 @@ public class BinarySearch {
       return new int[]{first, last};
     }
     static List<Integer> findClosestElements(int[] arr, int k, int x) {
-      List<Integer> res = new ArrayList();
+      List<Integer> res = new ArrayList<>();
       Queue<Integer> queue = new PriorityQueue<>();
       int pos = Arrays.binarySearch(arr, x);
       int arrPos = 0, l = 0, r = 0;
       if(pos < 0) {
         arrPos = -pos - 1;
-        // System.out.println("Pos is : " + arrPos);
         l = arrPos - 1;
         r = arrPos;
       } else {
         queue.add(arr[pos]);
         arrPos = pos;
-        // System.out.println("Pos is : " + arrPos);
         l = arrPos - 1;
         r = arrPos + 1;
       }
