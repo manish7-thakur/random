@@ -91,7 +91,13 @@ public class BinarySearch {
       }
       l = pos - 1;
       while(queue.size() < k) {
-        if(l >= 0 && r >= arr.length || Math.abs(arr[l] - x) <= Math.abs(arr[r] - x)) {
+        if(l >= 0 && r >= arr.length) {
+          queue.add(arr[l]);
+          l--;
+        } else if(l < 0 && r < arr.length) {
+          queue.add(arr[r]);
+          r++;
+        } else if(x - arr[l] <= arr[r] - x) {
           queue.add(arr[l]);
           l--;
         } else {
