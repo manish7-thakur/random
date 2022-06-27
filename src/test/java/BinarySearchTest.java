@@ -165,6 +165,18 @@ public class BinarySearchTest {
       actual = BinarySearch.findClosestElements(new int[]{1, 4, 6}, 3, 3);
       expected = List.of(1, 4, 6);
       assertEquals(expected, actual);
+
+      actual = BinarySearch.findClosestElements(new int[]{-3, -2, 0, 4, 7}, 3, -1);
+      expected = List.of(-3, -2, 0);
+      assertEquals(expected, actual);
+
+      actual = BinarySearch.findClosestElements(new int[]{-3, -2, 0, 1, 7}, 3, -1);
+      expected = List.of(-3, -2, 0);
+      assertEquals(expected, actual);
+
+      actual = BinarySearch.findClosestElements(new int[]{1, 2, 3, 4, 5}, 4, 3);
+      expected = List.of(1, 2, 3, 4);
+      assertEquals(expected, actual);
     }
 
 }

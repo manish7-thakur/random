@@ -77,30 +77,42 @@ public class BinarySearch {
       }
       return new int[]{first, last};
     }
-    static List<Integer> findClosestElements(int[] nums, int k, int x) {
+    static List<Integer> findClosestElements(int[] arr, int k, int x) {
       List<Integer> res = new ArrayList();
-      int pos = Arrays.binarySearch(nums, x);
-      int arrPos = -pos - 1;
-      System.out.println("Pos is : " + arrPos);
-        int l = arrPos - 1;
-        int r = arrPos;
-        Queue<Integer> queue = new PriorityQueue<>();
-        while(queue.size() < k) {
-          if(l >= 0 && r >= nums.length) {
-            queue.add(nums[l]);
-            l--;
-          } else if(l < 0 && r < nums.length) {
-            queue.add(nums[r]);
-            r++;
-          } else if(Math.abs(nums[l] - x) < Math.abs(nums[r] - x)) {
-            queue.add(nums[l]);
-            l--;
-          } else {
-            queue.add(nums[r]);
-            r++;
-          }
+      Queue<Integer> queue = new PriorityQueue<>();
+      int pos = Arrays.binarySearch(arr, x);
+      int arrPos = 0, l = 0, r = 0;
+      if(pos < 0) {
+        arrPos = -pos - 1;
+        // System.out.println("Pos is : " + arrPos);
+        l = arrPos - 1;
+        r = arrPos;
+      } else {
+        queue.add(arr[pos]);
+        arrPos = pos;
+        // System.out.println("Pos is : " + arrPos);
+        l = arrPos - 1;
+        r = arrPos + 1;
+      }
+      while(queue.size() < k) {
+        if(l >= 0 && r >= arr.length) {
+          queue.add(arr[l]);
+          l--;
+        } else if(l < 0 && r < arr.length) {
+          queue.add(arr[r]);
+          r++;
+        } else if(Math.abs(arr[l] - x) < Math.abs(arr[r] - x)) {
+          queue.add(arr[l]);
+          l--;
+        } else if(Math.abs(arr[l] - x) == Math.abs(arr[r] - x) && arr[l] < arr[r]) {
+          queue.add(arr[l]);
+          l--;
+        } else {
+          queue.add(arr[r]);
+          r++;
         }
-        while(!queue.isEmpty()) res.add(queue.remove());
+      }
+      while(!queue.isEmpty()) res.add(queue.remove());
       return res;
     }
 }
