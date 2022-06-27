@@ -83,14 +83,14 @@ public class BinarySearch {
       int pos = Arrays.binarySearch(arr, x);
       int arrPos = 0, l = 0, r = 0;
       if(pos < 0) {
-        arrPos = -pos - 1;
-        r = arrPos;
+        pos = -pos - 1;
+        r = pos;
       } else {
         queue.add(arr[pos]);
         arrPos = pos;
-        r = arrPos + 1;
+        r = pos + 1;
       }
-      l = arrPos - 1;
+      l = pos - 1;
       while(queue.size() < k) {
         if(l >= 0 && r >= arr.length) {
           queue.add(arr[l]);
