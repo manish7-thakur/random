@@ -97,10 +97,7 @@ public class BinarySearch {
         } else if(l < 0 && r < arr.length) {
           queue.add(arr[r]);
           r++;
-        } else if(Math.abs(arr[l] - x) < Math.abs(arr[r] - x)) {
-          queue.add(arr[l]);
-          l--;
-        } else if(Math.abs(arr[l] - x) == Math.abs(arr[r] - x) && arr[l] < arr[r]) {
+        } else if(Math.abs(arr[l] - x) <= Math.abs(arr[r] - x)) {
           queue.add(arr[l]);
           l--;
         } else {
