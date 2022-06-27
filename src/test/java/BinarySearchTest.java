@@ -175,7 +175,7 @@ public class BinarySearchTest {
       assertEquals(expected, actual);
 
       actual = BinarySearch.findClosestElements(new int[]{-3, -2, 0, 1, 7}, 4, -2);
-      expected = List.of(-3, -2, 0);
+      expected = List.of(-3, -2, 0, 1);
       assertEquals(expected, actual);
 
       actual = BinarySearch.findClosestElements(new int[]{1, 2, 3, 4, 5}, 4, 3);
