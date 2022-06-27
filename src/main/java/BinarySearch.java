@@ -81,13 +81,12 @@ public class BinarySearch {
       List<Integer> res = new ArrayList<>();
       Queue<Integer> queue = new PriorityQueue<>();
       int pos = Arrays.binarySearch(arr, x);
-      int arrPos = 0, l = 0, r = 0;
+      int l = 0, r = 0;
       if(pos < 0) {
         pos = -pos - 1;
         r = pos;
       } else {
         queue.add(arr[pos]);
-        arrPos = pos;
         r = pos + 1;
       }
       l = pos - 1;
