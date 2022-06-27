@@ -1,5 +1,5 @@
 import org.junit.Test;
-
+import java.util.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
 
@@ -140,4 +140,15 @@ public class BinarySearchTest {
       expected = new int[]{0, 0};
       assertArrayEquals(expected, actual);
     }
+    @Test
+    public void kClosestElementsToNumber() {
+      List<Integer> actual = BinarySearch.findClosestElements(new int[]{3}, 1, 4);
+      List<Integer> expected = List.of(3);
+      assertEquals(expected, actual);
+
+      actual = BinarySearch.findClosestElements(new int[]{3}, 1, 2);
+      expected = List.of(3);
+      assertEquals(expected, actual);
+    }
+
 }
