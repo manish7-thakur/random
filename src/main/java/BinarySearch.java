@@ -1,4 +1,7 @@
 import java.util.*;
+
+import static java.util.stream.Collectors.toList;
+
 /**
  * Find a string in a sorted array of strings where individual string could be separated by any number of empty("") strings.
  */
@@ -79,15 +82,12 @@ public class BinarySearch {
     }
     static List<Integer> findClosestElements(int[] arr, int k, int x) {
       List<Integer> res = new ArrayList<>();
-      int l = 0, r = arr.length - 1;
-      while(l < r && r - l + 1 != k) {
-        if(Math.abs(arr[l] - x) <= Math.abs(arr[r] - x)) r--;
-        else l++;
+      int l = 0, h = arr.length - k;
+      while(l < h) {
+        int m = (l + h) / 2;
+        if(x - arr[m] > arr[m + k] - x) l = m + 1;
+        else h = m;
       }
-      while(l <= r) {
-        res.add(arr[l]);
-        l++;
-      }
-      return res;
+      return Arrays.stream(arr, l, l + k).boxed().collect(toList());
     }
 }
