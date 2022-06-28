@@ -155,4 +155,15 @@ public class ArrayMania3 {
     }
     return l;
   }
+  static int maxProfit(int[] prices) {
+    int max = 0, min = prices[0];
+    for(int i = 1; i < prices.length; i++) {
+      if(prices[i] > min) {
+        max += prices[i] - min;
+        min = prices[i];
+      }
+      if(prices[i] < min) min = prices[i];
+    }
+    return max;
+  }
 }

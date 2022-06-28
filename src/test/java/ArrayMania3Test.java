@@ -329,4 +329,35 @@ public class ArrayMania3Test {
     Assert.assertEquals(expected, actual);
   }
 
+  @Test
+  public void findMaxProfit() {
+    int actual = ArrayMania3.maxProfit(new int[]{1});
+    int expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.maxProfit(new int[]{1, 2});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.maxProfit(new int[]{1, 2, 1, 4});
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.maxProfit(new int[]{2, 2, 3, 4, 6});
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.maxProfit(new int[]{7, 1, 5, 3, 6, 4});
+    expected = 7;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.maxProfit(new int[]{1, 2, 3, 4, 5});
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.maxProfit(new int[]{7, 6, 4, 3, 1});
+    expected = 0;
+    Assert.assertEquals(expected, actual);
+  }
+
 }
