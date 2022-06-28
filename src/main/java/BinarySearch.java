@@ -79,33 +79,15 @@ public class BinarySearch {
     }
     static List<Integer> findClosestElements(int[] arr, int k, int x) {
       List<Integer> res = new ArrayList<>();
-      Queue<Integer> queue = new PriorityQueue<>();
-      int pos = Arrays.binarySearch(arr, x);
-      int l = 0, r = 0;
-      if(pos < 0) {
-        pos = -pos - 1;
-        r = pos;
-      } else {
-        queue.add(arr[pos]);
-        r = pos + 1;
+      int l = 0, r = arr.length - 1;
+      while(l < r && r - l + 1 != k) {
+        if(Math.abs(arr[l] - x) <= Math.abs(arr[r] - x)) r--;
+        else l++;
       }
-      l = pos - 1;
-      while(queue.size() < k) {
-        if(l >= 0 && r >= arr.length) {
-          queue.add(arr[l]);
-          l--;
-        } else if(l < 0 && r < arr.length) {
-          queue.add(arr[r]);
-          r++;
-        } else if(x - arr[l] <= arr[r] - x) {
-          queue.add(arr[l]);
-          l--;
-        } else {
-          queue.add(arr[r]);
-          r++;
-        }
+      while(l <= r) {
+        res.add(arr[l]);
+        l++;
       }
-      while(!queue.isEmpty()) res.add(queue.remove());
       return res;
     }
 }
