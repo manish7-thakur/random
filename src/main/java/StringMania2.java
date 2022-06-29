@@ -52,4 +52,26 @@ public class StringMania2 {
     }
     return stack.pop();
   }
+  static String removeDuplicateLetters(String s) {
+    StringBuilder b = new StringBuilder(s);
+    Map<Character, Integer> map = new HashMap<>();
+    for(int i  = 0; i < b.length(); i++) {
+      char c = b.charAt(i);
+      if(map.containsKey(c)) {
+        int idx = map.get(c);
+        while(b.charAt(idx + 1) == '\0') idx++;
+        if(b.charAt(idx + 1) < c) {
+          b.setCharAt(idx, '\0');
+          map.put(c, i);
+        } else {
+          b.setCharAt(i, '\0');
+        }
+      } else map.put(c, i);
+    }
+    StringBuilder res = new StringBuilder();
+    for(int i = 0; i < b.length(); i++) {
+      if(b.charAt(i) != '\0') res.append(b.charAt(i));
+    }
+    return res.toString();
+  }
 }

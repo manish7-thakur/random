@@ -81,4 +81,26 @@ public class StringMania2Test {
     expected = 22;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void removeDuplicatesAndReturnLexographicalSubsequence() {
+    String actual = StringMania2.removeDuplicateLetters("a");
+    String expected = "a";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania2.removeDuplicateLetters("aba");
+    expected = "ab";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania2.removeDuplicateLetters("bab");
+    expected = "ab";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania2.removeDuplicateLetters("acbca");
+    expected = "abc";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania2.removeDuplicateLetters("aa");
+    expected = "a";
+    Assert.assertEquals(expected, actual);
+  }
 }
