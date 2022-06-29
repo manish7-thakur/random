@@ -53,25 +53,22 @@ public class StringMania2 {
     return stack.pop();
   }
   static String removeDuplicateLetters(String s) {
-    StringBuilder b = new StringBuilder(s);
     Map<Character, Integer> map = new HashMap<>();
-    for(int i  = 0; i < b.length(); i++) {
-      char c = b.charAt(i);
-      if(map.containsKey(c)) {
-        int idx = map.get(c);
-        while(b.charAt(idx + 1) == '\0') idx++;
-        if(b.charAt(idx + 1) < c) {
-          b.setCharAt(idx, '\0');
-          map.put(c, i);
-        } else {
-          b.setCharAt(i, '\0');
+    for(int i = 0; i < s.length(); i++) map.put(s.charAt(i), i);
+    Set<Character> seen = new HashSet<>();
+    Stack<Character> stack = new Stack<>();
+    for(int i = 0; i < s.length(); i++) {
+      char c = s.charAt(i);
+      if(!seen.contains(c)) {
+        while(!stack.isEmpty() && stack.peek() > c && i < map.get(stack.peek())) {
+          seen.remove(stack.pop());
         }
-      } else map.put(c, i);
+        stack.push(c);
+        seen.add(c);
+      }
     }
-    StringBuilder res = new StringBuilder();
-    for(int i = 0; i < b.length(); i++) {
-      if(b.charAt(i) != '\0') res.append(b.charAt(i));
-    }
-    return res.toString();
+    StringBuilder b = new StringBuilder();
+    while(!stack.isEmpty()) b.append(stack.pop());
+    return b.reverse().toString();
   }
 }

@@ -102,5 +102,10 @@ public class StringMania2Test {
     actual = StringMania2.removeDuplicateLetters("aa");
     expected = "a";
     Assert.assertEquals(expected, actual);
+
+    actual = StringMania2.removeDuplicateLetters("bcabc");
+    expected = "abc";
+    Assert.assertEquals(expected, actual);
+
   }
 }
