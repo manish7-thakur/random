@@ -46,7 +46,4 @@ public class DP2 {
     mem.put(key, res);
     return res;
   }
-  static String getKey(int i , int j, int k) {
-    return i + "," + j + "," + k;
-  }
 }
