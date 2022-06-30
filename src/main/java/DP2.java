@@ -24,17 +24,29 @@ public class DP2 {
   }
   static int longestArithSeqLength(int[] nums) {
     int max = 0;
+    Map<String, Integer> mem = new HashMap<>(nums.length);
     for(int i = nums.length - 1; i >= 0 ; i--) {
       for(int j = i - 1; j >= 0; j--) {
         int diff = nums[j] - nums[i];
-        max = Math.max(max, 2 + longestArithSeqLengthRec(nums, j - 1, j, diff));
+        max = Math.max(max, 2 + longestArithSeqLengthRec(nums, j - 1, j, diff, mem));
       }
     }
     return max;
   }
-  static int longestArithSeqLengthRec(int[] nums, int i, int previous, int diff) {
+  static int longestArithSeqLengthRec(int[] nums, int i, int previous, int diff, Map<String, Integer> mem) {
     if(i < 0) return 0;
-    if(nums[i] - nums[previous] == diff) return 1 + longestArithSeqLengthRec(nums, i - 1, i, diff);
-    return longestArithSeqLengthRec(nums, i - 1, previous, diff);
+    String key = getKey(previous, diff);
+    if(mem.containsKey(key)) return mem.get(key);
+    if(nums[i] - nums[previous] == diff) {
+      int res = 1 + longestArithSeqLengthRec(nums, i - 1, i, diff, mem);
+      mem.put(key, res);
+      return res;
+    }
+    int res = longestArithSeqLengthRec(nums, i - 1, previous, diff, mem);
+    mem.put(key, res);
+    return res;
+  }
+  static String getKey(int i , int j, int k) {
+    return i + "," + j + "," + k;
   }
 }
