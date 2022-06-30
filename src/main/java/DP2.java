@@ -24,7 +24,7 @@ public class DP2 {
   }
   static int longestArithSeqLength(int[] nums) {
     int max = 0;
-    for(int i = nums.length - 1; i >=0 ; i--) {
+    for(int i = nums.length - 1; i >= 0 ; i--) {
       for(int j = i - 1; j >= 0; j--) {
         int diff = nums[j] - nums[i];
         max = Math.max(max, 2 + longestArithSeqLengthRec(nums, j - 1, j, diff));
