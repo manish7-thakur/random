@@ -36,4 +36,38 @@ public class DP2Test {
     actual = DP2.canPartition(new int[]{41,20,99,98,50,48,64,15,74,94,60,33,61,34,47,35,24,58,28,73,36,51,80,57,42,52,73,27,94,59,50,99,32,65,76,62,69,80,41,51,49,74,93,12,77,30,25,59,55,13,41,23,34,31,47,53,8,88,86,88,36,32,23,37,1,7,67,49,20,31,59,99,15,21,47,35,93,1,14,56,57,36,13,27,26,64,63,52,98,20,52,23,84,39,34,59,98,71,90,99});
     Assert.assertTrue(actual);
   }
+  @Test
+  public void findLengthOfLongestArithmaticSeq() {
+    int actual = DP2.longestArithSeqLength(new int[]{1, 4});
+    int expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.longestArithSeqLength(new int[]{1, 2, 3});
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.longestArithSeqLength(new int[]{1, 3, 2});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.longestArithSeqLength(new int[]{1, 3, 2, 5});
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.longestArithSeqLength(new int[]{3, 5, 2, 6, 7, 3});
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.longestArithSeqLength(new int[]{3, 6, 9, 12});
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.longestArithSeqLength(new int[]{9, 4, 7, 2, 10});
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.longestArithSeqLength(new int[]{20, 1, 15, 3, 10, 5, 8});
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+  }
 }
