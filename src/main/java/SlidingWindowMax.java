@@ -2,8 +2,7 @@ import java.util.*;
 
 public class SlidingWindowMax {
   static public int[] maxSlidingWindow(int[] nums, int k) {
-    int resultLen = nums.length - (k - 1);
-    int[] result = new int[resultLen];
+    int[] result = new int[nums.length - k + 1];
     int i, r = 0;
     Queue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
     Queue<Integer> rq = new PriorityQueue<>(Comparator.reverseOrder());
