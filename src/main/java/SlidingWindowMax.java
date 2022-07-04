@@ -8,14 +8,13 @@ public class SlidingWindowMax {
     Queue<Integer> rq = new PriorityQueue<>(Comparator.reverseOrder());
     for(i = 0; i < k; i++) pq.add(nums[i]);
     while(r < result.length) {
-      int top = pq.peek();
-      result[r] = top;
+      result[r] = pq.peek();
       rq.add(nums[i - k]);
-      if(i < nums.length) pq.add(nums[i]);
       while(!rq.isEmpty() && pq.peek().intValue() == rq.peek().intValue()) {
         pq.remove();
         rq.remove();
       }
+      if(i < nums.length) pq.add(nums[i]);
       i++;
       r++;
     }
