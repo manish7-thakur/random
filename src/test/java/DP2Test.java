@@ -99,5 +99,13 @@ public class DP2Test {
     expected = 3;
     Assert.assertEquals(expected, actual);
 
+    actual = DP2.numSquares(12);
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.numSquares(13);
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
   }
 }
