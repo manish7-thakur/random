@@ -48,20 +48,24 @@ public class DP2 {
   }
   static int numSquares(int n) {
     List<Integer> squares = new ArrayList<>();
+    Map<String, Integer> mem = new HashMap<>();
     int sq = 0;
     for(int i = 1; sq <= n; i++) {
       sq = i * i;
       if(sq <= n) squares.add(sq);
       else break;
     }
-    return numSquaresRec(squares, squares.size() - 1, n);
+    return numSquaresRec(squares, squares.size() - 1, n, mem);
   }
-  static int numSquaresRec(List<Integer> squares, int i, int n) {
+  static int numSquaresRec(List<Integer> squares, int i, int n, Map<String, Integer> mem) {
     if(n == 0) return 0;
     if(n < 0 || i < 0) return Integer.MAX_VALUE;
-    int max = numSquaresRec(squares, i , n - squares.get(i));
+    String key = getKey(i, n);
+    if(mem.containsKey(key)) return mem.get(key);
+    int max = numSquaresRec(squares, i , n - squares.get(i), mem);
     if(max != Integer.MAX_VALUE) max = 1 + max;
-    max = Math.min(max, numSquaresRec(squares, i - 1, n));
+    max = Math.min(max, numSquaresRec(squares, i - 1, n, mem));
+    mem.put(key, max);
     return max;
   }
 }
