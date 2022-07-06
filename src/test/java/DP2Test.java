@@ -135,6 +135,10 @@ public class DP2Test {
     expected = 3;
     Assert.assertEquals(expected, actual);
 
+    actual = DP2.numSquares(8285);
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
     actual = DP2.numSquares(9573);
     expected = 3;
     Assert.assertEquals(expected, actual);
