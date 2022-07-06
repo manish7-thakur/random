@@ -81,4 +81,23 @@ public class DP2Test {
     expected = 8;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void minimumNumberOfPrimesToSum() {
+    int actual = DP2.numSquares(1);
+    int expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.numSquares(3);
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.numSquares(4);
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.numSquares(11);
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+
+  }
 }
