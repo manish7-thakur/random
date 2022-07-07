@@ -147,4 +147,18 @@ public class DP2Test {
     expected = 4;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void maxProfitWithCoolDown() {
+    int actual = DP2.maxProfit(new int[]{1});
+    int expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.maxProfit(new int[]{1, 2});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.maxProfit(new int[]{1, 2, 4});
+    expected = 3;
+    Assert.assertEquals(expected, actual);
+  }
 }
