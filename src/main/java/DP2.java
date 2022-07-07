@@ -79,12 +79,8 @@ public class DP2 {
   static int maxProfitRec(int[] prices, int i, int min) {
     if(i >= prices.length) return 0;
     int profit = 0;
-    if(prices[i] > min) {
-      profit += Math.max(prices[i] - min + maxProfitRec(prices, i + 2, Integer.MAX_VALUE), maxProfitRec(prices, i + 1, min));
-    } else {
-      min = prices[i];
-      profit += maxProfitRec(prices, i + 1, min);
-    }
+    if(prices[i] > min) profit += Math.max(prices[i] - min + maxProfitRec(prices, i + 2, Integer.MAX_VALUE), maxProfitRec(prices, i + 1, min));
+    else profit += maxProfitRec(prices, i + 1, prices[i]);
     return profit;
   }
 }
