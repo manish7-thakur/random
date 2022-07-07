@@ -48,7 +48,7 @@ public class DP2 {
   }
   static int numSquares(int n) {
     List<Integer> squares = new ArrayList<>();
-    Map<String, Integer> mem = new HashMap<>();
+    Integer[] mem = new Integer[n + 1]; // Using Map here caused TLE.
     int sq = 0;
     for(int i = 1; sq <= n; i++) {
       sq = i * i;
@@ -57,18 +57,17 @@ public class DP2 {
     }
     return numSquaresRec(squares, n, mem);
   }
-  static int numSquaresRec(List<Integer> squares, int n, Map<String, Integer> mem) {
+  static int numSquaresRec(List<Integer> squares, int n, Integer[] mem) {
     if(n == 0) return 0;
     int min = Integer.MAX_VALUE;
-    String key = String.valueOf(n);
-    if(mem.containsKey(key)) return mem.get(key);
+    if(mem[n] != null) return mem[n];
     for(int i = squares.size() - 1; i >= 0; i--) {
       if(squares.get(i) <= n) {
         int curr = numSquaresRec(squares, n - squares.get(i), mem);
         if(curr != Integer.MAX_VALUE) min = Math.min(1 + curr, min);
       }
     }
-    mem.put(key, min);
+    mem[n] = min;
     return min;
   }
 }
