@@ -55,17 +55,20 @@ public class DP2 {
       if(sq <= n) squares.add(sq);
       else break;
     }
-    return numSquaresRec(squares, squares.size() - 1, n, mem);
+    return numSquaresRec(squares, n, mem);
   }
-  static int numSquaresRec(List<Integer> squares, int i, int n, Map<String, Integer> mem) {
+  static int numSquaresRec(List<Integer> squares, int n, Map<String, Integer> mem) {
     if(n == 0) return 0;
-    if(n < 0 || i < 0) return Integer.MAX_VALUE;
-    String key = getKey(i, n);
+    int min = Integer.MAX_VALUE;
+    String key = String.valueOf(n);
     if(mem.containsKey(key)) return mem.get(key);
-    int max = numSquaresRec(squares, i , n - squares.get(i), mem);
-    if(max != Integer.MAX_VALUE) max = 1 + max;
-    max = Math.min(max, numSquaresRec(squares, i - 1, n, mem));
-    mem.put(key, max);
-    return max;
+    for(int i = squares.size() - 1; i >= 0; i--) {
+      if(squares.get(i) <= n) {
+        int curr = numSquaresRec(squares, n - squares.get(i), mem);
+        if(curr != Integer.MAX_VALUE) min = Math.min(1 + curr, min);
+      }
+    }
+    mem.put(key, min);
+    return min;
   }
 }
