@@ -172,5 +172,9 @@ public class DP2Test {
     actual = DP2.maxProfit(new int[]{1, 2, 3, 0, 2});
     expected = 3;
     Assert.assertEquals(expected, actual);
+
+    actual = DP2.maxProfit(new int[]{31,24,34,0,42,2,34,37,23,26,8,25,34,25,68,24,25,32,76,47,34,21,23,5,35,54,64,24,8,34,35,63,42,64,54,57,45,64,36,86,25,46,36,57,35,46,68,36,69,34,25,34,25,68,24,25,32,76,47,34,21,23,5,35,54,64,24,8,34,35,63});
+    expected = 585;
+    Assert.assertEquals(expected, actual);
   }
 }

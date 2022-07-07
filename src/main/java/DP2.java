@@ -71,10 +71,7 @@ public class DP2 {
     return min;
   }
   static int maxProfit(int[] prices) {
-    int max = 0;
-    int min = prices[0];
-    max = maxProfitRec(prices, 1, min);
-    return max;
+    return maxProfitRec(prices, 1, prices[0]);
   }
   static int maxProfitRec(int[] prices, int i, int min) {
     if(i >= prices.length) return 0;
