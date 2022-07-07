@@ -71,13 +71,16 @@ public class DP2 {
     return min;
   }
   static int maxProfit(int[] prices) {
-    return maxProfitRec(prices, 1, prices[0]);
+    Integer[][] mem = new Integer[prices.length][1001];
+    return maxProfitRec(prices, 1, prices[0], mem);
   }
-  static int maxProfitRec(int[] prices, int i, int min) {
+  static int maxProfitRec(int[] prices, int i, int min, Integer[][] mem) {
     if(i >= prices.length) return 0;
+    if(mem[i][min] != null) return mem[i][min];
     int profit = 0;
-    if(prices[i] > min) profit += Math.max(prices[i] - min + maxProfitRec(prices, i + 2, Integer.MAX_VALUE), maxProfitRec(prices, i + 1, min));
-    else profit += maxProfitRec(prices, i + 1, prices[i]);
+    if(prices[i] > min) profit += Math.max(prices[i] - min + maxProfitRec(prices, i + 2, 1000, mem), maxProfitRec(prices, i + 1, min, mem));
+    else profit += maxProfitRec(prices, i + 1, prices[i], mem);
+    mem[i][min] = profit;
     return profit;
   }
 }
