@@ -10,7 +10,9 @@ public class BSTIterator {
      return !stack.isEmpty();
    }
    public int next() {
-     return stack.pop().val;
+     TreeNode top = stack.pop();
+     initStack(top.right);
+     return top.val;
    }
    private void initStack(TreeNode node) {
      while(node != null) {
