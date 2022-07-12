@@ -214,4 +214,29 @@ public class BinaryTreeTest {
       expected = List.of(4);
       Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void mergeTwoBinaryTrees() {
+      TreeNode actual = BinaryTree.mergeTrees(null, null);
+      Assert.assertNull(actual);
+
+      actual = BinaryTree.mergeTrees(new TreeNode(2), null);
+      Assert.assertEquals(2, actual.val);
+
+      actual = BinaryTree.mergeTrees(null, new TreeNode(3));
+      Assert.assertEquals(3, actual.val);
+
+      actual = BinaryTree.mergeTrees(new TreeNode(2, new TreeNode(2)), new TreeNode(3));
+      Assert.assertEquals(5, actual.val);
+      Assert.assertEquals(2, actual.left.val);
+
+      actual = BinaryTree.mergeTrees(new TreeNode(4), new TreeNode(3, new TreeNode(2)));
+      Assert.assertEquals(7, actual.val);
+      Assert.assertEquals(2, actual.left.val);
+
+      actual = BinaryTree.mergeTrees(new TreeNode(4, null, new TreeNode(5)), new TreeNode(3, new TreeNode(2)));
+      Assert.assertEquals(7, actual.val);
+      Assert.assertEquals(2, actual.left.val);
+      Assert.assertEquals(5, actual.right.val);
+    }
 }
