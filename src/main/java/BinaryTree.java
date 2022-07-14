@@ -161,17 +161,16 @@ public class BinaryTree {
       return root1;
     }
     static int diameterOfBinaryTree(TreeNode root) {
-      if(root == null) return 0;
       AtomicInteger res = new AtomicInteger();
       diameterOfBinaryTreeRec(root, res);
       return res.intValue();
     }
     static int diameterOfBinaryTreeRec(TreeNode root, AtomicInteger res) {
-      if(root == null) return -1;
-      int left = 1 + diameterOfBinaryTreeRec(root.left, res);
-      int right = 1 + diameterOfBinaryTreeRec(root.right, res);
+      if(root == null) return 0;
+      int left = diameterOfBinaryTreeRec(root.left, res);
+      int right = diameterOfBinaryTreeRec(root.right, res);
       int curr = left + right;
       if(curr > res.get()) res.set(curr);
-      return Math.max(left, right);
+      return 1 + Math.max(left, right);
     }
 }
