@@ -160,4 +160,18 @@ public class BinaryTree {
       root1.right = mergeTrees(root1.right, root2.right);
       return root1;
     }
+    static int diameterOfBinaryTree(TreeNode root) {
+      if(root == null) return 0;
+      AtomicInteger res = new AtomicInteger();
+      diameterOfBinaryTreeRec(root, res);
+      return res.intValue();
+    }
+    static int diameterOfBinaryTreeRec(TreeNode root, AtomicInteger res) {
+      if(root == null) return -1;
+      int left = 1 + diameterOfBinaryTreeRec(root.left, res);
+      int right = 1 + diameterOfBinaryTreeRec(root.right, res);
+      int curr = left + right;
+      if(curr > res.get()) res.set(curr);
+      return Math.max(left, right);
+    }
 }

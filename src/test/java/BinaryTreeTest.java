@@ -239,4 +239,27 @@ public class BinaryTreeTest {
       Assert.assertEquals(2, actual.left.val);
       Assert.assertEquals(5, actual.right.val);
     }
+
+    @Test
+    public void diameterOfTheBinaryTree() {
+      int actual = BinaryTree.diameterOfBinaryTree(null);
+      int expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTree.diameterOfBinaryTree(new TreeNode(1));
+      expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTree.diameterOfBinaryTree(new TreeNode(1, new TreeNode(2)));
+      expected = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTree.diameterOfBinaryTree(new TreeNode(1, new TreeNode(2), new TreeNode(3)));
+      expected = 2;
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTree.diameterOfBinaryTree(new TreeNode(1, new TreeNode(2, new TreeNode(4), new TreeNode(5)), new TreeNode(3)));
+      expected = 3;
+      Assert.assertEquals(expected, actual);
+    }
 }
