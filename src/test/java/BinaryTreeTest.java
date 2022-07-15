@@ -266,4 +266,18 @@ public class BinaryTreeTest {
       expected = 5;
       Assert.assertEquals(expected, actual);
     }
+    @Test
+    public void minimumAbsDiffTwoNodesBST() {
+      int actual = BinaryTree.getMinimumDifference(new TreeNode(2, new TreeNode(1)));
+      int expected = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTree.getMinimumDifference(new TreeNode(3, new TreeNode(1), new TreeNode(4)));
+      expected = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTree.getMinimumDifference(new TreeNode(13, new TreeNode(1), new TreeNode(25, new TreeNode(14), new TreeNode(30))));
+      expected = 5;
+      Assert.assertEquals(expected, actual);
+    }
 }

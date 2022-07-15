@@ -173,4 +173,17 @@ public class BinaryTree {
       if(curr > res.get()) res.set(curr);
       return 1 + Math.max(left, right);
     }
+    static int getMinimumDifference(TreeNode root) {
+      int lastNum = Integer.MAX_VALUE;
+      AtomicInteger res = new AtomicInteger(Integer.MAX_VALUE);
+      getMinDiffRec(root, lastNum, res);
+      return res.intValue();
+    }
+    static void getMinDiffRec(TreeNode root, int lastNum, AtomicInteger res) {
+      if(root == null) return;
+      getMinDiffRec(root.left, root.val, res);
+      int diff = Math.abs(root.val - lastNum);
+      if(diff < res.intValue()) res.set(diff);
+      getMinDiffRec(root.right, root.val, res);
+    }
 }
