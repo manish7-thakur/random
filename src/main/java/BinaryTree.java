@@ -187,4 +187,15 @@ public class BinaryTree {
       if(diff < res.intValue()) res.set(diff);
       getMinDiffRec(root.right, lastNum, res);
     }
+    static TreeNode sortedArrayToBST(int[] nums) {
+      return sortedArrayToBSTRec(nums, 0, nums.length - 1);
+    }
+    static TreeNode sortedArrayToBSTRec(int[] nums, int l, int h) {
+      if(l >= h) return new TreeNode(nums[l]);
+      int m = (l + h) / 2;
+      TreeNode root = new TreeNode(nums[m]);
+      root.right = sortedArrayToBSTRec(nums, m + 1, h);
+      root.left = sortedArrayToBSTRec(nums, l, m - 1);
+      return root;
+    }
 }

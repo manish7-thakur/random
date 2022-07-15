@@ -288,4 +288,48 @@ public class BinaryTreeTest {
       expected = 9;
       Assert.assertEquals(expected, actual);
     }
+    @Test
+    public void convertSortedArrayToBST() {
+      TreeNode actual = BinaryTree.sortedArrayToBST(new int[]{3});
+      Assert.assertEquals(3, actual.val);
+
+      actual = BinaryTree.sortedArrayToBST(new int[]{3, 5});
+      Assert.assertEquals(3, actual.val);
+      Assert.assertEquals(5, actual.right.val);
+
+      actual = BinaryTree.sortedArrayToBST(new int[]{3, 5, 6});
+      Assert.assertEquals(5, actual.val);
+      Assert.assertEquals(3, actual.left.val);
+      Assert.assertEquals(6, actual.right.val);
+
+      actual = BinaryTree.sortedArrayToBST(new int[]{3, 5, 6, 7});
+      Assert.assertEquals(5, actual.val);
+      Assert.assertEquals(3, actual.left.val);
+      Assert.assertEquals(6, actual.right.val);
+      Assert.assertEquals(7, actual.right.right.val);
+
+      actual = BinaryTree.sortedArrayToBST(new int[]{-1, 3, 5, 6, 7});
+      Assert.assertEquals(5, actual.val);
+      Assert.assertEquals(-1, actual.left.val);
+      Assert.assertEquals(3, actual.left.right.val);
+      Assert.assertEquals(6, actual.right.val);
+      Assert.assertEquals(7, actual.right.right.val);
+
+      actual = BinaryTree.sortedArrayToBST(new int[]{-1, 2, 3, 5, 6, 7});
+      Assert.assertEquals(3, actual.val);
+      Assert.assertEquals(-1, actual.left.val);
+      Assert.assertEquals(2, actual.left.right.val);
+      Assert.assertEquals(6, actual.right.val);
+      Assert.assertEquals(5, actual.right.left.val);
+      Assert.assertEquals(7, actual.right.right.val);
+
+      actual = BinaryTree.sortedArrayToBST(new int[]{-1, 2, 3, 5, 6, 7, 8});
+      Assert.assertEquals(5, actual.val);
+      Assert.assertEquals(2, actual.left.val);
+      Assert.assertEquals(-1, actual.left.left.val);
+      Assert.assertEquals(3, actual.left.right.val);
+      Assert.assertEquals(7, actual.right.val);
+      Assert.assertEquals(6, actual.right.left.val);
+      Assert.assertEquals(8, actual.right.right.val);
+    }
 }
