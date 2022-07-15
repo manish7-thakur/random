@@ -191,7 +191,7 @@ public class BinaryTree {
       return sortedArrayToBSTRec(nums, 0, nums.length - 1);
     }
     static TreeNode sortedArrayToBSTRec(int[] nums, int l, int h) {
-      if(l >= h) return new TreeNode(nums[l]);
+      if(l > h) return null;
       int m = (l + h) / 2;
       TreeNode root = new TreeNode(nums[m]);
       root.right = sortedArrayToBSTRec(nums, m + 1, h);

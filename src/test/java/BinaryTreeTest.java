@@ -292,21 +292,31 @@ public class BinaryTreeTest {
     public void convertSortedArrayToBST() {
       TreeNode actual = BinaryTree.sortedArrayToBST(new int[]{3});
       Assert.assertEquals(3, actual.val);
+      Assert.assertNull(actual.left);
+      Assert.assertNull(actual.right);
 
       actual = BinaryTree.sortedArrayToBST(new int[]{3, 5});
       Assert.assertEquals(3, actual.val);
+      Assert.assertNull(actual.left);
       Assert.assertEquals(5, actual.right.val);
 
       actual = BinaryTree.sortedArrayToBST(new int[]{3, 5, 6});
       Assert.assertEquals(5, actual.val);
       Assert.assertEquals(3, actual.left.val);
+      Assert.assertNull(actual.left.left);
+      Assert.assertNull(actual.left.right);
       Assert.assertEquals(6, actual.right.val);
+      Assert.assertNull(actual.right.left);
+      Assert.assertNull(actual.right.right);
 
       actual = BinaryTree.sortedArrayToBST(new int[]{3, 5, 6, 7});
       Assert.assertEquals(5, actual.val);
       Assert.assertEquals(3, actual.left.val);
       Assert.assertEquals(6, actual.right.val);
       Assert.assertEquals(7, actual.right.right.val);
+      Assert.assertNull(actual.right.left);
+      Assert.assertNull(actual.right.right.left);
+
 
       actual = BinaryTree.sortedArrayToBST(new int[]{-1, 3, 5, 6, 7});
       Assert.assertEquals(5, actual.val);
