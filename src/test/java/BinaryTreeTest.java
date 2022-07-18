@@ -365,4 +365,30 @@ public class BinaryTreeTest {
       actual = BinaryTree.isSameTree(new TreeNode(1, new TreeNode(2, new TreeNode(4), new TreeNode(5)), new TreeNode(3, new TreeNode(7), new TreeNode(8))), new TreeNode(1, new TreeNode(2, new TreeNode(4), new TreeNode(5)), new TreeNode(3, new TreeNode(7), new TreeNode(0))));
       Assert.assertFalse(actual);
     }
+    @Test
+    public void findDepthOfNaryTree() {
+      int actual = BinaryTree.maxDepth(null);
+      int expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTree.maxDepth(new NaryNode(1));
+      expected = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTree.maxDepth(new NaryNode(1, List.of(new NaryNode(3))));
+      expected = 2;
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTree.maxDepth(new NaryNode(1, List.of(new NaryNode(3), new NaryNode(4, List.of(new NaryNode(5))))));
+      expected = 3;
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTree.maxDepth(new NaryNode(1, List.of(new NaryNode(3), new NaryNode(4, List.of(new NaryNode(5))))));
+      expected = 3;
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTree.maxDepth(new NaryNode(1, List.of(new NaryNode(3), new NaryNode(4, List.of(new NaryNode(5))), new NaryNode(6, List.of(new NaryNode(4, List.of(new NaryNode(8))))))));
+      expected = 4;
+      Assert.assertEquals(expected, actual);
+    }
 }

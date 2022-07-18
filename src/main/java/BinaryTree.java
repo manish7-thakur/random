@@ -204,4 +204,14 @@ public class BinaryTree {
       if(p.val != q.val) return false;
       return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
     }
+
+    static int maxDepth(NaryNode root) {
+      if(root == null) return 0;
+      int max = 1;
+      List<NaryNode> children = root.children == null ? List.of() : root.children;
+      for(NaryNode node : children) {
+        max = Math.max(max, 1 + maxDepth(node));
+      }
+      return max;
+    }
 }
