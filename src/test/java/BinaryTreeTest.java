@@ -350,6 +350,9 @@ public class BinaryTreeTest {
       actual = BinaryTree.isSameTree(null, new TreeNode(1));
       Assert.assertFalse(actual);
 
+      actual = BinaryTree.isSameTree(new TreeNode(4), null);
+      Assert.assertFalse(actual);
+
       actual = BinaryTree.isSameTree(new TreeNode(1, new TreeNode(2)), new TreeNode(1));
       Assert.assertFalse(actual);
 
