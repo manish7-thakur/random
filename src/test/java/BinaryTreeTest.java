@@ -342,4 +342,13 @@ public class BinaryTreeTest {
       Assert.assertEquals(6, actual.right.left.val);
       Assert.assertEquals(8, actual.right.right.val);
     }
+    @Test
+    public void testIfTreesAreSame() {
+      boolean actual = BinaryTree.isSameTree(null, null);
+      Assert.assertTrue(actual);
+
+      actual = BinaryTree.isSameTree(null, new TreeNode(1));
+      Assert.assertFalse(actual);
+
+    }
 }
