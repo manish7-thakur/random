@@ -391,4 +391,29 @@ public class BinaryTreeTest {
       expected = 4;
       Assert.assertEquals(expected, actual);
     }
+    @Test
+    public void checkIfTreeMirrorsItself() {
+      boolean actual = BinaryTree.isSymmetric(new TreeNode(1));
+      Assert.assertTrue(actual);
+
+      actual = BinaryTree.isSymmetric(new TreeNode(1, new TreeNode(2)));
+      Assert.assertFalse(actual);
+
+      actual = BinaryTree.isSymmetric(new TreeNode(1, null, new TreeNode(2)));
+      Assert.assertFalse(actual);
+
+      actual = BinaryTree.isSymmetric(new TreeNode(1, new TreeNode(2), new TreeNode(2)));
+      Assert.assertTrue(actual);
+
+      actual = BinaryTree.isSymmetric(new TreeNode(1, new TreeNode(2), new TreeNode(3)));
+      Assert.assertFalse(actual);
+
+      actual = BinaryTree.isSymmetric(new TreeNode(1, new TreeNode(2, new TreeNode(5)), new TreeNode(2)));
+      Assert.assertFalse(actual);
+
+      actual = BinaryTree.isSymmetric(new TreeNode(1, new TreeNode(2), new TreeNode(2, new TreeNode(5))));
+      Assert.assertFalse(actual);
+
+
+    }
 }
