@@ -223,4 +223,19 @@ public class BinaryTree {
       if(node1 == null || node2 == null || node1.val != node2.val) return false;
       return isSymmetricRec(node1.left, node2.right) && isSymmetricRec(node1.right, node2.left);
     }
+
+    static int distributeCoins(TreeNode root) {
+      AtomicInteger res = new AtomicInteger();
+      distributeCoinsRec(root, res);
+      return res.get();
+    }
+
+    static int distributeCoinsRec(TreeNode root, AtomicInteger res) {
+      if(root == null) return 0;
+      int l = distributeCoinsRec(root.left, res);
+      int r = distributeCoinsRec(root.right, res);
+      res.getAndAdd(Math.abs(l) + Math.abs(r));
+      int excessTotal = root.val + l + r - 1;
+      return excessTotal;
+    }
 }

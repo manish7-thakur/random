@@ -417,4 +417,26 @@ public class BinaryTreeTest {
       actual = BinaryTree.isSymmetric(new TreeNode(1, new TreeNode(2, new TreeNode(5), new TreeNode(3)), new TreeNode(2, new TreeNode(1), new TreeNode(5))));
       Assert.assertFalse(actual);
     }
+    @Test
+    public void distributeCoinsInBinaryTreeWithMinMoves() {
+      int actual =  BinaryTree.distributeCoins(null);
+      int expected = 0;
+      Assert.assertEquals(expected, actual);
+
+      actual =  BinaryTree.distributeCoins(new TreeNode(2, new TreeNode(0)));
+      expected = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual =  BinaryTree.distributeCoins(new TreeNode(3, new TreeNode(0), new TreeNode(0)));
+      expected = 2;
+      Assert.assertEquals(expected, actual);
+
+      actual =  BinaryTree.distributeCoins(new TreeNode(3, new TreeNode(0, new TreeNode(0))));
+      expected = 3;
+      Assert.assertEquals(expected, actual);
+
+      actual =  BinaryTree.distributeCoins(new TreeNode(0, new TreeNode(0, new TreeNode(3))));
+      expected = 3;
+      Assert.assertEquals(expected, actual);
+    }
 }
