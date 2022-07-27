@@ -377,6 +377,10 @@ public class ArrayMania3Test {
     actual = ArrayMania3.numUniqueEmails(new String[]{"ayr.h@b.com", "ayrh+t.f@b.com", "ayr.h+h+t.f@b.com"});
     expected = 1;
     Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.numUniqueEmails(new String[]{"test.email+alex@leetcode.com","test.email.leet+alex@code.com"});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
   }
 
 }
