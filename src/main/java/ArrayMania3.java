@@ -166,4 +166,14 @@ public class ArrayMania3 {
     }
     return max;
   }
+
+  static int numUniqueEmails(String[] emails) {
+    Set<String> set = new HashSet<>();
+    for(String email : emails) {
+      String[] parts = email.split("@");
+      String localName = parts[0].substring(0, parts[0].indexOf('+') == -1 ? parts[0].length() : parts[0].indexOf('+')).replaceAll("\\.", "");
+      set.add(localName + parts[1]);
+    }
+    return set.size();
+  }
 }

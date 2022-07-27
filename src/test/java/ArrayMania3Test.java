@@ -360,4 +360,23 @@ public class ArrayMania3Test {
     Assert.assertEquals(expected, actual);
   }
 
+  @Test
+  public void countUniqueEmails() {
+    int actual = ArrayMania3.numUniqueEmails(new String[]{"a@b.com"});
+    int expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.numUniqueEmails(new String[]{"ayr.h@b.com", "ayrh@b.com"});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.numUniqueEmails(new String[]{"ayr.h@b.com", "ayrh+tf@b.com"});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania3.numUniqueEmails(new String[]{"ayr.h@b.com", "ayrh+t.f@b.com", "ayr.h+h+t.f@b.com"});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+  }
+
 }
