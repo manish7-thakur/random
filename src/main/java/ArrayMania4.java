@@ -2,19 +2,12 @@ import java.util.*;
 
 public class ArrayMania4 {
   static void gameOfLife(int[][] board) {
-    int[][] res = new int[board.length][board[0].length];
+    int[][] copy = Arrays.stream(board).map(arr -> arr.clone()).toArray(int[][]::new);
     int m = board.length - 1;
     int n = board[0].length - 1;
     for(int i = 0; i < board.length; i++) {
       for(int j = 0; j < board[0].length; j++) {
-        int fate = getScore(board, i, j, m, n);
-          res[i][j] = fate;
-      }
-    }
-    for(int i = 0; i < board.length; i++) {
-      for(int j = 0; j < board[0].length; j++) {
-        int fate = getScore(board, i, j, m, n);
-          board[i][j] = res[i][j];
+          board[i][j] = getScore(copy, i, j, m, n);;
       }
     }
   }
