@@ -27,5 +27,10 @@ public class ArrayMania4Test {
     ArrayMania4.gameOfLife(actual);
     expected = new int[][]{{0, 0, 0}, {0, 0, 0}, {1, 1, 1}};
     Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[][]{{0,1,0},{0,0,1},{1,1,1},{0,0,0}};
+    ArrayMania4.gameOfLife(actual);
+    expected = new int[][]{{0,0,0},{1,0,1},{0,1,1},{0,1,0}};
+    Assert.assertArrayEquals(expected, actual);
   }
 }
