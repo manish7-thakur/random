@@ -2,7 +2,7 @@ import java.util.*;
 
 public class ArrayMania4 {
   static void gameOfLife(int[][] board) {
-    int[][] copy = Arrays.stream(board).map(arr -> arr.clone()).toArray(int[][]::new);
+    int[][] copy = Arrays.stream(board).map(int[]::clone).toArray(int[][]::new);
     int m = board.length - 1;
     int n = board[0].length - 1;
     for(int i = 0; i < board.length; i++) {
