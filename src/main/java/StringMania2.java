@@ -71,4 +71,32 @@ public class StringMania2 {
     while(!stack.isEmpty()) b.append(stack.pop());
     return b.reverse().toString();
   }
+  static String addStrings(String num1, String num2) {
+    StringBuilder b = new StringBuilder();
+    int i = num1.length() - 1, j = num2.length() - 1;
+    int carry = 0, sum = 0;
+    while(i >= 0 && j >= 0) {
+      sum = Character.getNumericValue(num1.charAt(i)) + Character.getNumericValue(num2.charAt(j)) + carry;
+      carry = sum / 10;
+      sum = sum % 10;
+      b.append(sum);
+      i--;
+      j--;
+    }
+    while(i >= 0) {
+      sum = Character.getNumericValue(num1.charAt(i)) + carry;
+      carry = sum / 10;
+      sum = sum % 10;
+      b.append(sum);
+      i--;
+    }
+    while(j >= 0) {
+      sum = Character.getNumericValue(num2.charAt(j)) + carry;
+      carry = sum / 10;
+      sum = sum % 10;
+      b.append(sum);
+      j--;
+    }
+    return b.reverse().toString();
+  }
 }

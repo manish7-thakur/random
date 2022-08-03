@@ -110,6 +110,23 @@ public class StringMania2Test {
     actual = StringMania2.removeDuplicateLetters("cbacdcbc");
     expected = "acdb";
     Assert.assertEquals(expected, actual);
+  }
+  @Test
+  public void addNumbersRepresentedAsStrings() {
+    String actual = StringMania2.addStrings("1", "1");
+    String expected = "2";
+    Assert.assertEquals(expected, actual);
 
+    actual = StringMania2.addStrings("7", "17");
+    expected = "24";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania2.addStrings("27", "4");
+    expected = "31";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania2.addStrings("27", "49");
+    expected = "76";
+    Assert.assertEquals(expected, actual);
   }
 }
