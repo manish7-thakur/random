@@ -132,5 +132,17 @@ public class StringMania2Test {
     actual = StringMania2.addStrings("9", "9");
     expected = "18";
     Assert.assertEquals(expected, actual);
+
+    actual = StringMania2.addStrings("9", "99");
+    expected = "108";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania2.addStrings("99", "99");
+    expected = "198";
+    Assert.assertEquals(expected, actual);
+
+    actual = StringMania2.addStrings("9345345345353453459", "99636282643345");
+    expected = "9345444981636096804";
+    Assert.assertEquals(expected, actual);
   }
 }

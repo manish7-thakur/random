@@ -97,6 +97,7 @@ public class StringMania2 {
       b.append(sum);
       j--;
     }
+    if(carry > 0) b.append(carry);
     return b.reverse().toString();
   }
 }
