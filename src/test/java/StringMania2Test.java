@@ -128,5 +128,9 @@ public class StringMania2Test {
     actual = StringMania2.addStrings("27", "49");
     expected = "76";
     Assert.assertEquals(expected, actual);
+
+    actual = StringMania2.addStrings("9", "9");
+    expected = "18";
+    Assert.assertEquals(expected, actual);
   }
 }
