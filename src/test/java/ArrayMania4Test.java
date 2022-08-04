@@ -59,5 +59,20 @@ public class ArrayMania4Test {
     ArrayMania4.nextPermutation(actual);
     expected = new int[]{2, 1, 3};
     Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{2, 1, 3};
+    ArrayMania4.nextPermutation(actual);
+    expected = new int[]{2, 3, 1};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{2, 3, 1};
+    ArrayMania4.nextPermutation(actual);
+    expected = new int[]{3, 2, 1};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{3, 2, 1};
+    ArrayMania4.nextPermutation(actual);
+    expected = new int[]{1, 2, 3};
+    Assert.assertArrayEquals(expected, actual);
   }
 }
