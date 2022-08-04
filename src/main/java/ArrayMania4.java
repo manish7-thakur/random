@@ -27,10 +27,12 @@ public class ArrayMania4 {
   }
   static void nextPermutation(int[] nums) {
     int i = nums.length - 2;
-    while(i >= 0 && nums[i] >= nums[i +  1]) i--;
     int j = nums.length - 1;
-    while(i >= 0 && j >= 0 && nums[j] <= nums[i]) j--;
-    if(i >= 0 && j >= 0) swap(nums, i, j);
+    while(i >= 0 && nums[i] >= nums[i +  1]) i--;
+    if(i >= 0) {
+      while(j >= 0 && nums[j] <= nums[i]) j--;
+      swap(nums, i, j);
+    }
     i++;
     j = nums.length - 1;
     while(i < j) {
