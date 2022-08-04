@@ -26,19 +26,27 @@ public class ArrayMania4 {
     return 0;
   }
   static void nextPermutation(int[] nums) {
-    int l = 0, r = nums.length - 1;
-    while(r > 0) {
-      l = r - 1;
-      if(nums[r] > nums[l]) {
-        int n = nums[r];
-        while(r > l) {
-          nums[r] = nums[r - 1];
-          r--;
+    int r = nums.length - 1;
+    int l = r - 1;
+    boolean jumpOut = false;
+    while(r >= 0) {
+      for(l = r - 1; l >= 0; l--) {
+        if(nums[r] > nums[l]) {
+          jumpOut = true;
+          break;
         }
-        nums[r] = n;
-        return;
       }
+      if(jumpOut) break;
       r--;
+    }
+    if(r >= 0 && l >= 0 && nums[r] > nums[l]) {
+      int n = nums[r];
+      while(r > l) {
+        nums[r] = nums[r - 1];
+        r--;
+      }
+      nums[r] = n;
+      return;
     }
     l = 0; r = nums.length - 1;
     while(l < r) {
