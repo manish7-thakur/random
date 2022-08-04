@@ -26,9 +26,9 @@ public class ArrayMania4 {
     return 0;
   }
   static void nextPermutation(int[] nums) {
-    int r = nums.length - 1;
+    int l = 0, r = nums.length - 1;
     while(r > 0) {
-      int l = r - 1;
+      l = r - 1;
       if(nums[r] > nums[l]) {
         int n = nums[r];
         while(r > l) {
@@ -38,6 +38,15 @@ public class ArrayMania4 {
         nums[r] = n;
         return;
       }
+      r--;
+    }
+    l = 0; r = nums.length - 1;
+    while(l < r) {
+      int temp = nums[r];
+      nums[r] = nums[l];
+      nums[l] = temp;
+      l++;
+      r--;
     }
   }
 }
