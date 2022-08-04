@@ -33,4 +33,16 @@ public class ArrayMania4Test {
     expected = new int[][]{{0,0,0},{1,0,1},{0,1,1},{0,1,0}};
     Assert.assertArrayEquals(expected, actual);
   }
+  @Test
+  public void findNextLargerPermutationOfAnArray() {
+    int[] actual = new int[]{2};
+    ArrayMania4.nextPermutation(actual);
+    int[] expected = new int[]{2};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{1, 2};
+    ArrayMania4.nextPermutation(actual);
+    expected = new int[]{2, 1};
+    Assert.assertArrayEquals(expected, actual);
+  }
 }

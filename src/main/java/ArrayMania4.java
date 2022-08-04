@@ -25,4 +25,19 @@ public class ArrayMania4 {
     if(board[i][j] == 1 && score == 2) return 1;
     return 0;
   }
+  static void nextPermutation(int[] nums) {
+    int r = nums.length - 1;
+    while(r > 0) {
+      int l = r - 1;
+      if(nums[r] > nums[l]) {
+        int n = nums[r];
+        while(r > l) {
+          nums[r] = nums[r - 1];
+          r--;
+        }
+        nums[r] = n;
+        return;
+      }
+    }
+  }
 }
