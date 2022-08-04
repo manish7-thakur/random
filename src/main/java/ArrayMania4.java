@@ -26,35 +26,22 @@ public class ArrayMania4 {
     return 0;
   }
   static void nextPermutation(int[] nums) {
-    int r = nums.length - 1;
-    int l = r - 1;
-    boolean jumpOut = false;
-    while(r >= 0) {
-      for(l = r - 1; l >= 0; l--) {
-        if(nums[r] > nums[l]) {
-          jumpOut = true;
-          break;
-        }
-      }
-      if(jumpOut) break;
-      r--;
+    int i = nums.length - 2;
+    while(i >= 0 && nums[i] >= nums[i +  1]) i--;
+    int j = nums.length - 1;
+    while(i >= 0 && j >= 0 && nums[j] <= nums[i]) j--;
+    if(i >= 0 && j >= 0) swap(nums, i, j);
+    i++;
+    j = nums.length - 1;
+    while(i < j) {
+      swap(nums, i, j);
+      i++;
+      j--;
     }
-    if(r >= 0 && l >= 0 && nums[r] > nums[l]) {
-      int n = nums[r];
-      while(r > l) {
-        nums[r] = nums[r - 1];
-        r--;
-      }
-      nums[r] = n;
-      return;
-    }
-    l = 0; r = nums.length - 1;
-    while(l < r) {
-      int temp = nums[r];
-      nums[r] = nums[l];
-      nums[l] = temp;
-      l++;
-      r--;
-    }
+  }
+  static void swap(int[] nums, int i, int j) {
+    int temp = nums[j];
+    nums[j] = nums[i];
+    nums[i] = temp;
   }
 }
