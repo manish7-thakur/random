@@ -94,5 +94,15 @@ public class ArrayMania4Test {
     ArrayMania4.nextPermutation(actual);
     expected = new int[]{1, 4, 2, 3};
     Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{3, 2, 6, 5, 4};
+    ArrayMania4.nextPermutation(actual);
+    expected = new int[]{3, 4, 2, 5, 6};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[]{3, 5, 6, 5, 4};
+    ArrayMania4.nextPermutation(actual);
+    expected = new int[]{3, 6, 4, 5, 5};
+    Assert.assertArrayEquals(expected, actual);
   }
 }
