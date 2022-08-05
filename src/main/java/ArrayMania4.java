@@ -53,12 +53,12 @@ public class ArrayMania4 {
     for(i = 1; i < nums.length; i++) {
       if(nums[i] != nums[i - 1] + 1) {
         if(nums[i - 1] != start) res.add(start + "->" + nums[i-1]);
-        else res.add("" + start);
+        else res.add(String.valueOf(start));
         start = nums[i];
       }
     }
     if(nums[i - 1] != start) res.add(start + "->" + nums[i-1]);
-    else res.add("" + start);
+    else res.add(String.valueOf(start));
     return res;
   }
 }
