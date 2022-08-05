@@ -1,4 +1,5 @@
 import org.junit.*;
+import java.util.*;
 
 public class ArrayMania4Test {
   @Test
@@ -109,5 +110,25 @@ public class ArrayMania4Test {
     ArrayMania4.nextPermutation(actual);
     expected = new int[]{3, 6, 4, 5, 5};
     Assert.assertArrayEquals(expected, actual);
+  }
+
+  @Test
+  public void summaryOfRanges() {
+    List<String> actual = ArrayMania4.summaryRanges(new int[]{});
+    List<String> expected = List.of();
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania4.summaryRanges(new int[]{0});
+    expected = List.of("0");
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania4.summaryRanges(new int[]{0, 1});
+    expected = List.of("0->1");
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania4.summaryRanges(new int[]{0, 2});
+    expected = List.of("0", "2");
+    Assert.assertEquals(expected, actual);
+
   }
 }

@@ -46,4 +46,21 @@ public class ArrayMania4 {
     nums[j] = nums[i];
     nums[i] = temp;
   }
+  static List<String> summaryRanges(int[] nums) {
+    List<String> res = new ArrayList<>();
+    if(nums.length == 0) return res;
+    String curr = "" + nums[0];
+    for(int i = 1; i < nums.length; i++) {
+      if(nums[i] != nums[i - 1] + 1) {
+        res.add(curr);
+        curr = "";
+      }
+      if(i == nums.length - 1) {
+        if(!curr.isEmpty()) curr = curr + "->";
+        curr += nums[i];
+      }
+    }
+    res.add(curr);
+    return res;
+  }
 }
