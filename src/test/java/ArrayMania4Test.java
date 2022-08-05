@@ -142,5 +142,9 @@ public class ArrayMania4Test {
     expected = List.of("0->2", "4", "6->7");
     Assert.assertEquals(expected, actual);
 
+    actual = ArrayMania4.summaryRanges(new int[]{0, 2, 4, 8, 10, 11, 12});
+    expected = List.of("0", "2", "4", "8", "10->12");
+    Assert.assertEquals(expected, actual);
+
   }
 }
