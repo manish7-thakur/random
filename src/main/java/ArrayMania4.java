@@ -49,18 +49,16 @@ public class ArrayMania4 {
   static List<String> summaryRanges(int[] nums) {
     List<String> res = new ArrayList<>();
     if(nums.length == 0) return res;
-    String curr = "" + nums[0];
-    for(int i = 1; i < nums.length; i++) {
+    int start = nums[0], i = 1;
+    for(i = 1; i < nums.length; i++) {
       if(nums[i] != nums[i - 1] + 1) {
-        res.add(curr);
-        curr = "";
-      }
-      if(i == nums.length - 1) {
-        if(!curr.isEmpty()) curr = curr + "->";
-        curr += nums[i];
+        if(nums[i - 1] != start) res.add(start + "->" + nums[i-1]);
+        else res.add("" + start);
+        start = nums[i];
       }
     }
-    res.add(curr);
+    if(nums[i - 1] != start) res.add(start + "->" + nums[i-1]);
+    else res.add("" + start);
     return res;
   }
 }
