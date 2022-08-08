@@ -7,6 +7,24 @@ public class NestedIteratorTest {
     NestedIterator iter = new NestedIterator(List.of());
     Assert.assertFalse(iter.hasNext());
 
+    iter = new NestedIterator(List.of(new NestedInteger() {
+      @Override
+      public boolean isInteger() {
+        return false;
+      }
+
+      @Override
+      public Integer getInteger() {
+        return null;
+      }
+
+      @Override
+      public List<NestedInteger> getList() {
+        return List.of();
+      }
+    }));
+    Assert.assertFalse(iter.hasNext());
+
     NestedInteger one = new NestedInteger(){
 
       @Override

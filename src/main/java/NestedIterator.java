@@ -11,33 +11,26 @@ interface NestedInteger {
 }
 public class NestedIterator implements Iterator<Integer> {
   private int idx;
-  private List<NestedInteger> nestedList;
-  private record Pair(Integer idx, List<NestedInteger> list){};
-  private Stack<Pair> stack;
+  private List<Integer> list = new ArrayList<>();
 
   public NestedIterator(List<NestedInteger> nestedList) {
-    this.nestedList = nestedList;
-    stack = new Stack<>();
+    flatten(nestedList);
+  }
+
+  private void flatten(List<NestedInteger> nestedList) {
+    for(NestedInteger ni : nestedList) {
+      if(ni.isInteger()) list.add(ni.getInteger());
+      else flatten(ni.getList());
+    }
   }
 
   @Override
   public boolean hasNext() {
-    return idx < nestedList.size();
+    return idx < list.size();
   }
 
   @Override
   public Integer next() {
-    NestedInteger ns = nestedList.get(idx);
-    idx++;
-    if(idx >= nestedList.size() && !stack.isEmpty()) {
-      Pair p = stack.pop();
-      idx = p.idx;
-      nestedList = p.list;
-    }
-    if(ns.isInteger()) return ns.getInteger();
-    stack.push(new Pair(idx, nestedList));
-    idx = 0;
-    nestedList = ns.getList();
-    return next();
+    return list.get(idx++);
   }
 }
