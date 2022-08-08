@@ -7,7 +7,7 @@ public class NestedIteratorTest {
     NestedIterator iter = new NestedIterator(List.of());
     Assert.assertFalse(iter.hasNext());
 
-    iter = new NestedIterator(List.of(new NestedInteger(){
+    NestedInteger one = new NestedInteger(){
 
       @Override
       public boolean isInteger() {
@@ -23,8 +23,68 @@ public class NestedIteratorTest {
       public List<NestedInteger> getList() {
         return List.of();
       }
+    };
+    NestedInteger two = new NestedInteger(){
+
+      @Override
+      public boolean isInteger() {
+        return true;
+      }
+
+      @Override
+      public Integer getInteger() {
+        return 2;
+      }
+
+      @Override
+      public List<NestedInteger> getList() {
+        return List.of();
+      }
+    };
+    iter = new NestedIterator(List.of(one));
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(1, iter.next().intValue());
+    iter = new NestedIterator(List.of(new NestedInteger(){
+
+      @Override
+      public boolean isInteger() {
+        return false;
+      }
+
+      @Override
+      public Integer getInteger() {
+        return null;
+      }
+
+      @Override
+      public List<NestedInteger> getList() {
+        return List.of(one, two);
+      }
     }));
     Assert.assertTrue(iter.hasNext());
     Assert.assertEquals(1, iter.next().intValue());
+    Assert.assertEquals(2, iter.next().intValue());
+
+    iter = new NestedIterator(List.of(new NestedInteger(){
+
+      @Override
+      public boolean isInteger() {
+        return false;
+      }
+
+      @Override
+      public Integer getInteger() {
+        return null;
+      }
+
+      @Override
+      public List<NestedInteger> getList() {
+        return List.of(one, two);
+      }
+    }, two));
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(1, iter.next().intValue());
+    Assert.assertEquals(2, iter.next().intValue());
+    Assert.assertEquals(2, iter.next().intValue());
   }
 }
