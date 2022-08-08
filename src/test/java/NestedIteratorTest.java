@@ -84,7 +84,10 @@ public class NestedIteratorTest {
     }, two));
     Assert.assertTrue(iter.hasNext());
     Assert.assertEquals(1, iter.next().intValue());
+    Assert.assertTrue(iter.hasNext());
     Assert.assertEquals(2, iter.next().intValue());
+    Assert.assertTrue(iter.hasNext());
     Assert.assertEquals(2, iter.next().intValue());
+    Assert.assertFalse(iter.hasNext());
   }
 }
