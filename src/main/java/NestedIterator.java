@@ -14,15 +14,18 @@ public class NestedIterator implements Iterator<Integer> {
   private List<NestedInteger> nestedList;
   private record Pair(Integer idx, List<NestedInteger> list){};
   private Stack<Pair> stack;
-  
+
   public NestedIterator(List<NestedInteger> nestedList) {
     this.nestedList = nestedList;
     stack = new Stack<>();
   }
+
+  @Override
   public boolean hasNext() {
     return idx < nestedList.size();
   }
 
+  @Override
   public Integer next() {
     NestedInteger ns = nestedList.get(idx);
     idx++;
