@@ -89,5 +89,56 @@ public class NestedIteratorTest {
     Assert.assertTrue(iter.hasNext());
     Assert.assertEquals(2, iter.next().intValue());
     Assert.assertFalse(iter.hasNext());
+
+    NestedInteger intList = new NestedInteger(){
+
+      @Override
+      public boolean isInteger() {
+        return false;
+      }
+
+      @Override
+      public Integer getInteger() {
+        return null;
+      }
+
+      @Override
+      public List<NestedInteger> getList() {
+        return List.of(one, two, one, new NestedInteger(){
+
+          @Override
+          public boolean isInteger() {
+            return false;
+          }
+
+          @Override
+          public Integer getInteger() {
+            return null;
+          }
+
+          @Override
+          public List<NestedInteger> getList() {
+            return List.of(one, two);
+          }
+        });
+      }
+    };
+
+    iter = new NestedIterator(List.of(one, intList, two));
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(1, iter.next().intValue());
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(1, iter.next().intValue());
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(2, iter.next().intValue());
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(1, iter.next().intValue());
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(1, iter.next().intValue());
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(2, iter.next().intValue());
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(2, iter.next().intValue());
+    Assert.assertFalse(iter.hasNext());
   }
 }
