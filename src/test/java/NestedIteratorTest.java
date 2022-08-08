@@ -140,5 +140,27 @@ public class NestedIteratorTest {
     Assert.assertTrue(iter.hasNext());
     Assert.assertEquals(2, iter.next().intValue());
     Assert.assertFalse(iter.hasNext());
+
+    iter = new NestedIterator(List.of(intList, intList));
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(1, iter.next().intValue());
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(2, iter.next().intValue());
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(1, iter.next().intValue());
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(1, iter.next().intValue());
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(2, iter.next().intValue());
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(1, iter.next().intValue());
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(2, iter.next().intValue());
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(1, iter.next().intValue());
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(1, iter.next().intValue());
+    Assert.assertTrue(iter.hasNext());
+    Assert.assertEquals(2, iter.next().intValue());
   }
 }
