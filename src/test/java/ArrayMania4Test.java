@@ -145,6 +145,19 @@ public class ArrayMania4Test {
     actual = ArrayMania4.summaryRanges(new int[]{0, 2, 4, 8, 10, 11, 12});
     expected = List.of("0", "2", "4", "8", "10->12");
     Assert.assertEquals(expected, actual);
+  }
+  @Test
+  public void findMissingNumsInRange() {
+    List<Integer> actual = ArrayMania4.findDisappearedNumbers(new int[]{1});
+    List<Integer> expected = List.of();
+    Assert.assertEquals(expected, actual);
 
+    actual = ArrayMania4.findDisappearedNumbers(new int[]{1, 1});
+    expected = List.of(2);
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania4.findDisappearedNumbers(new int[]{2, 2});
+    expected = List.of(1);
+    Assert.assertEquals(expected, actual);
   }
 }
