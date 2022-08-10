@@ -159,5 +159,22 @@ public class ArrayMania4Test {
     actual = ArrayMania4.findDisappearedNumbers(new int[]{2, 2});
     expected = List.of(1);
     Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania4.findDisappearedNumbers(new int[]{2, 1});
+    expected = List.of();
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania4.findDisappearedNumbers(new int[]{2, 2, 3});
+    expected = List.of(1);
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania4.findDisappearedNumbers(new int[]{2, 2, 3, 1});
+    expected = List.of(4);
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania4.findDisappearedNumbers(new int[]{4, 3, 2, 7, 8, 2, 3, 1});
+    expected = List.of(5, 6);
+    Assert.assertEquals(expected, actual);
+
   }
 }
