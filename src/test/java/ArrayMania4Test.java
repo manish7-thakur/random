@@ -198,4 +198,15 @@ public class ArrayMania4Test {
     expected = new int[]{2, 0, 0, 0};
     Assert.assertArrayEquals(expected, actual);
   }
+
+  @Test
+  public void calculatePermieterOfIsland() {
+    int actual = ArrayMania4.islandPerimeter(new int[][]{{0}});
+    int expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania4.islandPerimeter(new int[][]{{1}});
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+  }
 }
