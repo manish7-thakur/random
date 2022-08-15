@@ -175,6 +175,15 @@ public class ArrayMania4Test {
     actual = ArrayMania4.findDisappearedNumbers(new int[]{4, 3, 2, 7, 8, 2, 3, 1});
     expected = List.of(5, 6);
     Assert.assertEquals(expected, actual);
+  }
+  @Test
+  public void addOneToArray() {
+    int[] actual = ArrayMania4.plusOne(new int[]{1});
+    int[] expected = new int[]{2};
+    Assert.assertArrayEquals(expected, actual);
 
+    actual = ArrayMania4.plusOne(new int[]{9});
+    expected = new int[]{1, 0};
+    Assert.assertArrayEquals(expected, actual);
   }
 }

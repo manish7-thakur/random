@@ -72,4 +72,19 @@ public class ArrayMania4 {
     }
     return res;
   }
+
+  static int[] plusOne(int[] digits) {
+    LinkedList<Integer> res = new LinkedList<>();
+    int i = digits.length - 1;
+    int sum = 0, carry = 0;
+    while(i >= 0) {
+      sum = digits[i] + 1;
+      carry = sum / 10;
+      sum = sum % 10;
+      res.addFirst(sum);
+      i--;
+    }
+    if(carry > 0) res.addFirst(carry);
+    return res.stream().mapToInt(Integer::intValue).toArray();
+  }
 }
