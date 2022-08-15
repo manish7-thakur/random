@@ -185,5 +185,9 @@ public class ArrayMania4Test {
     actual = ArrayMania4.plusOne(new int[]{9});
     expected = new int[]{1, 0};
     Assert.assertArrayEquals(expected, actual);
+
+    actual = ArrayMania4.plusOne(new int[]{9, 9});
+    expected = new int[]{1, 0, 0};
+    Assert.assertArrayEquals(expected, actual);
   }
 }
