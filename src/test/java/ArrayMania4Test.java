@@ -224,5 +224,9 @@ public class ArrayMania4Test {
     actual = ArrayMania4.islandPerimeter(new int[][]{{1, 1}, {1, 0}});
     expected = 8;
     Assert.assertEquals(expected, actual);
+
+    actual = ArrayMania4.islandPerimeter(new int[][]{{0,1,0,0},{1,1,1,0},{0,1,0,0},{1,1,0,0}});
+    expected = 16;
+    Assert.assertEquals(expected, actual);
   }
 }
