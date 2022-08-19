@@ -106,11 +106,11 @@ public class ArrayMania4 {
   static boolean checkSubarraySum(int[] nums, int k) {
     Set<Integer> set = new HashSet<>();
     set.add(0);
-    int sum = nums[0];
+    int sum = nums[0] % k;
     for(int i = 1; i < nums.length; i++) {
       int currSum = sum;
-      sum += nums[i];
-      if(set.contains(sum % k)) return true;
+      sum = (sum + nums[i]) % k;
+      if(set.contains(sum)) return true;
       set.add(currSum);
     }
     return false;
