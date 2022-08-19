@@ -108,9 +108,10 @@ public class ArrayMania4 {
     set.add(0);
     int sum = nums[0];
     for(int i = 1; i < nums.length; i++) {
+      int currSum = sum;
       sum += nums[i];
       if(set.contains(sum % k)) return true;
-      set.add(nums[i-1]);
+      set.add(currSum);
     }
     return false;
   }

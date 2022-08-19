@@ -242,5 +242,14 @@ public class ArrayMania4Test {
 
     actual = ArrayMania4.checkSubarraySum(new int[]{1, 2, 2}, 2);
     Assert.assertTrue(actual);
+
+    actual = ArrayMania4.checkSubarraySum(new int[]{2, 2, 1}, 3);
+    Assert.assertTrue(actual);
+
+    actual = ArrayMania4.checkSubarraySum(new int[]{2, 4, 5, 2}, 4);
+    Assert.assertFalse(actual);
+
+    actual = ArrayMania4.checkSubarraySum(new int[]{2, 4, 5, 3}, 8);
+    Assert.assertTrue(actual);
   }
 }
