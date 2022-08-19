@@ -251,5 +251,8 @@ public class ArrayMania4Test {
 
     actual = ArrayMania4.checkSubarraySum(new int[]{2, 4, 5, 3}, 8);
     Assert.assertTrue(actual);
+
+    actual = ArrayMania4.checkSubarraySum(new int[]{2, 4, 5, 8}, 8);
+    Assert.assertFalse(actual);
   }
 }
