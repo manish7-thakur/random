@@ -229,4 +229,18 @@ public class ArrayMania4Test {
     expected = 16;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void subArraySumofAtleast2ElemsWithMultipleK() {
+    boolean actual = ArrayMania4.checkSubarraySum(new int[]{0}, 2);
+    Assert.assertFalse(actual);
+
+    actual = ArrayMania4.checkSubarraySum(new int[]{0, 1}, 1);
+    Assert.assertTrue(actual);
+
+    actual = ArrayMania4.checkSubarraySum(new int[]{1, 2}, 2);
+    Assert.assertFalse(actual);
+
+    actual = ArrayMania4.checkSubarraySum(new int[]{1, 2, 2}, 2);
+    Assert.assertTrue(actual);
+  }
 }
