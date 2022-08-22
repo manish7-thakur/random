@@ -238,4 +238,20 @@ public class BinaryTree {
       int excessTotal = root.val + l + r - 1;
       return excessTotal;
     }
+    static List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+      List<List<Integer>> res = new ArrayList<>();
+      Queue<TreeNode> queue = new LinkedList<>();
+      if(root != null) queue.add(root);
+      while(!queue.isEmpty()) {
+        int count = queue.size();
+        List<Integer> items = new ArrayList<>();
+        while(count > 0) {
+          TreeNode node = queue.remove();
+          items.add(node.val);
+          count--;
+        }
+        res.add(items);
+      }
+      return res;
+    }
 }

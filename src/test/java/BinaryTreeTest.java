@@ -439,4 +439,14 @@ public class BinaryTreeTest {
       expected = 3;
       Assert.assertEquals(expected, actual);
     }
+    @Test
+    public void binaryTreeAlternateZigzagTraversal() {
+      List<List<Integer>> actual  = BinaryTree.zigzagLevelOrder(null);
+      List<List<Integer>> expected = List.of();
+      Assert.assertEquals(expected, actual);
+
+      actual  = BinaryTree.zigzagLevelOrder(new TreeNode(3));
+      expected = List.of(List.of(3));
+      Assert.assertEquals(expected, actual);
+    }
 }
