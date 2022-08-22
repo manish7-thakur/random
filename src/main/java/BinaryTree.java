@@ -254,7 +254,6 @@ public class BinaryTree {
             items.add(node.val);
             count--;
           }
-          left = !left;
         } else {
           while(count > 0) {
             TreeNode node = queue.removeLast();
@@ -263,8 +262,8 @@ public class BinaryTree {
             items.add(node.val);
             count--;
           }
-          left = !left;
         }
+        left = !left;
         res.add(items);
       }
       return res;
