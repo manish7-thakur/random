@@ -460,5 +460,9 @@ public class BinaryTreeTest {
       actual  = BinaryTree.zigzagLevelOrder(new TreeNode(3, new TreeNode(5, new TreeNode(4, new TreeNode(8), new TreeNode(11)), new TreeNode(7, new TreeNode(20), new TreeNode(13))), new TreeNode(6, null, new TreeNode(9))));
       expected = List.of(List.of(3), List.of(6, 5), List.of(4, 7, 9), List.of(13, 20, 11, 8));
       Assert.assertEquals(expected, actual);
+
+      actual  = BinaryTree.zigzagLevelOrder(new TreeNode(3, new TreeNode(5, new TreeNode(4, new TreeNode(8), new TreeNode(11)), new TreeNode(7, new TreeNode(20), new TreeNode(13))), new TreeNode(6, new TreeNode(14, new TreeNode(15), new TreeNode(16)), new TreeNode(9, new TreeNode(10), new TreeNode(21)))));
+      expected = List.of(List.of(3), List.of(6, 5), List.of(4, 7, 14, 9), List.of(21, 10, 16, 15, 13, 20, 11, 8));
+      Assert.assertEquals(expected, actual);
     }
 }
