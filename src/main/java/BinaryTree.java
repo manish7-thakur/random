@@ -246,23 +246,25 @@ public class BinaryTree {
       while(!queue.isEmpty()) {
         int count = queue.size();
         List<Integer> items = new ArrayList<>();
-        while(count > 0) {
-          TreeNode node = null;
-          if(left) {
-            node = queue.remove();
+        if(left) {
+          while(count > 0) {
+            TreeNode node = queue.remove();
             if(node.left != null) queue.add(node.left);
             if(node.right != null) queue.add(node.right);
             items.add(node.val);
+            count--;
           }
-          else {
-            node = queue.removeLast();
+          left = !left;
+        } else {
+          while(count > 0) {
+            TreeNode node = queue.removeLast();
             if(node.right != null) queue.addFirst(node.right);
             if(node.left != null) queue.addFirst(node.left);
             items.add(node.val);
+            count--;
           }
-          count--;
+          left = !left;
         }
-        left = !left;
         res.add(items);
       }
       return res;
