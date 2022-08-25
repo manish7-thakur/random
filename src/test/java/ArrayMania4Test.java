@@ -276,5 +276,9 @@ public class ArrayMania4Test {
     actual = ArrayMania4.intersection(new int[]{1}, new int[]{2, 1});
     expected = new int[]{1};
     Assert.assertArrayEquals(expected, actual);
+
+    actual = ArrayMania4.intersection(new int[]{4, 9, 5}, new int[]{9, 4, 9, 8, 4});
+    expected = new int[]{4, 9};
+    Assert.assertArrayEquals(expected, actual);
   }
 }
