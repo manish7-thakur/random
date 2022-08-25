@@ -1,4 +1,5 @@
 import java.util.*;
+import static java.util.stream.Collectors.*;
 
 public class ArrayMania4 {
   static void gameOfLife(int[][] board) {
@@ -114,5 +115,14 @@ public class ArrayMania4 {
       set.add(currSum);
     }
     return false;
+  }
+
+  static int[] intersection(int[] nums1, int[] nums2) {
+    Set<Integer> res = new HashSet<>();
+    Set<Integer> numSet = Arrays.stream(nums2).boxed().collect(toSet());
+    for(int n : nums1) {
+      if(numSet.contains(n)) res.add(n);
+    }
+    return res.stream().mapToInt(Integer::intValue).toArray();
   }
 }

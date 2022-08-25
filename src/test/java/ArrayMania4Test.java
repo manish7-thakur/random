@@ -267,4 +267,14 @@ public class ArrayMania4Test {
     actual = ArrayMania4.checkSubarraySum(new int[]{23, 2, 6, 4, 7}, 13);
     Assert.assertFalse(actual);
   }
+  @Test
+  public void intersectionOfTwoArrays() {
+    int[] actual = ArrayMania4.intersection(new int[]{1}, new int[]{2});
+    int[] expected = new int[0];
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = ArrayMania4.intersection(new int[]{1}, new int[]{2, 1});
+    expected = new int[]{1};
+    Assert.assertArrayEquals(expected, actual);
+  }
 }
