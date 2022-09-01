@@ -2,7 +2,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import java.util.*;
 
-public class BinaryTreeTest {
+public class BinaryTreeManiaTest {
     @Test
     public void Invert2Nodes() {
         TreeNode root = new TreeNode(5, null, new TreeNode(6, null, null));
