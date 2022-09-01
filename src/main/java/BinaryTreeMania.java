@@ -282,7 +282,10 @@ public class BinaryTreeMania {
           if(node.right != null) queue.add(node.right);
           count--;
         }
-        if(sum > maxSum) maxLevel = level;
+        if(sum > maxSum) {
+          maxLevel = level;
+          maxSum = sum;
+        }
         level++;
       }
       return maxLevel;
