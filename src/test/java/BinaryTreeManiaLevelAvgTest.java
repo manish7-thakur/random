@@ -5,7 +5,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class BinaryTreeLevelAvgTest {
+public class BinaryTreeManiaLevelAvgTest {
     @Test
     public void singleLevelAvgTest() {
         TreeNode node = new TreeNode(5, null, null);
