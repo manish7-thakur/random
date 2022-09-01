@@ -464,4 +464,14 @@ public class BinaryTreeManiaTest {
       expected = List.of(List.of(3), List.of(6, 5), List.of(4, 7, 14, 9), List.of(21, 10, 16, 15, 13, 20, 11, 8));
       Assert.assertEquals(expected, actual);
     }
+    @Test
+    public void binaryTreeMaxLevelSum() {
+      int actual = BinaryTreeMania.maxLevelSum(new TreeNode(2));
+      int expected = 1;
+      Assert.assertEquals(expected, actual);
+
+      actual = BinaryTreeMania.maxLevelSum(new TreeNode(2, new TreeNode(-3), new TreeNode(6)));
+      expected = 2;
+      Assert.assertEquals(expected, actual);
+    }
 }
