@@ -481,5 +481,9 @@ public class BinaryTreeManiaTest {
       actual = BinaryTreeMania.maxLevelSum(new TreeNode(2, new TreeNode(-3, new TreeNode(-3)), new TreeNode(6, null, new TreeNode(4))));
       expected = 2;
       Assert.assertEquals(expected, actual);
+
+      actual = BinaryTreeMania.maxLevelSum(new TreeNode(-2, new TreeNode(-3, new TreeNode(-3)), new TreeNode(-6, null, new TreeNode(-4))));
+      expected = 1;
+      Assert.assertEquals(expected, actual);
     }
 }

@@ -269,7 +269,7 @@ public class BinaryTreeMania {
       return res;
     }
     static int maxLevelSum(TreeNode root) {
-      int maxLevel = 0, maxSum = 0, level = 1;
+      int maxLevel = 0, maxSum = Integer.MIN_VALUE, level = 1;
       Queue<TreeNode> queue = new LinkedList<>();
       queue.add(root);
       while(!queue.isEmpty()) {
