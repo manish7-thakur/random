@@ -83,4 +83,36 @@ public class DP2 {
     mem[i][min] = profit;
     return profit;
   }
+  /**
+  MultiSource BFS or DFS, in this case we don't use DP recursion.
+  we use queue for each element that changes.
+  https://www.vldb.org/pvldb/vol8/p449-then.pdf
+  */
+  static int maxDistance(int[][] grid) {
+    int res = -1;
+    record Pair(int i, int j){}
+    Queue<Pair> queue = new LinkedList<>();
+    for(int i = 0; i < grid.length; i++) {
+      for(int j = 0; j < grid[0].length; j++) {
+        if(grid[i][j] == 1) queue.add(new Pair(i, j));
+      }
+    }
+    while(!queue.isEmpty()) {
+      int count = queue.size();
+      while(count > 0) {
+        Pair p = queue.remove();
+        int i = p.i;
+        int j = p.j;
+        if(i - 1 >= 0 && grid[i - 1][j] == 0) queue.add(new Pair(i - 1, j));
+        if(j - 1 >= 0 && grid[i][j - 1] == 0) queue.add(new Pair(i, j - 1));
+        if(j + 1 < grid[0].length && grid[i][j + 1] == 0) queue.add(new Pair(i, j + 1));
+        if(i + 1 < grid.length && grid[i + 1][j] == 0) queue.add(new Pair(i + 1, j));
+        grid[i][j] = 2; // act as visited
+        count--;
+      }
+      res += 1;
+    }
+    if(res > 0) return res;
+    return -1;
+  }
 }

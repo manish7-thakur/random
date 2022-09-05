@@ -181,4 +181,30 @@ public class DP2Test {
     expected = 585;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void maxDistanceFromLand() {
+    int actual = DP2.maxDistance(new int[][]{{1}});
+    int expected = -1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.maxDistance(new int[][]{{1, 0}});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.maxDistance(new int[][]{{1, 0}, {0, 1}});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.maxDistance(new int[][]{{1, 0, 0}, {0, 1, 0}});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.maxDistance(new int[][]{{1,0,1},{0,0,0},{1,0,1}});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+
+    actual = DP2.maxDistance(new int[][]{{1,0,0},{0,0,0},{0,0,0}});
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+  }
 }
