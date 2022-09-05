@@ -103,14 +103,25 @@ public class DP2 {
         Pair p = queue.remove();
         int i = p.i;
         int j = p.j;
-        if(i - 1 >= 0 && grid[i - 1][j] == 0) queue.add(new Pair(i - 1, j));
-        if(j - 1 >= 0 && grid[i][j - 1] == 0) queue.add(new Pair(i, j - 1));
-        if(j + 1 < grid[0].length && grid[i][j + 1] == 0) queue.add(new Pair(i, j + 1));
-        if(i + 1 < grid.length && grid[i + 1][j] == 0) queue.add(new Pair(i + 1, j));
-        grid[i][j] = 2; // act as visited
+        if(i - 1 >= 0 && grid[i - 1][j] == 0) {
+          queue.add(new Pair(i - 1, j));
+          grid[i - 1][j] = 2;
+        }
+        if(j - 1 >= 0 && grid[i][j - 1] == 0) {
+          queue.add(new Pair(i, j - 1));
+          grid[i][j - 1] = 2;
+        }
+        if(j + 1 < grid[0].length && grid[i][j + 1] == 0) {
+          queue.add(new Pair(i, j + 1));
+          grid[i][j + 1] = 2;
+        }
+        if(i + 1 < grid.length && grid[i + 1][j] == 0) {
+          queue.add(new Pair(i + 1, j));
+          grid[i + 1][j] = 2;// act as visited
+        }
         count--;
       }
-      res += 1;
+      res++;
     }
     if(res > 0) return res;
     return -1;

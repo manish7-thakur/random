@@ -206,5 +206,9 @@ public class DP2Test {
     actual = DP2.maxDistance(new int[][]{{1,0,0},{0,0,0},{0,0,0}});
     expected = 4;
     Assert.assertEquals(expected, actual);
+
+    actual = DP2.maxDistance(new int[][]{{1,0,0,0,0,1,0,0,0,1},{1,1,0,1,1,1,0,1,1,0},{0,1,1,0,1,0,0,1,0,0},{1,0,1,0,1,0,0,0,0,0},{0,1,0,0,0,1,1,0,1,1},{0,0,1,0,0,1,0,1,0,1},{0,0,0,1,1,1,1,0,0,1},{0,1,0,0,1,0,0,1,0,0},{0,0,0,0,0,1,1,1,0,0},{1,1,0,1,1,1,1,1,0,0}});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
   }
 }
