@@ -19,5 +19,13 @@ public class RandomizedSetTest {
 
     set.remove(8);
     Assert.assertEquals(9, set.getRandom().intValue());
+    set.remove(9);
+
+    set.insert(0);
+    set.insert(1);
+    set.remove(0);
+    set.insert(2);
+    set.remove(1);
+    Assert.assertEquals(2, set.getRandom().intValue());
   }
 }

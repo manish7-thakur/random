@@ -29,6 +29,7 @@ public class RandomizedSet {
 
   private void removeFromList(int index) {
     list.set(index, list.get(list.size() - 1));
+    map.put(list.get(index), index);
     list.remove(list.size() - 1);
   }
 
