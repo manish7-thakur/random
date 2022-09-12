@@ -19,9 +19,10 @@ public class RandomizedSet {
   }
 
   public boolean remove(int val) {
-    Integer index = map.remove(val);
+    Integer index = map.get(val);
     if(index != null) {
       removeFromList(index);
+      map.remove(val);
       return true;
     }
     return false;
