@@ -5,9 +5,11 @@ public class ArrayMania5 {
     Map<String, List<String>> map = new HashMap<>();
     Arrays.stream(paths).forEach(path -> {
       String[] pathInfo = path.split(" ");
+      String directory = pathInfo[0];
       for(int i = 1; i < pathInfo.length; i++) {
-        String content = pathInfo[i].substring(pathInfo[i].indexOf('('), pathInfo[i].indexOf(')') + 1);
-        map.computeIfAbsent(content, k -> new ArrayList<>()).add(pathInfo[0]+ "/" + pathInfo[i].substring(0, pathInfo[i].indexOf('(')));
+        String file = pathInfo[i];
+        String content = file.substring(file.indexOf('('), file.indexOf(')') + 1);
+        map.computeIfAbsent(content, k -> new ArrayList<>()).add(directory + "/" + file.substring(0, file.indexOf('(')));
       }
     });
     return map.values().stream().filter(list -> list.size() > 1).collect(toList());
