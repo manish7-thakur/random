@@ -7,10 +7,10 @@ public class ArrayMania5 {
       String[] pathInfo = path.split(" ");
       String directory = pathInfo[0];
       for(int i = 1; i < pathInfo.length; i++) {
-        String file = pathInfo[i];
-        int bracketIdx = file.indexOf('(');
-        String content = file.substring(bracketIdx + 1, file.indexOf(')'));
-        map.computeIfAbsent(content, k -> new ArrayList<>()).add(directory + "/" + file.substring(0, bracketIdx));
+        String[] file = pathInfo[i].split("\\(");
+        String fileName = file[0];
+        String content = file[1].substring(0, file[1].indexOf(')'));
+        map.computeIfAbsent(content, k -> new ArrayList<>()).add(directory + "/" + fileName);
       }
     });
     return map.values().stream().filter(list -> list.size() > 1).collect(toList());
