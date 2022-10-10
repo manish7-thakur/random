@@ -47,4 +47,35 @@ public class MathsTest {
     expected = 1;
     Assert.assertEquals(expected, actual);
   }
+
+  @Test
+  public void countNumberWithUniqueDigitsInRange() {
+    int actual = Maths.countNumbersWithUniqueDigits(0);
+    int expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = Maths.countNumbersWithUniqueDigits(1);
+    expected = 10;
+    Assert.assertEquals(expected, actual);
+
+    actual = Maths.countNumbersWithUniqueDigits(2);
+    expected = 91;
+    Assert.assertEquals(expected, actual);
+
+    actual = Maths.countNumbersWithUniqueDigits(3);
+    expected = 739;
+    Assert.assertEquals(expected, actual);
+
+    actual = Maths.countNumbersWithUniqueDigits(6);
+    expected = 168571;
+    Assert.assertEquals(expected, actual);
+
+    actual = Maths.countNumbersWithUniqueDigits(7);
+    expected = 712891;
+    Assert.assertEquals(expected, actual);
+
+    actual = Maths.countNumbersWithUniqueDigits(8);
+    expected = 2345851;
+    Assert.assertEquals(expected, actual);
+  }
 }
