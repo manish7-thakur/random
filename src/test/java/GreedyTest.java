@@ -27,4 +27,10 @@ public class GreedyTest {
     expected = 11;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void findLeastIntervalToCompleteTasks() {
+    int actual = Greedy.leastInterval(new char[]{'a'}, 0);
+    int expected = 1;
+    Assert.assertEquals(expected, actual);
+  }
 }

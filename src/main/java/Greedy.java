@@ -23,4 +23,9 @@ public class Greedy {
     }
     return max;
   }
+
+  static int leastInterval(char[] tasks, int n) {
+    int numTasks = tasks.length;
+    return numTasks;
+  }
 }
