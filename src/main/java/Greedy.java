@@ -26,6 +26,15 @@ public class Greedy {
 
   static int leastInterval(char[] tasks, int n) {
     int numTasks = tasks.length;
-    return numTasks;
+    int max = 0, e = 0;
+    Map<Character, Integer> map = new HashMap<>();
+    for(char c : tasks) {
+      int count = map.merge(c, 1, Integer::sum);
+      if(count > max) max = count;
+    }
+    for(Map.Entry<Character, Integer> entry : map.entrySet()) {
+      if(entry.getValue() == max) e++;
+    }
+    return Math.max(numTasks, (max - 1) * (n + 1) + e);
   }
 }

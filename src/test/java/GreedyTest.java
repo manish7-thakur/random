@@ -32,5 +32,9 @@ public class GreedyTest {
     int actual = Greedy.leastInterval(new char[]{'a'}, 0);
     int expected = 1;
     Assert.assertEquals(expected, actual);
+
+    actual = Greedy.leastInterval(new char[]{'a', 'b', 'a'}, 2);
+    expected = 4;
+    Assert.assertEquals(expected, actual);
   }
 }
