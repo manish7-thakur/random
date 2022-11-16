@@ -37,4 +37,16 @@ public class Greedy {
     }
     return Math.max(numTasks, (max - 1) * (n + 1) + e);
   }
+  static int findContentChildren(int[] g, int[] s) {
+    int res = 0, j = 0;
+    Arrays.sort(g);
+    Arrays.sort(s);
+    for(int i = 0; i < s.length; i++) {
+      if(s[i] >= g[j]) {
+        j++;
+        res++;
+      }
+    }
+    return res;
+  }
 }

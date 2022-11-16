@@ -37,4 +37,18 @@ public class GreedyTest {
     expected = 4;
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void findContentedChildren() {
+    int actual = Greedy.findContentChildren(new int[]{1}, new int[]{});
+    int expected = 0;
+    Assert.assertEquals(expected, actual);
+
+    actual = Greedy.findContentChildren(new int[]{1}, new int[]{1});
+    expected = 1;
+    Assert.assertEquals(expected, actual);
+
+    actual = Greedy.findContentChildren(new int[]{3, 1}, new int[]{1, 3});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+  }
 }
