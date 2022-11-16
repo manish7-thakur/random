@@ -40,7 +40,7 @@ public class Greedy {
   static int findContentChildren(int[] g, int[] s) {
     int res = 0, j = 0;
     Arrays.sort(g);
-    Arrays.sort(s);
+    // Arrays.sort(s);
     for(int i = 0; i < s.length; i++) {
       if(s[i] >= g[j]) {
         j++;
