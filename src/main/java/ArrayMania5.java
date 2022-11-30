@@ -25,6 +25,7 @@ public class ArrayMania5 {
     image[sr][sc] = color;
     floodFillRec(image, sr, sc - 1, color, startingColor);
     floodFillRec(image, sr - 1, sc, color, startingColor);
+    floodFillRec(image, sr + 1, sc, color, startingColor);
   }
   static boolean safe(int[][] image, int sr, int sc, int startingColor) {
     return sr >= 0 && sc >= 0 && sr < image.length && sc < image[0].length && image[sr][sc] == startingColor;
