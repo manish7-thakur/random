@@ -24,4 +24,26 @@ public class ArrayMania5Test {
     expected = List.of();
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void floodFillWithColor() {
+    int[][] actual = new int[][]{{0}};
+    ArrayMania5.floodFill(actual, 0, 0, 0);
+    int[][] expected = new int[][]{{0}};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[][]{{0}};
+    ArrayMania5.floodFill(actual, 0, 0, 1);
+    expected = new int[][]{{1}};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[][]{{0, 0}};
+    ArrayMania5.floodFill(actual, 0, 1, 1);
+    expected = new int[][]{{1, 1}};
+    Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[][]{{1, 0}};
+    ArrayMania5.floodFill(actual, 0, 1, 2);
+    expected = new int[][]{{1, 2}};
+    Assert.assertArrayEquals(expected, actual);
+  }
 }
