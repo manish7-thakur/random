@@ -55,5 +55,10 @@ public class ArrayMania5Test {
     ArrayMania5.floodFill(actual, 1, 1, 1);
     expected = new int[][]{{1, 1}, {1, 1}, {2, 1}};
     Assert.assertArrayEquals(expected, actual);
+
+    actual = new int[][]{{1, 0, 2}, {1, 0, 0}, {2, 0, 0}};
+    ArrayMania5.floodFill(actual, 1, 1, 1);
+    expected = new int[][]{{1, 1, 2}, {1, 1, 1}, {2, 1, 1}};
+    Assert.assertArrayEquals(expected, actual);
   }
 }
