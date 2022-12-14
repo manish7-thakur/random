@@ -1,9 +1,9 @@
 public class NumArray {
   private int[] arr;
-  public NumArray(int[] input) {
-    this.arr = new int[input.length];
-    arr[0] = input[0];
-    for(int i = 1; i < arr.length; i++) arr[i] = arr[i - 1] + input[i];
+  public NumArray(int[] nums) {
+    this.arr = new int[nums.length];
+    arr[0] = nums[0];
+    for(int i = 1; i < arr.length; i++) arr[i] = arr[i - 1] + nums[i];
   }
 
   public int sumRange(int left, int right) {
