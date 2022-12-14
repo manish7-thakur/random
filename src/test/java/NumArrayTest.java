@@ -9,5 +9,8 @@ public class NumArrayTest {
     Assert.assertEquals(6, arr.sumRange(1, 3));
     Assert.assertEquals(8, arr.sumRange(0, 3));
     Assert.assertEquals(3, arr.sumRange(2, 2));
+
+    arr = new NumArray(new int[]{6});
+    Assert.assertEquals(6, arr.sumRange(0, 0));
   }
 }
