@@ -36,5 +36,9 @@ public class BinaryTreeMania2Test {
     actual = BinaryTreeMania2.binaryTreePaths(new TreeNode(3, new TreeNode(4, new TreeNode(2), new TreeNode(1)), new TreeNode(5)));
     expected = List.of("3->4->2", "3->4->1", "3->5");
     Assert.assertEquals(expected, actual);
+
+    actual = BinaryTreeMania2.binaryTreePaths(new TreeNode(3, new TreeNode(4, null, new TreeNode(6)), new TreeNode(5, new TreeNode(4))));
+    expected = List.of("3->4->6", "3->5->4");
+    Assert.assertEquals(expected, actual);
   }
 }
