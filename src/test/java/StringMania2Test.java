@@ -145,4 +145,12 @@ public class StringMania2Test {
     expected = "9345444981636096804";
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void determineStringIsomorphism() {
+    boolean actual = StringMania2.isIsomorphic("s", "t");
+    Assert.assertTrue(actual);
+
+    actual = StringMania2.isIsomorphic("ss", "st");
+    Assert.assertFalse(actual);
+  }
 }

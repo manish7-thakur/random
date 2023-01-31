@@ -100,4 +100,8 @@ public class StringMania2 {
     if(carry > 0) b.append(carry);
     return b.reverse().toString();
   }
+
+  static boolean isIsomorphic(String s, String t) {
+    return true;
+  }
 }
