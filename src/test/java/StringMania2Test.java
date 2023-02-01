@@ -167,5 +167,8 @@ public class StringMania2Test {
 
     actual = StringMania2.isIsomorphic("aetr", "tera");
     Assert.assertTrue(actual);
+
+    actual = StringMania2.isIsomorphic("bad", "baa");
+    Assert.assertFalse(actual);
   }
 }
