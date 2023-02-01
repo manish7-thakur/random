@@ -102,6 +102,11 @@ public class StringMania2 {
   }
 
   static boolean isIsomorphic(String s, String t) {
+    Map<Character, Character> map = new HashMap<>();
+    for(int i = 0; i < s.length(); i++) {
+      map.putIfAbsent(s.charAt(i), t.charAt(i));
+      if(map.get(s.charAt(i)) != t.charAt(i)) return false;
+    }
     return true;
   }
 }

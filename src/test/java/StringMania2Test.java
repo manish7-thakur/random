@@ -152,5 +152,8 @@ public class StringMania2Test {
 
     actual = StringMania2.isIsomorphic("ss", "st");
     Assert.assertFalse(actual);
+
+    actual = StringMania2.isIsomorphic("sos", "sis");
+    Assert.assertTrue(actual);
   }
 }
