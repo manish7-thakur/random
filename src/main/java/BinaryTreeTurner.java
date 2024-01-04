@@ -8,12 +8,10 @@ public class BinaryTreeTurner {
         int i = nodes.size() - 1;
         while(i > 0) {
             TreeNode node = nodes.get(i);
-            if (i > 0) {
-                TreeNode left = nodes.get(--i);
-                left.left = null;
-                left.right = null;
-                node.left = left;
-            }
+            TreeNode left = nodes.get(--i);
+            left.left = null;
+            left.right = null;
+            node.left = left;
             if (i > 0) {
                 TreeNode right = nodes.get(--i);
                 right.right = null;
