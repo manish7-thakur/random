@@ -31,4 +31,32 @@ public class ArrayMania5 {
   static boolean safe(int[][] image, int sr, int sc, int startingColor) {
     return sr >= 0 && sc >= 0 && sr < image.length && sc < image[0].length && image[sr][sc] == startingColor;
   }
+  static int findMedian(int[] arr) {
+    int medianPos = arr.length / 2;
+    int l = 0, h = arr.length - 1;
+    while(l < h) {
+      int pos = partition(arr, l, h);
+      if(pos == medianPos) return arr[pos];
+      else if(pos < medianPos) l = pos + 1;
+      else h = pos - 1;
+    }
+    return arr[medianPos];
+  }
+  static int partition(int[] arr, int l, int h) {
+    int pivot = arr[l];
+    int pos = l;
+    for(int i = l + 1; i <= h; i++) {
+      if(arr[i] < pivot) {
+        pos++;
+        swap(arr, pos , i);
+      }
+    }
+    swap(arr, pos, l);
+    return pos;
+  }
+  static void swap(int[] arr, int l, int h) {
+    int temp = arr[l];
+    arr[l] = arr[h];
+    arr[h] = temp;
+  }
 }

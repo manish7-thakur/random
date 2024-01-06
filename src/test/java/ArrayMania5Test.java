@@ -66,4 +66,22 @@ public class ArrayMania5Test {
     expected = new int[][]{{1, 1, 2}, {1, 1, 1}, {2, 1, 2}};
     Assert.assertArrayEquals(expected, actual);
   }
+
+  @Test
+  public void medianFinder() {
+    int actual = ArrayMania5.findMedian(new int[] {1});
+    int expected = 1;
+    actual = ArrayMania5.findMedian(new int[] {2, 1, 3});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+    actual = ArrayMania5.findMedian(new int[] {2, 5, 4, 1, 7});
+    expected = 4;
+    Assert.assertEquals(expected, actual);
+    actual = ArrayMania5.findMedian(new int[] {9, 8, 2, 1, 7});
+    expected = 7;
+    Assert.assertEquals(expected, actual);
+    actual = ArrayMania5.findMedian(new int[] {2, 8, 7, 1, 2});
+    expected = 2;
+    Assert.assertEquals(expected, actual);
+  }
 }
